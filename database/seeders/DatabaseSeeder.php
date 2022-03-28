@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    public const USERNAME = 'admin';
+    public const PASSWORD = 'password';
     /**
      * Seed the application's database.
      *
@@ -14,6 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        /**
+         * buat akun standar admin jika belum ada
+         * 
+         */
+        
+        if(!\App\Models\User::where('username', self::USERNAME)->exists()) {
+            $user = \App\Models\User::factory()->create([
+                'nama' => 'Admin',
+                'username' => self::USERNAME,
+                'password' => bcrypt(self::PASSWORD),
+            ]);
+        }
     }
 }
