@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('instruktur', function (Blueprint $table) {
-            $table->id('nip');
+            $table->string('nip', 18)->primary();
             /**
              * nama, jenis kelamin, alamat, no_hp, materi
              * 
