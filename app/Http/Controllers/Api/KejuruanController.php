@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KejuruanStoreRequest;
+use App\Http\Requests\KejuruanUpdateRequest;
 use App\Http\Resources\KejuruanResource;
 use App\Models\Kejuruan;
 use Illuminate\Http\Request;
@@ -37,9 +38,14 @@ class KejuruanController extends Controller
     }
 
     public function show(Kejuruan $kejuruan){
+        return new KejuruanResource($kejuruan);
     }
 
-    public function update(Request $request, Kejuruan $kejuruan){
+    public function update(KejuruanUpdateRequest $request, Kejuruan $kejuruan){
+        $data = collect($request->validated())->except([]);
+        $result = $kejuruan->update($data->all());
+        $collection = new KejuruanResource($kejuruan);
+        return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     public function destroy(Kejuruan $kejuruan){

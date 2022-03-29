@@ -4408,11 +4408,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _routes_web__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../routes/web */ "./resources/js/routes/web.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./resources/js/plugins/store.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4423,11 +4424,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
- // import store from './vuex'
 
 
-vue__WEBPACK_IMPORTED_MODULE_3__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
+
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
   routes: _routes_web__WEBPACK_IMPORTED_MODULE_1__["default"],
   mode: 'history'
 });
@@ -4442,12 +4443,24 @@ router.beforeEach( /*#__PURE__*/function () {
              * konfigurasi axios
              * 
              */
-            axios__WEBPACK_IMPORTED_MODULE_2___default().interceptors.response.use(function (response) {
+            axios__WEBPACK_IMPORTED_MODULE_3___default().interceptors.response.use(function (response) {
+              if (response.config.category == 'DELETE' && response.status == 204) {
+                _store__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch('notifikasi/show', {
+                  message: "Berhasil menghapus data 👌"
+                });
+              }
+
+              if (response.status == 201) {
+                _store__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch('notifikasi/show', {
+                  message: "Berhasil menyimpan data 👌"
+                });
+              }
+
               return response;
             }, function (error) {
               if (error.response.status == 401) {
-                // localStorage.removeItem('authToken')
-                // store.commit('SETLOADINGAPP', false)
+                localStorage.removeItem('authToken'); // store.commit('app/SET_LOADING_APP', false)
+
                 if (to.path == '/admin/401') {
                   return null;
                 }
@@ -4456,6 +4469,10 @@ router.beforeEach( /*#__PURE__*/function () {
                   path: '/admin/401'
                 });
                 return null;
+              } else if (error.response.status == 403) {
+                _store__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch('notifikasi/show', {
+                  message: error.message
+                });
               }
 
               return Promise.reject(error);
@@ -27404,7 +27421,7 @@ var render = function () {
         "v-dialog",
         {
           attrs: {
-            "max-width": "600",
+            "max-width": "400",
             "content-class": "shadow-sm",
             "overlay-opacity": ".25",
             eager: "",
@@ -27441,8 +27458,8 @@ var render = function () {
                     [
                       _c("v-subheader", [
                         _vm._v(
-                          "\n                        Form Ubah Data Kejuruan > " +
-                            _vm._s(_vm.item.nama) +
+                          "\n                        Ubah Data Kejuruan > " +
+                            _vm._s(_vm.item.nama_kejuruan) +
                             "\n                    "
                         ),
                       ]),

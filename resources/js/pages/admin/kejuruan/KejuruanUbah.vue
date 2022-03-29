@@ -1,11 +1,11 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" max-width="600" content-class="shadow-sm" overlay-opacity=".25" eager scrollable persistent>
+        <v-dialog v-model="dialog" max-width="400" content-class="shadow-sm" overlay-opacity=".25" eager scrollable persistent>
             <v-form @submit.prevent="submit" :disabled="loading">
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Form Ubah Data Kejuruan > {{ item.nama }}
+                            Ubah Data Kejuruan > {{ item.nama_kejuruan }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">

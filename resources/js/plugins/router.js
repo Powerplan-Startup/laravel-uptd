@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import Router from 'vue-router'
 import VueRouter from 'vue-router'
 import routes from '../routes/web'
-// import store from './vuex'
+import store from './store'
 import axios from 'axios'
 
 Vue.use(VueRouter)
@@ -20,16 +20,30 @@ router.beforeEach(async (to, from, next) => {
      * 
      */
     axios.interceptors.response.use(function (response) {
+        if(response.config.category == 'DELETE' && response.status == 204){
+            store.dispatch('notifikasi/show', {
+                message: "Berhasil menghapus data 👌"
+            })
+        }
+        if(response.status == 201){
+            store.dispatch('notifikasi/show', {
+                message: "Berhasil menyimpan data 👌"
+            })
+        }
         return response;
     }, function (error) {
         if(error.response.status == 401){
-            // localStorage.removeItem('authToken')
-            // store.commit('SETLOADINGAPP', false)
+            localStorage.removeItem('authToken')
+            // store.commit('app/SET_LOADING_APP', false)
             if(to.path == '/admin/401'){
                 return null
             }
             next({ path: '/admin/401' })
             return null
+        } else if(error.response.status == 403){
+            store.dispatch('notifikasi/show', {
+                message: error.message
+            })
         }
         return Promise.reject(error);
     });
