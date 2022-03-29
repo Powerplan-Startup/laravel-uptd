@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Konfirmasi Hapus data Kejuruan > {{ item.nama }}
+                            Konfirmasi Hapus data Kejuruan > {{ item.nama_kejuruan }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="error lighten-5">

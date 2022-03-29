@@ -49,5 +49,7 @@ class KejuruanController extends Controller
     }
 
     public function destroy(Kejuruan $kejuruan){
+        $result = $kejuruan->delete();
+        return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

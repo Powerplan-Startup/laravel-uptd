@@ -25699,7 +25699,7 @@ var render = function () {
                       _c("v-subheader", [
                         _vm._v(
                           "\n                        Konfirmasi Hapus data Kejuruan > " +
-                            _vm._s(_vm.item.nama) +
+                            _vm._s(_vm.item.nama_kejuruan) +
                             "\n                    "
                         ),
                       ]),
