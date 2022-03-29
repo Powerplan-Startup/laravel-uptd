@@ -73,3 +73,10 @@ untuk public menggunakan __app.js__ dan __app.css__
 
 
 untuk resource view (blade) pada folder __public__
+
+## Hak Akses Aplikasi
+
+| role | username | password | keterangan |
+| :--- | :--- | :--- | :--- |
+| Admin | admin    | password    | login untuk admin      |
+<!-- | user  | user     | user     | login untuk user       | -->
