@@ -3,7 +3,7 @@
 ## Cara Menggunakan
 
 ### 1. Clone Repository
-### 2. Install Composer
+### 2. Install Package Composer
 ```cli
 composer install
 ```
