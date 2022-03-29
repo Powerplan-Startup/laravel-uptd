@@ -199,7 +199,6 @@
                                 <v-toolbar flat rounded="xl">
                                     <v-tabs align-with-title>
                                         <v-tab :to="{name: 'kejuruan.show'}" exact>Informasi</v-tab>
-                                        <v-tab :to="{name: 'kejuruan.kelas'}" exact>Kelas</v-tab>
                                     </v-tabs>
                                 </v-toolbar>
                             </div>

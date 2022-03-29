@@ -2,6 +2,7 @@
 	<v-toolbar flat app>
 		<v-app-bar-nav-icon></v-app-bar-nav-icon>
 		<v-toolbar-title v-text="title"></v-toolbar-title>
+		<v-spacer></v-spacer>
 		<v-autocomplete
 			cache-items
 			class="mx-4"
@@ -10,6 +11,7 @@
 			hide-details
 			label="Cari sesuatu?"
 			solo-inverted
+			style="max-width: 400px"
 			></v-autocomplete>
 		<v-btn icon>
 			<v-icon>mdi-apps</v-icon>

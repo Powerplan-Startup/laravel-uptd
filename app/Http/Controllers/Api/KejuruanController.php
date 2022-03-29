@@ -24,7 +24,7 @@ class KejuruanController extends Controller
             }
         })
         ->when(request('search'), function($query, $search){
-            $query->where('nama', 'like', "%{$search}%");
+            $query->where('nama_kejuruan', 'like', "%{$search}%");
         })
         ->paginate(request('itemsPerPage') ?? 10);
         return KejuruanResource::collection($data);
