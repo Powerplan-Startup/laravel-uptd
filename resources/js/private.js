@@ -5,6 +5,7 @@ import store from './plugins/store'
 
 require('./private-bootstrap');
 const vuetify = require('./plugins/vuetify').default;
+require('./plugins/helper')
 
 import DashboardAdmin from './components/DashboardAdmin.vue'
 

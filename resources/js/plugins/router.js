@@ -22,16 +22,16 @@ router.beforeEach(async (to, from, next) => {
     axios.interceptors.response.use(function (response) {
         return response;
     }, function (error) {
-        // if(error.response.status == 401){
-        //     localStorage.removeItem('authToken')
-        //     store.commit('SETLOADINGAPP', false)
-        //     if(to.path == '/admin/401'){
-        //         return null
-        //     }
-        //     next({ path: '/admin/401' })
-        //     return null
-        // }
-        // return Promise.reject(error);
+        if(error.response.status == 401){
+            // localStorage.removeItem('authToken')
+            // store.commit('SETLOADINGAPP', false)
+            if(to.path == '/admin/401'){
+                return null
+            }
+            next({ path: '/admin/401' })
+            return null
+        }
+        return Promise.reject(error);
     });
 
     // store.commit('SETLOADINGAPP', true)

@@ -10,4 +10,5 @@ class Kejuruan extends Model
     use HasFactory;
     protected $table = 'kejuruan';
     protected $primaryKey = 'id_kejuruan';
+    protected $guarded = [];
 }

@@ -2,11 +2,11 @@
     <div>
         <v-main>
 			<admin-appbar title="Kejuruan"></admin-appbar>
-            <v-container>
+            <v-container class="pa-10">
                 <div v-if="loading">
                     <div class="d-grid-main">
                         <v-card v-for="i in 3" :key="i" color="grey lighten-4 overflow-hidden" flat rounded="xl">
-                            <div style="min-height: 300px">
+                            <div style="min-height: 125px">
                                 <v-card-text>
                                     <v-skeleton-loader type="avatar" loading/>
                                 </v-card-text>
@@ -18,33 +18,39 @@
                     <v-expand-transition>
                         <div class="d-grid-main" v-if="show">
                             <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link :to="{ name: '.list' }">
-                                <v-card-text>
-                                    <div class="d-flex w-100">
-                                        <v-avatar color="indigo lighten-4">
-                                            <v-icon>mdi-pin</v-icon>
-                                        </v-avatar>
-                                        <v-spacer/>
-                                    </div>
-                                </v-card-text>
-                                <v-card-text class="text-h1 text-right">
-                                    {{ total }}
-                                </v-card-text>
-                                <v-card-text class="text-right pt-0">
-                                    Total Kejuruan
-                                </v-card-text>
+								<div class="d-flex">
+									<v-card-text>
+										<div class="d-flex w-100">
+											<v-avatar color="indigo lighten-4">
+												<v-icon>mdi-pin</v-icon>
+											</v-avatar>
+											<v-spacer/>
+										</div>
+									</v-card-text>
+									<div class="grow">
+										<v-card-text class="text-h2 text-right">
+											{{ total }}
+										</v-card-text>
+										<v-card-text class="text-right pt-0">
+											Total Kejuruan
+										</v-card-text>
+									</div>
+								</div>
                             </v-card>
                             <div class="d-lg-block d-none">
-                                <div class="d-grid-main mini">
-                                    <div class="content-middle">
-                                        <v-subheader>
-                                            Terbaru
-                                        </v-subheader>
-                                    </div>
+                                <div class="d-grid-main mini fill-height">
+									<v-card class="grey lighten-4 overflow-hidden" flat rounded="xl">
+										<v-card-text class="content-middle">
+											<v-subheader>
+												Terbaru
+											</v-subheader>
+										</v-card-text>
+									</v-card>
                                     <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.id_kejuruan" :to="{ name: 'kejuruan.show', params: { id_kejuruan: item.id_kejuruan } }">
                                         <v-card-text>
                                             <div class="d-flex w-100">
                                                 <v-spacer/>
-                                                <v-menu open-on-click content-class="shadow-sm rounded-lg" :close-on-content-click="false" v-if="!isPimpinan">
+                                                <v-menu open-on-click content-class="shadow-sm rounded-lg" :close-on-content-click="false">
                                                     <template #activator="{ attrs, on }">
                                                         <v-btn icon v-on="on" v-bind="attrs" @click.prevent="">
                                                             <v-icon>mdi-dots-vertical</v-icon>
@@ -99,32 +105,32 @@
                                         </v-card-text>
                                         <v-card-text>
                                             <div class="text-truncate">
-                                                {{ item.nama }}
+                                                {{ item.nama_kejuruan }}
                                             </div>
                                             <div class="text-truncate">
                                                 <small>
-                                                    {{ item.nip }}
+                                                    {{ item.paket }}
                                                 </small>
                                             </div>
                                         </v-card-text>
                                     </v-card>
                                     
-                                    <div v-if="total < 2">
-                                        <div v-for="i in (2 - total)" :key="`placeholder${i}`"></div>
+                                    <div v-if="total < 1">
+                                        <div v-for="i in (1 - total)" :key="`placeholder${i}`"></div>
                                     </div>
                                 </div>
                             </div>
-                            <v-card color="pink lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah" v-if="!isPimpinan">
-                                <div style="min-height: 300px" class="d-flex">
+                            <v-card color="pink lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
+                                <div style="min-height: 125px" class="d-flex">
                                     <div class="w-100">
                                         <div class="content-middle">
                                             <v-card-text>
                                                 <div class="d-flex flex-column align-center w-100">
-                                                    <v-avatar color="pink lighten-4">
-                                                        <v-icon v-text="'mdi-plus'" color="grey"/>
+                                                    <v-avatar color="pink lighten-4 shadow-sm">
+                                                        <v-icon v-text="'mdi-plus'" color="pink darken-1"/>
                                                     </v-avatar>
                                                     <div class="grow-1 pl-4">
-                                                        <v-subheader>
+                                                        <v-subheader class="pink-text">
                                                             Tambah Kejuruan
                                                         </v-subheader>
                                                     </div>
@@ -168,7 +174,6 @@ export default {
         ...mapState({}),
         ...mapGetters({
             session: 'kejuruan/getSession',
-            isPimpinan: 'login/isPimpinan'
         }),
         exists(){
             return this.total > 0
@@ -205,7 +210,7 @@ export default {
         async loadItems(){
             this.loading = true
             let res = await this.getItems({
-                itemsPerPage: 3,
+                itemsPerPage: 1,
                 sortBy: ['created_at'],
                 sortDesc: [true],
             }).catch(e => {

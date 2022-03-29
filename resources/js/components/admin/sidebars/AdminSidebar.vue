@@ -1,9 +1,9 @@
 <template>
-	<v-navigation-drawer dark color="teal lighten-1" width="300" app>
-		<div class="pa-0">
-			<v-card light flat rounded="0" elevation="0" color="teal lighten-5" class="py-10">
+	<v-navigation-drawer light color="indigo lighten-5" width="300" app>
+		<div class="pa-3">
+			<v-card dark rounded="lg" class="p5-10 shadow-sm" color="indigo">
 				<v-list-item>
-					<v-list-item-avatar color="teal lighten-2">
+					<v-list-item-avatar color="indigo lighten-2">
 						<v-icon>mdi-user</v-icon>
 					</v-list-item-avatar>
 					<v-list-item-content>
@@ -17,6 +17,22 @@
 					<v-list-item-action title="Keluar">
 						<v-btn icon>
 							<v-icon>mdi-power</v-icon>
+						</v-btn>
+					</v-list-item-action>
+				</v-list-item>
+				<v-divider></v-divider>
+				<v-list-item link>
+					<v-list-item-content>
+						<v-list-item-title>
+							Lihat Website
+						</v-list-item-title>
+						<v-list-item-subtitle>
+							Kunjungi halaman awal
+						</v-list-item-subtitle>
+					</v-list-item-content>
+					<v-list-item-action>
+						<v-btn icon>
+							<v-icon>mdi-arrow-right</v-icon>
 						</v-btn>
 					</v-list-item-action>
 				</v-list-item>
@@ -37,7 +53,7 @@
 					</v-list-item-title>
 				</v-list-item-content>
 			</v-list-item>
-			<v-list-item :to="{ name: 'admin.kejuruan' }">
+			<v-list-item :to="{ name: 'kejuruan' }">
 				<v-list-item-icon>
 					<v-icon>mdi-bookmark</v-icon>
 				</v-list-item-icon>

@@ -62,12 +62,10 @@ export default {
             ],
             items: [],
             headers: [
-                { text: null, align: 'center', sortable: false, value: 'foto' },
-                { text: 'Nama', align: 'start', sortable: true, value: 'nama' },
-                { text: 'Jenis Kelamin', align: 'start d-none d-sm-table-cell', sortable: true, value: 'jenis_kelamin' },
-                { text: 'Jabatan', align: 'start d-none d-sm-table-cell', sortable: true, value: 'jabatan' },
-                // { text: 'Golongan', align: 'start d-none d-sm-table-cell', sortable: true, value: 'golongan' },
-                { text: 'TTL', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal_lahir' },
+                { text: 'Nama Kejuruan', align: 'start', sortable: true, value: 'nama_kejuruan' },
+                { text: 'Paket', align: 'start d-none d-sm-table-cell', sortable: true, value: 'paket' },
+                { text: 'Jadwal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'id_jadwal' },
+                { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: true, value: 'action' },
             ],
             options: {

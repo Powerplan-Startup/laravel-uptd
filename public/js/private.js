@@ -2438,6 +2438,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -2896,6 +2912,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2911,8 +2933,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapState)({})), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
-    session: 'kejuruan/getSession',
-    isPimpinan: 'login/isPimpinan'
+    session: 'kejuruan/getSession'
   })), {}, {
     exists: function exists() {
       return this.total > 0;
@@ -2965,7 +2986,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _this.loading = true;
                 _context.next = 3;
                 return _this.getItems({
-                  itemsPerPage: 3,
+                  itemsPerPage: 1,
                   sortBy: ['created_at'],
                   sortDesc: [true]
                 })["catch"](function (e) {
@@ -3273,8 +3294,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return state.kejuruan.items;
     }
   })), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
-    session: 'kejuruan/getSession',
-    isPimpinan: 'login/isPimpinan'
+    session: 'kejuruan/getSession'
   })), {}, {
     id: function id() {
       return this.$route.params.id_kejuruan;
@@ -3458,17 +3478,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _context.next = 4;
                 return _this.storeKejuruan(data)["catch"](function (e) {
                   console.log("storeKejuruan@KejuruanTambah.vue", e);
+                  console.log(e);
                   e.response.status == 422 && _this.setErrorForm(e);
 
                   _this.notif({
                     message: e.message
                   });
+                })["finally"](function () {
+                  _this.loading = false;
                 });
 
               case 4:
                 res = _context.sent;
-                _this.loading = false;
-                console.log(res);
 
                 if (res) {
                   _this.dialog = false;
@@ -3477,7 +3498,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this.updateSession();
                 }
 
-              case 8:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -3771,25 +3792,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -3820,9 +3822,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.$emit('input', val);
       }
     }
-  }, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
-    isPimpinan: 'login/isPimpinan'
-  })),
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({})),
   methods: {
     update: function update(e) {
       this.$emit('update', e);
@@ -3861,115 +3861,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4164,31 +4055,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }],
       items: [],
       headers: [{
-        text: null,
-        align: 'center',
-        sortable: false,
-        value: 'foto'
-      }, {
-        text: 'Nama',
+        text: 'Nama Kejuruan',
         align: 'start',
         sortable: true,
-        value: 'nama'
+        value: 'nama_kejuruan'
       }, {
-        text: 'Jenis Kelamin',
+        text: 'Paket',
         align: 'start d-none d-sm-table-cell',
         sortable: true,
-        value: 'jenis_kelamin'
+        value: 'paket'
       }, {
-        text: 'Jabatan',
-        align: 'start d-none d-sm-table-cell',
-        sortable: true,
-        value: 'jabatan'
-      }, // { text: 'Golongan', align: 'start d-none d-sm-table-cell', sortable: true, value: 'golongan' },
-      {
-        text: 'TTL',
+        text: 'Jadwal',
         align: 'end d-none d-sm-table-cell',
         sortable: true,
-        value: 'tanggal_lahir'
+        value: 'id_jadwal'
+      }, {
+        text: 'Dibuat pada',
+        align: 'end d-none d-sm-table-cell',
+        sortable: true,
+        value: 'created_at'
       }, {
         text: null,
         align: '',
@@ -4399,6 +4284,117 @@ var api = function api(url) {
 
 /***/ }),
 
+/***/ "./resources/js/plugins/helper.js":
+/*!****************************************!*\
+  !*** ./resources/js/plugins/helper.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].mixin({
+  filters: {
+    datetime: function datetime(val) {
+      var local = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'id-ID';
+
+      try {
+        var date = new Date(val);
+        val = new Intl.DateTimeFormat(local, {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        }).format(date);
+      } catch (error) {}
+
+      return val;
+    },
+    time: function time(val) {
+      var local = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'id-ID';
+
+      try {
+        var date = new Date("2020-01-01 ".concat(val));
+        val = new Intl.DateTimeFormat(local, {
+          hour: '2-digit',
+          minute: '2-digit'
+        }).format(date);
+      } catch (error) {}
+
+      return val;
+    },
+    date: function date(val) {
+      var local = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'id-ID';
+
+      try {
+        var date = new Date(val);
+        val = new Intl.DateTimeFormat(local, {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }).format(date);
+      } catch (error) {}
+
+      return val;
+    },
+    number: function number(val) {
+      var local = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'id-ID';
+      return new Intl.NumberFormat(local, {}).format(val);
+    },
+    sub: function sub(val, end) {
+      return val.substring(0, end);
+    },
+    agama: function agama(val) {
+      switch (val) {
+        case '0':
+          return 'Islam';
+
+        case '1':
+          return 'Kristen';
+
+        case '2':
+          return 'Katholik';
+
+        case '3':
+          return 'Hindu';
+
+        case '4':
+          return 'Budha';
+
+        case '5':
+          return 'Konghuchu';
+
+        case '6':
+        default:
+          return '-';
+      }
+    }
+  },
+  methods: {
+    setErrorForm: function setErrorForm(e) {
+      var _e$response, _e$response$data;
+
+      if (e !== null && e !== void 0 && (_e$response = e.response) !== null && _e$response !== void 0 && (_e$response$data = _e$response.data) !== null && _e$response$data !== void 0 && _e$response$data.errors) {
+        for (var key in e.response.data.errors) {
+          this.$set(this.errors, key, e.response.data.errors[key]);
+        }
+
+        this.errors = e.response.data.errors;
+      }
+    },
+    previewImage: function previewImage(img) {
+      this.$store.dispatch('image/show', {
+        src: img
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/plugins/router.js":
 /*!****************************************!*\
   !*** ./resources/js/plugins/router.js ***!
@@ -4448,16 +4444,21 @@ router.beforeEach( /*#__PURE__*/function () {
              */
             axios__WEBPACK_IMPORTED_MODULE_2___default().interceptors.response.use(function (response) {
               return response;
-            }, function (error) {// if(error.response.status == 401){
-              //     localStorage.removeItem('authToken')
-              //     store.commit('SETLOADINGAPP', false)
-              //     if(to.path == '/admin/401'){
-              //         return null
-              //     }
-              //     next({ path: '/admin/401' })
-              //     return null
-              // }
-              // return Promise.reject(error);
+            }, function (error) {
+              if (error.response.status == 401) {
+                // localStorage.removeItem('authToken')
+                // store.commit('SETLOADINGAPP', false)
+                if (to.path == '/admin/401') {
+                  return null;
+                }
+
+                next({
+                  path: '/admin/401'
+                });
+                return null;
+              }
+
+              return Promise.reject(error);
             }); // store.commit('SETLOADINGAPP', true)
 
             return _context.abrupt("return", next());
@@ -25384,23 +25385,17 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "v-navigation-drawer",
-    { attrs: { dark: "", color: "teal lighten-1", width: "300", app: "" } },
+    { attrs: { light: "", color: "indigo lighten-5", width: "300", app: "" } },
     [
       _c(
         "div",
-        { staticClass: "pa-0" },
+        { staticClass: "pa-3" },
         [
           _c(
             "v-card",
             {
-              staticClass: "py-10",
-              attrs: {
-                light: "",
-                flat: "",
-                rounded: "0",
-                elevation: "0",
-                color: "teal lighten-5",
-              },
+              staticClass: "p5-10 shadow-sm",
+              attrs: { dark: "", rounded: "lg", color: "indigo" },
             },
             [
               _c(
@@ -25408,7 +25403,7 @@ var render = function () {
                 [
                   _c(
                     "v-list-item-avatar",
-                    { attrs: { color: "teal lighten-2" } },
+                    { attrs: { color: "indigo lighten-2" } },
                     [_c("v-icon", [_vm._v("mdi-user")])],
                     1
                   ),
@@ -25435,6 +25430,44 @@ var render = function () {
                         "v-btn",
                         { attrs: { icon: "" } },
                         [_c("v-icon", [_vm._v("mdi-power")])],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" } },
+                [
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _vm._v("\n\t\t\t\t\t\tLihat Website\n\t\t\t\t\t"),
+                      ]),
+                      _vm._v(" "),
+                      _c("v-list-item-subtitle", [
+                        _vm._v(
+                          "\n\t\t\t\t\t\tKunjungi halaman awal\n\t\t\t\t\t"
+                        ),
+                      ]),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-action",
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { icon: "" } },
+                        [_c("v-icon", [_vm._v("mdi-arrow-right")])],
                         1
                       ),
                     ],
@@ -25478,7 +25511,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "v-list-item",
-            { attrs: { to: { name: "admin.kejuruan" } } },
+            { attrs: { to: { name: "kejuruan" } } },
             [
               _c(
                 "v-list-item-icon",
@@ -25784,7 +25817,7 @@ var render = function () {
         [
           _c("admin-appbar", { attrs: { title: "Kejuruan" } }),
           _vm._v(" "),
-          _c("v-container", [
+          _c("v-container", { staticClass: "pa-10" }, [
             _vm.loading
               ? _c("div", [
                   _c(
@@ -25804,7 +25837,7 @@ var render = function () {
                         [
                           _c(
                             "div",
-                            { staticStyle: { "min-height": "300px" } },
+                            { staticStyle: { "min-height": "125px" } },
                             [
                               _c(
                                 "v-card-text",
@@ -25846,67 +25879,99 @@ var render = function () {
                                   },
                                 },
                                 [
-                                  _c("v-card-text", [
-                                    _c(
-                                      "div",
-                                      { staticClass: "d-flex w-100" },
-                                      [
+                                  _c(
+                                    "div",
+                                    { staticClass: "d-flex" },
+                                    [
+                                      _c("v-card-text", [
                                         _c(
-                                          "v-avatar",
-                                          {
-                                            attrs: {
-                                              color: "indigo lighten-4",
-                                            },
-                                          },
-                                          [_c("v-icon", [_vm._v("mdi-pin")])],
+                                          "div",
+                                          { staticClass: "d-flex w-100" },
+                                          [
+                                            _c(
+                                              "v-avatar",
+                                              {
+                                                attrs: {
+                                                  color: "indigo lighten-4",
+                                                },
+                                              },
+                                              [
+                                                _c("v-icon", [
+                                                  _vm._v("mdi-pin"),
+                                                ]),
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c("v-spacer"),
+                                          ],
                                           1
                                         ),
-                                        _vm._v(" "),
-                                        _c("v-spacer"),
-                                      ],
-                                      1
-                                    ),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-card-text",
-                                    { staticClass: "text-h1 text-right" },
-                                    [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(_vm.total) +
-                                          "\n                                "
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "grow" },
+                                        [
+                                          _c(
+                                            "v-card-text",
+                                            {
+                                              staticClass: "text-h2 text-right",
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n\t\t\t\t\t\t\t\t\t\t\t" +
+                                                  _vm._s(_vm.total) +
+                                                  "\n\t\t\t\t\t\t\t\t\t\t"
+                                              ),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-card-text",
+                                            { staticClass: "text-right pt-0" },
+                                            [
+                                              _vm._v(
+                                                "\n\t\t\t\t\t\t\t\t\t\t\tTotal Kejuruan\n\t\t\t\t\t\t\t\t\t\t"
+                                              ),
+                                            ]
+                                          ),
+                                        ],
+                                        1
                                       ),
-                                    ]
+                                    ],
+                                    1
                                   ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-card-text",
-                                    { staticClass: "text-right pt-0" },
-                                    [
-                                      _vm._v(
-                                        "\n                                    Total Kejuruan\n                                "
-                                      ),
-                                    ]
-                                  ),
-                                ],
-                                1
+                                ]
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "d-lg-block d-none" }, [
                                 _c(
                                   "div",
-                                  { staticClass: "d-grid-main mini" },
+                                  {
+                                    staticClass: "d-grid-main mini fill-height",
+                                  },
                                   [
                                     _c(
-                                      "div",
-                                      { staticClass: "content-middle" },
+                                      "v-card",
+                                      {
+                                        staticClass:
+                                          "grey lighten-4 overflow-hidden",
+                                        attrs: { flat: "", rounded: "xl" },
+                                      },
                                       [
-                                        _c("v-subheader", [
-                                          _vm._v(
-                                            "\n                                            Terbaru\n                                        "
-                                          ),
-                                        ]),
+                                        _c(
+                                          "v-card-text",
+                                          { staticClass: "content-middle" },
+                                          [
+                                            _c("v-subheader", [
+                                              _vm._v(
+                                                "\n\t\t\t\t\t\t\t\t\t\t\t\tTerbaru\n\t\t\t\t\t\t\t\t\t\t\t"
+                                              ),
+                                            ]),
+                                          ],
+                                          1
+                                        ),
                                       ],
                                       1
                                     ),
@@ -25938,294 +26003,264 @@ var render = function () {
                                               [
                                                 _c("v-spacer"),
                                                 _vm._v(" "),
-                                                !_vm.isPimpinan
-                                                  ? _c(
-                                                      "v-menu",
-                                                      {
-                                                        attrs: {
-                                                          "open-on-click": "",
-                                                          "content-class":
-                                                            "shadow-sm rounded-lg",
-                                                          "close-on-content-click": false,
-                                                        },
-                                                        scopedSlots: _vm._u(
-                                                          [
-                                                            {
-                                                              key: "activator",
-                                                              fn: function (
-                                                                ref
-                                                              ) {
-                                                                var attrs =
-                                                                  ref.attrs
-                                                                var on = ref.on
-                                                                return [
-                                                                  _c(
-                                                                    "v-btn",
-                                                                    _vm._g(
-                                                                      _vm._b(
-                                                                        {
-                                                                          attrs:
-                                                                            {
-                                                                              icon: "",
-                                                                            },
-                                                                          on: {
-                                                                            click:
-                                                                              function (
-                                                                                $event
-                                                                              ) {
-                                                                                $event.preventDefault()
-                                                                              },
-                                                                          },
-                                                                        },
-                                                                        "v-btn",
-                                                                        attrs,
-                                                                        false
-                                                                      ),
-                                                                      on
-                                                                    ),
-                                                                    [
-                                                                      _c(
-                                                                        "v-icon",
-                                                                        [
-                                                                          _vm._v(
-                                                                            "mdi-dots-vertical"
-                                                                          ),
-                                                                        ]
-                                                                      ),
-                                                                    ],
-                                                                    1
-                                                                  ),
-                                                                ]
-                                                              },
-                                                            },
-                                                          ],
-                                                          null,
-                                                          true
-                                                        ),
-                                                      },
+                                                _c(
+                                                  "v-menu",
+                                                  {
+                                                    attrs: {
+                                                      "open-on-click": "",
+                                                      "content-class":
+                                                        "shadow-sm rounded-lg",
+                                                      "close-on-content-click": false,
+                                                    },
+                                                    scopedSlots: _vm._u(
                                                       [
+                                                        {
+                                                          key: "activator",
+                                                          fn: function (ref) {
+                                                            var attrs =
+                                                              ref.attrs
+                                                            var on = ref.on
+                                                            return [
+                                                              _c(
+                                                                "v-btn",
+                                                                _vm._g(
+                                                                  _vm._b(
+                                                                    {
+                                                                      attrs: {
+                                                                        icon: "",
+                                                                      },
+                                                                      on: {
+                                                                        click:
+                                                                          function (
+                                                                            $event
+                                                                          ) {
+                                                                            $event.preventDefault()
+                                                                          },
+                                                                      },
+                                                                    },
+                                                                    "v-btn",
+                                                                    attrs,
+                                                                    false
+                                                                  ),
+                                                                  on
+                                                                ),
+                                                                [
+                                                                  _c("v-icon", [
+                                                                    _vm._v(
+                                                                      "mdi-dots-vertical"
+                                                                    ),
+                                                                  ]),
+                                                                ],
+                                                                1
+                                                              ),
+                                                            ]
+                                                          },
+                                                        },
+                                                      ],
+                                                      null,
+                                                      true
+                                                    ),
+                                                  },
+                                                  [
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "v-list",
+                                                      { attrs: { nav: "" } },
+                                                      [
+                                                        _c("v-subheader", {
+                                                          domProps: {
+                                                            textContent:
+                                                              _vm._s("Aksi"),
+                                                          },
+                                                        }),
                                                         _vm._v(" "),
                                                         _c(
-                                                          "v-list",
+                                                          "v-list-item",
                                                           {
-                                                            attrs: { nav: "" },
+                                                            attrs: {
+                                                              dense: "",
+                                                              link: "",
+                                                              to: {
+                                                                name: "kejuruan.show",
+                                                                params: {
+                                                                  id_kejuruan:
+                                                                    item.id_kejuruan,
+                                                                },
+                                                              },
+                                                            },
                                                           },
                                                           [
-                                                            _c("v-subheader", {
-                                                              domProps: {
-                                                                textContent:
-                                                                  _vm._s(
-                                                                    "Aksi"
+                                                            _c(
+                                                              "v-list-item-icon",
+                                                              [
+                                                                _c("v-icon", [
+                                                                  _vm._v(
+                                                                    "mdi-account-tie"
                                                                   ),
-                                                              },
-                                                            }),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "v-list-item",
-                                                              {
-                                                                attrs: {
-                                                                  dense: "",
-                                                                  link: "",
-                                                                  to: {
-                                                                    name: "kejuruan.show",
-                                                                    params: {
-                                                                      id_kejuruan:
-                                                                        item.id_kejuruan,
-                                                                    },
-                                                                  },
-                                                                },
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "v-list-item-icon",
-                                                                  [
-                                                                    _c(
-                                                                      "v-icon",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "mdi-account-tie"
-                                                                        ),
-                                                                      ]
-                                                                    ),
-                                                                  ],
-                                                                  1
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-list-item-content",
-                                                                  [
-                                                                    _c(
-                                                                      "v-list-item-title",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "\n                                                                    Lihat Rincian\n                                                                "
-                                                                        ),
-                                                                      ]
-                                                                    ),
-                                                                  ],
-                                                                  1
-                                                                ),
+                                                                ]),
                                                               ],
                                                               1
                                                             ),
                                                             _vm._v(" "),
                                                             _c(
-                                                              "v-list-item",
-                                                              {
-                                                                attrs: {
-                                                                  dense: "",
-                                                                  link: "",
-                                                                },
-                                                                on: {
-                                                                  click:
-                                                                    function (
-                                                                      $event
-                                                                    ) {
-                                                                      return _vm.ubahInfoKejuruan(
-                                                                        item.id_kejuruan
-                                                                      )
-                                                                    },
-                                                                },
-                                                              },
+                                                              "v-list-item-content",
                                                               [
                                                                 _c(
-                                                                  "v-list-item-icon",
+                                                                  "v-list-item-title",
                                                                   [
-                                                                    _c(
-                                                                      "v-icon",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "mdi-pencil"
-                                                                        ),
-                                                                      ]
+                                                                    _vm._v(
+                                                                      "\n                                                                    Lihat Rincian\n                                                                "
                                                                     ),
-                                                                  ],
-                                                                  1
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-list-item-content",
-                                                                  [
-                                                                    _c(
-                                                                      "v-list-item-title",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "\n                                                                    Ubah\n                                                                "
-                                                                        ),
-                                                                      ]
-                                                                    ),
-                                                                  ],
-                                                                  1
+                                                                  ]
                                                                 ),
                                                               ],
                                                               1
                                                             ),
-                                                            _vm._v(" "),
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-list-item",
+                                                          {
+                                                            attrs: {
+                                                              dense: "",
+                                                              link: "",
+                                                            },
+                                                            on: {
+                                                              click: function (
+                                                                $event
+                                                              ) {
+                                                                return _vm.ubahInfoKejuruan(
+                                                                  item.id_kejuruan
+                                                                )
+                                                              },
+                                                            },
+                                                          },
+                                                          [
                                                             _c(
-                                                              "v-list-item",
-                                                              {
-                                                                attrs: {
-                                                                  dense: "",
-                                                                  link: "",
-                                                                },
-                                                                on: {
-                                                                  click:
-                                                                    function (
-                                                                      $event
-                                                                    ) {
-                                                                      return _vm.hapusInfoKejuruan(
-                                                                        item.id_kejuruan
-                                                                      )
-                                                                    },
-                                                                },
-                                                              },
+                                                              "v-list-item-icon",
                                                               [
-                                                                _c(
-                                                                  "v-list-item-icon",
-                                                                  [
-                                                                    _c(
-                                                                      "v-icon",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "mdi-delete"
-                                                                        ),
-                                                                      ]
-                                                                    ),
-                                                                  ],
-                                                                  1
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "v-list-item-content",
-                                                                  [
-                                                                    _c(
-                                                                      "v-list-item-title",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "\n                                                                    Hapus\n                                                                "
-                                                                        ),
-                                                                      ]
-                                                                    ),
-                                                                  ],
-                                                                  1
-                                                                ),
-                                                              ],
-                                                              1
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c("v-subheader", {
-                                                              domProps: {
-                                                                textContent:
-                                                                  _vm._s(
-                                                                    "Rincian"
+                                                                _c("v-icon", [
+                                                                  _vm._v(
+                                                                    "mdi-pencil"
                                                                   ),
-                                                              },
-                                                            }),
+                                                                ]),
+                                                              ],
+                                                              1
+                                                            ),
                                                             _vm._v(" "),
                                                             _c(
-                                                              "v-list-item",
-                                                              {
-                                                                attrs: {
-                                                                  dense: "",
-                                                                },
-                                                              },
+                                                              "v-list-item-content",
                                                               [
                                                                 _c(
-                                                                  "v-list-item-icon",
+                                                                  "v-list-item-title",
                                                                   [
-                                                                    _c(
-                                                                      "v-icon",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "mdi-calendar"
-                                                                        ),
-                                                                      ]
+                                                                    _vm._v(
+                                                                      "\n                                                                    Ubah\n                                                                "
                                                                     ),
-                                                                  ],
-                                                                  1
+                                                                  ]
                                                                 ),
-                                                                _vm._v(" "),
+                                                              ],
+                                                              1
+                                                            ),
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-list-item",
+                                                          {
+                                                            attrs: {
+                                                              dense: "",
+                                                              link: "",
+                                                            },
+                                                            on: {
+                                                              click: function (
+                                                                $event
+                                                              ) {
+                                                                return _vm.hapusInfoKejuruan(
+                                                                  item.id_kejuruan
+                                                                )
+                                                              },
+                                                            },
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-list-item-icon",
+                                                              [
+                                                                _c("v-icon", [
+                                                                  _vm._v(
+                                                                    "mdi-delete"
+                                                                  ),
+                                                                ]),
+                                                              ],
+                                                              1
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-list-item-content",
+                                                              [
                                                                 _c(
-                                                                  "v-list-item-content",
+                                                                  "v-list-item-title",
                                                                   [
-                                                                    _c(
-                                                                      "v-list-item-title",
-                                                                      [
-                                                                        _vm._v(
-                                                                          "\n                                                                    " +
-                                                                            _vm._s(
-                                                                              _vm._f(
-                                                                                "datetime"
-                                                                              )(
-                                                                                item.created_at
-                                                                              )
-                                                                            ) +
-                                                                            "\n                                                                "
-                                                                        ),
-                                                                      ]
+                                                                    _vm._v(
+                                                                      "\n                                                                    Hapus\n                                                                "
                                                                     ),
-                                                                  ],
-                                                                  1
+                                                                  ]
+                                                                ),
+                                                              ],
+                                                              1
+                                                            ),
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c("v-subheader", {
+                                                          domProps: {
+                                                            textContent:
+                                                              _vm._s("Rincian"),
+                                                          },
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-list-item",
+                                                          {
+                                                            attrs: {
+                                                              dense: "",
+                                                            },
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-list-item-icon",
+                                                              [
+                                                                _c("v-icon", [
+                                                                  _vm._v(
+                                                                    "mdi-calendar"
+                                                                  ),
+                                                                ]),
+                                                              ],
+                                                              1
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "v-list-item-content",
+                                                              [
+                                                                _c(
+                                                                  "v-list-item-title",
+                                                                  [
+                                                                    _vm._v(
+                                                                      "\n                                                                    " +
+                                                                        _vm._s(
+                                                                          _vm._f(
+                                                                            "datetime"
+                                                                          )(
+                                                                            item.created_at
+                                                                          )
+                                                                        ) +
+                                                                        "\n                                                                "
+                                                                    ),
+                                                                  ]
                                                                 ),
                                                               ],
                                                               1
@@ -26235,8 +26270,10 @@ var render = function () {
                                                         ),
                                                       ],
                                                       1
-                                                    )
-                                                  : _vm._e(),
+                                                    ),
+                                                  ],
+                                                  1
+                                                ),
                                               ],
                                               1
                                             ),
@@ -26249,7 +26286,7 @@ var render = function () {
                                               [
                                                 _vm._v(
                                                   "\n                                                " +
-                                                    _vm._s(item.nama) +
+                                                    _vm._s(item.nama_kejuruan) +
                                                     "\n                                            "
                                                 ),
                                               ]
@@ -26262,7 +26299,7 @@ var render = function () {
                                                 _c("small", [
                                                   _vm._v(
                                                     "\n                                                    " +
-                                                      _vm._s(item.nip) +
+                                                      _vm._s(item.paket) +
                                                       "\n                                                "
                                                   ),
                                                 ]),
@@ -26274,10 +26311,10 @@ var render = function () {
                                       )
                                     }),
                                     _vm._v(" "),
-                                    _vm.total < 2
+                                    _vm.total < 1
                                       ? _c(
                                           "div",
-                                          _vm._l(2 - _vm.total, function (i) {
+                                          _vm._l(1 - _vm.total, function (i) {
                                             return _c("div", {
                                               key: "placeholder" + i,
                                             })
@@ -26290,93 +26327,95 @@ var render = function () {
                                 ),
                               ]),
                               _vm._v(" "),
-                              !_vm.isPimpinan
-                                ? _c(
-                                    "v-card",
+                              _c(
+                                "v-card",
+                                {
+                                  attrs: {
+                                    color: "pink lighten-5 overflow-hidden",
+                                    rounded: "xl",
+                                    flat: "",
+                                    link: "",
+                                  },
+                                  on: { click: _vm.openModalTambah },
+                                },
+                                [
+                                  _c(
+                                    "div",
                                     {
-                                      attrs: {
-                                        color: "pink lighten-5 overflow-hidden",
-                                        rounded: "xl",
-                                        flat: "",
-                                        link: "",
-                                      },
-                                      on: { click: _vm.openModalTambah },
+                                      staticClass: "d-flex",
+                                      staticStyle: { "min-height": "125px" },
                                     },
                                     [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "d-flex",
-                                          staticStyle: {
-                                            "min-height": "300px",
-                                          },
-                                        },
-                                        [
-                                          _c("div", { staticClass: "w-100" }, [
-                                            _c(
-                                              "div",
-                                              { staticClass: "content-middle" },
-                                              [
-                                                _c("v-card-text", [
+                                      _c("div", { staticClass: "w-100" }, [
+                                        _c(
+                                          "div",
+                                          { staticClass: "content-middle" },
+                                          [
+                                            _c("v-card-text", [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "d-flex flex-column align-center w-100",
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-avatar",
+                                                    {
+                                                      attrs: {
+                                                        color:
+                                                          "pink lighten-4 shadow-sm",
+                                                      },
+                                                    },
+                                                    [
+                                                      _c("v-icon", {
+                                                        attrs: {
+                                                          color:
+                                                            "pink darken-1",
+                                                        },
+                                                        domProps: {
+                                                          textContent:
+                                                            _vm._s("mdi-plus"),
+                                                        },
+                                                      }),
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
                                                   _c(
                                                     "div",
                                                     {
                                                       staticClass:
-                                                        "d-flex flex-column align-center w-100",
+                                                        "grow-1 pl-4",
                                                     },
                                                     [
                                                       _c(
-                                                        "v-avatar",
-                                                        {
-                                                          attrs: {
-                                                            color:
-                                                              "pink lighten-4",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("v-icon", {
-                                                            attrs: {
-                                                              color: "grey",
-                                                            },
-                                                            domProps: {
-                                                              textContent:
-                                                                _vm._s(
-                                                                  "mdi-plus"
-                                                                ),
-                                                            },
-                                                          }),
-                                                        ],
-                                                        1
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "div",
+                                                        "v-subheader",
                                                         {
                                                           staticClass:
-                                                            "grow-1 pl-4",
+                                                            "pink-text",
                                                         },
                                                         [
-                                                          _c("v-subheader", [
-                                                            _vm._v(
-                                                              "\n                                                            Tambah Kejuruan\n                                                        "
-                                                            ),
-                                                          ]),
-                                                        ],
-                                                        1
+                                                          _vm._v(
+                                                            "\n                                                            Tambah Kejuruan\n                                                        "
+                                                          ),
+                                                        ]
                                                       ),
                                                     ],
                                                     1
                                                   ),
-                                                ]),
-                                              ],
-                                              1
-                                            ),
-                                          ]),
-                                        ]
-                                      ),
+                                                ],
+                                                1
+                                              ),
+                                            ]),
+                                          ],
+                                          1
+                                        ),
+                                      ]),
                                     ]
-                                  )
-                                : _vm._e(),
+                                  ),
+                                ]
+                              ),
                             ],
                             1
                           )
@@ -26674,212 +26713,179 @@ var render = function () {
                                       _vm._v(" "),
                                       _c("v-spacer"),
                                       _vm._v(" "),
-                                      !_vm.isPimpinan
-                                        ? _c(
-                                            "v-menu",
+                                      _c(
+                                        "v-menu",
+                                        {
+                                          attrs: {
+                                            "open-on-click": "",
+                                            "content-class":
+                                              "shadow-sm rounded-lg",
+                                            "close-on-content-click": false,
+                                          },
+                                          scopedSlots: _vm._u([
                                             {
-                                              attrs: {
-                                                "open-on-click": "",
-                                                "content-class":
-                                                  "shadow-sm rounded-lg",
-                                                "close-on-content-click": false,
-                                              },
-                                              scopedSlots: _vm._u(
-                                                [
-                                                  {
-                                                    key: "activator",
-                                                    fn: function (ref) {
-                                                      var attrs = ref.attrs
-                                                      var on = ref.on
-                                                      return [
-                                                        _c(
-                                                          "v-btn",
-                                                          _vm._g(
-                                                            _vm._b(
-                                                              {
-                                                                attrs: {
-                                                                  icon: "",
-                                                                },
-                                                              },
-                                                              "v-btn",
-                                                              attrs,
-                                                              false
-                                                            ),
-                                                            on
-                                                          ),
-                                                          [
-                                                            _c("v-icon", [
-                                                              _vm._v(
-                                                                "mdi-dots-vertical"
-                                                              ),
-                                                            ]),
-                                                          ],
-                                                          1
+                                              key: "activator",
+                                              fn: function (ref) {
+                                                var attrs = ref.attrs
+                                                var on = ref.on
+                                                return [
+                                                  _c(
+                                                    "v-btn",
+                                                    _vm._g(
+                                                      _vm._b(
+                                                        { attrs: { icon: "" } },
+                                                        "v-btn",
+                                                        attrs,
+                                                        false
+                                                      ),
+                                                      on
+                                                    ),
+                                                    [
+                                                      _c("v-icon", [
+                                                        _vm._v(
+                                                          "mdi-dots-vertical"
                                                         ),
-                                                      ]
-                                                    },
-                                                  },
-                                                ],
-                                                null,
-                                                false,
-                                                271778230
-                                              ),
+                                                      ]),
+                                                    ],
+                                                    1
+                                                  ),
+                                                ]
+                                              },
                                             },
+                                          ]),
+                                        },
+                                        [
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list",
+                                            { attrs: { nav: "" } },
                                             [
+                                              _c("v-subheader", {
+                                                domProps: {
+                                                  textContent: _vm._s("Aksi"),
+                                                },
+                                              }),
                                               _vm._v(" "),
                                               _c(
-                                                "v-list",
-                                                { attrs: { nav: "" } },
+                                                "v-list-item",
+                                                {
+                                                  attrs: {
+                                                    dense: "",
+                                                    link: "",
+                                                  },
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.ubahInfoKejuruan(
+                                                        _vm.item.id_kejuruan
+                                                      )
+                                                    },
+                                                  },
+                                                },
                                                 [
-                                                  _c("v-subheader", {
-                                                    domProps: {
-                                                      textContent:
-                                                        _vm._s("Aksi"),
-                                                    },
-                                                  }),
-                                                  _vm._v(" "),
                                                   _c(
-                                                    "v-list-item",
-                                                    {
-                                                      attrs: {
-                                                        dense: "",
-                                                        link: "",
-                                                      },
-                                                      on: {
-                                                        click: function (
-                                                          $event
-                                                        ) {
-                                                          return _vm.ubahInfoKejuruan(
-                                                            _vm.item.id_kejuruan
-                                                          )
-                                                        },
-                                                      },
-                                                    },
+                                                    "v-list-item-icon",
                                                     [
-                                                      _c(
-                                                        "v-list-item-icon",
-                                                        [
-                                                          _c("v-icon", [
-                                                            _vm._v(
-                                                              "mdi-pencil"
-                                                            ),
-                                                          ]),
-                                                        ],
-                                                        1
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "v-list-item-content",
-                                                        [
-                                                          _c(
-                                                            "v-list-item-title",
-                                                            [
-                                                              _vm._v(
-                                                                "\n                                                            Ubah\n                                                        "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ],
-                                                        1
-                                                      ),
+                                                      _c("v-icon", [
+                                                        _vm._v("mdi-pencil"),
+                                                      ]),
                                                     ],
                                                     1
                                                   ),
                                                   _vm._v(" "),
                                                   _c(
-                                                    "v-list-item",
-                                                    {
-                                                      attrs: {
-                                                        dense: "",
-                                                        link: "",
-                                                      },
-                                                      on: {
-                                                        click: function (
-                                                          $event
-                                                        ) {
-                                                          return _vm.hapusInfoKejuruan(
-                                                            _vm.item.id_kejuruan
-                                                          )
-                                                        },
-                                                      },
-                                                    },
+                                                    "v-list-item-content",
                                                     [
-                                                      _c(
-                                                        "v-list-item-icon",
-                                                        [
-                                                          _c("v-icon", [
-                                                            _vm._v(
-                                                              "mdi-delete"
-                                                            ),
-                                                          ]),
-                                                        ],
-                                                        1
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "v-list-item-content",
-                                                        [
-                                                          _c(
-                                                            "v-list-item-title",
-                                                            [
-                                                              _vm._v(
-                                                                "\n                                                            Hapus\n                                                        "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ],
-                                                        1
-                                                      ),
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                            Ubah\n                                                        "
+                                                        ),
+                                                      ]),
+                                                    ],
+                                                    1
+                                                  ),
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-item",
+                                                {
+                                                  attrs: {
+                                                    dense: "",
+                                                    link: "",
+                                                  },
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.hapusInfoKejuruan(
+                                                        _vm.item.id_kejuruan
+                                                      )
+                                                    },
+                                                  },
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-list-item-icon",
+                                                    [
+                                                      _c("v-icon", [
+                                                        _vm._v("mdi-delete"),
+                                                      ]),
                                                     ],
                                                     1
                                                   ),
                                                   _vm._v(" "),
-                                                  _c("v-subheader", {
-                                                    domProps: {
-                                                      textContent:
-                                                        _vm._s("Rincian"),
-                                                    },
-                                                  }),
+                                                  _c(
+                                                    "v-list-item-content",
+                                                    [
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                            Hapus\n                                                        "
+                                                        ),
+                                                      ]),
+                                                    ],
+                                                    1
+                                                  ),
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c("v-subheader", {
+                                                domProps: {
+                                                  textContent:
+                                                    _vm._s("Rincian"),
+                                                },
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-item",
+                                                { attrs: { dense: "" } },
+                                                [
+                                                  _c(
+                                                    "v-list-item-icon",
+                                                    [
+                                                      _c("v-icon", [
+                                                        _vm._v("mdi-calendar"),
+                                                      ]),
+                                                    ],
+                                                    1
+                                                  ),
                                                   _vm._v(" "),
                                                   _c(
-                                                    "v-list-item",
-                                                    { attrs: { dense: "" } },
+                                                    "v-list-item-content",
                                                     [
-                                                      _c(
-                                                        "v-list-item-icon",
-                                                        [
-                                                          _c("v-icon", [
-                                                            _vm._v(
-                                                              "mdi-calendar"
-                                                            ),
-                                                          ]),
-                                                        ],
-                                                        1
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "v-list-item-content",
-                                                        [
-                                                          _c(
-                                                            "v-list-item-title",
-                                                            [
-                                                              _vm._v(
-                                                                "\n                                                            " +
-                                                                  _vm._s(
-                                                                    _vm._f(
-                                                                      "datetime"
-                                                                    )(
-                                                                      _vm.item
-                                                                        .created_at
-                                                                    )
-                                                                  ) +
-                                                                  "\n                                                        "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ],
-                                                        1
-                                                      ),
+                                                      _c("v-list-item-title", [
+                                                        _vm._v(
+                                                          "\n                                                            " +
+                                                            _vm._s(
+                                                              _vm._f(
+                                                                "datetime"
+                                                              )(
+                                                                _vm.item
+                                                                  .created_at
+                                                              )
+                                                            ) +
+                                                            "\n                                                        "
+                                                        ),
+                                                      ]),
                                                     ],
                                                     1
                                                   ),
@@ -26888,8 +26894,10 @@ var render = function () {
                                               ),
                                             ],
                                             1
-                                          )
-                                        : _vm._e(),
+                                          ),
+                                        ],
+                                        1
+                                      ),
                                     ],
                                     1
                                   ),
@@ -27261,9 +27269,9 @@ var render = function () {
         "v-dialog",
         {
           attrs: {
-            "max-width": "600",
+            "max-width": "400",
             "content-class": "shadow-sm",
-            "overlay-opacity": ".25",
+            "overlay-opacity": ".4",
             eager: "",
             scrollable: "",
           },
@@ -27297,7 +27305,7 @@ var render = function () {
                     [
                       _c("v-subheader", [
                         _vm._v(
-                          "\n                        Form Tambah Kejuruan\n                    "
+                          "\n                        Tambah Kejuruan\n                    "
                         ),
                       ]),
                       _vm._v(" "),
@@ -27306,7 +27314,7 @@ var render = function () {
                       _c(
                         "v-avatar",
                         { attrs: { color: "grey lighten-3" } },
-                        [_c("v-icon", [_vm._v("mdi-account-tie")])],
+                        [_c("v-icon", [_vm._v("mdi-bookmark")])],
                         1
                       ),
                     ],
@@ -27585,33 +27593,7 @@ var render = function () {
     },
     scopedSlots: _vm._u([
       {
-        key: "item.foto",
-        fn: function (ref) {
-          var item = ref.item
-          return [
-            item.foto
-              ? _c(
-                  "v-avatar",
-                  {
-                    on: {
-                      click: function ($event) {
-                        return _vm.rowClick(item)
-                      },
-                    },
-                  },
-                  [
-                    _c("v-img", {
-                      attrs: { src: item.foto.url, "aspect-ratio": 1 / 1 },
-                    }),
-                  ],
-                  1
-                )
-              : _vm._e(),
-          ]
-        },
-      },
-      {
-        key: "item.nama",
+        key: "item.nama_kejuruan",
         fn: function (ref) {
           var item = ref.item
           return [
@@ -27629,15 +27611,7 @@ var render = function () {
                 _c("div", { staticClass: "mb-1" }, [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(item.nama) +
-                      "\n                "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "text--disabled" }, [
-                  _vm._v(
-                    "\n                    NIP." +
-                      _vm._s(item.nip) +
+                      _vm._s(item.nama_kejuruan) +
                       "\n                "
                   ),
                 ]),
@@ -27647,30 +27621,15 @@ var render = function () {
         },
       },
       {
-        key: "item.tanggal_lahir",
+        key: "item.created_at",
         fn: function (ref) {
           var item = ref.item
           return [
             _vm._v(
               "\n\t\t\t" +
-                _vm._s(item.tempat_lahir ? item.tempat_lahir + "," : null) +
-                " " +
-                _vm._s(_vm._f("date")(item.tanggal_lahir)) +
+                _vm._s(_vm._f("datetime")(item.created_at)) +
                 "\n        "
             ),
-          ]
-        },
-      },
-      {
-        key: "item.jenis_kelamin",
-        fn: function (ref) {
-          var item = ref.item
-          return [
-            item.jenis_kelamin == "l"
-              ? [_vm._v("\n\t\t\t\tLaki-laki\n\t\t\t")]
-              : item.jenis_kelamin == "p"
-              ? [_vm._v("\n\t\t\t\tPerempuan\n\t\t\t")]
-              : _vm._e(),
           ]
         },
       },
@@ -27696,45 +27655,43 @@ var render = function () {
                         attrs: { flat: "", rounded: "pill", dark: "" },
                       },
                       [
-                        !_vm.isPimpinan
-                          ? [
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: { icon: "", color: "error darken-1" },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.deleteRow(item)
-                                    },
-                                  },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "", color: "error darken-1" },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.deleteRow(item)
                                 },
-                                [
-                                  _c("v-icon", { attrs: { small: "" } }, [
-                                    _vm._v("mdi-delete"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: { icon: "" },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.editRow(item)
-                                    },
-                                  },
+                              },
+                            },
+                            [
+                              _c("v-icon", { attrs: { small: "" } }, [
+                                _vm._v("mdi-delete"),
+                              ]),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "" },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.editRow(item)
                                 },
-                                [
-                                  _c("v-icon", { attrs: { small: "" } }, [
-                                    _vm._v("mdi-pencil"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ]
-                          : _vm._e(),
+                              },
+                            },
+                            [
+                              _c("v-icon", { attrs: { small: "" } }, [
+                                _vm._v("mdi-pencil"),
+                              ]),
+                            ],
+                            1
+                          ),
+                        ],
                         _vm._v(" "),
                         _c(
                           "v-btn",
@@ -27798,371 +27755,59 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "div",
-        { staticClass: "d-grid-form" },
-        [
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "nama",
-              label: "Nama Kejuruan",
-              "error-messages": _vm.errors.nama,
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "d-grid-form" },
+      [
+        _c("v-text-field", {
+          attrs: {
+            dense: "",
+            outlined: "",
+            name: "nama_kejuruan",
+            label: "Nama Kejuruan",
+            "error-messages": _vm.errors.nama_kejuruan,
+          },
+          on: {
+            keyup: function ($event) {
+              _vm.errors.nama_kejuruan = null
             },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.nama = null
-              },
+          },
+          model: {
+            value: _vm.item.nama_kejuruan,
+            callback: function ($$v) {
+              _vm.$set(_vm.item, "nama_kejuruan", $$v)
             },
-            model: {
-              value: _vm.item.nama,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "nama", $$v)
-              },
-              expression: "item.nama",
+            expression: "item.nama_kejuruan",
+          },
+        }),
+        _vm._v(" "),
+        _c("v-text-field", {
+          attrs: {
+            dense: "",
+            outlined: "",
+            name: "paket",
+            label: "Paket",
+            type: "number",
+            "error-messages": _vm.errors.paket,
+          },
+          on: {
+            keyup: function ($event) {
+              _vm.errors.paket = null
             },
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "nip",
-              label: "NIP",
-              "error-messages": _vm.errors.nip,
+          },
+          model: {
+            value: _vm.item.paket,
+            callback: function ($$v) {
+              _vm.$set(_vm.item, "paket", $$v)
             },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.nip = null
-              },
-            },
-            model: {
-              value: _vm.item.nip,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "nip", $$v)
-              },
-              expression: "item.nip",
-            },
-          }),
-          _vm._v(" "),
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "jabatan",
-              label: "Jabatan",
-              "error-messages": _vm.errors.jabatan,
-            },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.jabatan = null
-              },
-            },
-            model: {
-              value: _vm.item.jabatan,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "jabatan", $$v)
-              },
-              expression: "item.jabatan",
-            },
-          }),
-          _vm._v(" "),
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "pendidikan_terakhir",
-              label: "Pendidikan Terakhir",
-              "error-messages": _vm.errors.pendidikan_terakhir,
-            },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.pendidikan_terakhir = null
-              },
-            },
-            model: {
-              value: _vm.item.pendidikan_terakhir,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "pendidikan_terakhir", $$v)
-              },
-              expression: "item.pendidikan_terakhir",
-            },
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "pendidikan_profesi",
-              label: "Pendidikan Profesi",
-              "error-messages": _vm.errors.pendidikan_profesi,
-            },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.pendidikan_profesi = null
-              },
-            },
-            model: {
-              value: _vm.item.pendidikan_profesi,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "pendidikan_profesi", $$v)
-              },
-              expression: "item.pendidikan_profesi",
-            },
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "tempat_lahir",
-              label: "Tempat Lahir",
-              "error-messages": _vm.errors.tempat_lahir,
-            },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.tempat_lahir = null
-              },
-            },
-            model: {
-              value: _vm.item.tempat_lahir,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "tempat_lahir", $$v)
-              },
-              expression: "item.tempat_lahir",
-            },
-          }),
-          _vm._v(" "),
-          _c(
-            "v-dialog",
-            {
-              ref: "tanggal_lahir",
-              attrs: {
-                "return-value": _vm.item.tanggal_lahir,
-                persistent: "",
-                width: "300px",
-                "content-class": "shadow-sm rounded-xl",
-                "overlay-opacity": ".25",
-                eager: "",
-              },
-              on: {
-                "update:returnValue": function ($event) {
-                  return _vm.$set(_vm.item, "tanggal_lahir", $event)
-                },
-                "update:return-value": function ($event) {
-                  return _vm.$set(_vm.item, "tanggal_lahir", $event)
-                },
-              },
-              scopedSlots: _vm._u([
-                {
-                  key: "activator",
-                  fn: function (ref) {
-                    var on = ref.on
-                    var attrs = ref.attrs
-                    return [
-                      _c(
-                        "v-text-field",
-                        _vm._g(
-                          _vm._b(
-                            {
-                              attrs: {
-                                dense: "",
-                                outlined: "",
-                                name: "tanggal_lahir",
-                                label: "Tanggal Lahir",
-                                "append-icon": "mdi-calendar",
-                                readonly: "",
-                                "error-messages": _vm.errors.tanggal_lahir,
-                              },
-                              model: {
-                                value: _vm.item.tanggal_lahir,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.item, "tanggal_lahir", $$v)
-                                },
-                                expression: "item.tanggal_lahir",
-                              },
-                            },
-                            "v-text-field",
-                            attrs,
-                            false
-                          ),
-                          on
-                        )
-                      ),
-                    ]
-                  },
-                },
-              ]),
-              model: {
-                value: _vm.modal_tanggal_lahir,
-                callback: function ($$v) {
-                  _vm.modal_tanggal_lahir = $$v
-                },
-                expression: "modal_tanggal_lahir",
-              },
-            },
-            [
-              _vm._v(" "),
-              _c(
-                "v-date-picker",
-                {
-                  attrs: {
-                    scrollable: "",
-                    locale: "id-id",
-                    "first-day-of-week": "1",
-                  },
-                  model: {
-                    value: _vm.item.tanggal_lahir,
-                    callback: function ($$v) {
-                      _vm.$set(_vm.item, "tanggal_lahir", $$v)
-                    },
-                    expression: "item.tanggal_lahir",
-                  },
-                },
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { text: "", color: "primary" },
-                      on: {
-                        click: function ($event) {
-                          _vm.modal_tanggal_berdiri = false
-                        },
-                      },
-                    },
-                    [_vm._v("\n                    Batal\n                ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { text: "", color: "primary" },
-                      on: {
-                        click: function ($event) {
-                          _vm.$refs.tanggal_lahir.save(_vm.item.tanggal_lahir)
-                          _vm.errors.tanggal_lahir = null
-                        },
-                      },
-                    },
-                    [_vm._v("\n                    Pilih\n                ")]
-                  ),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "telepon",
-              label: "Telepon",
-              "error-messages": _vm.errors.telepon,
-            },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.telepon = null
-              },
-            },
-            model: {
-              value: _vm.item.telepon,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "telepon", $$v)
-              },
-              expression: "item.telepon",
-            },
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "alamat",
-              label: "Alamat",
-              "error-messages": _vm.errors.alamat,
-            },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.alamat = null
-              },
-            },
-            model: {
-              value: _vm.item.alamat,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "alamat", $$v)
-              },
-              expression: "item.alamat",
-            },
-          }),
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-subheader", [_vm._v("\n        Informasi Akun\n    ")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "d-grid-form" },
-        [
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "email",
-              label: "Email Kejuruan",
-              "error-messages": _vm.errors.email,
-            },
-            on: {
-              keyup: function ($event) {
-                _vm.errors.email = null
-              },
-            },
-            model: {
-              value: _vm.item.email,
-              callback: function ($$v) {
-                _vm.$set(_vm.item, "email", $$v)
-              },
-              expression: "item.email",
-            },
-          }),
-          _vm._v(" "),
-          _c("v-text-field", {
-            attrs: {
-              dense: "",
-              outlined: "",
-              name: "password",
-              label: "Password",
-              messages: [
-                "kata sandi akan menggunakan tanggal lahir kejuruan dengan format [Tahun][Bulan][Tanggal], atau jika tanpa tanggal lahir password defaultnya adalah `password`",
-              ],
-              readonly: "",
-            },
-            model: {
-              value: _vm.password,
-              callback: function ($$v) {
-                _vm.password = $$v
-              },
-              expression: "password",
-            },
-          }),
-        ],
-        1
-      ),
-    ],
-    1
-  )
+            expression: "item.paket",
+          },
+        }),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -91635,6 +91280,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./private-bootstrap */ "./resources/js/private-bootstrap.js");
 
 var vuetify = (__webpack_require__(/*! ./plugins/vuetify */ "./resources/js/plugins/vuetify.js")["default"]);
+
+__webpack_require__(/*! ./plugins/helper */ "./resources/js/plugins/helper.js");
 
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_4__["default"]({

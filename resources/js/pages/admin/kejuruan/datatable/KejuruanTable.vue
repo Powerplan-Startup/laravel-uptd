@@ -13,34 +13,15 @@
         single-select
         v-model="selected"
         :mobile-breakpoint="0">
-        <template #item.foto="{item}">
-            <v-avatar v-if="item.foto" @click="rowClick(item)">
-                <v-img :src="item.foto.url" :aspect-ratio="1/1"/>
-            </v-avatar>
-        </template>
-        <template #item.nama="{item}">
+        <template #item.nama_kejuruan="{item}">
             <div class="d-block py-1" @click="rowClick(item)">
                 <div class="mb-1">
-                    {{ item.nama }}
+                    {{ item.nama_kejuruan }}
                 </div>
-                <div class="text--disabled">
-                    NIP.{{ item.nip }}
-                </div>
-                <!-- <div class="text--disabled">
-                    {{ item.alamat | sub(250) }}
-                </div> -->
             </div>
         </template>
-        <template #item.tanggal_lahir="{item}">
-			{{ item.tempat_lahir ?  `${item.tempat_lahir},` : null }} {{ item.tanggal_lahir | date }}
-        </template>
-        <template #item.jenis_kelamin="{item}">
-			<template v-if="item.jenis_kelamin == 'l'">
-				Laki-laki
-			</template>
-			<template v-else-if="item.jenis_kelamin == 'p'">
-				Perempuan
-			</template>
+        <template #item.created_at="{item}">
+			{{ item.created_at | datetime }}
         </template>
         <template #item.action="{item}">
 			<div class="d-flex justify-end">
@@ -51,7 +32,7 @@
 						rounded="pill"
 						class="pa-1 d-flex shadow flex-no-wrap justify-center my-2"
 						dark>
-                        <template v-if="!isPimpinan">
+                        <template>
                             <v-btn icon color="error darken-1" @click="deleteRow(item)">
                                 <v-icon small>mdi-delete</v-icon>
                             </v-btn>
@@ -92,7 +73,6 @@ export default {
             set(val){ this.$emit('input', val) }
         },
         ...mapGetters({
-            isPimpinan: 'login/isPimpinan'
         })
     },
     methods: {

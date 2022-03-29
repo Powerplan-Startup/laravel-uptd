@@ -1,15 +1,15 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" max-width="600" content-class="shadow-sm" overlay-opacity=".25" eager scrollable>
+        <v-dialog v-model="dialog" max-width="400" content-class="shadow-sm" overlay-opacity=".4" eager scrollable>
             <v-form @submit.prevent="submit" :disabled="loading">
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Form Tambah Kejuruan
+                            Tambah Kejuruan
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
-                            <v-icon>mdi-account-tie</v-icon>
+                            <v-icon>mdi-bookmark</v-icon>
                         </v-avatar>
                     </v-toolbar>
                     <v-divider/>
@@ -63,13 +63,14 @@ export default {
             this.loading = true
             let res = await this.storeKejuruan(data).catch(e => {
                 console.log("storeKejuruan@KejuruanTambah.vue", e);
+				console.log(e);
                 e.response.status == 422 && this.setErrorForm(e)
                 this.notif({
                     message: e.message
                 })
-            })
-            this.loading = false
-            console.log(res);
+            }).finally(() => {
+				this.loading = false
+			})
             if(res){
                 this.dialog = false
                 this.alive = false
