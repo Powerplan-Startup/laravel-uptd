@@ -21,12 +21,19 @@ class DatabaseSeeder extends Seeder
          * 
          */
         
-        if(!\App\Models\User::where('username', self::USERNAME)->exists()) {
-            $user = \App\Models\User::factory()->create([
+        if(!\App\Models\Admin::where('username', self::USERNAME)->exists()) {
+            $user = \App\Models\Admin::factory()->create([
                 'nama' => 'Admin',
                 'username' => self::USERNAME,
                 'password' => bcrypt(self::PASSWORD),
             ]);
         }
+        // if(!\App\Models\User::where('username', self::USERNAME)->exists()) {
+        //     $user = \App\Models\User::factory()->create([
+        //         'nama' => 'Admin',
+        //         'username' => self::USERNAME,
+        //         'password' => bcrypt(self::PASSWORD),
+        //     ]);
+        // }
     }
 }
