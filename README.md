@@ -14,6 +14,8 @@ php artisan key:generate
 ### 4. Buat Database Baru & Konfigurasi .env
 buat database dengan nama ```uptd```
 
+untuk konfigurasi di file .env
+
 ```env
 ...
 
