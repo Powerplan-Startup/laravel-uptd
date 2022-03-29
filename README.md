@@ -11,8 +11,21 @@ composer install
 ```cli
 php artisan key:generate
 ```
-### 4. Buat Database Baru
+### 4. Buat Database Baru & Konfigurasi .env
 buat database dengan nama ```uptd```
+
+```env
+...
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=uptd
+DB_USERNAME=root
+DB_PASSWORD=
+
+...
+```
 
 ### 5. Migrate Database
 ```cli
