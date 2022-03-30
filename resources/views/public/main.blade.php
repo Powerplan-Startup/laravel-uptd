@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>UPTD Latihan Kerja Prov. NTT</title>
+    <title>UPTD Latihan Kerja Prov. NTT | {{ $title }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -97,7 +97,8 @@
 
     <main id="main">
 
-      @include('components.public-main')
+      {{-- @include('components.public-main') --}}
+      @yield('container')
 
     </main><!-- End #main -->
 

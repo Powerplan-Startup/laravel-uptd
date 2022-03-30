@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Public\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('public.main');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('berita', [HomeController::class, 'show']);
+
+Route::get('blog', function(){
+    return view('public.blog',[
+        'title' => 'Blog'
+    ]);
 });
+
 
 Auth::routes();
 
