@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>UPTD Kupang</title>
+    <title>UPTD Latihan Kerja Prov. NTT</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -34,7 +34,7 @@
       <div class="container d-flex justify-content-between">
 
         <div class="logo">
-          <h2><a href="/"><span>UPTD</span> Latihan Kerja Prov. NTT</a></h2>
+          <h1 class="fs-3 mt-3"><a href="/"><span>UPTD</span> Latihan Kerja Prov. NTT</a></h1>
         </div>
 
         @include('components.public-navbar')

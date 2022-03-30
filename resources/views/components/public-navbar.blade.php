@@ -1,8 +1,8 @@
 <nav id="navbar" class="navbar">
     <ul>
         <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-        <li><a class="nav-link scrollto" href="#about">Berita</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Profil</a></li>
+        <li><a class="nav-link scrollto" href="/berita">Berita</a></li>
+        <li><a class="nav-link scrollto" href="/profil">Profil</a></li>
         <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 <li><a href="#">Data Calon Peserta Pelatihan</a></li>
@@ -12,7 +12,7 @@
                 <li><a href="#">Data Jadwal Pelatihan</a></li>
             </ul>
         </li>
-        <li><a class="nav-link scrollto" href="#">Penempatan</a></li>
+        <li><a class="nav-link scrollto" href="/penempatan">Penempatan</a></li>
         @auth
             <li class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
