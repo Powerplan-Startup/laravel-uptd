@@ -21,7 +21,7 @@
                 <li><a href="#">Data Jadwal Pelatihan</a></li>
             </ul>
         </li>
-        <li><a class="nav-link scrollto" href="/penempatan">Penempatan</a></li>
+        <li><a class="nav-link scrollto" href="/alumni">Penempatan</a></li>
         @auth
             <li class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

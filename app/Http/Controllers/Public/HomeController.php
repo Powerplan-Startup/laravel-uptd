@@ -14,10 +14,17 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show()
+    public function blog()
     {
         return view('public.blog-detail',[
             "title" => "Singel Post"
+        ]);
+    }
+
+    public function alumni()
+    {
+        return view('public.public-alumni',[
+            "title" => "Alumni"
         ]);
     }
 }

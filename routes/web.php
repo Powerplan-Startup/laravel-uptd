@@ -16,13 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('berita', [HomeController::class, 'show']);
+Route::get('berita', [HomeController::class, 'blog']);
+Route::get('alumni', [HomeController::class, 'alumni']);
+
+
 
 Route::get('blog', function(){
     return view('public.blog',[
         'title' => 'Blog'
     ]);
 });
+
+
 
 
 Auth::routes();
