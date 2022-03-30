@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('public.main',[
+        return view('public.publichome',[
             "title" => "Beranda"
         ]);
     }
