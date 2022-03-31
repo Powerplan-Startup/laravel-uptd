@@ -35,7 +35,7 @@
                     <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link :to="{ name: 'kejuruan' }">
                         <v-list-item>
                             <v-list-item-avatar color="grey lighten-2">
-                                <v-icon>mdi-account-tie</v-icon>
+                                <v-icon>mdi-bookmark</v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title>
@@ -56,7 +56,7 @@
                                     <v-card-text>
                                         <div class="d-flex w-100">
                                             <v-avatar color="grey lighten-2">
-                                                <v-icon>mdi-account-tie</v-icon>
+                                                <v-icon>mdi-bookmark</v-icon>
                                             </v-avatar>
                                             <v-spacer/>
                                             <v-menu open-on-click content-class="shadow-sm rounded-lg" :close-on-content-click="false">
@@ -108,72 +108,20 @@
                                                 Nama Kejuruan
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="text-h5">
-                                                {{ item.nama }}
-                                            </v-list-item-title>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item>
-                                        <v-list-item-content>
-                                            <v-list-item-title>
-                                                NIP.{{ item.nip }}
+                                                {{ item.nama_kejuruan }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
                                     <v-divider/>
                                     <v-list-item>
                                         <v-list-item-icon>
-                                            <v-icon>mdi-gender-{{ item.jenis_kelamin == 'l' ? 'male' : 'female' }}</v-icon>
                                         </v-list-item-icon>
                                         <v-list-item-content>
                                             <v-list-item-subtitle>
-                                                Jenis Kelamin
+                                                Paket
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="">
-                                                <template v-if="item.jenis_kelamin == 'l'">
-                                                    Laki-laki
-                                                </template>
-                                                <template v-else-if="item.jenis_kelamin == 'p'">
-                                                    Perempuan
-                                                </template>
-                                            </v-list-item-title>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item>
-                                        <v-list-item-icon>
-                                            <v-icon>mdi-calendar</v-icon>
-                                        </v-list-item-icon>
-                                        <v-list-item-content>
-                                            <v-list-item-subtitle>
-                                                Tempat Tanggal Lahir
-                                            </v-list-item-subtitle>
-                                            <v-list-item-title class="">
-                                                {{  item.tempat_lahir ? `${item.tempat_lahir},` : null }} {{ item.tanggal_lahir | date }}
-                                            </v-list-item-title>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item>
-                                        <v-list-item-icon>
-                                            <v-icon>mdi-map-marker</v-icon>
-                                        </v-list-item-icon>
-                                        <v-list-item-content>
-                                            <v-list-item-subtitle>
-                                                Alamat
-                                            </v-list-item-subtitle>
-                                            <v-list-item-title class="">
-                                                {{ item.alamat }}
-                                            </v-list-item-title>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item>
-                                        <v-list-item-icon>
-                                            <v-icon>mdi-phone</v-icon>
-                                        </v-list-item-icon>
-                                        <v-list-item-content>
-                                            <v-list-item-subtitle>
-                                                Telepon
-                                            </v-list-item-subtitle>
-                                            <v-list-item-title class="">
-                                                {{ item.telepon }}
+                                                {{ item.paket }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>

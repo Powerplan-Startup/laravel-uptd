@@ -1,5 +1,5 @@
 <template>
-	<v-navigation-drawer light color="indigo lighten-5" width="300" app>
+	<v-navigation-drawer light width="300" app>
 		<div class="pa-3">
 			<v-card dark rounded="lg" class="p5-10 shadow-sm" color="indigo">
 				<v-list-item>
@@ -39,11 +39,11 @@
 			</v-card>
 		</div>
 		<v-divider></v-divider>
-		<v-subheader>
+		<!-- <v-subheader>
 			Menu
-		</v-subheader>
-		<v-list>
-			<v-list-item :to="{ name: 'admin' }" exact>
+		</v-subheader> -->
+		<v-list nav dense>
+			<v-list-item :to="{ name: 'admin' }" exact color="primary">
 				<v-list-item-icon>
 					<v-icon>mdi-home</v-icon>
 				</v-list-item-icon>
@@ -51,9 +51,12 @@
 					<v-list-item-title>
 						Dashboard
 					</v-list-item-title>
+					<v-list-item-subtitle>
+						Halaman awal penal admin
+					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
-			<v-list-item :to="{ name: 'kejuruan' }">
+			<v-list-item :to="{ name: 'kejuruan' }" color="primary">
 				<v-list-item-icon>
 					<v-icon>mdi-bookmark</v-icon>
 				</v-list-item-icon>
@@ -61,6 +64,9 @@
 					<v-list-item-title>
 						Kejuruan
 					</v-list-item-title>
+					<v-list-item-subtitle>
+						Kelola Kejuruan
+					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
 		</v-list>

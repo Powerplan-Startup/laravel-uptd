@@ -2456,6 +2456,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -3046,58 +3052,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4253,120 +4207,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4399,57 +4246,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     id: function id() {
       return this.$route.params.id_kejuruan;
     }
-  }, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
-    isPimpinan: 'login/isPimpinan'
-  })),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)({
-    resetPassword: 'kejuruan/password/reset'
-  })), {}, {
-    resetPasswordKejuruan: function resetPasswordKejuruan() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (!confirm('Yakin akan mereset sandi kejuruan ini?')) {
-                  _context.next = 5;
-                  break;
-                }
-
-                _context.next = 3;
-                return _this.resetPassword({
-                  data: new FormData(),
-                  id: _this.id
-                })["catch"](function (e) {
-                  console.log("resetKejuruan@KejuruanInfoIndex.vue", e);
-
-                  _this.notif({
-                    message: e.message
-                  });
-                });
-
-              case 3:
-                res = _context.sent;
-
-                // this.loading = false
-                if (res) {
-                  _this.notif({
-                    message: "Berhasil mereset kata sandi kejuruan ".concat(item.nama)
-                  });
-                }
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    }
-  })
+  }, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({})),
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)({}))
 });
 
 /***/ }),
@@ -25692,7 +25490,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "v-navigation-drawer",
-    { attrs: { light: "", color: "indigo lighten-5", width: "300", app: "" } },
+    { attrs: { light: "", width: "300", app: "" } },
     [
       _c(
         "div",
@@ -25792,14 +25590,13 @@ var render = function () {
       _vm._v(" "),
       _c("v-divider"),
       _vm._v(" "),
-      _c("v-subheader", [_vm._v("\n\t\tMenu\n\t")]),
-      _vm._v(" "),
       _c(
         "v-list",
+        { attrs: { nav: "", dense: "" } },
         [
           _c(
             "v-list-item",
-            { attrs: { to: { name: "admin" }, exact: "" } },
+            { attrs: { to: { name: "admin" }, exact: "", color: "primary" } },
             [
               _c("v-list-item-icon", [_c("v-icon", [_vm._v("mdi-home")])], 1),
               _vm._v(" "),
@@ -25808,6 +25605,10 @@ var render = function () {
                 [
                   _c("v-list-item-title", [
                     _vm._v("\n\t\t\t\t\tDashboard\n\t\t\t\t"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v("\n\t\t\t\t\tHalaman awal penal admin\n\t\t\t\t"),
                   ]),
                 ],
                 1
@@ -25818,7 +25619,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "v-list-item",
-            { attrs: { to: { name: "kejuruan" } } },
+            { attrs: { to: { name: "kejuruan" }, color: "primary" } },
             [
               _c(
                 "v-list-item-icon",
@@ -25831,6 +25632,10 @@ var render = function () {
                 [
                   _c("v-list-item-title", [
                     _vm._v("\n\t\t\t\t\tKejuruan\n\t\t\t\t"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v("\n\t\t\t\t\tKelola Kejuruan\n\t\t\t\t"),
                   ]),
                 ],
                 1
@@ -26941,7 +26746,7 @@ var render = function () {
                             _c(
                               "v-list-item-avatar",
                               { attrs: { color: "grey lighten-2" } },
-                              [_c("v-icon", [_vm._v("mdi-account-tie")])],
+                              [_c("v-icon", [_vm._v("mdi-bookmark")])],
                               1
                             ),
                             _vm._v(" "),
@@ -27012,7 +26817,7 @@ var render = function () {
                                         { attrs: { color: "grey lighten-2" } },
                                         [
                                           _c("v-icon", [
-                                            _vm._v("mdi-account-tie"),
+                                            _vm._v("mdi-bookmark"),
                                           ]),
                                         ],
                                         1
@@ -27232,31 +27037,11 @@ var render = function () {
                                           [
                                             _vm._v(
                                               "\n                                            " +
-                                                _vm._s(_vm.item.nama) +
+                                                _vm._s(_vm.item.nama_kejuruan) +
                                                 "\n                                        "
                                             ),
                                           ]
                                         ),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  [
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v(
-                                            "\n                                            NIP." +
-                                              _vm._s(_vm.item.nip) +
-                                              "\n                                        "
-                                          ),
-                                        ]),
                                       ],
                                       1
                                     ),
@@ -27269,159 +27054,21 @@ var render = function () {
                                 _c(
                                   "v-list-item",
                                   [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c("v-icon", [
-                                          _vm._v(
-                                            "mdi-gender-" +
-                                              _vm._s(
-                                                _vm.item.jenis_kelamin == "l"
-                                                  ? "male"
-                                                  : "female"
-                                              )
-                                          ),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
+                                    _c("v-list-item-icon"),
                                     _vm._v(" "),
                                     _c(
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-subtitle", [
                                           _vm._v(
-                                            "\n                                            Jenis Kelamin\n                                        "
-                                          ),
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list-item-title",
-                                          {},
-                                          [
-                                            _vm.item.jenis_kelamin == "l"
-                                              ? [
-                                                  _vm._v(
-                                                    "\n                                                Laki-laki\n                                            "
-                                                  ),
-                                                ]
-                                              : _vm.item.jenis_kelamin == "p"
-                                              ? [
-                                                  _vm._v(
-                                                    "\n                                                Perempuan\n                                            "
-                                                  ),
-                                                ]
-                                              : _vm._e(),
-                                          ],
-                                          2
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [_c("v-icon", [_vm._v("mdi-calendar")])],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-subtitle", [
-                                          _vm._v(
-                                            "\n                                            Tempat Tanggal Lahir\n                                        "
+                                            "\n                                            Paket\n                                        "
                                           ),
                                         ]),
                                         _vm._v(" "),
                                         _c("v-list-item-title", {}, [
                                           _vm._v(
                                             "\n                                            " +
-                                              _vm._s(
-                                                _vm.item.tempat_lahir
-                                                  ? _vm.item.tempat_lahir + ","
-                                                  : null
-                                              ) +
-                                              " " +
-                                              _vm._s(
-                                                _vm._f("date")(
-                                                  _vm.item.tanggal_lahir
-                                                )
-                                              ) +
-                                              "\n                                        "
-                                          ),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c("v-icon", [
-                                          _vm._v("mdi-map-marker"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-subtitle", [
-                                          _vm._v(
-                                            "\n                                            Alamat\n                                        "
-                                          ),
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("v-list-item-title", {}, [
-                                          _vm._v(
-                                            "\n                                            " +
-                                              _vm._s(_vm.item.alamat) +
-                                              "\n                                        "
-                                          ),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [_c("v-icon", [_vm._v("mdi-phone")])],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-subtitle", [
-                                          _vm._v(
-                                            "\n                                            Telepon\n                                        "
-                                          ),
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("v-list-item-title", {}, [
-                                          _vm._v(
-                                            "\n                                            " +
-                                              _vm._s(_vm.item.telepon) +
+                                              _vm._s(_vm.item.paket) +
                                               "\n                                        "
                                           ),
                                         ]),
@@ -28293,204 +27940,31 @@ var render = function () {
       },
     },
     [
-      _vm.item.foto && _vm.item.foto.url
-        ? _c(
-            "div",
-            { staticClass: "content-middle pa-5 align-start" },
-            [
-              _c("v-img", {
-                staticClass: "rounded-xl shadow",
-                attrs: {
-                  src: _vm.item.foto.url,
-                  "aspect-ratio": 1 / 1,
-                  "max-height": "200",
-                  "max-width": "200",
-                  width: "100%",
-                  height: "100%",
-                },
-              }),
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _c(
         "v-card-text",
         [
           _c(
             "v-list-item",
             [
-              _c("v-list-item-icon", [_c("v-icon", [_vm._v("mdi-mail")])], 1),
-              _vm._v(" "),
               _c(
-                "v-list-item-content",
-                [
-                  _c("v-list-item-subtitle", [
-                    _vm._v("\n                    Email\n                "),
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", {}, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.item.email) +
-                        "\n                "
-                    ),
-                  ]),
-                ],
+                "v-list-item-icon",
+                [_c("v-icon", [_vm._v("mdi-calendar")])],
                 1
               ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          !_vm.isPimpinan
-            ? _c(
-                "v-list-item",
-                {
-                  attrs: { link: "" },
-                  on: { click: _vm.resetPasswordKejuruan },
-                },
-                [
-                  _c(
-                    "v-list-item-icon",
-                    [_c("v-icon", [_vm._v("mdi-key")])],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-content",
-                    [
-                      _c("v-list-item-title", {}, [
-                        _vm._v(
-                          "\n                    Reset Sandi\n                "
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("v-list-item-subtitle", [
-                        _vm._v(
-                          "\n                    Reset kata sandi kejuruan menjadi kata sandi default \n                "
-                        ),
-                      ]),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item-action",
-                    [_c("v-icon", [_vm._v("mdi-chevron-right")])],
-                    1
-                  ),
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c("v-divider", { attrs: { inset: "" } }),
-          _vm._v(" "),
-          _c(
-            "v-list-item",
-            [
-              _c("v-list-item-icon", [_c("v-icon")], 1),
-              _vm._v(" "),
-              _c(
-                "v-list-item-content",
-                [
-                  _c("v-list-item-subtitle", [
-                    _vm._v("\n                    Jabatan\n                "),
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", {}, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.item.jabatan) +
-                        "\n                "
-                    ),
-                  ]),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-item",
-            [
-              _c("v-list-item-icon", [_c("v-icon")], 1),
-              _vm._v(" "),
-              _c(
-                "v-list-item-content",
-                [
-                  _c("v-list-item-subtitle", [
-                    _vm._v("\n                    Status\n                "),
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", {}, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(
-                          _vm.item.status == "1" ? "Aktif" : "Tidak Aktif"
-                        ) +
-                        "\n                "
-                    ),
-                  ]),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-divider", { attrs: { inset: "" } }),
-          _vm._v(" "),
-          _c(
-            "v-list-item",
-            { attrs: { link: "" } },
-            [
-              _c("v-list-item-icon", [_c("v-icon", [_vm._v("mdi-school")])], 1),
               _vm._v(" "),
               _c(
                 "v-list-item-content",
                 [
                   _c("v-list-item-subtitle", [
                     _vm._v(
-                      "\n                    Pendidikan Terakhir\n                "
+                      "\n                    Terakhir Diubah\n                "
                     ),
                   ]),
                   _vm._v(" "),
                   _c("v-list-item-title", {}, [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.item.pendidikan_terakhir) +
-                        "\n                "
-                    ),
-                  ]),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-item",
-            { attrs: { link: "" } },
-            [
-              _c("v-list-item-icon", [_c("v-icon", [_vm._v("mdi-school")])], 1),
-              _vm._v(" "),
-              _c(
-                "v-list-item-content",
-                [
-                  _c("v-list-item-subtitle", [
-                    _vm._v(
-                      "\n                    Pendidikan Profesi\n                "
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", {}, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.item.pendidikan_profesi) +
+                        _vm._s(_vm._f("datetime")(_vm.item.updated_at)) +
                         "\n                "
                     ),
                   ]),
