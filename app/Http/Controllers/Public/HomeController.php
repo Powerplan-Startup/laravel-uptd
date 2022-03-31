@@ -27,4 +27,10 @@ class HomeController extends Controller
             "title" => "Alumni"
         ]);
     }
+    public function visimisi()
+    {
+        return view('public.public-visimisi',[
+            "title" => "Visi Misi"
+        ]);
+    }
 }

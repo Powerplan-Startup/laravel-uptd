@@ -42,7 +42,7 @@
                             <div class="entry-meta">
                             </div>
                             <div class="entry-content">
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="public/pendaftaran" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <table class="table table-bordered">
                                         <tbody>
