@@ -37,37 +37,150 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                     <!-- single-blog start -->
                     <article class="blog-post-wrapper">
-                        <div class="post-thumbnail">
-                        <img src="assets/img/blog/6.jpg" alt="" />
-                        </div>
                         <div class="post-information">
-                        <h2>Alumni UPTD Latihan Kerja Prov. NTT</h2>
+                        <h2>Form Pendaftaran Calon Peserta Pelatihan</h2>
                             <div class="entry-meta">
-                                <span class="author-meta"><i class="bi bi-person"></i> <a href="#">admin</a></span>
-                                <span><i class="bi bi-clock"></i> march 28, 2016</span>
-                                <span class="tag-meta">
-                                    <i class="bi bi-folder"></i>
-                                    <a href="#">painting</a>,
-                                    <a href="#">work</a>
-                                </span>
-                                <span>
-                                    <i class="bi bi-tags"></i>
-                                    <a href="#">tools</a>,
-                                    <a href="#"> Humer</a>,
-                                    <a href="#">House</a>
-                                </span>
-                                <span><i class="bi bi-chat"></i> <a href="#">6 comments</a></span>
                             </div>
                             <div class="entry-content">
-                                <p>Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Nunc id leo ultrices, mollis ligula in, finibus tortor. Mauris eu dui ut lectus fermentum eleifend. Pellentesque faucibus sem ante, non malesuada odio varius nec. Suspendisse
-                                potenti. Proin consectetur aliquam odio nec fringilla. Sed interdum at justo in efficitur. Vivamus gravida volutpat sodales. Fusce ornare sit amet ligula condimentum sagittis.</p>
-                                <blockquote>
-                                <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur. In venenatis elit ac ultrices convallis. Duis est nisi, tincidunt ac urna sed, cursus blandit lectus. In ullamcorper sit amet ligula ut eleifend. Proin dictum
-                                tempor ligula, ac feugiat metus. Sed finibus tortor eu scelerisque scelerisque.</p>
-                                </blockquote>
-                                <p>Aenean et tempor eros, vitae sollicitudin velit. Etiam varius enim nec quam tempor, sed efficitur ex ultrices. Phasellus pretium est vel dui vestibulum condimentum. Aenean nec suscipit nibh. Phasellus nec lacus id arcu facilisis elementum.
-                                Curabitur lobortis, elit ut elementum congue, erat ex bibendum odio, nec iaculis lacus sem non lorem. Duis suscipit metus ante, sed convallis quam posuere quis. Ut tincidunt eleifend odio, ac fringilla mi vehicula nec. Nunc vitae
-                                lacus eget lectus imperdiet tempus sed in dui. Nam molestie magna at risus consectetur, placerat suscipit justo dignissim. Sed vitae fringilla enim, nec ullamcorper arcu.</p>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row">Nomor Peserta</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="no_peserta" disabled></td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Nama Peserta</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="nama" name="nama"></td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Jenis Kelamin</td>
+                                                <td >:</td>
+                                                <td ><select class="form-select" name="jenis_kelamin" aria-label="Default select example">
+                                                    <option selected>Pilih Jenis Kelamin</option>
+                                                    <option value="1">Laki - Laki</option>
+                                                    <option value="2">Perempuan</option>
+                                                </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">NIK</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="number" id="nik" name="nik"></td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Tempat Lahir</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="tempat_lahir" name="tempat_lahir">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Tanggal Lahir</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="date" id="tanggal_lahir" name="tanggal_lahir">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Umur</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="umur" name="umur">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Alamat</td>
+                                                <td >:</td>
+                                                <td ><textarea class="form-control" type="text" id="umur" name="umur"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Email</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="email" name="email">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">No. Handphone</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="no_hp" name="no_hp">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Pendidikan Terakhir</td>
+                                                <td >:</td>
+                                                <td ><select class="form-select" name="pendidikan_terakhir" aria-label="Default select example">
+                                                    <option selected>Pilih Pendidikan Terakhir</option>
+                                                    <option value="1">SD</option>
+                                                    <option value="2">SMP</option>
+                                                    <option value="3">SMA-SMK</option>
+                                                    <option value="4">D1</option>
+                                                    <option value="5">D2</option>
+                                                    <option value="6">D3</option>
+                                                    <option value="7">D4-S1</option>
+                                                    <option value="8">S2</option>
+                                                    <option value="9">S3</option>
+                                                </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Nama Kejuruan</td>
+                                                <td >:</td>
+                                                <td ><select class="form-select" name="nama_kejuruan" aria-label="Default select example">
+                                                    <option selected>Pilih Nama Kejuruan</option>
+                                                    <option value="1">TIK</option>
+                                                    <option value="2">Otomotif</option>
+                                                </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Agama</td>
+                                                <td >:</td>
+                                                <td ><select class="form-select" name="agama" aria-label="Default select example">
+                                                    <option selected>Pilih Agama</option>
+                                                    <option value="1">Islam</option>
+                                                    <option value="2">Kristen</option>
+                                                    <option value="3">Katolik</option>
+                                                    <option value="4">Hindu</option>
+                                                    <option value="5">Budha</option>
+                                                </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Status</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="status" name="status">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Tanggal Daftar</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="date" id="tanggal_daftar" name="tanggal_daftar">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">NIP</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="nip" name="nip" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Angkatan</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="angkatan" name="angkatan" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Pekerjaan</td>
+                                                <td >:</td>
+                                                <td ><input class="form-control" type="text" id="pekerjaan" name="pekerjaan" disabled>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="submit" class="btn btn-primary">Daftar</button>
+                                </form>
                             </div>
                         </div>
                     </article>
