@@ -2456,6 +2456,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -25484,7 +25490,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "v-navigation-drawer",
-    { attrs: { light: "", color: "indigo lighten-5", width: "300", app: "" } },
+    { attrs: { light: "", width: "300", app: "" } },
     [
       _c(
         "div",
@@ -25584,14 +25590,13 @@ var render = function () {
       _vm._v(" "),
       _c("v-divider"),
       _vm._v(" "),
-      _c("v-subheader", [_vm._v("\n\t\tMenu\n\t")]),
-      _vm._v(" "),
       _c(
         "v-list",
+        { attrs: { nav: "", dense: "" } },
         [
           _c(
             "v-list-item",
-            { attrs: { to: { name: "admin" }, exact: "" } },
+            { attrs: { to: { name: "admin" }, exact: "", color: "primary" } },
             [
               _c("v-list-item-icon", [_c("v-icon", [_vm._v("mdi-home")])], 1),
               _vm._v(" "),
@@ -25600,6 +25605,10 @@ var render = function () {
                 [
                   _c("v-list-item-title", [
                     _vm._v("\n\t\t\t\t\tDashboard\n\t\t\t\t"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v("\n\t\t\t\t\tHalaman awal penal admin\n\t\t\t\t"),
                   ]),
                 ],
                 1
@@ -25610,7 +25619,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "v-list-item",
-            { attrs: { to: { name: "kejuruan" } } },
+            { attrs: { to: { name: "kejuruan" }, color: "primary" } },
             [
               _c(
                 "v-list-item-icon",
@@ -25623,6 +25632,10 @@ var render = function () {
                 [
                   _c("v-list-item-title", [
                     _vm._v("\n\t\t\t\t\tKejuruan\n\t\t\t\t"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v("\n\t\t\t\t\tKelola Kejuruan\n\t\t\t\t"),
                   ]),
                 ],
                 1
