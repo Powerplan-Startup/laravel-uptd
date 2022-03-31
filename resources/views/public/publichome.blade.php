@@ -2,7 +2,7 @@
 
 @section('container')
 <!-- ======= About Section ======= -->
-<div id="about" class="about-area area-padding">
+<div class="about-area area-padding">
     <div class="container">
         <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -18,7 +18,7 @@
             <div class="single-well">
                 <a href="#">
                 <img src="assets/img/about/1.jpg" alt="">
-                <a href="#"><h4 class="text-center mt-2">Daftar Sekarang</h4></a>
+                <a href="/pendaftaran"><h4 class="text-center mt-2">Daftar Sekarang</h4></a>
                 </a>
             </div>
             </div>
@@ -34,21 +34,24 @@
                 Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
                 </p>
                 <ul>
-                <li>
-                    <i class="bi bi-check"></i> Lorem ipsum dolor sit amet.
-                </li>
-                <li>
-                    <i class="bi bi-check"></i> Lorem ipsum dolor sit amet.
-                </li>
-                <li>
-                    <i class="bi bi-check"></i> Lorem ipsum dolor sit amet.
-                </li>
-                <li>
-                    <i class="bi bi-check"></i> Lorem ipsum dolor sit amet.
-                </li>
-                <li>
-                    <i class="bi bi-check"></i> Lorem ipsum dolor sit amet.
-                </li>
+                    <li>
+                        <i class="bi bi-check"></i> Fotocopy KTP 1 lembar
+                    </li>
+                    <li>
+                        <i class="bi bi-check"></i> Fotocopy ijazah terakhir 1 lembar
+                    </li>
+                    <li>
+                        <i class="bi bi-check"></i> Pas Foto 3x4 latar belakang merah 4 lembar
+                    </li>
+                    <li>
+                        <i class="bi bi-check"></i> Surat keterangan sehat
+                    </li>
+                    <li>
+                        <i class="bi bi-check"></i> Surat keterangan telah menyelesaikan tugas akhir (Bagi calon peserta mahasiswa)
+                    </li>
+                    <li>
+                        <i class="bi bi-check"></i> Surat pernyataan bersedia menaati semua ketentuan yang berlaku (Disiapkan oleh penyelenggara)
+                    </li>
                 </ul>
             </div>
             </div>
@@ -59,7 +62,7 @@
 </div><!-- End About Section -->
     
     <!-- ======= Services Section ======= -->
-<div id="services" class="services-area area-padding">
+<div class="services-area area-padding">
     <div class="container">
         <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -177,7 +180,7 @@
 </div><!-- End Services Section -->
     
     <!-- ======= Team Section ======= -->
-<div id="team" class="our-team-area area-padding">
+<div class="our-team-area area-padding">
     <div class="container">
         <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -324,7 +327,7 @@
 </div><!-- End Team Section -->
     
     <!-- ======= Blog Section ======= -->
-<div id="blog" class="blog-area">
+<div class="blog-area">
     <div class="blog-inner area-padding">
         <div class="blog-overly"></div>
         <div class="container ">
@@ -437,7 +440,7 @@
 </div><!-- End Blog Section -->
     
     <!-- ======= Contact Section ======= -->
-<div id="contact" class="contact-area">
+<div class="contact-area">
     <div class="contact-inner area-padding">
         <div class="contact-overly"></div>
         <div class="container ">

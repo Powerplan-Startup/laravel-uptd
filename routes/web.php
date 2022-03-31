@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\PendaftaranController;
 use App\Http\Controllers\Public\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,15 +20,13 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('berita', [HomeController::class, 'blog']);
 Route::get('alumni', [HomeController::class, 'alumni']);
 
-
-
 Route::get('blog', function(){
     return view('public.blog',[
         'title' => 'Blog'
     ]);
 });
 
-
+Route::get('pendaftaran', [PendaftaranController::class, 'index']);
 
 
 Auth::routes();
