@@ -10,4 +10,5 @@ class Instruktur extends Model
     use HasFactory;
     protected $table = 'instruktur';
     protected $primaryKey = 'nip';
+    protected $guarded = [];
 }

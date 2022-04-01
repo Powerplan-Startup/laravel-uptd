@@ -69,6 +69,19 @@
 					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
+			<v-list-item :to="{ name: 'instruktur' }" color="primary">
+				<v-list-item-icon>
+					<v-icon>mdi-account-tie</v-icon>
+				</v-list-item-icon>
+				<v-list-item-content>
+					<v-list-item-title>
+						Instruktur
+					</v-list-item-title>
+					<v-list-item-subtitle>
+						Kelola Instruktur
+					</v-list-item-subtitle>
+				</v-list-item-content>
+			</v-list-item>
 		</v-list>
 	</v-navigation-drawer>
 </template>

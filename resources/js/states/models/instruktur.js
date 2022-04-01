@@ -36,28 +36,28 @@ export default {
     actions: {
         get(context, params = {}){
             return new Promise(async(resolve, reject)=>{
-                let res = await axios.get(api('kejuruan'), { params: params }).catch(e => reject(e))
+                let res = await axios.get(api('instruktur'), { params: params }).catch(e => reject(e))
                 if(res) resolve(res)
             })
         },
         count(context, params = {}){
             return new Promise(async(resolve, reject)=>{
-                let res = await axios.get(api('analytic/kejuruan/count'), { params: params }).catch(e => reject(e))
+                let res = await axios.get(api('analytic/instruktur/count'), { params: params }).catch(e => reject(e))
                 if(res) resolve(res)
             })
         },
         async show(context, {data = {}, id}){
             if(id)
                 return new Promise(async(resolve, reject)=>{
-                    let res = await axios.get(api(`kejuruan/${id}`), { params: data }).catch(e => reject(e))
+                    let res = await axios.get(api(`instruktur/${id}`), { params: data }).catch(e => reject(e))
                     if(res) resolve(res)
                 })
             else
-                console.warn("show@kejuruan.js", "id kosong 🤦‍♂️");
+                console.warn("show@instruktur.js", "id kosong 🤦‍♂️");
         },
         store(context, data){
             return new Promise(async(resolve, reject)=>{
-                let res = await axios.post(api('kejuruan'), data).catch(e => reject(e))
+                let res = await axios.post(api('instruktur'), data).catch(e => reject(e))
                 if(res) resolve(res)
             })
         },
@@ -66,12 +66,12 @@ export default {
                 if(data instanceof FormData)
                     data.append('_method', 'PUT')
                 return new Promise(async(resolve, reject)=>{
-                    let res = await axios.post(api(`kejuruan/${id}`), data).catch(e => reject(e))
+                    let res = await axios.post(api(`instruktur/${id}`), data).catch(e => reject(e))
                     if(res) resolve(res)
                 })
             }
             else
-                console.warn("update@kejuruan.js", "id kosong 🤦‍♂️");
+                console.warn("update@instruktur.js", "id kosong 🤦‍♂️");
         },
         async destroy(context, { data, id }){
             if(id){
@@ -80,7 +80,7 @@ export default {
                 return new Promise(async(resolve, reject)=>{
                     let res = await axios({
                         method: 'post',
-                        url: api(`kejuruan/${id}`),
+                        url: api(`instruktur/${id}`),
                         data,
                         category: 'DELETE',
                     }).catch(e => reject(e))
@@ -88,7 +88,7 @@ export default {
                 })
             }
             else
-                console.warn("destroy@kejuruan.js", "id kosong 🤦‍♂️");
+                console.warn("destroy@instruktur.js", "id kosong 🤦‍♂️");
         },
         updateSession(context, data){
             context.commit('SET_SESSION_CODE', data || (new Date).getTime())

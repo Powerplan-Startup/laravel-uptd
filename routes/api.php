@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resources([
     'kejuruan' => KejuruanController::class,
+    'instruktur' => App\Http\Controllers\Api\InstrukturController::class,
 ]);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
