@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InstrukturStoreRequest;
+use App\Http\Requests\InstrukturUpdateRequest;
 use App\Http\Resources\InstrukturResource;
 use App\Models\Instruktur;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class InstrukturController extends Controller{
             }
         })
         ->when(request('search'), function($query, $search){
-            $query->where('nama_kejuruan', 'like', "%{$search}%");
+            $query->where('nama', 'like', "%{$search}%");
         })
         ->paginate(request('itemsPerPage') ?? 10);
         return InstrukturResource::collection($data);
@@ -34,27 +35,15 @@ class InstrukturController extends Controller{
         return new Response($collection, $instruktur ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Instruktur  $instruktur
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Instruktur $instruktur)
-    {
-        //
+    public function show(Instruktur $instruktur){
+        return new InstrukturResource($instruktur);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Instruktur  $instruktur
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Instruktur $instruktur)
-    {
-        //
+    public function update(InstrukturUpdateRequest $request, Instruktur $instruktur){
+        $data = collect($request->validated())->except([]);
+        $result = $instruktur->update($data->all());
+        $collection = new InstrukturResource($instruktur);
+        return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     /**

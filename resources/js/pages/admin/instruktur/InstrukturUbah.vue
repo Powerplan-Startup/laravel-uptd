@@ -1,15 +1,15 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" max-width="400" content-class="shadow-sm" overlay-opacity=".25" eager scrollable persistent>
+        <v-dialog v-model="dialog" max-width="600" content-class="shadow-sm" overlay-opacity=".25" eager scrollable persistent>
             <v-form @submit.prevent="submit" :disabled="loading">
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Ubah Data Instruktur > {{ item.nama_instruktur }}
+                            Ubah Data Instruktur > {{ item.nama }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
-                            <v-icon>mdi-school</v-icon>
+                            <v-icon>mdi-account-tie</v-icon>
                         </v-avatar>
                     </v-toolbar>
                     <v-divider/>

@@ -25,11 +25,11 @@ export default {
     },
     computed: {
         /**
-         * get id from params id_instruktur
+         * get id from params nip
          * 
          */
         id: function () {
-            return this.$route.params.id_instruktur
+            return this.$route.params.nip
         },
         ...mapGetters({
         })

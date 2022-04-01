@@ -3265,7 +3265,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     session: 'instruktur/getSession'
   })), {}, {
     id: function id() {
-      return this.$route.params.id_instruktur;
+      return this.$route.params.nip;
     }
   }),
   watch: {
@@ -4123,20 +4123,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }],
       items: [],
       headers: [{
+        text: 'NIP',
+        align: 'start',
+        sortable: true,
+        value: 'nip'
+      }, {
         text: 'Nama Instruktur',
         align: 'start',
         sortable: true,
-        value: 'nama_instruktur'
+        value: 'nama'
       }, {
-        text: 'Paket',
+        text: 'Telepon',
         align: 'start d-none d-sm-table-cell',
         sortable: true,
-        value: 'paket'
+        value: 'no_hp'
       }, {
-        text: 'Jadwal',
+        text: 'Alamat',
         align: 'end d-none d-sm-table-cell',
         sortable: true,
-        value: 'id_jadwal'
+        value: 'alamat'
       }, {
         text: 'Dibuat pada',
         align: 'end d-none d-sm-table-cell',
@@ -4236,25 +4241,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit(t, d);
     },
     ubahInfoInstruktur: function ubahInfoInstruktur(_ref) {
-      var id = _ref.id_instruktur;
+      var id = _ref.nip;
       this.showUbahDialog({
         id: id,
         value: true
       });
     },
     hapusInfoInstruktur: function hapusInfoInstruktur(_ref2) {
-      var id = _ref2.id_instruktur;
+      var id = _ref2.nip;
       this.showHapusDialog({
         id: id,
         value: true
       });
     },
     toInfoInstruktur: function toInfoInstruktur(_ref3) {
-      var id_instruktur = _ref3.id_instruktur;
+      var nip = _ref3.nip;
       this.$router.push({
         name: 'instruktur.show',
         params: {
-          id_instruktur: id_instruktur
+          nip: nip
         }
       });
     }
@@ -4353,11 +4358,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({
     /**
-     * get id from params id_instruktur
+     * get id from params nip
      * 
      */
     id: function id() {
-      return this.$route.params.id_instruktur;
+      return this.$route.params.nip;
     }
   }, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({})),
   methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)({}))
@@ -29444,7 +29449,7 @@ var render = function () {
                                       return _c(
                                         "v-card",
                                         {
-                                          key: item.id_instruktur,
+                                          key: item.nip,
                                           attrs: {
                                             color:
                                               "grey lighten-4 overflow-hidden",
@@ -29453,10 +29458,7 @@ var render = function () {
                                             link: "",
                                             to: {
                                               name: "instruktur.show",
-                                              params: {
-                                                id_instruktur:
-                                                  item.id_instruktur,
-                                              },
+                                              params: { nip: item.nip },
                                             },
                                           },
                                         },
@@ -29548,8 +29550,7 @@ var render = function () {
                                                               to: {
                                                                 name: "instruktur.show",
                                                                 params: {
-                                                                  id_instruktur:
-                                                                    item.id_instruktur,
+                                                                  nip: item.nip,
                                                                 },
                                                               },
                                                             },
@@ -29597,7 +29598,7 @@ var render = function () {
                                                                 $event
                                                               ) {
                                                                 return _vm.ubahInfoInstruktur(
-                                                                  item.id_instruktur
+                                                                  item.nip
                                                                 )
                                                               },
                                                             },
@@ -29645,7 +29646,7 @@ var render = function () {
                                                                 $event
                                                               ) {
                                                                 return _vm.hapusInfoInstruktur(
-                                                                  item.id_instruktur
+                                                                  item.nip
                                                                 )
                                                               },
                                                             },
@@ -29751,9 +29752,7 @@ var render = function () {
                                               [
                                                 _vm._v(
                                                   "\n                                                " +
-                                                    _vm._s(
-                                                      item.nama_instruktur
-                                                    ) +
+                                                    _vm._s(item.nama) +
                                                     "\n                                            "
                                                 ),
                                               ]
@@ -29766,7 +29765,7 @@ var render = function () {
                                                 _c("small", [
                                                   _vm._v(
                                                     "\n                                                    " +
-                                                      _vm._s(item.paket) +
+                                                      _vm._s(item.no_hp) +
                                                       "\n                                                "
                                                   ),
                                                 ]),
@@ -30243,7 +30242,7 @@ var render = function () {
                                                   on: {
                                                     click: function ($event) {
                                                       return _vm.ubahInfoInstruktur(
-                                                        _vm.item.id_instruktur
+                                                        _vm.item.nip
                                                       )
                                                     },
                                                   },
@@ -30284,7 +30283,7 @@ var render = function () {
                                                   on: {
                                                     click: function ($event) {
                                                       return _vm.hapusInfoInstruktur(
-                                                        _vm.item.id_instruktur
+                                                        _vm.item.nip
                                                       )
                                                     },
                                                   },
@@ -30721,7 +30720,7 @@ var render = function () {
         "v-dialog",
         {
           attrs: {
-            "max-width": "400",
+            "max-width": "600",
             "content-class": "shadow-sm",
             "overlay-opacity": ".25",
             eager: "",
@@ -30759,7 +30758,7 @@ var render = function () {
                       _c("v-subheader", [
                         _vm._v(
                           "\n                        Ubah Data Instruktur > " +
-                            _vm._s(_vm.item.nama_instruktur) +
+                            _vm._s(_vm.item.nama) +
                             "\n                    "
                         ),
                       ]),
@@ -30769,7 +30768,7 @@ var render = function () {
                       _c(
                         "v-avatar",
                         { attrs: { color: "grey lighten-3" } },
-                        [_c("v-icon", [_vm._v("mdi-school")])],
+                        [_c("v-icon", [_vm._v("mdi-account-tie")])],
                         1
                       ),
                     ],

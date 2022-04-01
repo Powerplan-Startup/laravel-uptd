@@ -11,4 +11,5 @@ class Instruktur extends Model
     protected $table = 'instruktur';
     protected $primaryKey = 'nip';
     protected $guarded = [];
+    protected $keyType = "string";
 }

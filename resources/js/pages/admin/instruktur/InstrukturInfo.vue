@@ -67,7 +67,7 @@
                                                 </template>
                                                 <v-list nav>
                                                     <v-subheader v-text="'Aksi'"/>
-                                                    <v-list-item dense link @click="ubahInfoInstruktur(item.id_instruktur)">
+                                                    <v-list-item dense link @click="ubahInfoInstruktur(item.nip)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-pencil</v-icon>
                                                         </v-list-item-icon>
@@ -77,7 +77,7 @@
                                                             </v-list-item-title>
                                                         </v-list-item-content>
                                                     </v-list-item>
-                                                    <v-list-item dense link @click="hapusInfoInstruktur(item.id_instruktur)">
+                                                    <v-list-item dense link @click="hapusInfoInstruktur(item.nip)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-delete</v-icon>
                                                         </v-list-item-icon>
@@ -199,7 +199,7 @@ export default {
             session: 'instruktur/getSession',
         }),
         id(){
-            return this.$route.params.id_instruktur
+            return this.$route.params.nip
         }
     },
     watch: {

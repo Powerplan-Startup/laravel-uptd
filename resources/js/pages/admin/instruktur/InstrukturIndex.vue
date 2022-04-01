@@ -46,7 +46,7 @@
 											</v-subheader>
 										</v-card-text>
 									</v-card>
-                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.id_instruktur" :to="{ name: 'instruktur.show', params: { id_instruktur: item.id_instruktur } }">
+                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.nip" :to="{ name: 'instruktur.show', params: { nip: item.nip } }">
                                         <v-card-text>
                                             <div class="d-flex w-100">
                                                 <v-spacer/>
@@ -58,7 +58,7 @@
                                                     </template>
                                                     <v-list nav>
                                                         <v-subheader v-text="'Aksi'"/>
-                                                        <v-list-item dense link :to="{ name: 'instruktur.show', params: { id_instruktur: item.id_instruktur }}">
+                                                        <v-list-item dense link :to="{ name: 'instruktur.show', params: { nip: item.nip }}">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-account-tie</v-icon>
                                                             </v-list-item-icon>
@@ -68,7 +68,7 @@
                                                                 </v-list-item-title>
                                                             </v-list-item-content>
                                                         </v-list-item>
-                                                        <v-list-item dense link @click="ubahInfoInstruktur(item.id_instruktur)">
+                                                        <v-list-item dense link @click="ubahInfoInstruktur(item.nip)">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-pencil</v-icon>
                                                             </v-list-item-icon>
@@ -78,7 +78,7 @@
                                                                 </v-list-item-title>
                                                             </v-list-item-content>
                                                         </v-list-item>
-                                                        <v-list-item dense link @click="hapusInfoInstruktur(item.id_instruktur)">
+                                                        <v-list-item dense link @click="hapusInfoInstruktur(item.nip)">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-delete</v-icon>
                                                             </v-list-item-icon>
@@ -105,11 +105,11 @@
                                         </v-card-text>
                                         <v-card-text>
                                             <div class="text-truncate">
-                                                {{ item.nama_instruktur }}
+                                                {{ item.nama }}
                                             </div>
                                             <div class="text-truncate">
                                                 <small>
-                                                    {{ item.paket }}
+                                                    {{ item.no_hp }}
                                                 </small>
                                             </div>
                                         </v-card-text>

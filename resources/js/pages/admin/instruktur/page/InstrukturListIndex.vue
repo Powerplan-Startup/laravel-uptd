@@ -62,9 +62,10 @@ export default {
             ],
             items: [],
             headers: [
-                { text: 'Nama Instruktur', align: 'start', sortable: true, value: 'nama_instruktur' },
-                { text: 'Paket', align: 'start d-none d-sm-table-cell', sortable: true, value: 'paket' },
-                { text: 'Jadwal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'id_jadwal' },
+                { text: 'NIP', align: 'start', sortable: true, value: 'nip' },
+                { text: 'Nama Instruktur', align: 'start', sortable: true, value: 'nama' },
+                { text: 'Telepon', align: 'start d-none d-sm-table-cell', sortable: true, value: 'no_hp' },
+                { text: 'Alamat', align: 'end d-none d-sm-table-cell', sortable: true, value: 'alamat' },
                 { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: true, value: 'action' },
             ],
@@ -136,14 +137,14 @@ export default {
         clickEvent(t, d){
             this.$emit(t, d)
         },
-        ubahInfoInstruktur({id_instruktur: id}){
+        ubahInfoInstruktur({nip: id}){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoInstruktur({id_instruktur: id}){
+        hapusInfoInstruktur({nip: id}){
             this.showHapusDialog({id, value: true})
         },
-        toInfoInstruktur({id_instruktur}){
-            this.$router.push({ name: 'instruktur.show', params: { id_instruktur } })
+        toInfoInstruktur({nip}){
+            this.$router.push({ name: 'instruktur.show', params: { nip } })
         },
     },
     watch: {
