@@ -38,7 +38,7 @@
                     <!-- single-blog start -->
                     <article class="blog-post-wrapper">
                         <div class="post-information">
-                        <h2>Form Pendaftaran Calon Peserta Pelatihan</h2>
+                            <h2>Form Pendaftaran Calon Peserta Pelatihan</h2>
                             <div class="entry-meta">
                             </div>
                             <div class="entry-content">
@@ -54,7 +54,7 @@
                                             <tr>
                                                 <td scope="row">Nama Peserta</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="text" id="nama" name="nama"></td>
+                                                <td ><input class="form-control @error('nama')is-invalid @enderror" type="text" id="nama" name="nama" required autofocus value="{{ old('nama') }}"></td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">Jenis Kelamin</td>
@@ -69,42 +69,42 @@
                                             <tr>
                                                 <td scope="row">NIK</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="number" id="nik" name="nik"></td>
+                                                <td ><input class="form-control @error('nik')is-invalid @enderror" type="number" id="nik" name="nik" value="{{ old('nik') }}" required></td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">Tempat Lahir</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="text" id="tempat_lahir" name="tempat_lahir">
+                                                <td ><input class="form-control @error('tempat_lahir')is-invalid @enderror" type="text" id="tempat_lahir" name="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">Tanggal Lahir</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="date" id="tanggal_lahir" name="tanggal_lahir">
+                                                <td ><input class="form-control" type="date" id="tanggal_lahir" name="tanggal_lahir" required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">Umur</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="text" id="umur" name="umur">
+                                                <td ><input class="form-control @error('umur')is-invalid @enderror" type="number" id="umur" name="umur" value="{{ old('umur') }}" required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">Alamat</td>
                                                 <td >:</td>
-                                                <td ><textarea class="form-control" type="text" id="umur" name="umur"></textarea>
+                                                <td ><textarea class="form-control @error('alamat')is-invalid @enderror" type="text" id="alamat" name="alamat"></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">Email</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="text" id="email" name="email">
+                                                <td ><input class="form-control @error('email')is-invalid @enderror" type="text" id="email" name="email" value="{{ old('email') }}" required>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">No. Handphone</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="text" id="no_hp" name="no_hp">
+                                                <td ><input class="form-control @error('no_hp')is-invalid @enderror" type="text" id="no_hp" name="no_hp" value="{{ old('no_hp') }}" required>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -150,7 +150,7 @@
                                             <tr>
                                                 <td scope="row">Status</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="text" id="status" name="status">
+                                                <td ><input class="form-control @error('status')is-invalid @enderror" type="text" id="status" name="status" value="{{ old('status') }}" required>
                                                 </td>
                                             </tr>
                                             <tr>
