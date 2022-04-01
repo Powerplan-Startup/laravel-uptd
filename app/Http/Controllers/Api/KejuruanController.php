@@ -13,7 +13,6 @@ use Illuminate\Http\Response;
 class KejuruanController extends Controller
 {
     public function index(){
-        
         $data = Kejuruan::when(request('sortBy'), function($query, $sorts){
             foreach ($sorts as $i => $sort) {
                 $query->orderBy($sort, 

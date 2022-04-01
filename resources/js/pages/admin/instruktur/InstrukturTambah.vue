@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" max-width="400" content-class="shadow-sm" overlay-opacity=".4" eager scrollable>
+        <v-dialog v-model="dialog" max-width="600" content-class="shadow-sm" overlay-opacity=".4" eager scrollable>
             <v-form @submit.prevent="submit" :disabled="loading">
                 <v-card>
                     <v-toolbar flat>
@@ -9,7 +9,7 @@
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
-                            <v-icon>mdi-bookmark</v-icon>
+                            <v-icon>mdi-account-tie</v-icon>
                         </v-avatar>
                     </v-toolbar>
                     <v-divider/>
@@ -18,6 +18,9 @@
                     </v-card-text>
                     <v-divider/>
                     <v-card-actions>
+                        <v-btn text type="button" @click="dialog = false">
+                            Batal
+                        </v-btn>
                         <v-spacer/>
                         <v-btn text color="primary" type="submit" :loading="loading">
                             Tambah
