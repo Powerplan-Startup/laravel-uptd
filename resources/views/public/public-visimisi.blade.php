@@ -37,11 +37,8 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                     <!-- single-blog start -->
                     <article class="blog-post-wrapper">
-                        <div class="post-thumbnail">
-                        <img src="assets/img/blog/6.jpg" alt="" />
-                        </div>
                         <div class="post-information">
-                        <h2>Alumni UPTD Latihan Kerja Prov. NTT</h2>
+                        <h2>Visi Misi UPTD Latihan Kerja Prov. Nusa Tenggara Timur</h2>
                             <div class="entry-meta">
                             </div>
                             <div class="entry-content">
