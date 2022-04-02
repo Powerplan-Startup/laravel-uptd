@@ -35,7 +35,7 @@
                     <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link :to="{ name: 'jadwal' }">
                         <v-list-item>
                             <v-list-item-avatar color="grey lighten-2">
-                                <v-icon>mdi-bookmark</v-icon>
+                                <v-icon>mdi-calendar</v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title>
@@ -56,7 +56,7 @@
                                     <v-card-text>
                                         <div class="d-flex w-100">
                                             <v-avatar color="grey lighten-2">
-                                                <v-icon>mdi-bookmark</v-icon>
+                                                <v-icon>mdi-calendar</v-icon>
                                             </v-avatar>
                                             <v-spacer/>
                                             <v-menu open-on-click content-class="shadow-sm rounded-lg" :close-on-content-click="false">
@@ -105,23 +105,50 @@
                                     <v-list-item>
                                         <v-list-item-content>
                                             <v-list-item-subtitle class="text--disabled">
-                                                Nama Jadwal
+                                                Jadwal Pelatihan Kejuruan
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="text-h5">
-                                                {{ item.nama_jadwal }}
+                                                {{ item.kejuruan.nama_kejuruan }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
                                     <v-divider/>
                                     <v-list-item>
                                         <v-list-item-icon>
+                                            <v-icon>mdi-account-tie</v-icon>
                                         </v-list-item-icon>
                                         <v-list-item-content>
                                             <v-list-item-subtitle>
-                                                Paket
+                                                Instruktur
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="">
-                                                {{ item.paket }}
+                                                {{ item.instruktur.nama }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                NIP.
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.instruktur.nip }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-divider inset/>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                            <v-icon>mdi-calendar-clock</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                Tanggal
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.tanggal + ' ' + item.waktu | datetime }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>

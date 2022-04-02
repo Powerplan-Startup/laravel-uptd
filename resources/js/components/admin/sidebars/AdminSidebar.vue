@@ -4,7 +4,7 @@
 			<v-card dark rounded="lg" class="p5-10 shadow-sm" color="indigo">
 				<v-list-item>
 					<v-list-item-avatar color="indigo lighten-2">
-						<v-icon>mdi-user</v-icon>
+						<v-icon>mdi-account</v-icon>
 					</v-list-item-avatar>
 					<v-list-item-content>
 						<v-list-item-title>
