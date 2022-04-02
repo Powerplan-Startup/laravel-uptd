@@ -25,11 +25,11 @@ export default {
     },
     computed: {
         /**
-         * get id from params id_kejuruan
+         * get id from params id_jadwal
          * 
          */
         id: function () {
-            return this.$route.params.id_kejuruan
+            return this.$route.params.id_jadwal
         },
         ...mapGetters({
         })

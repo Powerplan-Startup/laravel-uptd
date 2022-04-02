@@ -82,6 +82,19 @@
 					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
+			<v-list-item :to="{ name: 'jadwal' }" color="primary">
+				<v-list-item-icon>
+					<v-icon>mdi-calendar</v-icon>
+				</v-list-item-icon>
+				<v-list-item-content>
+					<v-list-item-title>
+						Jadwal
+					</v-list-item-title>
+					<v-list-item-subtitle>
+						Kelola Jadwal Pelatihan
+					</v-list-item-subtitle>
+				</v-list-item-content>
+			</v-list-item>
 		</v-list>
 	</v-navigation-drawer>
 </template>

@@ -7,7 +7,7 @@
             <v-card-text class="d-flex">
                 <v-text-field type="search" hide-details rounded dense placeholder="Temukan..." v-model="search"/>
             </v-card-text>
-            <kejuruan-table
+            <jadwal-table
                 :headers="headers"
                 :items="items"
                 :options="options"
@@ -16,9 +16,9 @@
                 v-model="selected"
                 @update:options="options = $event"
                 @update="update"
-                @rowClick="toInfoKejuruan"
-                @editRow="ubahInfoKejuruan"
-                @deleteRow="hapusInfoKejuruan"
+                @rowClick="toInfoJadwal"
+                @editRow="ubahInfoJadwal"
+                @deleteRow="hapusInfoJadwal"
                 :small="small"
                 :no-select="noSelect"/>
             <slot v-bind:update="update"></slot>
@@ -27,7 +27,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
-import KejuruanTable from '../datatable/KejuruanTable.vue'
+import JadwalTable from '../datatable/JadwalTable.vue'
 export default {
     props: {
         dataSession: String|Number,
@@ -36,7 +36,7 @@ export default {
         noSelect: Boolean,
     },
     components: {
-        KejuruanTable
+        JadwalTable
     },
     data(){
         return {
@@ -49,20 +49,20 @@ export default {
                     exact: true,
                 },
                 {
-                    text: 'Kejuruan',
+                    text: 'Jadwal',
                     disabled: false,
-                    to: {name: 'kejuruan'},
+                    to: {name: 'jadwal'},
                     link: true,
                     exact: true,
                 },
                 {
-                    text: 'List Kejuruan',
+                    text: 'List Jadwal',
                     disabled: true,
                 },
             ],
             items: [],
             headers: [
-                { text: 'Nama Kejuruan', align: 'start', sortable: true, value: 'nama_kejuruan' },
+                { text: 'Nama Jadwal', align: 'start', sortable: true, value: 'nama_jadwal' },
                 { text: 'Paket', align: 'start d-none d-sm-table-cell', sortable: true, value: 'paket' },
                 { text: 'Jadwal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'id_jadwal' },
                 { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
@@ -94,10 +94,10 @@ export default {
     },
     methods: {
         ...mapActions({
-            getItems: 'kejuruan/get',
+            getItems: 'jadwal/get',
             notif: 'notifikasi/show',
-            showUbahDialog: 'kejuruan/setModalUbah',
-            showHapusDialog: 'kejuruan/setModalHapus',
+            showUbahDialog: 'jadwal/setModalUbah',
+            showHapusDialog: 'jadwal/setModalHapus',
         }),
         async loadItems(){
             this.loading = true
@@ -128,7 +128,7 @@ export default {
             }, 800);
         },
         rowClick(e){
-            this.$emit('open:kejuruan:info', e)
+            this.$emit('open:jadwal:info', e)
         },
         editRow(e){
 
@@ -136,14 +136,14 @@ export default {
         clickEvent(t, d){
             this.$emit(t, d)
         },
-        ubahInfoKejuruan({id_kejuruan: id}){
+        ubahInfoJadwal({id_jadwal: id}){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoKejuruan({id_kejuruan: id}){
+        hapusInfoJadwal({id_jadwal: id}){
             this.showHapusDialog({id, value: true})
         },
-        toInfoKejuruan({id_kejuruan}){
-            this.$router.push({ name: 'kejuruan.show', params: { id_kejuruan } })
+        toInfoJadwal({id_jadwal}){
+            this.$router.push({ name: 'jadwal.show', params: { id_jadwal } })
         },
     },
     watch: {

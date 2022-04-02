@@ -13,10 +13,10 @@
         single-select
         v-model="selected"
         :mobile-breakpoint="0">
-        <template #item.nama_kejuruan="{item}">
+        <template #item.nama_jadwal="{item}">
             <div class="d-block py-1" @click="rowClick(item)">
                 <div class="mb-1">
-                    {{ item.nama_kejuruan }}
+                    {{ item.nama_jadwal }}
                 </div>
             </div>
         </template>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-main>
-			<admin-appbar title="Kejuruan"></admin-appbar>
+			<admin-appbar title="Jadwal"></admin-appbar>
             <v-container class="pa-10">
                 <div v-if="loading">
                     <div class="d-grid-main">
@@ -32,7 +32,7 @@
 											{{ total }}
 										</v-card-text>
 										<v-card-text class="text-right pt-0">
-											Total Kejuruan
+											Total Jadwal
 										</v-card-text>
 									</div>
 								</div>
@@ -46,7 +46,7 @@
 											</v-subheader>
 										</v-card-text>
 									</v-card>
-                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.id_kejuruan" :to="{ name: 'kejuruan.show', params: { id_kejuruan: item.id_kejuruan } }">
+                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.id_jadwal" :to="{ name: 'jadwal.show', params: { id_jadwal: item.id_jadwal } }">
                                         <v-card-text>
                                             <div class="d-flex w-100">
                                                 <v-spacer/>
@@ -58,7 +58,7 @@
                                                     </template>
                                                     <v-list nav>
                                                         <v-subheader v-text="'Aksi'"/>
-                                                        <v-list-item dense link :to="{ name: 'kejuruan.show', params: { id_kejuruan: item.id_kejuruan }}">
+                                                        <v-list-item dense link :to="{ name: 'jadwal.show', params: { id_jadwal: item.id_jadwal }}">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-account-tie</v-icon>
                                                             </v-list-item-icon>
@@ -68,7 +68,7 @@
                                                                 </v-list-item-title>
                                                             </v-list-item-content>
                                                         </v-list-item>
-                                                        <v-list-item dense link @click="ubahInfoKejuruan(item.id_kejuruan)">
+                                                        <v-list-item dense link @click="ubahInfoJadwal(item.id_jadwal)">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-pencil</v-icon>
                                                             </v-list-item-icon>
@@ -78,7 +78,7 @@
                                                                 </v-list-item-title>
                                                             </v-list-item-content>
                                                         </v-list-item>
-                                                        <v-list-item dense link @click="hapusInfoKejuruan(item.id_kejuruan)">
+                                                        <v-list-item dense link @click="hapusInfoJadwal(item.id_jadwal)">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-delete</v-icon>
                                                             </v-list-item-icon>
@@ -105,7 +105,7 @@
                                         </v-card-text>
                                         <v-card-text>
                                             <div class="text-truncate">
-                                                {{ item.nama_kejuruan }}
+                                                {{ item.nama_jadwal }}
                                             </div>
                                             <div class="text-truncate">
                                                 <small>
@@ -131,7 +131,7 @@
                                                     </v-avatar>
                                                     <div class="grow-1 pl-4">
                                                         <v-subheader class="pink-text">
-                                                            Tambah Kejuruan
+                                                            Tambah Jadwal
                                                         </v-subheader>
                                                     </div>
                                                 </div>
@@ -173,7 +173,7 @@ export default {
     computed: {
         ...mapState({}),
         ...mapGetters({
-            session: 'kejuruan/getSession',
+            session: 'jadwal/getSession',
         }),
         exists(){
             return this.total > 0
@@ -181,7 +181,7 @@ export default {
     },
     watch: {
         '$route.name': function(val){
-            if(val == 'kejuruan'){
+            if(val == 'jadwal'){
                 this.show = true
             }
         },
@@ -191,20 +191,20 @@ export default {
     },
     methods: {
         ...mapMutations({
-            showTambahDialog: 'kejuruan/SET_MODAL_TAMBAH',
+            showTambahDialog: 'jadwal/SET_MODAL_TAMBAH',
         }),
         ...mapActions({
-            showUbahDialog: 'kejuruan/setModalUbah',
-            showHapusDialog: 'kejuruan/setModalHapus',
-            getItems: 'kejuruan/get',
+            showUbahDialog: 'jadwal/setModalUbah',
+            showHapusDialog: 'jadwal/setModalHapus',
+            getItems: 'jadwal/get',
         }),
         openModalTambah(){
             this.showTambahDialog(true)
         },
-        ubahInfoKejuruan(id){
+        ubahInfoJadwal(id){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoKejuruan(id){
+        hapusInfoJadwal(id){
             this.showHapusDialog({id, value: true})
         },
         async loadItems(){
@@ -214,7 +214,7 @@ export default {
                 sortBy: ['created_at'],
                 sortDesc: [true],
             }).catch(e => {
-                console.log("loadItem@KejuruanIndex.vue", e);
+                console.log("loadItem@JadwalIndex.vue", e);
             });
             this.loading = false
             if(res?.data?.data){

@@ -2,22 +2,22 @@
     <div>
         <router-view/>
         <template>
-            <kejuruan-tambah/>
-            <kejuruan-ubah/>
-            <kejuruan-hapus/>
+            <jadwal-tambah/>
+            <jadwal-ubah/>
+            <jadwal-hapus/>
         </template>
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import KejuruanHapus from './KejuruanHapus.vue'
-import KejuruanTambah from './KejuruanTambah.vue'
-import KejuruanUbah from './KejuruanUbah.vue'
+import JadwalHapus from './JadwalHapus.vue'
+import JadwalTambah from './JadwalTambah.vue'
+import JadwalUbah from './JadwalUbah.vue'
 export default {
     components: { 
-        KejuruanTambah, 
-        KejuruanUbah, 
-        KejuruanHapus 
+        JadwalTambah, 
+        JadwalUbah, 
+        JadwalHapus 
     },
     computed: {
         ...mapGetters({

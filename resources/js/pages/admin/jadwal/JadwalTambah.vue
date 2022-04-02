@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Tambah Kejuruan
+                            Tambah Jadwal
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
@@ -14,7 +14,7 @@
                     </v-toolbar>
                     <v-divider/>
                     <v-card-text v-if="dialog || alive">
-                        <form-tambah-kejuruan :errors="errors"/>
+                        <form-tambah-jadwal :errors="errors"/>
                     </v-card-text>
                     <v-divider/>
                     <v-card-actions>
@@ -30,9 +30,9 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FormTambahKejuruan from './form/FormTambahKejuruan.vue'
+import FormTambahJadwal from './form/FormTambahJadwal.vue'
 export default {
-    components: { FormTambahKejuruan },
+    components: { FormTambahJadwal },
     data(){
         return {
             loading: false,
@@ -42,7 +42,7 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.kejuruan.modal.tambah
+            value_dialog: state => state.jadwal.modal.tambah
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -51,18 +51,18 @@ export default {
     },
     methods: {
         ...mapMutations({
-            setDialog: 'kejuruan/SET_MODAL_TAMBAH'
+            setDialog: 'jadwal/SET_MODAL_TAMBAH'
         }),
         ...mapActions({
-            storeKejuruan: 'kejuruan/store',
-            updateSession: 'kejuruan/updateSession',
+            storeJadwal: 'jadwal/store',
+            updateSession: 'jadwal/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
             let data = new FormData(e.target)
             this.loading = true
-            let res = await this.storeKejuruan(data).catch(e => {
-                console.log("storeKejuruan@KejuruanTambah.vue", e);
+            let res = await this.storeJadwal(data).catch(e => {
+                console.log("storeJadwal@JadwalTambah.vue", e);
 				console.log(e);
                 e.response.status == 422 && this.setErrorForm(e)
                 this.notif({

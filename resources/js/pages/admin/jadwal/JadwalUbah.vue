@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Ubah Data Kejuruan > {{ item.nama_kejuruan }}
+                            Ubah Data Jadwal > {{ item.nama_jadwal }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
@@ -14,10 +14,10 @@
                     </v-toolbar>
                     <v-divider/>
                     <v-card-text v-if="dialog && exists">
-                        <form-tambah-kejuruan v-model="item" :errors="errors"/>
+                        <form-tambah-jadwal v-model="item" :errors="errors"/>
                     </v-card-text>
                     <v-card-text v-else-if="dialog && loading">
-                        <form-tambah-kejuruan-placeholder/>
+                        <form-tambah-jadwal-placeholder/>
                     </v-card-text>
                     <v-divider/>
                     <v-card-actions>
@@ -36,10 +36,10 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FormTambahKejuruan from './form/FormTambahKejuruan.vue'
-import FormTambahKejuruanPlaceholder from './form/FormTambahKejuruanPlaceholder.vue'
+import FormTambahJadwal from './form/FormTambahJadwal.vue'
+import FormTambahJadwalPlaceholder from './form/FormTambahJadwalPlaceholder.vue'
 export default {
-    components: { FormTambahKejuruan, FormTambahKejuruanPlaceholder },
+    components: { FormTambahJadwal, FormTambahJadwalPlaceholder },
     data(){
         return {
             loading: false,
@@ -51,8 +51,8 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.kejuruan.modal.ubah,
-            id: state => state.kejuruan.selected.id
+            value_dialog: state => state.jadwal.modal.ubah,
+            id: state => state.jadwal.selected.id
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -61,17 +61,17 @@ export default {
     },
     methods: {
         ...mapActions({
-            setDialog: 'kejuruan/setModalUbah',
-            updateKejuruan: 'kejuruan/update',
-            findKejuruan: 'kejuruan/show',
-            updateSession: 'kejuruan/updateSession',
+            setDialog: 'jadwal/setModalUbah',
+            updateJadwal: 'jadwal/update',
+            findJadwal: 'jadwal/show',
+            updateSession: 'jadwal/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
             let data = new FormData(e.target)
             this.loading = true
-            let res = await this.updateKejuruan({ data, id: this.id }).catch(e => {
-                console.log("updateKejuruan@KejuruanUbah.vue", e)
+            let res = await this.updateJadwal({ data, id: this.id }).catch(e => {
+                console.log("updateJadwal@JadwalUbah.vue", e)
                 e.response.status == 422 && this.setErrorForm(e)
                 this.notif({
                     message: e.message
@@ -86,8 +86,8 @@ export default {
         async loadItem(){
             this.exists = false
             this.loading = true
-            let res = await this.findKejuruan({ id: this.id }).catch(e => {
-                console.log("loadItem@KejuruanUbah.vue", e);
+            let res = await this.findJadwal({ id: this.id }).catch(e => {
+                console.log("loadItem@JadwalUbah.vue", e);
                 this.notif({
                     message: e.message
                 })
