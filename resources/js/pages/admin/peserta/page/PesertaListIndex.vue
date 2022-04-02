@@ -34,6 +34,7 @@ export default {
         params: Object,
         small: Boolean,
         noSelect: Boolean,
+        status: Array,
     },
     components: {
         PesertaTable
@@ -101,7 +102,7 @@ export default {
         }),
         async loadItems(){
             this.loading = true
-            let res = await this.getItems({...this.options, search: this.search, ...this.params }).catch(e => {});
+            let res = await this.getItems({...this.options, search: this.search, ...this.params, status: this.status }).catch(e => {});
             this.loading = false
             if(res){
                 this.items = res.data.data

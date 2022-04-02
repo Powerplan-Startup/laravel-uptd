@@ -17,11 +17,11 @@
                 <div v-else style="position: relative">
                     <v-expand-transition>
                         <div class="d-grid-main" v-if="show">
-                            <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link :to="{ name: '.list' }">
+                            <v-card class="overflow-hidden" :color="status[0].selected ? 'indigo' : 'grey lighten-4'" :dark="status[0].selected" rounded="xl" flat link @click="status[0].selected = !status[0].selected">
 								<div class="d-flex">
 									<v-card-text>
 										<div class="d-flex w-100">
-											<v-avatar color="indigo lighten-4">
+											<v-avatar :color="status[0].selected ? 'indigo lighten-1' : 'grey lighten-2'">
 												<v-icon>mdi-pin</v-icon>
 											</v-avatar>
 											<v-spacer/>
@@ -37,11 +37,11 @@
 									</div>
 								</div>
                             </v-card>
-                            <v-card color="teal lighten-5 overflow-hidden" rounded="xl" flat link :to="{ name: '.list' }">
+                            <v-card class="overflow-hidden" :color="status[1].selected ? 'teal' : 'grey lighten-4'" :dark="status[1].selected" rounded="xl" flat link @click="status[1].selected = !status[1].selected">
 								<div class="d-flex">
 									<v-card-text>
 										<div class="d-flex w-100">
-											<v-avatar color="teal lighten-4">
+											<v-avatar :color="status[1].selected ? 'teal lighten-1' : 'grey lighten-2'">
 												<v-icon>mdi-school</v-icon>
 											</v-avatar>
 											<v-spacer/>
@@ -59,10 +59,10 @@
                             </v-card>
                             <div class="d-lg-block d-none">
                                 <div class="d-grid-main mini fill-height">
-									<v-card class="grey lighten-4 overflow-hidden" flat rounded="xl">
+									<v-card class="overflow-hidden" flat rounded="xl" :color="status[2].selected ? 'blue' : 'grey lighten-4'" :dark="status[2].selected" link @click="status[2].selected = !status[2].selected">
 										<v-card-text class="content-middle">
 											<v-subheader>
-												Terbaru
+												Calon Peserta
 											</v-subheader>
 										</v-card-text>
 									</v-card>
@@ -151,7 +151,7 @@
             </v-container>
             <div class="grey lighten-5">
                 <v-container>
-                    <router-view no-select :data-session="session"/>
+                    <router-view no-select :data-session="session" :status="status_filter"/>
                 </v-container>
             </div>
         </v-main>
@@ -169,6 +169,11 @@ export default {
             total: 0,
             total_alumni: 0,
             show: true,
+            status: [
+                { text: 'Peserta', value: 'peserta', selected: true },
+                { text: 'Alumni', value: 'alumni', selected: false },
+                { text: 'Calon', value: 'calon', selected: true },
+            ],
         }
     },
     computed: {
@@ -176,6 +181,9 @@ export default {
         ...mapGetters({
             session: 'peserta/getSession',
         }),
+        status_filter(){
+            return this.status.filter(item => item.selected).map(item => item.value)
+        },
         exists(){
             return this.total > 0
         }
@@ -199,6 +207,7 @@ export default {
             showHapusDialog: 'peserta/setModalHapus',
             getItems: 'peserta/get',
             getCount: 'peserta/count',
+            updateSession: 'peserta/updateSession'
         }),
         openModalTambah(){
             this.showTambahDialog(true)
@@ -238,6 +247,11 @@ export default {
             if(res?.data?.data){
                 this.total_alumni = res?.data?.data || 0;
             }
+        }
+    },
+    watch: {
+        status_filter(){
+            this.updateSession()
         }
     },
     created(){
