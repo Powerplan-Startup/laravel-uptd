@@ -105,11 +105,12 @@
                                         </v-card-text>
                                         <v-card-text>
                                             <div class="text-truncate">
-                                                {{ item.nama_jadwal }}
+                                                {{ item.kejuruan.nama_kejuruan }}
                                             </div>
                                             <div class="text-truncate">
                                                 <small>
-                                                    {{ item.paket }}
+                                                    {{ item.tanggal | date }}
+                                                    {{ item.waktu | time }}
                                                 </small>
                                             </div>
                                         </v-card-text>
