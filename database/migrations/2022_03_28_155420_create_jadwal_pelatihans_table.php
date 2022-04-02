@@ -20,7 +20,7 @@ return new class extends Migration
              * 
              */
             $table->string('hari', 10);
-            $table->date('tanggal', 10);
+            $table->date('tanggal');
             $table->time('waktu');
             $table->text('materi');
             $table->string('nama_kejuruan', 30);

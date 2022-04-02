@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" max-width="400" content-class="shadow-sm" overlay-opacity=".4" eager scrollable>
+        <v-dialog v-model="dialog" max-width="600" content-class="shadow-sm" overlay-opacity=".4" eager scrollable>
             <v-form @submit.prevent="submit" :disabled="loading">
                 <v-card>
                     <v-toolbar flat>
@@ -9,7 +9,7 @@
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
-                            <v-icon>mdi-bookmark</v-icon>
+                            <v-icon>mdi-calendar-plus</v-icon>
                         </v-avatar>
                     </v-toolbar>
                     <v-divider/>
