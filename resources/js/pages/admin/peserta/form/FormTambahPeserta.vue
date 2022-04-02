@@ -4,11 +4,11 @@
             <v-text-field
                 dense
                 outlined
-                v-model="item.nama_kejuruan"
-                name="nama_kejuruan"
-                label="Nama Kejuruan"
-                :error-messages="errors.nama_kejuruan"
-                @keyup="errors.nama_kejuruan = null"/>
+                v-model="item.nama_peserta"
+                name="nama_peserta"
+                label="Nama Peserta"
+                :error-messages="errors.nama_peserta"
+                @keyup="errors.nama_peserta = null"/>
             <v-text-field
                 dense
                 outlined
@@ -30,7 +30,7 @@ export default {
             type: Object,
             default: ()=>{
                 return {
-                    nama_kejuruan: null,
+                    nama_peserta: null,
                     nip: null,
                     alamat: null,
                     input_foto: null,

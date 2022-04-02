@@ -3,7 +3,7 @@
         <v-app-bar app flat floating absolute>
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
             <v-toolbar-title>
-                Info Kejuruan
+                Info Peserta
             </v-toolbar-title>
         </v-app-bar>
         <v-main>
@@ -29,17 +29,17 @@
                 <div class="mx-auto" style="max-width: 400px" v-else-if="!exists && !loading">
                     <v-alert prominent text type="warning" rounded="xl">
                         <span>
-                            Info Kejuruan Tidak Ditemukan
+                            Info Peserta Tidak Ditemukan
                         </span>
                     </v-alert>
-                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link :to="{ name: 'kejuruan' }">
+                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link :to="{ name: 'peserta' }">
                         <v-list-item>
                             <v-list-item-avatar color="grey lighten-2">
                                 <v-icon>mdi-bookmark</v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title>
-                                    Kembali ke daftar kejuruan
+                                    Kembali ke daftar peserta
                                 </v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
@@ -67,7 +67,7 @@
                                                 </template>
                                                 <v-list nav>
                                                     <v-subheader v-text="'Aksi'"/>
-                                                    <v-list-item dense link @click="ubahInfoKejuruan(item.id_kejuruan)">
+                                                    <v-list-item dense link @click="ubahInfoPeserta(item.id_peserta)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-pencil</v-icon>
                                                         </v-list-item-icon>
@@ -77,7 +77,7 @@
                                                             </v-list-item-title>
                                                         </v-list-item-content>
                                                     </v-list-item>
-                                                    <v-list-item dense link @click="hapusInfoKejuruan(item.id_kejuruan)">
+                                                    <v-list-item dense link @click="hapusInfoPeserta(item.id_peserta)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-delete</v-icon>
                                                         </v-list-item-icon>
@@ -105,10 +105,10 @@
                                     <v-list-item>
                                         <v-list-item-content>
                                             <v-list-item-subtitle class="text--disabled">
-                                                Nama Kejuruan
+                                                Nama Peserta
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="text-h5">
-                                                {{ item.nama_kejuruan }}
+                                                {{ item.nama_peserta }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -146,7 +146,7 @@
                             <div class="sticky-top" style="z-index: 1;">
                                 <v-toolbar flat rounded="xl">
                                     <v-tabs align-with-title>
-                                        <v-tab :to="{name: 'kejuruan.show'}" exact>Informasi</v-tab>
+                                        <v-tab :to="{name: 'peserta.show'}" exact>Informasi</v-tab>
                                     </v-tabs>
                                 </v-toolbar>
                             </div>
@@ -178,14 +178,14 @@ export default {
                     exact: true,
                 },
                 {
-                    text: 'Kejuruan',
+                    text: 'Peserta',
                     disabled: false,
-                    to: {name: 'kejuruan'},
+                    to: {name: 'peserta'},
                     link: true,
                     exact: true,
                 },
                 {
-                    text: 'Info Kejuruan',
+                    text: 'Info Peserta',
                     disabled: true,
                 },
             ]
@@ -193,13 +193,13 @@ export default {
     },
     computed: {
         ...mapState({
-            items: state => state.kejuruan.items,
+            items: state => state.peserta.items,
         }),
         ...mapGetters({
-            session: 'kejuruan/getSession',
+            session: 'peserta/getSession',
         }),
         id(){
-            return this.$route.params.id_kejuruan
+            return this.$route.params.id_peserta
         }
     },
     watch: {
@@ -210,15 +210,15 @@ export default {
     methods: {
         ...mapMutations({  }),
         ...mapActions({
-            showUbahDialog: 'kejuruan/setModalUbah',
-            showHapusDialog: 'kejuruan/setModalHapus',
-            getItem: 'kejuruan/show',
+            showUbahDialog: 'peserta/setModalUbah',
+            showHapusDialog: 'peserta/setModalHapus',
+            getItem: 'peserta/show',
         }),
         openModalTambah(){},
-        ubahInfoKejuruan(id){
+        ubahInfoPeserta(id){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoKejuruan(id){
+        hapusInfoPeserta(id){
             this.showHapusDialog({id, value: true})
         },
         async loadItem(){
@@ -226,7 +226,7 @@ export default {
             this.exists = false
 
             let res = await this.getItem({id: this.id}).catch(e => {
-                console.log("loadItem@KejuruanIndex.vue", e);
+                console.log("loadItem@PesertaIndex.vue", e);
             });
             this.loading = false
 

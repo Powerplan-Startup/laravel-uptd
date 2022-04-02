@@ -7,7 +7,7 @@
             <v-card-text class="d-flex">
                 <v-text-field type="search" hide-details rounded dense placeholder="Temukan..." v-model="search"/>
             </v-card-text>
-            <kejuruan-table
+            <peserta-table
                 :headers="headers"
                 :items="items"
                 :options="options"
@@ -16,9 +16,9 @@
                 v-model="selected"
                 @update:options="options = $event"
                 @update="update"
-                @rowClick="toInfoKejuruan"
-                @editRow="ubahInfoKejuruan"
-                @deleteRow="hapusInfoKejuruan"
+                @rowClick="toInfoPeserta"
+                @editRow="ubahInfoPeserta"
+                @deleteRow="hapusInfoPeserta"
                 :small="small"
                 :no-select="noSelect"/>
             <slot v-bind:update="update"></slot>
@@ -27,7 +27,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
-import KejuruanTable from '../datatable/KejuruanTable.vue'
+import PesertaTable from '../datatable/PesertaTable.vue'
 export default {
     props: {
         dataSession: String|Number,
@@ -36,7 +36,7 @@ export default {
         noSelect: Boolean,
     },
     components: {
-        KejuruanTable
+        PesertaTable
     },
     data(){
         return {
@@ -49,20 +49,20 @@ export default {
                     exact: true,
                 },
                 {
-                    text: 'Kejuruan',
+                    text: 'Peserta',
                     disabled: false,
-                    to: {name: 'kejuruan'},
+                    to: {name: 'peserta'},
                     link: true,
                     exact: true,
                 },
                 {
-                    text: 'List Kejuruan',
+                    text: 'List Peserta',
                     disabled: true,
                 },
             ],
             items: [],
             headers: [
-                { text: 'Nama Kejuruan', align: 'start', sortable: true, value: 'nama_kejuruan' },
+                { text: 'Nama Peserta', align: 'start', sortable: true, value: 'nama_peserta' },
                 { text: 'Paket', align: 'start d-none d-sm-table-cell', sortable: true, value: 'paket' },
                 { text: 'Jadwal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'id_jadwal' },
                 { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
@@ -94,10 +94,10 @@ export default {
     },
     methods: {
         ...mapActions({
-            getItems: 'kejuruan/get',
+            getItems: 'peserta/get',
             notif: 'notifikasi/show',
-            showUbahDialog: 'kejuruan/setModalUbah',
-            showHapusDialog: 'kejuruan/setModalHapus',
+            showUbahDialog: 'peserta/setModalUbah',
+            showHapusDialog: 'peserta/setModalHapus',
         }),
         async loadItems(){
             this.loading = true
@@ -128,7 +128,7 @@ export default {
             }, 800);
         },
         rowClick(e){
-            this.$emit('open:kejuruan:info', e)
+            this.$emit('open:peserta:info', e)
         },
         editRow(e){
 
@@ -136,14 +136,14 @@ export default {
         clickEvent(t, d){
             this.$emit(t, d)
         },
-        ubahInfoKejuruan({id_kejuruan: id}){
+        ubahInfoPeserta({id_peserta: id}){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoKejuruan({id_kejuruan: id}){
+        hapusInfoPeserta({id_peserta: id}){
             this.showHapusDialog({id, value: true})
         },
-        toInfoKejuruan({id_kejuruan}){
-            this.$router.push({ name: 'kejuruan.show', params: { id_kejuruan } })
+        toInfoPeserta({id_peserta}){
+            this.$router.push({ name: 'peserta.show', params: { id_peserta } })
         },
     },
     watch: {

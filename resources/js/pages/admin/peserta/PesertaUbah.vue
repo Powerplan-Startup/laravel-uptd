@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Ubah Data Kejuruan > {{ item.nama_kejuruan }}
+                            Ubah Data Peserta > {{ item.nama_peserta }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
@@ -14,10 +14,10 @@
                     </v-toolbar>
                     <v-divider/>
                     <v-card-text v-if="dialog && exists">
-                        <form-tambah-kejuruan v-model="item" :errors="errors"/>
+                        <form-tambah-peserta v-model="item" :errors="errors"/>
                     </v-card-text>
                     <v-card-text v-else-if="dialog && loading">
-                        <form-tambah-kejuruan-placeholder/>
+                        <form-tambah-peserta-placeholder/>
                     </v-card-text>
                     <v-divider/>
                     <v-card-actions>
@@ -36,10 +36,10 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FormTambahKejuruan from './form/FormTambahKejuruan.vue'
-import FormTambahKejuruanPlaceholder from './form/FormTambahKejuruanPlaceholder.vue'
+import FormTambahPeserta from './form/FormTambahPeserta.vue'
+import FormTambahPesertaPlaceholder from './form/FormTambahPesertaPlaceholder.vue'
 export default {
-    components: { FormTambahKejuruan, FormTambahKejuruanPlaceholder },
+    components: { FormTambahPeserta, FormTambahPesertaPlaceholder },
     data(){
         return {
             loading: false,
@@ -51,8 +51,8 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.kejuruan.modal.ubah,
-            id: state => state.kejuruan.selected.id
+            value_dialog: state => state.peserta.modal.ubah,
+            id: state => state.peserta.selected.id
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -61,17 +61,17 @@ export default {
     },
     methods: {
         ...mapActions({
-            setDialog: 'kejuruan/setModalUbah',
-            updateKejuruan: 'kejuruan/update',
-            findKejuruan: 'kejuruan/show',
-            updateSession: 'kejuruan/updateSession',
+            setDialog: 'peserta/setModalUbah',
+            updatePeserta: 'peserta/update',
+            findPeserta: 'peserta/show',
+            updateSession: 'peserta/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
             let data = new FormData(e.target)
             this.loading = true
-            let res = await this.updateKejuruan({ data, id: this.id }).catch(e => {
-                console.log("updateKejuruan@KejuruanUbah.vue", e)
+            let res = await this.updatePeserta({ data, id: this.id }).catch(e => {
+                console.log("updatePeserta@PesertaUbah.vue", e)
                 e.response.status == 422 && this.setErrorForm(e)
                 this.notif({
                     message: e.message
@@ -86,8 +86,8 @@ export default {
         async loadItem(){
             this.exists = false
             this.loading = true
-            let res = await this.findKejuruan({ id: this.id }).catch(e => {
-                console.log("loadItem@KejuruanUbah.vue", e);
+            let res = await this.findPeserta({ id: this.id }).catch(e => {
+                console.log("loadItem@PesertaUbah.vue", e);
                 this.notif({
                     message: e.message
                 })
