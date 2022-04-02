@@ -82,6 +82,7 @@
                     </v-btn>
                 </v-time-picker>
             </v-dialog>
+            <input-pilih-kejuruan v-model="item.id_kejuruan" :errors="errors"/>
             <v-text-field
                 dense
                 outlined
@@ -105,8 +106,9 @@
     </div>
 </template>
 <script>
+import InputPilihKejuruan from './InputPilihKejuruan.vue';
 export default {
-    components: { },
+    components: {InputPilihKejuruan },
     props: {
         errors: Object,
         value: {
@@ -119,6 +121,7 @@ export default {
                     tanggal: null,
                     waktu: null,
                     input_foto: null,
+                    id_kejuruan: null,
                     materi: null
                 }
             }
