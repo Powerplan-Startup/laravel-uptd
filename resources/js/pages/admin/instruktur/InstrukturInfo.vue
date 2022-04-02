@@ -56,7 +56,7 @@
                                     <v-card-text>
                                         <div class="d-flex w-100">
                                             <v-avatar color="grey lighten-2">
-                                                <v-icon>mdi-bookmark</v-icon>
+                                                <v-icon>mdi-account-tie</v-icon>
                                             </v-avatar>
                                             <v-spacer/>
                                             <v-menu open-on-click content-class="shadow-sm rounded-lg" :close-on-content-click="false">
@@ -108,7 +108,7 @@
                                                 Nama Instruktur
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="text-h5">
-                                                {{ item.nama_instruktur }}
+                                                {{ item.nama }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -118,10 +118,36 @@
                                         </v-list-item-icon>
                                         <v-list-item-content>
                                             <v-list-item-subtitle>
-                                                Paket
+                                                NIP
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="">
-                                                {{ item.paket }}
+                                                {{ item.nip }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                            <v-icon>mdi-map-marker</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                Alamat
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.alamat }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                            <v-icon>mdi-phone</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                Phone
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.no_hp }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>

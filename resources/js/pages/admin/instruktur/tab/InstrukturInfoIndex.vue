@@ -14,6 +14,14 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
+            <div>
+                <v-card-title>
+                    Materi
+                </v-card-title>
+                <v-card-text>
+                    <div v-html="item.materi"></div>
+                </v-card-text>
+            </div>
         </v-card-text>
     </v-card>
 </template>

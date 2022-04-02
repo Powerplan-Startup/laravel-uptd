@@ -3227,6 +3227,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -4332,6 +4358,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6587,7 +6621,7 @@ var instruktur = [{
       name: 'instruktur.insert'
     }]
   }, {
-    path: ':id_instruktur',
+    path: ':nip',
     component: _pages_admin_instruktur_InstrukturInfo_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     children: [{
       path: '/',
@@ -30221,7 +30255,7 @@ var render = function () {
                                         { attrs: { color: "grey lighten-2" } },
                                         [
                                           _c("v-icon", [
-                                            _vm._v("mdi-bookmark"),
+                                            _vm._v("mdi-account-tie"),
                                           ]),
                                         ],
                                         1
@@ -30441,9 +30475,7 @@ var render = function () {
                                           [
                                             _vm._v(
                                               "\n                                            " +
-                                                _vm._s(
-                                                  _vm.item.nama_instruktur
-                                                ) +
+                                                _vm._s(_vm.item.nama) +
                                                 "\n                                        "
                                             ),
                                           ]
@@ -30467,14 +30499,82 @@ var render = function () {
                                       [
                                         _c("v-list-item-subtitle", [
                                           _vm._v(
-                                            "\n                                            Paket\n                                        "
+                                            "\n                                            NIP\n                                        "
                                           ),
                                         ]),
                                         _vm._v(" "),
                                         _c("v-list-item-title", {}, [
                                           _vm._v(
                                             "\n                                            " +
-                                              _vm._s(_vm.item.paket) +
+                                              _vm._s(_vm.item.nip) +
+                                              "\n                                        "
+                                          ),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c("v-icon", [
+                                          _vm._v("mdi-map-marker"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v(
+                                            "\n                                            Alamat\n                                        "
+                                          ),
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-title", {}, [
+                                          _vm._v(
+                                            "\n                                            " +
+                                              _vm._s(_vm.item.alamat) +
+                                              "\n                                        "
+                                          ),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [_c("v-icon", [_vm._v("mdi-phone")])],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v(
+                                            "\n                                            Phone\n                                        "
+                                          ),
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-title", {}, [
+                                          _vm._v(
+                                            "\n                                            " +
+                                              _vm._s(_vm.item.no_hp) +
                                               "\n                                        "
                                           ),
                                         ]),
@@ -31530,6 +31630,20 @@ var render = function () {
                 ],
                 1
               ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _c("v-card-title", [
+                _vm._v("\n                Materi\n            "),
+              ]),
+              _vm._v(" "),
+              _c("v-card-text", [
+                _c("div", { domProps: { innerHTML: _vm._s(_vm.item.materi) } }),
+              ]),
             ],
             1
           ),

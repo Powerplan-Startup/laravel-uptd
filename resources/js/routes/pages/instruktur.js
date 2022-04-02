@@ -13,7 +13,7 @@ export const instruktur = [
         { path: 'tambah', component: InstrukturIndex, children: [
             { path: '/', component: InstrukturTambah, name: 'instruktur.insert' },
         ]},
-        { path: ':id_instruktur', component: InstrukturInfo, children: [
+        { path: ':nip', component: InstrukturInfo, children: [
             { path: '/', component: InstrukturInfoIndex, name: 'instruktur.show' },
         ] },
         { path: '/', component: InstrukturIndex, children: [
