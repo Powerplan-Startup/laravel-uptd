@@ -36,7 +36,7 @@ export default {
         },
         data_kejuruan(){
             const r = RegExp(this.search)
-            return this.items.filter(it => r.test(it.nama) )
+            return this.items.filter(it => r.test(it.nama_kejuruan) )
         },
         search: {
             get(){ return this.query },

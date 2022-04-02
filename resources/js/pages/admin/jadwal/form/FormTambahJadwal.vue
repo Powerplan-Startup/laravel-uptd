@@ -1,14 +1,7 @@
 <template>
     <div>
         <div class="d-grid-form">
-            <v-text-field
-                dense
-                outlined
-                v-model="item.nama_jadwal"
-                name="nama_jadwal"
-                label="Nama Jadwal"
-                :error-messages="errors.nama_jadwal"
-                @keyup="errors.nama_jadwal = null"/>
+            <v-spacer/>
             <v-text-field
                 dense
                 outlined
@@ -83,15 +76,7 @@
                 </v-time-picker>
             </v-dialog>
             <input-pilih-kejuruan v-model="item.id_kejuruan" :errors="errors"/>
-            <v-text-field
-                dense
-                outlined
-                v-model="item.paket"
-                name="paket"
-                label="Paket"
-				type="number"
-                :error-messages="errors.paket"
-                @keyup="errors.paket = null"/>
+            <input-pilih-instruktur v-model="item.nip" :errors="errors"/>
         </div>
         <div>
             <v-textarea
@@ -106,9 +91,10 @@
     </div>
 </template>
 <script>
+import InputPilihInstruktur from './InputPilihInstruktur.vue';
 import InputPilihKejuruan from './InputPilihKejuruan.vue';
 export default {
-    components: {InputPilihKejuruan },
+    components: {InputPilihKejuruan, InputPilihInstruktur },
     props: {
         errors: Object,
         value: {
@@ -122,6 +108,7 @@ export default {
                     waktu: null,
                     input_foto: null,
                     id_kejuruan: null,
+                    nip: null,
                     materi: null
                 }
             }
