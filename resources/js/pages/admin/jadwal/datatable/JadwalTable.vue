@@ -13,15 +13,31 @@
         single-select
         v-model="selected"
         :mobile-breakpoint="0">
-        <template #item.nama_jadwal="{item}">
-            <div class="d-block py-1" @click="rowClick(item)">
+        <template #item.id_jadwal="{item}">
+            <a href="#" class="d-block py-1" @click.prevent="rowClick(item)">
                 <div class="mb-1">
-                    {{ item.nama_jadwal }}
+                    #{{ item.id_jadwal }}
                 </div>
-            </div>
+            </a>
+        </template>
+        <template #item.id_kejuruan="{item}">
+            {{ item.kejuruan.nama_kejuruan }}
+        </template>
+        <template #item.nip="{item}">
+            <v-list-item-content>
+                <v-list-item-title>
+                    {{ item.instruktur.nama }}
+                </v-list-item-title>
+                <v-list-item-subtitle>
+                    NIP.{{ item.nip }}
+                </v-list-item-subtitle>
+            </v-list-item-content>
         </template>
         <template #item.created_at="{item}">
 			{{ item.created_at | datetime }}
+        </template>
+        <template #item.tanggal="{item}">
+			{{ item.tanggal | date }}
         </template>
         <template #item.action="{item}">
 			<div class="d-flex justify-end">

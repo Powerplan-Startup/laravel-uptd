@@ -62,11 +62,13 @@ export default {
             ],
             items: [],
             headers: [
-                { text: 'Nama Jadwal', align: 'start', sortable: true, value: 'nama_jadwal' },
-                { text: 'Paket', align: 'start d-none d-sm-table-cell', sortable: true, value: 'paket' },
-                { text: 'Jadwal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'id_jadwal' },
+                { text: null, align: 'start', sortable: false, value: 'id_jadwal' },
+                { text: 'Kejuruan', align: 'start', sortable: true, value: 'id_kejuruan' },
+                { text: 'Instruktur', align: 'start d-none d-sm-table-cell', sortable: true, value: 'nip' },
+                { text: 'Tanggal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal' },
+                { text: 'Waktu', align: 'end d-none d-sm-table-cell', sortable: true, value: 'waktu' },
                 { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
-                { text: null, align: '', sortable: true, value: 'action' },
+                { text: null, align: '', sortable: false, value: 'action' },
             ],
             options: {
                 page: 1,

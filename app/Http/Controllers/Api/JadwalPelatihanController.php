@@ -21,6 +21,7 @@ class JadwalPelatihanController extends Controller
                         : 'ASC' );
             }
         })
+        ->with(['kejuruan', 'instruktur'])
         ->when(request('search'), function($query, $search){
             $query->where('nama', 'like', "%{$search}%");
         })
