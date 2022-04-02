@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\JadwalPelatihanStoreRequest;
+use App\Http\Requests\JadwalPelatihanUpdateRequest;
 use App\Http\Resources\JadwalPelatihanResource;
 use App\Models\JadwalPelatihan;
 use Illuminate\Http\Request;
@@ -36,29 +37,19 @@ class JadwalPelatihanController extends Controller
         return new Response($collection, $jadwal ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    public function show(JadwalPelatihan $jadwalPelatihan){
+    public function show($id){
+        $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
+        return new JadwalPelatihanResource($jadwalPelatihan);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JadwalPelatihan  $jadwalPelatihan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, JadwalPelatihan $jadwalPelatihan)
-    {
-        //
+    public function update(JadwalPelatihanUpdateRequest $request, $id){
+        $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
+        $data = collect($request->validated())->except([]);
+        $result = $jadwalPelatihan->update($data->all());
+        $collection = new JadwalPelatihanResource($jadwalPelatihan);
+        return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\JadwalPelatihan  $jadwalPelatihan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(JadwalPelatihan $jadwalPelatihan)
-    {
-        //
+    public function destroy(JadwalPelatihan $jadwalPelatihan){
     }
 }
