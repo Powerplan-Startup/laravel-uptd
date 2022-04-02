@@ -9,5 +9,9 @@ class Pendaftaran extends Model
 {
     use HasFactory;
     protected $guarded = ['nomor_peserta'];
-
+    
+    public function instruktur()
+    {
+        return $this->belongsTo(Instruktur::class, 'nip');
+    }
 }
