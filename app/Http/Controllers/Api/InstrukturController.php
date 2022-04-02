@@ -45,15 +45,8 @@ class InstrukturController extends Controller{
         $collection = new InstrukturResource($instruktur);
         return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Instruktur  $instruktur
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Instruktur $instruktur)
-    {
-        //
+    public function destroy(Instruktur $instruktur){
+        $result = $instruktur->delete();
+        return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }
