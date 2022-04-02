@@ -108,6 +108,19 @@
 					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
+			<v-list-item :to="{ name: 'laporan' }" color="primary" exact>
+				<v-list-item-icon>
+					<v-icon>mdi-printer</v-icon>
+				</v-list-item-icon>
+				<v-list-item-content>
+					<v-list-item-title>
+						Laporan
+					</v-list-item-title>
+					<v-list-item-subtitle>
+						Lihat & Cetak Laporan
+					</v-list-item-subtitle>
+				</v-list-item-content>
+			</v-list-item>
 		</v-list>
 	</v-navigation-drawer>
 </template>
