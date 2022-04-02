@@ -37,6 +37,26 @@
 									</div>
 								</div>
                             </v-card>
+                            <v-card color="teal lighten-5 overflow-hidden" rounded="xl" flat link :to="{ name: '.list' }">
+								<div class="d-flex">
+									<v-card-text>
+										<div class="d-flex w-100">
+											<v-avatar color="teal lighten-4">
+												<v-icon>mdi-school</v-icon>
+											</v-avatar>
+											<v-spacer/>
+										</div>
+									</v-card-text>
+									<div class="grow">
+										<v-card-text class="text-h2 text-right">
+											{{ total_alumni }}
+										</v-card-text>
+										<v-card-text class="text-right pt-0">
+											Total Alumni
+										</v-card-text>
+									</div>
+								</div>
+                            </v-card>
                             <div class="d-lg-block d-none">
                                 <div class="d-grid-main mini fill-height">
 									<v-card class="grey lighten-4 overflow-hidden" flat rounded="xl">
@@ -120,26 +140,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <v-card color="pink lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
-                                <div style="min-height: 125px" class="d-flex">
-                                    <div class="w-100">
-                                        <div class="content-middle">
-                                            <v-card-text>
-                                                <div class="d-flex flex-column align-center w-100">
-                                                    <v-avatar color="pink lighten-4 shadow-sm">
-                                                        <v-icon v-text="'mdi-plus'" color="pink darken-1"/>
-                                                    </v-avatar>
-                                                    <div class="grow-1 pl-4">
-                                                        <v-subheader class="pink-text">
-                                                            Tambah Peserta
-                                                        </v-subheader>
-                                                    </div>
-                                                </div>
-                                            </v-card-text>
-                                        </div>
-                                    </div>
-                                </div>
-                            </v-card>
                         </div>
                     </v-expand-transition>
                     <v-fab-transition>
@@ -167,6 +167,7 @@ export default {
             loading: false,
             items: [],
             total: 0,
+            total_alumni: 0,
             show: true,
         }
     },
@@ -197,6 +198,7 @@ export default {
             showUbahDialog: 'peserta/setModalUbah',
             showHapusDialog: 'peserta/setModalHapus',
             getItems: 'peserta/get',
+            getCount: 'peserta/count',
         }),
         openModalTambah(){
             this.showTambahDialog(true)
@@ -215,11 +217,26 @@ export default {
                 sortDesc: [true],
             }).catch(e => {
                 console.log("loadItem@PesertaIndex.vue", e);
-            });
-            this.loading = false
+            }).finally(() => {
+                this.loading = false
+                this.loadAlumniCount()
+            })
             if(res?.data?.data){
                 this.items = res.data.data;
                 this.total = res?.data?.meta?.total || 0;
+            }
+        },
+        async loadAlumniCount(){
+            this.loading = true
+            let res = await this.getCount({
+                status: 'alumni',
+            }).catch(e => {
+                console.log("loadAlumniCount@PesertaIndex.vue", e);
+            }).finally(() => {
+                this.loading = false
+            });
+            if(res?.data?.data){
+                this.total_alumni = res?.data?.data || 0;
             }
         }
     },

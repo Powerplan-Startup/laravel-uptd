@@ -1,5 +1,6 @@
 
 import IndexDashboard from '../pages/admin/IndexDashboard.vue'
+import peserta from './pages/peserta'
 import instruktur from './pages/instruktur'
 import jadwal from './pages/jadwal'
 
@@ -10,6 +11,7 @@ export default [
 	...kejuruan,
     ...instruktur,
     ...jadwal,
+    ...peserta,
 
     // { path: '/admin/403', component: Error403, name: 'error.404' },
     // { path: '/admin/401', component: Error401, },

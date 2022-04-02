@@ -95,6 +95,19 @@
 					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
+			<v-list-item :to="{ name: 'peserta' }" color="primary">
+				<v-list-item-icon>
+					<v-icon>mdi-account-group</v-icon>
+				</v-list-item-icon>
+				<v-list-item-content>
+					<v-list-item-title>
+						Peserta
+					</v-list-item-title>
+					<v-list-item-subtitle>
+						Kelola Daftar Peserta
+					</v-list-item-subtitle>
+				</v-list-item-content>
+			</v-list-item>
 		</v-list>
 	</v-navigation-drawer>
 </template>
