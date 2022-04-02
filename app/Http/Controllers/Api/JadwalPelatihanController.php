@@ -38,7 +38,7 @@ class JadwalPelatihanController extends Controller
     }
 
     public function show($id){
-        $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
+        $jadwalPelatihan = JadwalPelatihan::with(['kejuruan', 'instruktur'])->findOrFail($id);
         return new JadwalPelatihanResource($jadwalPelatihan);
     }
 
@@ -50,6 +50,9 @@ class JadwalPelatihanController extends Controller
         return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    public function destroy(JadwalPelatihan $jadwalPelatihan){
+    public function destroy($id){
+        $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
+        $result = $jadwalPelatihan->delete();
+        return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

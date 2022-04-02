@@ -5,11 +5,11 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Konfirmasi Hapus data Jadwal > {{ item.nama_jadwal }}
+                            Konfirmasi Hapus data Jadwal > #{{ item.id_jadwal }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="error lighten-5">
-                            <v-icon color="error">mdi-bookmark</v-icon>
+                            <v-icon color="error">mdi-calendar-remove</v-icon>
                         </v-avatar>
                     </v-toolbar>
                     <v-divider/>
