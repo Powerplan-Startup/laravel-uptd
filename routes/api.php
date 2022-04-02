@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\JadwalPelatihanController;
 use App\Http\Controllers\Api\KejuruanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resources([
-    'kejuruan' => KejuruanController::class,
-    'instruktur' => App\Http\Controllers\Api\InstrukturController::class,
+    'kejuruan'      => KejuruanController::class,
+    'instruktur'    => App\Http\Controllers\Api\InstrukturController::class,
+    'jadwal'        => JadwalPelatihanController::class,
 ]);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
