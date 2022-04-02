@@ -1,3 +1,4 @@
+import jadwal from "../routes/pages/jadwal"
 import instruktur from "./models/instruktur"
 import jenis_kelamin from "./models/jenis_kelamin"
 import kejuruan from "./models/kejuruan"
@@ -8,5 +9,6 @@ export const states = {
 	notifikasi,
 	instruktur,
 	jenis_kelamin,
+	jadwal,
 }
 export default states
