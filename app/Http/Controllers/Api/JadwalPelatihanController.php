@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\JadwalPelatihanStoreRequest;
 use App\Http\Resources\JadwalPelatihanResource;
 use App\Models\JadwalPelatihan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class JadwalPelatihanController extends Controller
 {
@@ -26,18 +28,14 @@ class JadwalPelatihanController extends Controller
         return JadwalPelatihanResource::collection($data);
     }
 
-    public function store(Request $request){
+    public function store(JadwalPelatihanStoreRequest $request){
+        $data = collect($request->validated())->except([]);
+        $jadwal = JadwalPelatihan::create($data->all());
+        $collection = new JadwalPelatihanResource($jadwal);
+        return new Response($collection, $jadwal ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\JadwalPelatihan  $jadwalPelatihan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(JadwalPelatihan $jadwalPelatihan)
-    {
-        //
+    public function show(JadwalPelatihan $jadwalPelatihan){
     }
 
     /**

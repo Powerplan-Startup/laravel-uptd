@@ -20,7 +20,7 @@ return new class extends Migration
                 ->on('kejuruan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->removeColumn('nama_kejuruan');
+            $table->dropColumn('nama_kejuruan');
         });
     }
 

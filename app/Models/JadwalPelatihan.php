@@ -10,4 +10,5 @@ class JadwalPelatihan extends Model
     use HasFactory;
     protected $table = 'jadwal_pelatihan';
     protected $primaryKey = 'id_jadwal';
+    protected $guarded = [];
 }
