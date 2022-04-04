@@ -1,7 +1,7 @@
 @extends('public.main')
 
 @section('container')
-<!-- ======= About Section ======= -->
+<!-- ======= Pendaftaran Section ======= -->
 <div class="about-area area-padding">
     <div class="container">
         <div class="row">
@@ -16,10 +16,8 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="well-left">
             <div class="single-well">
-                <a href="#">
-                <img src="assets/img/about/1.jpg" alt="">
-                <a href="/pendaftaran"><h4 class="text-center mt-2">Daftar Sekarang</h4></a>
-                </a>
+                <img src="assets/img/uptd/5.jpg" alt="">
+                <a href="/pendaftaran"><h4 class="text-center mt-2" style="color: deepskyblue">Daftar Sekarang</h4></a>
             </div>
             </div>
         </div>
