@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\PendaftaranController;
 use App\Http\Controllers\Public\BeritaController;
 use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\InstrukturController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('alumni', [HomeController::class, 'alumni']);
 Route::get('visimisi', [HomeController::class, 'visimisi']);
+Route::get('instruktur', [InstrukturController::class, 'index']);
 
 Route::get('berita', [BeritaController::class, 'blog']);
 Route::get('blog', function(){
