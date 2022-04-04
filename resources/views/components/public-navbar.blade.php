@@ -12,7 +12,7 @@
                 <li><a href="#">Data Calon Peserta Pelatihan</a></li>
                 <li><a href="#">Data Peserta Pelatihan</a></li>
                 <li><a href="instruktur">Data Instruktur</a></li>
-                <li><a href="#">Data Kejuruan</a></li>
+                <li><a href="kejuruan">Data Kejuruan</a></li>
                 <li><a href="#">Data Jadwal Pelatihan</a></li>
             </ul>
         </li>

@@ -62,9 +62,9 @@
                     <a href="blog-details.html" class="ready-btn">Read more</a>
                     </span>
                 </div> --}}
-                @foreach ($instruktur as $inst)
                 <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    @foreach ($instruktur as $inst)
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="single-team-member">
                             <div class="team-img">
                                 <a href="#">
@@ -92,24 +92,16 @@
                             </div>
                             <div class="team-content text-center">
                                 <h4>{{ $inst->nama }}</h4>
-                                <p>Seo</p>
+                                <p>NIP. {{ $inst->nip }}</p>
+                                <p>{{ $inst->materi }}</p>
                             </div>
                         </div>
                     </div>
                     <!-- End column -->
+                    @endforeach
                 </div>
-                @endforeach
             </div>
             <!-- End single blog -->
-            <div class="blog-pagination">
-                <ul class="pagination">
-                    <li class="page-item"><a href="#" class="page-link">&lt;</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">&gt;</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

@@ -12,14 +12,7 @@ class InstrukturController extends Controller
     {
         return view('public.instruktur',[
             'title' => 'Instruktur',
-            
-        ]);
-    }
-
-    public function show(Instruktur $instruktur)
-    {
-        return view('public.instruktur',[
-            'instruktur' => $instruktur
+            'instruktur' => Instruktur::get()
         ]);
     }
 }
