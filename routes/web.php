@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Auth\PendaftaranController;
+use App\Http\Controllers\AuthAdmin\PendaftaranController;
 use App\Http\Controllers\Public\BeritaController;
 use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\InstrukturController;
@@ -35,6 +35,15 @@ Route::get('blog', function(){
 Route::get('pendaftaran', [PendaftaranController::class, 'index']);
 
 
+
+/**
+ * login admin
+ * 
+ */
+Route::get('login/admin', [App\Http\Controllers\AuthAdmin\LoginController::class, 'showLoginForm'])->name('login.admin.show');
+Route::post('login/admin', [App\Http\Controllers\AuthAdmin\LoginController::class, 'login'])->name('login.admin');
+Route::get('admin/logout', [App\Http\Controllers\AuthAdmin\LoginController::class, 'logout'])->name('logout.admin');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -43,7 +52,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  * route untuk halaman admin
  * 
  */
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
     Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');
 });
