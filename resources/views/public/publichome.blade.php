@@ -17,7 +17,7 @@
             <div class="well-left">
             <div class="single-well">
                 <img src="assets/img/uptd/5.jpg" alt="">
-                <a href="/pendaftaran"><h4 class="text-center mt-2" style="color: deepskyblue">Daftar Sekarang</h4></a>
+                <a href="/pendaftaran"><h4 class="text-center mt-2 fw-bold" style="color: #3EC1D5; text-">Daftar Sekarang</h4></a>
             </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
     </div>
 </div><!-- End About Section -->
     
-    <!-- ======= Services Section ======= -->
+    <!-- ======= Kejuruan Section ======= -->
 <div class="services-area area-padding">
     <div class="container">
         <div class="row">
@@ -175,9 +175,9 @@
         </div>
         </div>
     </div>
-</div><!-- End Services Section -->
+</div><!-- End Kejuruan Section -->
     
-    <!-- ======= Team Section ======= -->
+    <!-- ======= Instruktur Section ======= -->
 <div class="our-team-area area-padding">
     <div class="container">
         <div class="row">
@@ -322,7 +322,7 @@
         <!-- End column -->
         </div>
     </div>
-</div><!-- End Team Section -->
+</div><!-- End Instruktur Section -->
     
     <!-- ======= Blog Section ======= -->
 <div class="blog-area">
