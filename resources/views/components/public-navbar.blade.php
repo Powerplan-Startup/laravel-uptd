@@ -17,10 +17,10 @@
             </ul>
         </li>
         <li><a class="nav-link scrollto" href="/alumni">Penempatan</a></li>
-        @auth
+        @if(auth()->check())
             <li class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Welcome, {{ auth()->user()->name }}
+                Halo, {{ auth()->user()->nama }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/dashboard" target="_blank"><i class="bi bi-layout-text-window-reverse"></i> Dashboard</a></li>
@@ -33,12 +33,27 @@
                 </li>
             </ul>
             </li>
-            @else
+        @elseif(auth('admin')->check())
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Halo, {{ auth('admin')->user()->nama }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/admin" target="_blank"><i class="bi bi-layout-text-window-reverse"></i> Dashboard</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i> Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        @else
             <li class="nav-link">
                 <a class="nav-link px-3" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
             </li>
-        @endauth
-
+        @endif
         {{-- <li><a href="blog.html">Blog</a></li>
         <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

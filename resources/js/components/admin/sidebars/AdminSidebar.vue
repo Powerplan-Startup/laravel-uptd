@@ -15,13 +15,13 @@
 						</v-list-item-subtitle>
 					</v-list-item-content>
 					<v-list-item-action title="Keluar">
-						<v-btn icon>
+						<v-btn icon link href="/admin/logout">
 							<v-icon>mdi-power</v-icon>
 						</v-btn>
 					</v-list-item-action>
 				</v-list-item>
 				<v-divider></v-divider>
-				<v-list-item link>
+				<v-list-item link href="/" target="_blank">
 					<v-list-item-content>
 						<v-list-item-title>
 							Lihat Website

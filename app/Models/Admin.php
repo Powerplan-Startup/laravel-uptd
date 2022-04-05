@@ -25,6 +25,6 @@ class Admin extends Authenticatable
 
     protected $casts = [];
 
-    protected $table = 'user';
-    protected $primaryKey = 'id_user';
+    protected $table = 'admin';
+    protected $primaryKey = 'id_admin';
 }
