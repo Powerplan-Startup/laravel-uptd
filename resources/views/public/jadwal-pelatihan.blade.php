@@ -28,7 +28,7 @@
                     <div class="card-body">
                       <h5 class="card-title text-decoration-underline">{{ $jadwal->kejuruan->nama_kejuruan }}</h5>
                       <p class="card-text"><i class="bi bi-check"></i> {{ $jadwal->instruktur->nama }}</p>
-                      <p class="card-text"><i class="bi bi-check"></i> {{ strtotime($jadwal->waktu) }}</p>
+                      <p class="card-text"><i class="bi bi-check"></i> {{ $jadwal->waktu }}</p>
                       <p class="card-text"><i class="bi bi-check"></i> {{ $jadwal->materi }}</p>
                     </div>
                 </div>
