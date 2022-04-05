@@ -21,7 +21,7 @@
 					</v-list-item-action>
 				</v-list-item>
 				<v-divider></v-divider>
-				<v-list-item link>
+				<v-list-item link href="/" target="_blank">
 					<v-list-item-content>
 						<v-list-item-title>
 							Lihat Website
