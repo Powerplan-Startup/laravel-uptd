@@ -18,17 +18,19 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::prefix('analityc')->group(function () {
-    Route::get('/peserta/count', [CountController::class, 'peserta']);
-});
-
-Route::resources([
-    'kejuruan'      => KejuruanController::class,
-    'instruktur'    => App\Http\Controllers\Api\InstrukturController::class,
-    'jadwal'        => JadwalPelatihanController::class,
-    'peserta'       => PesertaController::class,
-]);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('analityc')->group(function () {
+        Route::get('/peserta/count', [CountController::class, 'peserta']);
+    });
+    
+    Route::resources([
+        'kejuruan'      => KejuruanController::class,
+        'instruktur'    => App\Http\Controllers\Api\InstrukturController::class,
+        'jadwal'        => JadwalPelatihanController::class,
+        'peserta'       => PesertaController::class,
+    ]);
 });

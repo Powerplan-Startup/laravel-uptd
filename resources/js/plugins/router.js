@@ -34,7 +34,6 @@ router.beforeEach(async (to, from, next) => {
     }, function (error) {
         if(error.response.status == 401){
             localStorage.removeItem('authToken')
-            // store.commit('app/SET_LOADING_APP', false)
             if(to.path == '/admin/401'){
                 return null
             }
@@ -49,10 +48,23 @@ router.beforeEach(async (to, from, next) => {
     });
 
     // store.commit('SETLOADINGAPP', true)
-	return next();
+	// return next();
 
-    // if(to.path == '/admin/401') return next()
-    // if(store.getters['_login/admin/exists']) return next()
+    if(to.path == '/admin/401') return next()
+    await store.dispatch('auth/getToken')
+    let token = store.getters['auth/token'];
+
+    let Authorization = "";
+
+    if(token)
+        Authorization = `Bearer ${token}`
+    
+    axios.defaults.headers.common = {
+        Authorization: Authorization,
+        "Accept": "application/json",
+    };
+
+    if(store.getters['auth/hasToken']) return next()
 
     // let token = localStorage.getItem('authToken')
     // let res = await store.dispatch('_login/admin/check', {

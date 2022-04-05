@@ -1,3 +1,4 @@
+import auth from "./models/auth"
 import instruktur from "./models/instruktur"
 import jadwal from "./models/jadwal"
 import jenis_kelamin from "./models/jenis_kelamin"
@@ -12,5 +13,6 @@ export const states = {
 	jenis_kelamin,
 	jadwal,
 	peserta,
+	auth,
 }
 export default states
