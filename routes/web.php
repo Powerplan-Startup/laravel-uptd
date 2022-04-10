@@ -30,13 +30,8 @@ Route::get('instruktur', [InstrukturController::class, 'index']);
 Route::get('kejuruan', [KejuruanController::class, 'index']);
 Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
 
+Route::get('blog', [BeritaController::class, 'index']);
 Route::get('posts/{slug}', [BeritaController::class, 'blog']);
-Route::get('blog', function(){
-    return view('public.blog',[
-        'title' => 'Berita',
-        'posts' => Berita::all()
-    ]);
-});
 
 Route::get('pendaftaran', [PendaftaranController::class, 'index']);
 
