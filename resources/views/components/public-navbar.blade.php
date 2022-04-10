@@ -4,16 +4,16 @@
         <li><a class="nav-link scrollto" href="/blog">Berita</a></li>
         <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-                <li><a href="visimisi">Visi dan Misi</a></li>
+                <li><a href="/visimisi">Visi dan Misi</a></li>
             </ul>
         </li>
         <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 <li><a href="#">Data Calon Peserta Pelatihan</a></li>
                 <li><a href="#">Data Peserta Pelatihan</a></li>
-                <li><a href="instruktur">Data Instruktur</a></li>
-                <li><a href="kejuruan">Data Kejuruan</a></li>
-                <li><a href="jadwal-pelatihan">Data Jadwal Pelatihan</a></li>
+                <li><a href="/instruktur">Data Instruktur</a></li>
+                <li><a href="/kejuruan">Data Kejuruan</a></li>
+                <li><a href="/jadwal-pelatihan">Data Jadwal Pelatihan</a></li>
             </ul>
         </li>
         <li><a class="nav-link scrollto" href="/alumni">Penempatan</a></li>
