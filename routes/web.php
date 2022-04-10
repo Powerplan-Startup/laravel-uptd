@@ -8,6 +8,7 @@ use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\InstrukturController;
 use App\Http\Controllers\Public\JadwalplthnController;
 use App\Http\Controllers\Public\KejuruanController;
+use App\Models\Berita;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +30,11 @@ Route::get('instruktur', [InstrukturController::class, 'index']);
 Route::get('kejuruan', [KejuruanController::class, 'index']);
 Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
 
-Route::get('berita', [BeritaController::class, 'blog']);
+Route::get('posts/{slug}', [BeritaController::class, 'blog']);
 Route::get('blog', function(){
     return view('public.blog',[
-        'title' => 'Blog'
+        'title' => 'Berita',
+        'posts' => Berita::all()
     ]);
 });
 
