@@ -39,7 +39,7 @@
                     @foreach ($posts as $post)
                     <div class="single-blog-img">
                         <a href="blog-details.html">
-                            <img src="assets/img/blog/1.jpg" alt="">
+                            <img src="{{ asset('assets/img/uptd/kepala-uptd.jpg') }}" alt="">
                         </a>
                     </div>
                     <div class="blog-meta">
