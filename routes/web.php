@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\AuthAdmin\PendaftaranController;
+use App\Http\Controllers\Auth\PendaftaranController;
 use App\Http\Controllers\AuthTokenController;
 use App\Http\Controllers\Public\BeritaController;
 use App\Http\Controllers\Public\HomeController;

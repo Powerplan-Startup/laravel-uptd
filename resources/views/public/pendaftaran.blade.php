@@ -2,27 +2,6 @@
 
 @section('container')
 <main id="main">
-{{-- 
-<!-- ======= Blog Header ======= -->
-<div class="header-bg page-area">
-    <div class="container position-relative">
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="slider-content text-center">
-            <div class="header-bottom">
-            <div class="layer2">
-                <h1 class="title2">Blog Details </h1>
-            </div>
-            <div class="layer3">
-                <h2 class="title3">profesional Blog Page</h2>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-</div><!-- End Blog Header --> --}}
-
 <!-- ======= Blog Page ======= -->
 <div class="blog-page area-padding">
     <div class="container">
@@ -61,8 +40,8 @@
                                                 <td >:</td>
                                                 <td ><select class="form-select" name="jenis_kelamin" aria-label="Default select example">
                                                     <option selected>Pilih Jenis Kelamin</option>
-                                                    <option value="1">Laki - Laki</option>
-                                                    <option value="2">Perempuan</option>
+                                                    <option value="l">Laki - Laki</option>
+                                                    <option value="p">Perempuan</option>
                                                 </select>
                                                 </td>
                                             </tr>
@@ -80,7 +59,7 @@
                                             <tr>
                                                 <td scope="row">Tanggal Lahir</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control" type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                                                <td ><input class="form-control" type="date" id="tanggal_lahir" name="tanggal_lahir" onkeyup="getAge();" required>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -139,18 +118,25 @@
                                                 <td >:</td>
                                                 <td ><select class="form-select" name="agama" aria-label="Default select example">
                                                     <option selected>Pilih Agama</option>
-                                                    <option value="1">Islam</option>
-                                                    <option value="2">Kristen</option>
-                                                    <option value="3">Katolik</option>
-                                                    <option value="4">Hindu</option>
-                                                    <option value="5">Budha</option>
+                                                    <option value="islam">Islam</option>
+                                                    <option value="kristen">Kristen</option>
+                                                    <option value="katolik">Katolik</option>
+                                                    <option value="hindu">Hindu</option>
+                                                    <option value="budha">Budha</option>
+                                                    <option value="konghucu">Konghucu</option>
                                                 </select>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td scope="row">Status</td>
                                                 <td >:</td>
-                                                <td ><input class="form-control @error('status')is-invalid @enderror" type="text" id="status" name="status" value="{{ old('status') }}" required>
+                                                <td ><select class="form-select" name="status" aria-label="Default select example">
+                                                    <option selected>Pilih Status</option>
+                                                    <option value="lajang">Lajang</option>
+                                                    <option value="menikah">Menikah</option>
+                                                    <option value="dua">Duda</option>
+                                                    <option value="janda">Janda</option>
+                                                </select>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -192,6 +178,29 @@
         </div>
     </div>
 </div><!-- End Blog Page -->
+<script>
+    function getAge() {
+var date = document.getElementById('umur').value;
 
+if(date === ""){
+    alert("Please complete the required field!");
+}else{
+    var today = new Date();
+    var umur = new Date(date);
+    var year = 0;
+    if (today.getMonth() < umur.getMonth()) {
+        year = 1;
+    } else if ((today.getMonth() == umur.getMonth()) && today.getDate() < umur.getDate()) {
+        year = 1;
+    }
+    var umur = today.getFullYear() - umur.getFullYear() - year;
+
+    if(umur < 0){
+        umur = 0;
+    }
+    document.getElementById('result').innerHTML = umur;
+}
+}
+</script>
 </main><!-- End #main -->
 @endsection
