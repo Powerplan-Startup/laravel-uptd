@@ -38,7 +38,7 @@
                     <!-- single-blog start -->
                     <article class="blog-post-wrapper">
                         <div class="post-thumbnail">
-                            <img src="{{ asset('assets/img/blog/1.jpg') }}" alt="">
+                            <img src="{{ asset('assets/img/uptd/kepala-uptd.jpg') }}" alt="">
                         </div>
                         <div class="post-information">
                         <h2>{{ $post["title"] }}</h2>
