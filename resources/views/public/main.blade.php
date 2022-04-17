@@ -42,7 +42,7 @@
       </div>
     </header><!-- End Header -->
 
-    <!-- ======= hero Section ======= -->
+    {{-- <!-- ======= hero Section ======= -->
     <section id="hero">
       <div class="hero-container">
         <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
@@ -93,8 +93,27 @@
 
         </div>
       </div>
-    </section><!-- End Hero Section -->
-
+    </section><!-- End Hero Section --> --}}
+    <section class="main-biru d-flex" style="padding-top: 96px; min-height: 90vh; background-image: linear-gradient(to top, rgba(27, 20, 9, 0.8) 10%, rgba(0, 0, 0, .25), rgb(167, 198, 245) 90%), url('/assets/img/uptd/Artboard1.jpg'); background-size: cover">
+      <div class="container py-5" style="">
+          <div class="row h-100">
+              <div class="col-12">
+                  <div class="h-100 d-flex flex-column justify-content-center p-5" style="filter: drop-shadow(10px 5px 8px rgba(0, 0, 0, 1));">
+                      <div>
+                          <h1 class="mb-0 display-4 fw-bolder" style="font-family: 'Catamaran', sans-serif; color: rgb(96, 204, 220)">
+                              UPTD Latihan Kerja
+                          </h1>
+                      </div>
+                      <div>
+                          <div class="fw-light" style="font-size: 2rem">
+                              Propinsi Nusa Tenggara Timur
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
     <main id="main">
 
       {{-- @include('components.public-main') --}}

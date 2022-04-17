@@ -315,7 +315,7 @@ div#preloader {
   padding: 10px 0 10px 30px;
   font-size: 15px;
   font-weight: 500;
-  color: #fff;
+  color: rgb(255, 255, 255);
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -2427,4 +2427,14 @@ span.email-notes {
   .slider-content {
     padding: 0;
   }
+}
+
+.main-biru{
+  background-color: #ffffff;
+  /* background-image: url('/images/Artboard1.png'); */
+  color: #ffff;
+}
+
+.main-biru h3 span{
+  color: #D8D2CB;
 }
