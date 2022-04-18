@@ -14,8 +14,8 @@
         </li>
         <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-                <li><a href="#">Data Calon Peserta Pelatihan</a></li>
-                <li><a href="#">Data Peserta Pelatihan</a></li>
+                <li><a href="/calon-peserta">Data Calon Peserta Pelatihan</a></li>
+                <li><a href="/peserta">Data Peserta Pelatihan</a></li>
                 <li><a href="/instruktur">Data Instruktur</a></li>
                 <li><a href="/kejuruan">Data Kejuruan</a></li>
                 <li><a href="/jadwal-pelatihan">Data Jadwal Pelatihan</a></li>
