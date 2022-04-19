@@ -29,6 +29,7 @@ Route::get('visimisi', [HomeController::class, 'visimisi']);
 Route::get('instruktur', [InstrukturController::class, 'index']);
 Route::get('kejuruan', [KejuruanController::class, 'index']);
 Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
+Route::get('jadwal', [JadwalplthnController::class, 'jadwal']);
 
 Route::get('blog', [BeritaController::class, 'index']);
 Route::get('posts/{slug}', [BeritaController::class, 'blog']);
