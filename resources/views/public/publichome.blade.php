@@ -1,4 +1,6 @@
-@extends('public.main')
+@extends('public.main', [
+    'full'  => true
+])
 
 @section('container')
 <!-- ======= Pendaftaran Section ======= -->

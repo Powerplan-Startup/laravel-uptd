@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -10,9 +10,11 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
@@ -26,108 +28,60 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
-      <div class="container d-flex justify-content-between">
+        <div class="container d-flex justify-content-between">
 
-        <div class="logo">
-          <h1 class="fs-3 mt-3"><a href="/"><span>UPTD</span> Latihan Kerja Prov. NTT</a></h1>
-        </div>
-
-        @include('components.public-navbar')
-
-      </div>
-    </header><!-- End Header -->
-
-    {{-- <!-- ======= hero Section ======= -->
-    <section id="hero">
-      <div class="hero-container">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-          <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
-
-          <div class="carousel-inner" role="listbox">
-
-            <div class="carousel-item active" style="background-image: url({{ asset('assets/img/hero-carousel/1.jpg') }})">
-              <div class="carousel-container">
-                <div class="container">
-                  <h2 class="animate__animated animate__fadeInDown">The Best Business Information </h2>
-                  <p class="animate__animated animate__fadeInUp">We're In The Business Of Helping You Start Your Business</p>
-                  <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                </div>
-              </div>
+            <div class="logo">
+                <h1 class="fs-3 mt-3"><a href="/"><span>UPTD</span> Latihan Kerja Prov. NTT</a></h1>
             </div>
 
-            <div class="carousel-item" style="background-image: url({{ asset('assets/img/hero-carousel/2.jpg') }})">
-              <div class="carousel-container">
-                <div class="container">
-                  <h2 class="animate__animated animate__fadeInDown">At vero eos et accusamus</h2>
-                  <p class="animate__animated animate__fadeInUp">Helping Business Security & Peace of Mind for Your Family</p>
-                  <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item" style="background-image: url({{ asset('assets/img/hero-carousel/3.jpg') }})">
-              <div class="carousel-container">
-                <div class="container">
-                  <h2 class="animate__animated animate__fadeInDown">Temporibus autem quibusdam</h2>
-                  <p class="animate__animated animate__fadeInUp">Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem</p>
-                  <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-          </a>
-
-          <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-          </a>
+            @include('components.public-navbar')
 
         </div>
-      </div>
-    </section><!-- End Hero Section --> --}}
-    <section class="main-biru d-flex" style="padding-top: 96px; min-height: 90vh; background-image: linear-gradient(to top, rgba(27, 20, 9, 0.8) 10%, rgba(0, 0, 0, .25), rgb(167, 198, 245) 90%), url('/assets/img/uptd/Artboard1.jpg'); background-size: cover">
-      <div class="container py-5" style="">
-          <div class="row h-100">
-              <div class="col-12">
-                  <div class="h-100 d-flex flex-column justify-content-center p-5" style="filter: drop-shadow(10px 5px 8px rgba(0, 0, 0, 1));">
-                      <div>
-                          <h1 class="mb-0 display-4 fw-bolder" style="font-family: 'Catamaran', sans-serif; color: rgb(96, 204, 220)">
-                              UPTD Latihan Kerja
-                          </h1>
-                      </div>
-                      <div>
-                          <div class="fw-light" style="font-size: 2rem">
-                              Propinsi Nusa Tenggara Timur
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+    </header>
+    <section class="main-biru d-flex position-relative"
+        style="padding-top: 96px; {{ $full ?? false ? 'min-height: 90vh;' : '' }} background-image: linear-gradient(to top, rgba(27, 20, 9, 0.8) 10%, rgba(0, 0, 0, .25), rgb(167, 198, 245) 90%), url('/assets/img/uptd/Artboard1.jpg'); background-size: cover">
+        <div class="position-absolute h-100 w-100 top-0 left-0" style="background: rgba(0, 0, 0, .5)"></div>
+        <div class="container py-5" style="">
+            <div class="row h-100">
+                <div class="col-12">
+                    <div class="h-100 d-flex flex-column justify-content-center p-5"
+                        style="filter: drop-shadow(10px 5px 8px rgba(0, 0, 0, 1));">
+                        <div>
+                            <h1 class="mb-0 display-4 fw-bolder"
+                                style="font-family: 'Catamaran', sans-serif; color: rgb(96, 204, 220); color: white">
+                                UPTD Latihan Kerja
+                            </h1>
+                        </div>
+                        <div>
+                            <div class="fw-light" style="font-size: 2rem; opacity: .76">
+                                Propinsi Nusa Tenggara Timur
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <main id="main">
 
-      {{-- @include('components.public-main') --}}
-      @yield('container')
+        {{-- @include('components.public-main') --}}
+        @yield('container')
 
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    @include('components.public-footer')  
+    @include('components.public-footer')
     <!-- End  Footer -->
 
     {{-- <div id="preloader"></div> --}}
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -139,5 +93,6 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
-  </body>
+</body>
+
 </html>
