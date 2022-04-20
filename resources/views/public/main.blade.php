@@ -33,15 +33,21 @@
 <body>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center">
+    <header id="header" class="fixed-top d-flex align-items-center" style="background: rgba(17, 16, 22, 0.9); backdrop-filter: blur(1rem)">
         <div class="container d-flex justify-content-between">
-
             <div class="logo">
-                <h1 class="fs-3 mt-3"><a href="/"><span>UPTD</span> Latihan Kerja Prov. NTT</a></h1>
+                <h1 class="fs-3 mt-3 h4">
+					<a href="/">
+						<div>
+							<span>UPTD</span>
+						</div>
+						<div class="small h6" style="font-size: 1rem">
+							Latihan Kerja Prov. NTT
+						</div>
+					</a>
+				</h1>
             </div>
-
             @include('components.public-navbar')
-
         </div>
     </header>
     <section class="main-biru d-flex position-relative"
