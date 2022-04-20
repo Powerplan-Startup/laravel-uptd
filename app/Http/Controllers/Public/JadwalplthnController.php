@@ -19,7 +19,7 @@ class JadwalplthnController extends Controller
     {
         return view('public.jadwal', [
             'title' => 'Jadwal Pelatihan',
-            'jadwalpelatihan' => JadwalPelatihan::get()
+            'jadwalpelatihan' => JadwalPelatihan::orderBy('tanggal', 'asc')->orderBy('waktu', 'asc')->where('tanggal', '>=', date('Y-m-d'))->get()
         ]);
     }
 }

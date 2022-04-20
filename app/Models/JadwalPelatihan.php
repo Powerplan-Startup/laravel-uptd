@@ -11,6 +11,7 @@ class JadwalPelatihan extends Model
     protected $table = 'jadwal_pelatihan';
     protected $primaryKey = 'id_jadwal';
     protected $guarded = [];
+    protected $dates = ['tanggal'];
     
     public function kejuruan(){
         return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');

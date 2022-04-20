@@ -1,3 +1,5 @@
+{{-- 
+    @TODO: buat link ke arah berita statik --}}
 <div class="page-head-blog">
     <div class="single-blog-page">
     <!-- search option start -->
