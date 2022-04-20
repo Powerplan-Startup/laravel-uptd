@@ -43,6 +43,9 @@ export default {
 				commit('setToken', token)
 				window.localStorage.setItem('token', token)
 			}
+		},
+		loadUser({commit}){
+			return Axios.get('/api/user')
 		}
 	}
 

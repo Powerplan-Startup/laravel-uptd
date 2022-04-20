@@ -2,16 +2,16 @@
 	<v-navigation-drawer light width="300" app>
 		<div class="pa-3">
 			<v-card dark rounded="lg" class="p5-10 shadow-sm" color="indigo">
-				<v-list-item>
+				<v-list-item v-if="user.id_admin != null">
 					<v-list-item-avatar color="indigo lighten-2">
 						<v-icon>mdi-account</v-icon>
 					</v-list-item-avatar>
 					<v-list-item-content>
 						<v-list-item-title>
-							Nama Pengguna
+							{{ user.nama }}
 						</v-list-item-title>
 						<v-list-item-subtitle>
-							@namapengguna
+							{{ user.username }}
 						</v-list-item-subtitle>
 					</v-list-item-content>
 					<v-list-item-action title="Keluar">
@@ -126,7 +126,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-
+	computed: {
+		...mapState({
+			user: state => state.auth.user
+		})
+	}
 }
 </script>

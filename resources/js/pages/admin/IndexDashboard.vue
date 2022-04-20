@@ -16,9 +16,8 @@
 			<grid-peserta></grid-peserta>
 			<grid-alumni></grid-alumni>
 			<grid-calon-peserta style="grid-row: span 2"></grid-calon-peserta>
-			<!-- replace with -->
-			<grid-alumni></grid-alumni>
-			<grid-alumni></grid-alumni>
+			<grid-instruktur></grid-instruktur>
+			<grid-kejuruan></grid-kejuruan>
 		</div>
 	</v-main>
 </template>
@@ -27,8 +26,10 @@ import AdminAppbar from '../../components/admin/appbars/AdminAppbar.vue'
 import GridPeserta from '../../components/admin/grids/GridPeserta.vue'
 import GridAlumni from '../../components/admin/grids/GridAlumni.vue'
 import GridCalonPeserta from '../../components/admin/grids/GridCalonPeserta.vue'
+import GridInstruktur from '../../components/admin/grids/GridInstruktur.vue'
+import GridKejuruan from '../../components/admin/grids/GridKejuruan.vue'
 export default {
-	components: { AdminAppbar, GridPeserta, GridAlumni, GridCalonPeserta },
+	components: { AdminAppbar, GridPeserta, GridAlumni, GridCalonPeserta, GridInstruktur, GridKejuruan },
 
 }
 </script>

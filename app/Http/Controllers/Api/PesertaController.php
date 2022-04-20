@@ -23,6 +23,9 @@ class PesertaController extends Controller
             $query->where('nama', 'like', "%{$search}%");
         })
         ->paginate(request('itemsPerPage') ?? 10);
+        /**
+         * TODO tambah status
+         */
         return PesertaResource::collection($data);
     }
 

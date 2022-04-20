@@ -52,7 +52,7 @@ router.beforeEach(async (to, from, next) => {
 
     if(to.path == '/admin/401') return next()
     await store.dispatch('auth/getToken')
-    let token = store.getters['auth/token'];
+    let token = await store.getters['auth/token'];
 
     let Authorization = "";
 
@@ -63,6 +63,10 @@ router.beforeEach(async (to, from, next) => {
         Authorization: Authorization,
         "Accept": "application/json",
     };
+
+	store.dispatch('auth/loadUser').then(e => {
+        store.commit('auth/setUser', e.data)
+    })
 
     if(store.getters['auth/hasToken']) return next()
 

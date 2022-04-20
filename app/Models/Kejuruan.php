@@ -11,4 +11,8 @@ class Kejuruan extends Model
     protected $table = 'kejuruan';
     protected $primaryKey = 'id_kejuruan';
     protected $guarded = [];
+
+    public function jadwal(){
+        return $this->belongsTo(JadwalPelatihan::class, 'id_jadwal');
+    }
 }

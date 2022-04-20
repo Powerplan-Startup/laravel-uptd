@@ -1,10 +1,10 @@
 <template>
-	<v-card :color="'teal lighten-4'" rounded="xl" flat link :to="{ name: 'peserta' }" style="min-height: 250px">
+	<v-card :color="'orange lighten-4'" rounded="xl" flat link :to="{ name: 'peserta' }" style="min-height: 250px">
 		<div class="d-flex">
 			<v-card-text>
 				<div class="d-flex w-100">
-					<v-avatar :color="'teal lighten-2'">
-						<v-icon>mdi-account</v-icon>
+					<v-avatar :color="'orange lighten-2'">
+						<v-icon>mdi-account-tie</v-icon>
 					</v-avatar>
 					<v-spacer/>
 				</div>
@@ -18,7 +18,7 @@
 					</v-slide-y-reverse-transition>
 				</v-card-text>
 				<v-card-text class="text-right pt-0">
-					Total Alumni
+					Instruktur
 				</v-card-text>
 			</div>
 		</div>
@@ -34,12 +34,10 @@ export default {
 	},
 	methods: {
 		...mapActions({
-			getItem: 'peserta/get',
+			getItem: 'instruktur/get',
 		}),
 		async loadItem(){
-			let res = await this.getItem({
-                status: 'alumni',
-			}).catch(err => {
+			let res = await this.getItem({}).catch(err => {
 				console.error(err)
 			})
 			if(res){

@@ -25,6 +25,7 @@ class KejuruanController extends Controller
         ->when(request('search'), function($query, $search){
             $query->where('nama_kejuruan', 'like', "%{$search}%");
         })
+        ->with(['jadwal', 'jadwal.instruktur'])
         ->paginate(request('itemsPerPage') ?? 10);
         return KejuruanResource::collection($data);
     }
@@ -37,6 +38,7 @@ class KejuruanController extends Controller
     }
 
     public function show(Kejuruan $kejuruan){
+        $kejuruan->load(['jadwal', 'jadwal.instruktur']);
         return new KejuruanResource($kejuruan);
     }
 

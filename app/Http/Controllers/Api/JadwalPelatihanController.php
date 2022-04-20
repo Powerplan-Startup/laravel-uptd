@@ -7,6 +7,7 @@ use App\Http\Requests\JadwalPelatihanStoreRequest;
 use App\Http\Requests\JadwalPelatihanUpdateRequest;
 use App\Http\Resources\JadwalPelatihanResource;
 use App\Models\JadwalPelatihan;
+use App\Models\Kejuruan;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -33,6 +34,11 @@ class JadwalPelatihanController extends Controller
     public function store(JadwalPelatihanStoreRequest $request){
         $data = collect($request->validated())->except([]);
         $jadwal = JadwalPelatihan::create($data->all());
+        if($jadwal && $request->has('id_kejuruan')){
+            $kejuruan = Kejuruan::find($request->id_kejuruan);
+            $kejuruan->id_jadwal = $jadwal->id_jadwal;
+            $kejuruan->save();
+        }
         $collection = new JadwalPelatihanResource($jadwal);
         return new Response($collection, $jadwal ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
@@ -46,6 +52,11 @@ class JadwalPelatihanController extends Controller
         $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
         $data = collect($request->validated())->except([]);
         $result = $jadwalPelatihan->update($data->all());
+        if($result && $request->has('id_kejuruan')){
+            $kejuruan = Kejuruan::find($request->id_kejuruan);
+            $kejuruan->id_jadwal = $jadwalPelatihan->id_jadwal;
+            $kejuruan->save();
+        }
         $collection = new JadwalPelatihanResource($jadwalPelatihan);
         return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }

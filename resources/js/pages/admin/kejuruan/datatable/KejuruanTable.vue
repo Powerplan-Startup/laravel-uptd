@@ -20,6 +20,18 @@
                 </div>
             </div>
         </template>
+        <template #item.id_jadwal="{item}">
+            <div @click.prevent="rowClick(item)" v-if="item.jadwal != null">
+                <div class="mb-1">
+                    {{ `${item.jadwal.tanggal} ${item.jadwal.waktu}` | datetime }}
+                </div>
+            </div>
+            <div v-else>
+                <div>
+                    belum punya jadwal pelatihan, jadwal pelatihan dapat ditambahkan pada menu jadwal
+                </div>
+            </div>
+        </template>
         <template #item.created_at="{item}">
 			{{ item.created_at | datetime }}
         </template>
