@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>UPTD Latihan Kerja Prov. NTT | {{ $title }}</title>
+    <title>UPTD Latihan Kerja Prov. NTT | {{ $title ?? null }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -52,7 +52,7 @@
     </header>
     <section class="main-biru d-flex position-relative"
         style="padding-top: 96px; {{ $full ?? false ? 'min-height: 90vh;' : '' }} background-image: linear-gradient(to top, rgba(27, 20, 9, 0.8) 10%, rgba(0, 0, 0, .25), rgb(167, 198, 245) 90%), url('/assets/img/uptd/Artboard1.jpg'); background-size: cover">
-        <div class="position-absolute h-100 w-100 top-0 left-0" style="background: rgba(0, 0, 0, .5)"></div>
+        <div class="position-absolute h-100 w-100 top-0 left-0" style="background: rgba(0, 0, 0, .75)"></div>
         <div class="container py-5" style="">
             <div class="row h-100">
                 <div class="col-12">

@@ -61,7 +61,7 @@
                 </div>
 				<div class="col-md-12">
 					<div class="w-100 d-flex">
-						<a href="/pendaftaran" class="btn btn-warning mt-3 px-5 py-3 mx-auto">
+						<a href="/register" class="btn btn-warning mt-3 px-5 py-3 mx-auto">
 							Daftar Sekarang
 						</a>
 					</div>
