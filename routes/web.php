@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Api\PesertaController;
 use App\Http\Controllers\Auth\PendaftaranController;
 use App\Http\Controllers\AuthTokenController;
 use App\Http\Controllers\Public\BeritaController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Public\InstrukturController;
 use App\Http\Controllers\Public\JadwalplthnController;
 use App\Http\Controllers\Public\KejuruanController;
 use App\Models\Berita;
+use App\Models\CalonPesertaPelatihan;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,8 @@ Route::get('alumni', [HomeController::class, 'alumni']);
 Route::get('visimisi', [HomeController::class, 'visimisi']);
 Route::get('instruktur', [InstrukturController::class, 'index']);
 Route::get('kejuruan', [KejuruanController::class, 'index']);
+Route::get('calonpeserta', [PesertaController::class, 'calonpeserta']);
+Route::get('peserta', [PesertaController::class, 'peserta']);
 Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
 Route::get('jadwal', [JadwalplthnController::class, 'jadwal']);
 
