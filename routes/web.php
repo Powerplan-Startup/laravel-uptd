@@ -30,6 +30,8 @@ Route::get('alumni', [HomeController::class, 'alumni']);
 Route::get('visimisi', [HomeController::class, 'visimisi']);
 Route::get('instruktur', [InstrukturController::class, 'index']);
 Route::get('kejuruan', [KejuruanController::class, 'index']);
+Route::get('peserta', [PesertaController::class, 'peserta']);
+Route::get('calonpeserta', [PesertaController::class, 'calonpeserta']);
 Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
 Route::get('jadwal', [JadwalplthnController::class, 'jadwal']);
 
