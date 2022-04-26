@@ -9,6 +9,7 @@ use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\InstrukturController;
 use App\Http\Controllers\Public\JadwalplthnController;
 use App\Http\Controllers\Public\KejuruanController;
+use App\Http\Controllers\Public\PeseraController;
 use App\Models\Berita;
 use App\Models\CalonPesertaPelatihan;
 use Illuminate\Support\Facades\App;
@@ -30,8 +31,8 @@ Route::get('alumni', [HomeController::class, 'alumni']);
 Route::get('visimisi', [HomeController::class, 'visimisi']);
 Route::get('instruktur', [InstrukturController::class, 'index']);
 Route::get('kejuruan', [KejuruanController::class, 'index']);
-Route::get('calonpeserta', [PesertaController::class, 'calonpeserta']);
-Route::get('peserta', [PesertaController::class, 'peserta']);
+Route::get('calonpeserta', [PeseraController::class, 'calonpeserta']);
+Route::get('peserta', [PeseraController::class, 'peserta']);
 Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
 Route::get('jadwal', [JadwalplthnController::class, 'jadwal']);
 
