@@ -29,7 +29,7 @@
                 Halo, {{ auth()->user()->nama }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/dashboard" target="_blank"><i class="bi bi-layout-text-window-reverse"></i> Dashboard</a></li>
+                <li><a class="dropdown-item" href="{{ route('user.index') }}" target="_blank"><i class="bi bi-layout-text-window-reverse"></i> Dashboard</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
                     <form action="/logout" method="post">

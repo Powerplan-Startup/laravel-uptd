@@ -11,7 +11,14 @@ use Laravel\Sanctum\HasApiTokens;
 class CalonPesertaPelatihan extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $table = 'calon_peserta_pelatihan';
+    protected $table = 'peserta';
     protected $primaryKey = 'nomor_peserta'; 
     protected $guarded = [];
+
+    public function instruktur(){
+        return $this->belongsTo(Instruktur::class, 'nip', 'nip');
+    }
+    public function kejuruan(){
+        return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
+    }
 }

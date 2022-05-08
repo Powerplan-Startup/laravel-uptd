@@ -13,13 +13,11 @@
                                 <article class="blog-post-wrapper">
                                     <div class="post-information">
                                         <h2>Form Pendaftaran Calon Peserta Pelatihan</h2>
-                                        <div class="entry-meta">
-                                            @if($errors)
-                                                @foreach ($errors as $error)
-                                                    <li>
-                                                        {{ $error }}
-                                                    </li>
-                                                @endforeach
+                                        <div>
+                                            @if($errors->any())
+                                                <div class="alert alert-danger">
+                                                    {!! implode('', $errors->all('<div>:message</div>')) !!}
+                                                </div>
                                             @endif
                                         </div>
                                         <div class="entry-content">
@@ -120,14 +118,14 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td scope="row">Nama Kejuruan</td>
+                                                            <td scope="row">Kejuruan</td>
                                                             <td>:</td>
                                                             <td>
-                                                                <select class="form-select" name="nama_kejuruan"
+                                                                <select class="form-select" name="id_kejuruan"
                                                                     aria-label="Default select example">
                                                                     <option selected>Pilih Nama Kejuruan</option>
                                                                     @foreach ($kejuruan as $item)
-                                                                        <option value="{{ $item->nama_kejuruan }}">{{ $item->nama_kejuruan }}</option>
+                                                                        <option value="{{ $item->id_kejuruan }}">{{ $item->nama_kejuruan }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </td>

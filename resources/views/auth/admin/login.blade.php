@@ -5,13 +5,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-5">
-            <div class="card">
-                <div class="card-header px-5 py-3">
+        <div class="col-lg-4">
+            <div class="card shadow-xl border-0">
+                <div class="card-header px-5 py-3 bg-dark rounded-top text-light">
                     Login Admin
                 </div>
 
-                <div class="card-body p-5">
+                <div class="card-body p-5 bg-dark text-light">
                     <form method="POST" action="{{ route('login.admin') }}">
                         @csrf
 
@@ -70,7 +70,7 @@
                         </div>
                     </form>
                 </div>
-                <a href="{{ route('login') }}" class="card-footer bg-success text-light text-decoration-none px-5 py-3">
+                <a href="{{ route('login') }}" class="card-footer bg-light text-dark text-decoration-none px-5 py-3">
                     <div class="d-flex justify-content-between">
                         <div>
                             Masuk Sebagai Peserta

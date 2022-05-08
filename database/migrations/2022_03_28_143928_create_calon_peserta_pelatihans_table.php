@@ -8,10 +8,11 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('calon_peserta_pelatihan', function (Blueprint $table) {
+        Schema::create('peserta', function (Blueprint $table) {
             $table->id('nomor_peserta');
             /**
              * nama, jenis kelamin, nik, tempat lahir, tanggal lahir, umur, alamat, email, no hp, pendidikan terakhir, nama kejuruan, agama, status, tanggal daftar, nip, angkatan, pekerjaan
+             * 
              */
             $table->string('nama', 30);
             $table->enum('jenis_kelamin', ['l', 'p']);
@@ -23,13 +24,14 @@ return new class extends Migration
             $table->string('email', 30);
             $table->string('no_hp', 12);
             $table->string('pendidikan_terakhir', 10);
-            $table->string('nama_kejuruan', 30);
+            $table->unsignedBigInteger('id_kejuruan')->nullable();
             $table->enum('agama', ['islam', 'kristen', 'katolik', 'hindu', 'budha', 'konghucu']);
             $table->enum('status', ['lajang', 'menikah', 'duda', 'janda']);
             $table->date('tanggal_daftar');
             $table->string('nip', 18)->comment('nip instruktur');
             $table->string('angkatan', 4);
             $table->string('pekerjaan', 30);
+            $table->enum('status_peserta', ['calon', 'aktif', 'tidak_aktif', 'alumni'])->default('calon');
             
             $table->timestamps();
         });
@@ -37,6 +39,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('calon_peserta_pelatihan');
+        Schema::dropIfExists('peserta');
     }
 };

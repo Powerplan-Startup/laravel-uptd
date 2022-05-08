@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('calon_peserta_pelatihan', function (Blueprint $table) {
+        Schema::table('peserta', function (Blueprint $table) {
             $table->string('password');
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('calon_peserta_pelatihan', function (Blueprint $table) {
+        Schema::table('peserta', function (Blueprint $table) {
             $table->dropColumn('password');
         });
     }

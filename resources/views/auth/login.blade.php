@@ -5,22 +5,22 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-5">
-            <div class="card">
+        <div class="col-lg-4">
+            <div class="card shadow-xl border-0">
                 <div class="card-header px-5 py-3">
-                    {{ __('Login') }}
+                    Login Peserta
                 </div>
                 <div class="card-body p-5">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="mb-3">
-                            <label for="username" class="text-md-end">Username</label>
+                            <label for="email" class="text-md-end">Username</label>
 
                             <div class="">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('username')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -69,7 +69,7 @@
                         </div>
                     </form>
                 </div>
-                <a href="{{ route('login.admin.show') }}" class="card-footer bg-primary text-light text-decoration-none px-5 py-3">
+                <a href="{{ route('login.admin.show') }}" class="card-footer bg-dark text-light text-decoration-none px-5 py-3">
                     <div class="d-flex justify-content-between">
                         <div>
                             Masuk sebagai Admin

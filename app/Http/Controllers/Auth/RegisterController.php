@@ -8,6 +8,7 @@ use App\Models\Kejuruan;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -60,17 +61,17 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'nama'          => ['required', 'string', 'max:255'],
-            'email'         => ['required', 'string', 'email', 'max:30', 'unique:calon_peserta_pelatihan'],
+            'email'         => ['required', 'string', 'email', 'max:30', 'unique:peserta'],
             'password'      => ['required', 'string', 'min:8', 'confirmed'],
             'jenis_kelamin' => ['required', 'string', 'in:l,p'],
-            'nik'           => ['required', 'string', 'max:16', 'unique:calon_peserta_pelatihan'],
+            'nik'           => ['required', 'string', 'max:16', 'unique:peserta'],
             'tempat_lahir'  => ['required', 'string', 'max:20'],
             'tanggal_lahir' => ['required', 'string', 'date'],
             'umur'          => ['required', 'numeric'],
             'alamat'        => ['required', 'string', 'max:30'],
             'no_hp'         => ['required', 'string', 'max:12'],
             'pendidikan_terakhir'   => ['required', 'string', 'max:10'],
-            'nama_kejuruan' => ['required', 'string', 'max:30'],
+            'id_kejuruan'   => ['required', 'exists:kejuruan'],
             'agama'         => ['required', 'in:islam,kristen,katolik,hindu,budha,konghucu'],
             'status'        => ['required', 'in:lajang,menikah,duda,janda'],
             'pekerjaan'     => ['required'],
@@ -89,7 +90,7 @@ class RegisterController extends Controller
         /**
          * nama, jenis kelamin, nik, tempat lahir, tanggal lahir, umur, alamat, email, no hp, pendidikan terakhir, nama kejuruan, agama, status, tanggal daftar, nip, angkatan, pekerjaan
          */
-        $kejuruan = Kejuruan::where('nama_kejuruan', $data['nama_kejuruan'])->with(['jadwal'])->first();
+        $kejuruan = Kejuruan::where('id_kejuruan', $data['id_kejuruan'])->with(['jadwal'])->first();
         $nip = optional($kejuruan->jadwal)->nip;
         $tanggal_daftar = now()->format('Y-m-d');
         
@@ -106,7 +107,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'no_hp' => $data['no_hp'],
             'pendidikan_terakhir' => $data['pendidikan_terakhir'],
-            'nama_kejuruan' => $data['nama_kejuruan'],
+            'id_kejuruan' => $data['id_kejuruan'],
             'agama' => $data['agama'],
             'status' => $data['status'],
             'nip' => $nip, // ??
@@ -114,5 +115,9 @@ class RegisterController extends Controller
             'pekerjaan' => $data['pekerjaan'],
             'tanggal_daftar' => $tanggal_daftar
         ]);
+    }
+    
+    protected function guard(){
+        return Auth::guard();
     }
 }

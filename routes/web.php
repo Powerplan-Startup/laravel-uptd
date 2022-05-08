@@ -9,6 +9,7 @@ use App\Http\Controllers\Public\InstrukturController;
 use App\Http\Controllers\Public\JadwalplthnController;
 use App\Http\Controllers\Public\KejuruanController;
 use App\Http\Controllers\Public\PesertaController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Models\Berita;
 use App\Models\CalonPesertaPelatihan;
 use Illuminate\Support\Facades\App;
@@ -65,4 +66,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
     Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');
+});
+/**
+ * route untuk halaman admin
+ * 
+ */
+Route::prefix('user')->middleware('auth:web')->group(function(){
+    Route::get('/', [UserDashboardController::class, 'index'])->name('user.index');
+    Route::get('/setting', [UserDashboardController::class, 'setting'])->name('user.setting');
+    Route::put('/setting', [UserDashboardController::class, 'update'])->name('user.setting.update');
 });

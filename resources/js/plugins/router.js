@@ -64,8 +64,29 @@ router.beforeEach(async (to, from, next) => {
         "Accept": "application/json",
     };
 
+
+
 	store.dispatch('auth/loadUser').then(e => {
         store.commit('auth/setUser', e.data)
+    }).catch(async (e) => {
+
+        window.localStorage.clear()
+
+        let token = await store.getters['auth/token'];
+
+        let Authorization = "";
+    
+        if(token)
+            Authorization = `Bearer ${token}`
+        
+        axios.defaults.headers.common = {
+            Authorization: Authorization,
+            "Accept": "application/json",
+        };
+
+        store.dispatch('auth/loadUser').then(e => {
+            store.commit('auth/setUser', e.data)
+        });
     })
 
     if(store.getters['auth/hasToken']) return next()

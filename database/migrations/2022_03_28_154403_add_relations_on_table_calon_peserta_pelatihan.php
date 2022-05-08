@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('calon_peserta_pelatihan', function (Blueprint $table) {
+        Schema::table('peserta', function (Blueprint $table) {
             $table->foreign('nip')
                 ->references('nip')
                 ->on('instruktur')
@@ -29,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('calon_peserta_pelatihan', function (Blueprint $table) {
+        Schema::table('peserta', function (Blueprint $table) {
             $table->dropForeign(['nip']);
         });
     }
