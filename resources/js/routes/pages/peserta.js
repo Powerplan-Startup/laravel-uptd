@@ -13,7 +13,7 @@ export const peserta = [
         { path: 'tambah', component: PesertaIndex, children: [
             { path: '/', component: PesertaTambah, name: 'peserta.insert' },
         ]},
-        { path: ':id_kejuruan', component: PesertaInfo, children: [
+        { path: ':nomor_peserta', component: PesertaInfo, children: [
             { path: '/', component: PesertaInfoIndex, name: 'peserta.show' },
         ] },
         { path: '/', component: PesertaIndex, children: [

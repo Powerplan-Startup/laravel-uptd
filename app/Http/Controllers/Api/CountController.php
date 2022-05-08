@@ -12,7 +12,7 @@ class CountController extends Controller{
         return new PesertaResource([
             'count' => CalonPesertaPelatihan::when(
                 request()->filled('status'), 
-                fn ($query) => $query->where('status', request()->status)
+                fn ($query) => $query->where('status_peserta', request()->status)
             )->count()
         ]);
     }

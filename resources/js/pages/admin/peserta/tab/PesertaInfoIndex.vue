@@ -3,6 +3,138 @@
         <v-card-text>
             <v-list-item>
                 <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Umur
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.umur }} Tahun
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Alamat
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.alamat }}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Email
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.email }}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Telepon
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.no_hp }}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Agama
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.agama }}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Pendidikan Terakhir
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.pendidikan_terakhir | pendidikan_terakhir }}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Instruktur
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="" v-if="item.instruktur">
+                        {{ item.instruktur.nama}}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        NIP Instruktur
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="" v-if="item.instruktur">
+                        {{ item.instruktur.nip}}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Angkatan
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.angkatan}}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Pekerjaan
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.pekerjaan}}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Status Peserta
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        {{ item.status_peserta}}
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+                <v-list-item-icon>
                     <v-icon>mdi-calendar</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
@@ -37,6 +169,31 @@ export default {
     methods: {
         ...mapActions({
         }),
+    },
+    filters: {
+        pendidikan_terakhir(val){
+            switch(val){
+                case '1':
+                default:
+                    return "SD";
+                case '2':
+                    return "SMP";
+                case '3':
+                    return "SMA-SMK";
+                case '4':
+                    return "D1";
+                case '5':
+                    return "D2";
+                case '6':
+                    return "D3";
+                case '7':
+                    return "D4";
+                case '8':
+                    return "S2";
+                case '9':
+                    return "S3";
+            }
+        }
     }
 }
 </script>

@@ -63,9 +63,10 @@ export default {
             ],
             items: [],
             headers: [
-                { text: 'Nama Peserta', align: 'start', sortable: true, value: 'nama_peserta' },
-                { text: 'Paket', align: 'start d-none d-sm-table-cell', sortable: true, value: 'paket' },
-                { text: 'Jadwal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'id_jadwal' },
+                { text: 'Nama Peserta', align: 'start', sortable: true, value: 'nama' },
+                { text: 'Kejuruan', align: 'start d-none d-sm-table-cell', sortable: true, value: 'id_kejuruan' },
+                { text: 'Angkatan', align: 'end d-none d-sm-table-cell', sortable: true, value: 'angkatan' },
+                { text: 'Status', align: 'start d-none d-sm-table-cell', sortable: true, value: 'status_peserta' },
                 { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: true, value: 'action' },
             ],
@@ -137,14 +138,14 @@ export default {
         clickEvent(t, d){
             this.$emit(t, d)
         },
-        ubahInfoPeserta({id_peserta: id}){
+        ubahInfoPeserta({nomor_peserta: id}){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoPeserta({id_peserta: id}){
+        hapusInfoPeserta({nomor_peserta: id}){
             this.showHapusDialog({id, value: true})
         },
-        toInfoPeserta({id_peserta}){
-            this.$router.push({ name: 'peserta.show', params: { id_peserta } })
+        toInfoPeserta({nomor_peserta}){
+            this.$router.push({ name: 'peserta.show', params: { nomor_peserta } })
         },
     },
     watch: {

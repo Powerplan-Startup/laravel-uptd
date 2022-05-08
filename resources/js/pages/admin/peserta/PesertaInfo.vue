@@ -67,7 +67,7 @@
                                                 </template>
                                                 <v-list nav>
                                                     <v-subheader v-text="'Aksi'"/>
-                                                    <v-list-item dense link @click="ubahInfoPeserta(item.id_peserta)">
+                                                    <v-list-item dense link @click="ubahInfoPeserta(item.nomor_peserta)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-pencil</v-icon>
                                                         </v-list-item-icon>
@@ -77,7 +77,7 @@
                                                             </v-list-item-title>
                                                         </v-list-item-content>
                                                     </v-list-item>
-                                                    <v-list-item dense link @click="hapusInfoPeserta(item.id_peserta)">
+                                                    <v-list-item dense link @click="hapusInfoPeserta(item.nomor_peserta)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-delete</v-icon>
                                                         </v-list-item-icon>
@@ -108,7 +108,7 @@
                                                 Nama Peserta
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="text-h5">
-                                                {{ item.nama_peserta }}
+                                                {{ item.nama }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -118,10 +118,46 @@
                                         </v-list-item-icon>
                                         <v-list-item-content>
                                             <v-list-item-subtitle>
-                                                Paket
+                                                NIK
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="">
-                                                {{ item.paket }}
+                                                {{ item.nik }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                Jenis Kelamin
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.jenis_kelamin == 'l' ? 'Laki-Laki' : 'Perempuan' }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                Tempat Lahir
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.tempat_lahir }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                Tanggal Lahir
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.tanggal_lahir | date }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -199,7 +235,7 @@ export default {
             session: 'peserta/getSession',
         }),
         id(){
-            return this.$route.params.id_peserta
+            return this.$route.params.nomor_peserta
         }
     },
     watch: {

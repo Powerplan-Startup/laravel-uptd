@@ -23,6 +23,11 @@
         <template #item.created_at="{item}">
 			{{ item.created_at | datetime }}
         </template>
+        <template #item.id_kejuruan="{item}">
+            <div v-if="item.kejuruan">
+    			{{ item.kejuruan.nama_kejuruan }}
+            </div>
+        </template>
         <template #item.action="{item}">
 			<div class="d-flex justify-end">
 				<v-slide-x-transition mode="out-in">

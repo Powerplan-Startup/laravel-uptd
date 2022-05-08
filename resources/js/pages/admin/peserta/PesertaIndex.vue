@@ -125,11 +125,11 @@
                                         </v-card-text>
                                         <v-card-text>
                                             <div class="text-truncate">
-                                                {{ item.nama_peserta }}
+                                                {{ item.nama }}
                                             </div>
                                             <div class="text-truncate">
                                                 <small>
-                                                    {{ item.paket }}
+                                                    {{ item.angkatan }}
                                                 </small>
                                             </div>
                                         </v-card-text>
@@ -206,7 +206,6 @@ export default {
             showUbahDialog: 'peserta/setModalUbah',
             showHapusDialog: 'peserta/setModalHapus',
             getItems: 'peserta/get',
-            getCount: 'peserta/count',
             updateSession: 'peserta/updateSession'
         }),
         openModalTambah(){
@@ -223,6 +222,7 @@ export default {
             let res = await this.getItems({
                 itemsPerPage: 1,
                 sortBy: ['created_at'],
+                status: ['aktif', 'calon'],
                 sortDesc: [true],
             }).catch(e => {
                 console.log("loadItem@PesertaIndex.vue", e);
@@ -237,15 +237,15 @@ export default {
         },
         async loadAlumniCount(){
             this.loading = true
-            let res = await this.getCount({
-                status: 'alumni',
+            let res = await this.getItems({
+                status: ['alumni'],
             }).catch(e => {
                 console.log("loadAlumniCount@PesertaIndex.vue", e);
             }).finally(() => {
                 this.loading = false
             });
-            if(res?.data?.data){
-                this.total_alumni = res?.data?.data || 0;
+            if(res?.data?.meta){
+                this.total_alumni = res?.data?.meta?.total || 0;
             }
         }
     },
