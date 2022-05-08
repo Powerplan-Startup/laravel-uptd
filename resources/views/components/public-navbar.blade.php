@@ -12,7 +12,8 @@
                 <li><a href="/visimisi">Visi dan Misi</a></li>
             </ul>
         </li>
-        <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
+        {{-- TODO: salah desain interface --}}
+        {{-- <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 <li><a href="/calonpeserta">Data Calon Peserta Pelatihan</a></li>
                 <li><a href="/peserta">Data Peserta Pelatihan</a></li>
@@ -20,7 +21,7 @@
                 <li><a href="/kejuruan">Data Kejuruan</a></li>
                 <li><a href="/jadwal-pelatihan">Data Jadwal Pelatihan</a></li>
             </ul>
-        </li>
+        </li> --}}
         <li><a class="nav-link scrollto" href="/alumni">Penempatan</a></li>
         @if(auth()->check())
             <li class="dropdown">

@@ -14,24 +14,31 @@
                                     <div class="post-information">
                                         <h2>Form Pendaftaran Calon Peserta Pelatihan</h2>
                                         <div class="entry-meta">
+                                            @if($errors)
+                                                @foreach ($errors as $error)
+                                                    <li>
+                                                        {{ $error }}
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </div>
                                         <div class="entry-content">
-                                            <form action="public/pendaftaran" method="POST" enctype="multipart/form-data">
+                                            <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <table class="table table-borderless">
                                                     <tbody>
-                                                        <tr>
+                                                        {{-- <tr>
                                                             <td scope="row">Nomor Peserta</td>
                                                             <td>:</td>
                                                             <td><input class="form-control" type="text" id="no_peserta"
                                                                     disabled></td>
-                                                        </tr>
+                                                        </tr> --}}
                                                         <tr>
                                                             <td scope="row">Nama Peserta</td>
                                                             <td>:</td>
                                                             <td><input
                                                                     class="form-control @error('nama') is-invalid @enderror"
-                                                                    type="text" id="nama" name="nama" required autofocus
+                                                                    type="text" id="nama" name="nama" required
                                                                     value="{{ old('nama') }}"></td>
                                                         </tr>
                                                         <tr>
@@ -66,7 +73,7 @@
                                                             <td scope="row">Tanggal Lahir</td>
                                                             <td>:</td>
                                                             <td><input class="form-control" type="date" id="tanggal_lahir"
-                                                                    name="tanggal_lahir" onkeyup="getAge();" required>
+                                                                    name="tanggal_lahir" onchange="getAge();" required>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -75,7 +82,7 @@
                                                             <td><input
                                                                     class="form-control @error('umur') is-invalid @enderror"
                                                                     type="number" id="umur" name="umur"
-                                                                    value="{{ old('umur') }}" required>
+                                                                    value="{{ old('umur') }}" required readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -83,15 +90,6 @@
                                                             <td>:</td>
                                                             <td>
                                                                 <textarea class="form-control @error('alamat') is-invalid @enderror" type="text" id="alamat" name="alamat"></textarea>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td scope="row">Email</td>
-                                                            <td>:</td>
-                                                            <td><input
-                                                                    class="form-control @error('email') is-invalid @enderror"
-                                                                    type="text" id="email" name="email"
-                                                                    value="{{ old('email') }}" required>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -124,11 +122,13 @@
                                                         <tr>
                                                             <td scope="row">Nama Kejuruan</td>
                                                             <td>:</td>
-                                                            <td><select class="form-select" name="nama_kejuruan"
+                                                            <td>
+                                                                <select class="form-select" name="nama_kejuruan"
                                                                     aria-label="Default select example">
                                                                     <option selected>Pilih Nama Kejuruan</option>
-                                                                    <option value="1">TIK</option>
-                                                                    <option value="2">Otomotif</option>
+                                                                    @foreach ($kejuruan as $item)
+                                                                        <option value="{{ $item->nama_kejuruan }}">{{ $item->nama_kejuruan }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -161,36 +161,57 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td scope="row">Pekerjaan</td>
+                                                            <td>:</td>
+                                                            <td><input
+                                                                    class="form-control @error('pekerjaan') is-invalid @enderror"
+                                                                    type="text" id="pekerjaan" name="pekerjaan"
+                                                                    value="{{ old('pekerjaan') }}" required>
+                                                            </td>
+                                                        </tr>
+                                                        {{-- <tr>
                                                             <td scope="row">Tanggal Daftar</td>
                                                             <td>:</td>
                                                             <td><input class="form-control" type="date"
                                                                     id="tanggal_daftar" name="tanggal_daftar">
                                                             </td>
-                                                        </tr>
+                                                        </tr> --}}
                                                         <tr>
-                                                            <td scope="row">NIP</td>
-                                                            <td>:</td>
-                                                            <td><input class="form-control" type="text" id="nip"
-                                                                    name="nip" disabled>
+                                                            <td scope="row" colspan="3">
+                                                                <div class="small text-muted">
+                                                                    Informasi Akun
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td scope="row">Angkatan</td>
+                                                            <td scope="row">Email</td>
                                                             <td>:</td>
-                                                            <td><input class="form-control" type="text" id="angkatan"
-                                                                    name="angkatan" disabled>
+                                                            <td><input
+                                                                    class="form-control @error('email') is-invalid @enderror"
+                                                                    type="text" id="email" name="email"
+                                                                    value="{{ old('email') }}" required>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td scope="row">Pekerjaan</td>
+                                                            <td scope="row">Password</td>
                                                             <td>:</td>
-                                                            <td><input class="form-control" type="text" id="pekerjaan"
-                                                                    name="pekerjaan" disabled>
+                                                            <td><input class="form-control" type="password" id="password"
+                                                                    name="password">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="row">Ulangi Password</td>
+                                                            <td>:</td>
+                                                            <td><input class="form-control" type="password" id="password_confirmation"
+                                                                    name="password_confirmation">
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <button type="submit" class="btn btn-primary">Daftar</button>
+                                                <div class="py-5 d-flex px-2">
+                                                    <div></div>
+                                                    <button type="submit" class="btn btn-primary px-5 py-3 btn-sm ms-auto rounded-3">Daftar</button>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -205,7 +226,7 @@
         </div><!-- End Blog Page -->
         <script>
             function getAge() {
-                var date = document.getElementById('umur').value;
+                var date = document.getElementById('tanggal_lahir').value;
 
                 if (date === "") {
                     alert("Please complete the required field!");
@@ -223,7 +244,8 @@
                     if (umur < 0) {
                         umur = 0;
                     }
-                    document.getElementById('result').innerHTML = umur;
+                    document.getElementById('umur').value = umur;
+                    console.log(umur);
                 }
             }
         </script>
