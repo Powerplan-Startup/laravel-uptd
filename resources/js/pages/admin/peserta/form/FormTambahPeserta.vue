@@ -4,26 +4,20 @@
             <v-text-field
                 dense
                 outlined
-                v-model="item.nama_peserta"
-                name="nama_peserta"
+                v-model="item.nama"
+                name="nama"
                 label="Nama Peserta"
-                :error-messages="errors.nama_peserta"
-                @keyup="errors.nama_peserta = null"/>
-            <v-text-field
-                dense
-                outlined
-                v-model="item.paket"
-                name="paket"
-                label="Paket"
-				type="number"
-                :error-messages="errors.paket"
-                @keyup="errors.paket = null"/>
+                disabled
+                :error-messages="errors.nama"
+                @keyup="errors.nama = null"/>
+            <input-status-peserta v-model="item.status_peserta" :errors="errors"></input-status-peserta>
         </div>
     </div>
 </template>
 <script>
+import InputStatusPeserta from './InputStatusPeserta.vue';
 export default {
-    components: { },
+    components: {InputStatusPeserta },
     props: {
         errors: Object,
         value: {
@@ -33,7 +27,7 @@ export default {
                     nama_peserta: null,
                     nip: null,
                     alamat: null,
-                    input_foto: null,
+                    status_peserta: null,
                 }
             }
         }

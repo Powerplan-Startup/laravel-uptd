@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Ubah Data Peserta > {{ item.nama_peserta }}
+                            Ubah Data Peserta > {{ item.nama }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">

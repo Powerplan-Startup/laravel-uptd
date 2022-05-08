@@ -151,7 +151,8 @@
             </v-container>
             <div class="grey lighten-5">
                 <v-container>
-                    <router-view no-select :data-session="session" :status="status_filter"/>
+                    <input-pilih-kejuruan @selected="id_kejuruan = $event"></input-pilih-kejuruan>
+                    <router-view no-select :data-session="session" :status="status_filter" :id_kejuruan="id_kejuruan"/>
                 </v-container>
             </div>
         </v-main>
@@ -160,8 +161,9 @@
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import AdminAppbar from '../../../components/admin/appbars/AdminAppbar.vue'
+import InputPilihKejuruan from './form/InputPilihKejuruan.vue'
 export default {
-  components: { AdminAppbar },
+  components: { AdminAppbar, InputPilihKejuruan },
     data(){
         return {
             loading: false,
@@ -170,10 +172,12 @@ export default {
             total_alumni: 0,
             show: true,
             status: [
-                { text: 'Peserta', value: 'peserta', selected: true },
+                { text: 'Peserta', value: 'aktif', selected: true },
                 { text: 'Alumni', value: 'alumni', selected: false },
                 { text: 'Calon', value: 'calon', selected: true },
+                { text: 'Tidak Aktif', value: 'tidak_aktif', selected: false },
             ],
+            id_kejuruan: null,
         }
     },
     computed: {
@@ -222,7 +226,7 @@ export default {
             let res = await this.getItems({
                 itemsPerPage: 1,
                 sortBy: ['created_at'],
-                status: ['aktif', 'calon'],
+                // status: ['aktif', 'calon'],
                 sortDesc: [true],
             }).catch(e => {
                 console.log("loadItem@PesertaIndex.vue", e);
@@ -252,7 +256,10 @@ export default {
     watch: {
         status_filter(){
             this.updateSession()
-        }
+        },
+        id_kejuruan(){
+            this.updateSession()
+        },
     },
     created(){
         this.loadItems()

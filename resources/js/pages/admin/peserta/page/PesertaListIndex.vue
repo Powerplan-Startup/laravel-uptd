@@ -35,6 +35,7 @@ export default {
         small: Boolean,
         noSelect: Boolean,
         status: Array,
+        id_kejuruan: Number,
     },
     components: {
         PesertaTable
@@ -103,7 +104,7 @@ export default {
         }),
         async loadItems(){
             this.loading = true
-            let res = await this.getItems({...this.options, search: this.search, ...this.params, status: this.status }).catch(e => {});
+            let res = await this.getItems({...this.options, search: this.search, ...this.params, status: this.status, id_kejuruan: this.id_kejuruan }).catch(e => {});
             this.loading = false
             if(res){
                 this.items = res.data.data

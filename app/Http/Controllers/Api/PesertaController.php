@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PesertaUpdateRequest;
 use App\Http\Resources\PesertaResource;
 use App\Models\CalonPesertaPelatihan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PesertaController extends Controller
 {
@@ -25,6 +27,9 @@ class PesertaController extends Controller
         ->when(request('status'), function($query, $search){
             $query->whereIn('status_peserta', $search);
         })
+        ->when(request('id_kejuruan'), function($query, $search){
+            $query->where('id_kejuruan', $search);
+        })
         ->with(['kejuruan'])
         ->paginate(request('itemsPerPage') ?? 10);
         /**
@@ -42,7 +47,12 @@ class PesertaController extends Controller
         return new PesertaResource($calonPesertaPelatihan);
     }
 
-    public function update(Request $request, CalonPesertaPelatihan $calonPesertaPelatihan){
+    public function update(PesertaUpdateRequest $request, $id){
+        $peserta = CalonPesertaPelatihan::where('nomor_peserta', $id)->firstOrFail();
+        $data = collect($request->validated())->except([]);
+        $result = $peserta->update($data->all());
+        $collection = new PesertaResource($peserta);
+        return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     public function destroy(CalonPesertaPelatihan $calonPesertaPelatihan){
