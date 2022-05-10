@@ -3,40 +3,15 @@
 @section('container')
 <main id="main">
 
-{{-- <!-- ======= Blog Header ======= -->
-<div class="header-bg page-area">
-    <div class="container position-relative">
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="slider-content text-center">
-            <div class="header-bottom">
-            <div class="layer2">
-                <h1 class="title2">My Blog</h1>
-            </div>
-            <div class="layer3">
-                <h2 class="title3">Profesional Blog Page</h2>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-</div><!-- End Blog Header --> --}}
-
-<!-- ======= Blog Page ======= -->
 <div class="blog-page area-padding">
     <div class="container">
     <div class="row">
-        <div class="col-lg-4 col-md-4">
-            <x-public-left-sidebar></x-public-left-sidebar>
-        </div>
         <!-- End left sidebar -->
         <!-- Start single blog -->
         <div class="col-md-8 col-sm-8 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="single-blog">
-                    @foreach ($posts as $post)
                     <div class="single-blog-img">
                         <a href="blog-details.html">
                             <img src="{{ asset('assets/img/uptd/kepala-uptd.jpg') }}" alt="">
@@ -53,16 +28,15 @@
                     </div>
                     <div class="blog-text">
                         <h4>
-                            <a href="/posts/{{ $post["slug"] }}">{{ $post["title"] }}</a>
+                            <a href="/posts/">Lorem, ipsum dolor.</a>
                         </h4>
                         <p>
-                            {{ $post["body"] }}
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae ipsam iusto sed. Quia quaerat accusamus amet officiis, aperiam sit obcaecati asperiores vitae, voluptates doloremque soluta quisquam et harum quo quam.
                         </p>
                     </div>
                     <span>
-                        <a href="/posts/{{ $post["slug"] }}" class="ready-btn mb-3">Read more</a>
+                        <a href="/posts/" class="ready-btn mb-3">Read more</a>
                     </span>
-                    @endforeach
                 </div>
             </div>
             <!-- End single blog -->

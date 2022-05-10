@@ -27,9 +27,6 @@
 <div class="blog-page area-padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4">
-                <x-public-left-sidebar></x-public-left-sidebar>
-            </div>
         <!-- End left sidebar -->
         <!-- Start single blog -->
             <div class="col-md-8 col-sm-8 col-xs-12">
@@ -37,12 +34,8 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                     <!-- single-blog start -->
                     <article class="blog-post-wrapper">
-                        <div class="post-thumbnail">
-                        <img src="assets/img/blog/6.jpg" alt="" />
-                        </div>
                         <div class="post-information">
-                        <h2>Daftar Peserta Pelatihan</h2>
-   
+                        <h2>Daftar Alumni</h2>
                         </div>
                     </article>
                     <div class="clear"></div>

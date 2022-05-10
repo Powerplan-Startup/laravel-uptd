@@ -1,12 +1,13 @@
 <nav id="navbar" class="navbar">
     <ul>
         <li><a class="nav-link scrollto active" href="/">Beranda</a></li>
-        <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a href="/blog">Infromasi Lolos Seleksi</a></li>
-                <li><a href="/jadwal">Jadwal Pelatihan</a></li>
-            </ul>
-        </li>
+        <li><a class="nav-link scrollto" href="/blog">Berita</a></li>
+        {{-- <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a> --}}
+            {{-- <ul> --}}
+                {{-- <li><a href="/blog">Infromasi Lolos Seleksi</a></li> --}}
+                {{-- <li><a href="/jadwal">Jadwal Pelatihan</a></li> --}}
+            {{-- </ul> --}}
+        {{-- </li> --}}
         <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 <li><a href="/visimisi">Visi dan Misi</a></li>

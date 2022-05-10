@@ -27,17 +27,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('alumni', [HomeController::class, 'alumni']);
+// Route::get('alumni', [HomeController::class, 'alumni']);
+Route::get('alumni', [PesertaController::class, 'peserta']);
 Route::get('visimisi', [HomeController::class, 'visimisi']);
-Route::get('instruktur', [InstrukturController::class, 'index']);
-Route::get('kejuruan', [KejuruanController::class, 'index']);
-Route::get('peserta', [PesertaController::class, 'peserta']);
-Route::get('calonpeserta', [PesertaController::class, 'calonpeserta']);
-Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
-Route::get('jadwal', [JadwalplthnController::class, 'jadwal']);
+// Route::get('instruktur', [InstrukturController::class, 'index']);
+// Route::get('kejuruan', [KejuruanController::class, 'index']);
+// Route::get('calonpeserta', [PesertaController::class, 'calonpeserta']);
+// Route::get('jadwal-pelatihan', [JadwalplthnController::class, 'index']);
+// Route::get('jadwal', [JadwalplthnController::class, 'jadwal']);
 
-Route::get('blog', [BeritaController::class, 'index']);
-Route::get('posts/{slug}', [BeritaController::class, 'blog']);
+Route::get('blog', [BeritaController::class, 'index'])->name('blog');
+// Route::get('posts/{slug}', [BeritaController::class, 'blog']);
 
 Route::get('pendaftaran', [PendaftaranController::class, 'index']);
 

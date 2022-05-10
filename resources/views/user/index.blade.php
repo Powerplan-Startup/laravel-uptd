@@ -22,7 +22,7 @@
 			<x-user.user-info :user="$user"></x-user.user-info>
 		</div>
 		<div class="col-lg-6">
-			<a href="#" class="my-3 p-3 bg-body rounded shadow-sm bg-primary d-flex justify-content-between w-100">
+			<a href="{{ route('blog') }}" class="my-3 px-4 py-4 rounded shadow-sm bg-info d-flex justify-content-between w-100 text-decoration-none text-light">
 				<div class="pe-3">
 					Lihat berita dan pengumuman
 				</div>
