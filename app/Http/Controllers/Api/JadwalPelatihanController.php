@@ -32,12 +32,18 @@ class JadwalPelatihanController extends Controller
     }
 
     public function store(JadwalPelatihanStoreRequest $request){
-        $data = collect($request->validated())->except([]);
+        $data = collect($request->validated())->except(['materi']);
+        $data->put('materi', '');
+
         $jadwal = JadwalPelatihan::create($data->all());
         if($jadwal && $request->has('id_kejuruan')){
             $kejuruan = Kejuruan::find($request->id_kejuruan);
             $kejuruan->id_jadwal = $jadwal->id_jadwal;
             $kejuruan->save();
+        }
+        if($request->file('materi')){
+            $materi = $request->file('materi')->store('materi');
+            $jadwal->update(['materi' => $materi]);
         }
         $collection = new JadwalPelatihanResource($jadwal);
         return new Response($collection, $jadwal ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -51,11 +57,16 @@ class JadwalPelatihanController extends Controller
     public function update(JadwalPelatihanUpdateRequest $request, $id){
         $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
         $data = collect($request->validated())->except([]);
+
         $result = $jadwalPelatihan->update($data->all());
         if($result && $request->has('id_kejuruan')){
             $kejuruan = Kejuruan::find($request->id_kejuruan);
             $kejuruan->id_jadwal = $jadwalPelatihan->id_jadwal;
             $kejuruan->save();
+        }
+        if($request->file('materi')){
+            $materi = $request->file('materi')->store('materi');
+            $jadwalPelatihan->update(['materi' => $materi]);
         }
         $collection = new JadwalPelatihanResource($jadwalPelatihan);
         return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);

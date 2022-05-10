@@ -38,7 +38,7 @@ export default {
 		}),
 		async loadItem(){
 			let res = await this.getItem({
-                status: 'alumni',
+                status: ['alumni'],
 			}).catch(err => {
 				console.error(err)
 			})

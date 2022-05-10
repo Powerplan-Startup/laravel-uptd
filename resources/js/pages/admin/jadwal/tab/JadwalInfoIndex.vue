@@ -14,14 +14,19 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <div>
-                <v-card-title>
-                    Materi
-                </v-card-title>
-                <v-card-text>
-                    <div v-html="item.materi"></div>
-                </v-card-text>
-            </div>
+            <v-list-item link :href="item.materi_url" target="_blank">
+                <v-list-item-icon>
+                    <v-icon>mdi-download</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Materi
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        Unduh materi
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
         </v-card-text>
     </v-card>
 </template>

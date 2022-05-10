@@ -11,7 +11,12 @@ class JadwalPelatihan extends Model
     protected $table = 'jadwal_pelatihan';
     protected $primaryKey = 'id_jadwal';
     protected $guarded = [];
-    protected $dates = ['tanggal'];
+    protected $dates = ['tanggal'=>'Y-m-d','waktu'=>'H:i:s'];
+    protected $appends = ['materi_url'];
+
+    public function getMateriUrlAttribute(){
+        return asset('storage/' . $this->materi);
+    }
     
     public function kejuruan(){
         return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');

@@ -29,9 +29,14 @@ class InstrukturController extends Controller{
     }
 
     public function store(InstrukturStoreRequest $request){
-        $data = collect($request->validated())->except([]);
+        $data = collect($request->validated())->except(['materi']);
+        $data->put('materi', '');
         $instruktur = Instruktur::create($data->all());
         $collection = new InstrukturResource($instruktur);
+        if($request->file('materi')){
+            $materi = $request->file('materi')->store('materi');
+            $instruktur->update(['materi' => $materi]);
+        }
         return new Response($collection, $instruktur ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
@@ -43,6 +48,10 @@ class InstrukturController extends Controller{
         $data = collect($request->validated())->except([]);
         $result = $instruktur->update($data->all());
         $collection = new InstrukturResource($instruktur);
+        if($request->file('materi')){
+            $materi = $request->file('materi')->store('materi');
+            $instruktur->update(['materi' => $materi]);
+        }
         return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
     public function destroy(Instruktur $instruktur){

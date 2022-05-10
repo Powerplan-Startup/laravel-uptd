@@ -19,7 +19,7 @@ class InstrukturStoreRequest extends FormRequest
             'nip'       => 'required|string|max:18|unique:instruktur,nip',
             'alamat'    => 'required|string|max:20',
             'no_hp'     => 'required|string|max:12',
-            'materi'    => 'required|string',
+            'materi'    => 'nullable|file|max:2048',
             'jenis_kelamin' => 'required|in:l,p',
         ];
     }

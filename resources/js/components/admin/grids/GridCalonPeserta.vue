@@ -39,7 +39,7 @@ export default {
 		}),
 		async loadItem(){
 			let res = await this.getItem({
-                status: 'calon',
+                status: ['calon'],
 			}).catch(err => {
 				console.error(err)
 			})

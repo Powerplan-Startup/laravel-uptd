@@ -79,22 +79,17 @@
             <input-pilih-instruktur v-model="item.nip" :errors="errors"/>
         </div>
         <div>
-            <v-textarea
-                dense
-                outlined
-                v-model="item.materi"
-                name="materi"
-                label="Materi"
-                :error-messages="errors.materi"
-                @keyup="errors.materi = null"/>
+            <input-pilih-materi-jadwal
+                v-model="item" :errors="errors"/>
         </div>
     </div>
 </template>
 <script>
 import InputPilihInstruktur from './InputPilihInstruktur.vue';
 import InputPilihKejuruan from './InputPilihKejuruan.vue';
+import InputPilihMateriJadwal from './InputPilihMateriJadwal.vue';
 export default {
-    components: {InputPilihKejuruan, InputPilihInstruktur },
+    components: { InputPilihKejuruan, InputPilihInstruktur, InputPilihMateriJadwal },
     props: {
         errors: Object,
         value: {

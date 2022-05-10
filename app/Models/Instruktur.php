@@ -12,4 +12,9 @@ class Instruktur extends Model
     protected $primaryKey = 'nip';
     protected $guarded = [];
     protected $keyType = "string";
+    protected $appends = ['materi_url'];
+    public function getMateriUrlAttribute()
+    {
+        return asset('storage/' . $this->materi);
+    }
 }

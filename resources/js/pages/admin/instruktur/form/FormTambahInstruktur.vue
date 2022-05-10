@@ -45,23 +45,19 @@
                 counter="30"/>
         </div>
         <div>
-            <v-textarea
-                dense
-                outlined
-                v-model="item.materi"
-                name="materi"
-                label="Materi"
-                :error-messages="errors.materi"
-                @keyup="errors.materi = null"/>
+            <input-materi-instruktur
+                v-model="item" :errors="errors"></input-materi-instruktur>
         </div>
     </div>
 </template>
 <script>
 import InputJenisKelamin from './InputJenisKelamin.vue';
+import InputMateriInstruktur from './InputMateriInstruktur.vue';
 export default {
     components: {
-        InputJenisKelamin
-    },
+    InputJenisKelamin,
+    InputMateriInstruktur
+},
     props: {
         errors: Object,
         value: {
