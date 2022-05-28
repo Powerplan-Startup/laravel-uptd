@@ -1,18 +1,14 @@
-<nav id="navbar" class="navbar">
-    <ul>
-        <li><a class="nav-link scrollto active" href="/">Beranda</a></li>
-        <li><a class="nav-link scrollto" href="/blog">Berita</a></li>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="nav-link page-scroll scrollto active" href="/">Beranda</a></li>
+        <li><a class="nav-link page-scroll scrollto" href="/blog">Berita</a></li>
         {{-- <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a> --}}
             {{-- <ul> --}}
                 {{-- <li><a href="/blog">Infromasi Lolos Seleksi</a></li> --}}
                 {{-- <li><a href="/jadwal">Jadwal Pelatihan</a></li> --}}
             {{-- </ul> --}}
         {{-- </li> --}}
-        <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a href="/visimisi">Visi dan Misi</a></li>
-            </ul>
-        </li>
+        <li class="dropdown"><a href="/visimisi"><span>Profil</span></a></li>
         {{-- TODO: salah desain interface --}}
         {{-- <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -23,10 +19,10 @@
                 <li><a href="/jadwal-pelatihan">Data Jadwal Pelatihan</a></li>
             </ul>
         </li> --}}
-        <li><a class="nav-link scrollto" href="/alumni">Alumni</a></li>
+        <li><a class="nav-link page-scroll scrollto" href="/alumni">Alumni</a></li>
         @if(auth()->check())
             <li class="dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link page-scroll dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Halo, {{ auth()->user()->nama }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,7 +38,7 @@
             </li>
         @elseif(auth('admin')->check())
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link page-scroll dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Halo, {{ auth('admin')->user()->nama }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -57,8 +53,8 @@
                 </ul>
             </li>
         @else
-            <li class="nav-link">
-                <a class="nav-link px-3" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            <li class="nav-link page-scroll">
+                <a class="nav-link page-scroll px-3" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
             </li>
         @endif
         {{-- <li><a href="blog.html">Blog</a></li>
@@ -79,7 +75,7 @@
             <li><a href="#">Drop Down 4</a></li>
             </ul>
         </li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li> --}}
+        <li><a class="nav-link page-scroll scrollto" href="#contact">Contact</a></li> --}}
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav><!-- .navbar -->

@@ -2,10 +2,18 @@
 'full' => true
 ])
 
+@push('head')
+    <style>
+        .header{
+            background-image: linear-gradient(-127deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, .15)), url("/assets/img/uptd/8.jpg");
+        }
+    </style>
+@endpush
+
 @section('container')
     <!-- ======= Pendaftaran Section ======= -->
     <div class="about-area area-padding">
-        <div class="container">
+        <div class="container p-5">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="section-headline text-center">
@@ -18,7 +26,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="well-left pt-5">
                         <div class="single-well">
-                            <img src="assets/img/uptd/5.jpg" alt="" class="shadow-lg" style="border-radius: 1rem; transform: rotateZ(3deg)">
+                            <img src="assets/img/uptd/5.jpg" alt="" class="shadow-lg" style="border-radius: 1rem; max-width: 100%; transform: rotateZ(3deg)">
                         </div>
                     </div>
                 </div>
@@ -29,27 +37,18 @@
                             <a href="#">
                                 <h4 class="sec-head">Persyaratan</h4>
                             </a>
-                            <p>
-                                Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
-                                aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur
-                                adipisicing elit. Itaque quas officiis iure
-                            </p>
                             <ul>
                                 <li>
-                                    <i class="bi bi-check"></i> Fotocopy KTP 1 lembar
+                                    <i class="bi bi-check"></i> Mengisi Form Pendaftaran
                                 </li>
                                 <li>
-                                    <i class="bi bi-check"></i> Fotocopy ijazah terakhir 1 lembar
+                                    <i class="bi bi-check"></i> Umur 18-38 tahun
                                 </li>
                                 <li>
-                                    <i class="bi bi-check"></i> Pas Foto 3x4 latar belakang merah 4 lembar
+                                    <i class="bi bi-check"></i> KTP
                                 </li>
                                 <li>
-                                    <i class="bi bi-check"></i> Surat keterangan sehat
-                                </li>
-                                <li>
-                                    <i class="bi bi-check"></i> Surat keterangan telah menyelesaikan tugas akhir (Bagi
-                                    calon peserta mahasiswa)
+                                    <i class="bi bi-check"></i> Surat Keterangan Telah Menyelesaikan Studi
                                 </li>
                                 <li>
                                     <i class="bi bi-check"></i> Surat pernyataan bersedia menaati semua ketentuan yang
@@ -59,9 +58,9 @@
                         </div>
                     </div>
                 </div>
-				<div class="col-md-12">
-					<div class="w-100 d-flex">
-						<a href="/register" class="btn btn-warning mt-3 px-5 py-3 mx-auto">
+				<div class="col-md-12 pt-4">
+					<div class="w-100 d-flex" style="display: flex">
+						<a href="/register" class="btn btn-primary mt-3 px-5 py-3 mx-auto" style="padding: ">
 							Daftar Sekarang
 						</a>
 					</div>
