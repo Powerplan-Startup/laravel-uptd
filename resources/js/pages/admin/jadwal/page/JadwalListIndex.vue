@@ -66,7 +66,7 @@ export default {
                 { text: 'Kejuruan', align: 'start', sortable: true, value: 'id_kejuruan' },
                 { text: 'Instruktur', align: 'start d-none d-sm-table-cell', sortable: true, value: 'nip' },
                 { text: 'Tanggal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal' },
-                { text: 'Waktu', align: 'end d-none d-sm-table-cell', sortable: true, value: 'waktu' },
+                { text: 'jam', align: 'end d-none d-sm-table-cell', sortable: true, value: 'waktu' },
                 { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: false, value: 'action' },
             ],
