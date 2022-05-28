@@ -58,7 +58,7 @@
                         outlined
                         v-model="item.waktu"
                         name="waktu"
-                        label="Waktu"
+                        label="jam"
                         append-icon="mdi-clock"
                         readonly
                         v-bind="attrs"
