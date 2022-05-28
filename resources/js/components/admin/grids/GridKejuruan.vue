@@ -18,7 +18,7 @@
 					</v-slide-y-reverse-transition>
 				</v-card-text>
 				<v-card-text class="text-right pt-0">
-					Instruktur
+					Kejuruan
 				</v-card-text>
 			</div>
 		</div>
