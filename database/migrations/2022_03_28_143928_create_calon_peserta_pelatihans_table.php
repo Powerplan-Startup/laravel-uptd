@@ -30,7 +30,6 @@ return new class extends Migration
             $table->date('tanggal_daftar');
             $table->string('nip', 18)->comment('nip instruktur');
             $table->string('angkatan', 4);
-            $table->string('pekerjaan', 30);
             $table->enum('status_peserta', ['calon', 'aktif', 'tidak_aktif', 'alumni'])->default('calon');
             
             $table->timestamps();

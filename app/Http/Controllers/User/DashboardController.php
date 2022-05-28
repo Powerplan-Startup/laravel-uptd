@@ -39,7 +39,6 @@ class DashboardController extends Controller
             // 'id_kejuruan'   => ['required', 'exists:kejuruan'],
             'agama'         => ['required', 'in:islam,kristen,katolik,hindu,budha,konghucu'],
             'status'        => ['required', 'in:lajang,menikah,duda,janda'],
-            'pekerjaan'     => ['required'],
         ]);
         $result = $user->update($data);
         if($result){

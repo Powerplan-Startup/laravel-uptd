@@ -158,7 +158,7 @@
                                                                 </select>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td scope="row">Pekerjaan</td>
                                                             <td>:</td>
                                                             <td><input
@@ -166,7 +166,7 @@
                                                                     type="text" id="pekerjaan" name="pekerjaan"
                                                                     value="{{ old('pekerjaan') }}" required>
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
                                                         {{-- <tr>
                                                             <td scope="row">Tanggal Daftar</td>
                                                             <td>:</td>

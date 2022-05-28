@@ -157,12 +157,12 @@
                                                 <td ><input class="form-control" type="text" id="angkatan" name="angkatan" disabled>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td scope="row">Pekerjaan</td>
                                                 <td >:</td>
                                                 <td ><input class="form-control" type="text" id="pekerjaan" name="pekerjaan" disabled>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                     <button type="submit" class="btn btn-primary">Daftar</button>

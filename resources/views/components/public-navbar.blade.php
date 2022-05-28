@@ -23,7 +23,7 @@
                 <li><a href="/jadwal-pelatihan">Data Jadwal Pelatihan</a></li>
             </ul>
         </li> --}}
-        <li><a class="nav-link scrollto" href="/alumni">Penempatan</a></li>
+        <li><a class="nav-link scrollto" href="/alumni">Alumni</a></li>
         @if(auth()->check())
             <li class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

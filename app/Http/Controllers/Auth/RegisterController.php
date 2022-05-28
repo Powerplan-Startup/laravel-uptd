@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'id_kejuruan'   => ['required', 'exists:kejuruan'],
             'agama'         => ['required', 'in:islam,kristen,katolik,hindu,budha,konghucu'],
             'status'        => ['required', 'in:lajang,menikah,duda,janda'],
-            'pekerjaan'     => ['required'],
+            // 'pekerjaan'     => ['required'],
         ]);
     }
 
@@ -112,7 +112,6 @@ class RegisterController extends Controller
             'status' => $data['status'],
             'nip' => $nip, // ??
             'angkatan' => now()->format('Y'),
-            'pekerjaan' => $data['pekerjaan'],
             'tanggal_daftar' => $tanggal_daftar
         ]);
     }
