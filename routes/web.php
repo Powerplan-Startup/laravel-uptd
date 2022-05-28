@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('alumni', [HomeController::class, 'alumni']);
 Route::get('alumni', [PesertaController::class, 'peserta']);
 Route::get('visimisi', [HomeController::class, 'visimisi']);
