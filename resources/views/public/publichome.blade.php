@@ -13,17 +13,17 @@
 @section('container')
     <!-- ======= Pendaftaran Section ======= -->
     <div class="about-area area-padding">
-        <div class="container p-5">
+        <div class="container p-5" style="padding: 2rem">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="section-headline text-center">
+                    <div class="section-headline text-center" style="margin-bottom: 2rem">
                         <h2>Persyaratan & Link Pendaftaran</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <!-- single-well start-->
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 2rem">
                     <div class="well-left pt-5">
                         <div class="single-well">
                             <img src="assets/img/uptd/5.jpg" alt="" class="shadow-lg" style="border-radius: 1rem; max-width: 100%; transform: rotateZ(3deg)">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <!-- single-well end-->
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 1rem">
                     <div class="well-middle p-5">
                         <div class="single-well">
                             <a href="#">
@@ -59,8 +59,8 @@
                     </div>
                 </div>
 				<div class="col-md-12 pt-4">
-					<div class="w-100 d-flex" style="display: flex">
-						<a href="/register" class="btn btn-primary mt-3 px-5 py-3 mx-auto" style="padding: ">
+					<div class="w-100 d-flex" style="display: flex; padding: 2rem">
+						<a href="/register" class="btn btn-primary mt-3 px-5 py-3 mx-auto" style="padding: .5rem 3.5rem; margin: 0 auto">
 							Daftar Sekarang
 						</a>
 					</div>

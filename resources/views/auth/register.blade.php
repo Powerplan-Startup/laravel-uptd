@@ -10,7 +10,7 @@
 @section('container')
     <main id="main" class="bg-dark">
         <!-- ======= Blog Page ======= -->
-        <div class="blog-page area-padding" style="padding: 2rem;">
+        <div class="blog-page area-padding" style="padding: 2rem 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 mx-auto">
@@ -37,22 +37,19 @@
                                                     <table class="table table-borderless">
                                                         <tbody>
                                                             {{-- <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Nomor Peserta</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Nomor Peserta</td>
                                                                 <td><input class="form-control" type="text" id="no_peserta"
                                                                         disabled></td>
                                                             </tr> --}}
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Nama Peserta</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Nama Peserta</td>
                                                                 <td><input
                                                                         class="form-control @error('nama') is-invalid @enderror"
                                                                         type="text" id="nama" name="nama" required
                                                                         value="{{ old('nama') }}"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Jenis Kelamin</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Jenis Kelamin</td>
                                                                 <td><select class="form-select form-control" name="jenis_kelamin"
                                                                         aria-label="Default select example">
                                                                         <option selected>Pilih Jenis Kelamin</option>
@@ -62,16 +59,14 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">NIK</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">NIK</td>
                                                                 <td><input
                                                                         class="form-control @error('nik') is-invalid @enderror"
                                                                         type="number" id="nik" name="nik"
                                                                         value="{{ old('nik') }}" required></td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Tempat Lahir</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Tempat Lahir</td>
                                                                 <td><input
                                                                         class="form-control @error('tempat_lahir') is-invalid @enderror"
                                                                         type="text" id="tempat_lahir" name="tempat_lahir"
@@ -79,15 +74,13 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Tanggal Lahir</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Tanggal Lahir</td>
                                                                 <td><input class="form-control" type="date" id="tanggal_lahir"
                                                                         name="tanggal_lahir" onchange="getAge();" required>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Umur</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Umur</td>
                                                                 <td><input
                                                                         class="form-control @error('umur') is-invalid @enderror"
                                                                         type="number" id="umur" name="umur"
@@ -101,8 +94,7 @@
                                                     <table class="table table-borderless">
                                                         <tbody>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Umur</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Umur</td>
                                                                 <td><input
                                                                         class="form-control @error('umur') is-invalid @enderror"
                                                                         type="number" id="umur" name="umur"
@@ -110,15 +102,13 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Alamat</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Alamat</td>
                                                                 <td>
                                                                     <textarea class="form-control @error('alamat') is-invalid @enderror" type="text" id="alamat" name="alamat"></textarea>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">No. Handphone</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">No. Handphone</td>
                                                                 <td><input
                                                                         class="form-control @error('no_hp') is-invalid @enderror"
                                                                         type="text" id="no_hp" name="no_hp"
@@ -126,8 +116,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Pendidikan Terakhir</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Pendidikan Terakhir</td>
                                                                 <td><select class="form-select form-control" name="pendidikan_terakhir"
                                                                         aria-label="Default select example">
                                                                         <option selected>Pilih Pendidikan Terakhir</option>
@@ -144,8 +133,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Kejuruan</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Kejuruan</td>
                                                                 <td>
                                                                     <select class="form-select form-control" name="id_kejuruan"
                                                                         aria-label="Default select example">
@@ -157,8 +145,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Agama</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Agama</td>
                                                                 <td><select class="form-select form-control" name="agama"
                                                                         aria-label="Default select example">
                                                                         <option selected>Pilih Agama</option>
@@ -172,8 +159,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Status</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Status</td>
                                                                 <td><select class="form-select form-control" name="status"
                                                                         aria-label="Default select example">
                                                                         <option selected>Pilih Status</option>
@@ -185,8 +171,7 @@
                                                                 </td>
                                                             </tr>
                                                             <!-- <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Pekerjaan</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Pekerjaan</td>
                                                                 <td><input
                                                                         class="form-control @error('pekerjaan') is-invalid @enderror"
                                                                         type="text" id="pekerjaan" name="pekerjaan"
@@ -194,8 +179,7 @@
                                                                 </td>
                                                             </tr> -->
                                                             {{-- <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Tanggal Daftar</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Tanggal Daftar</td>
                                                                 <td><input class="form-control" type="date"
                                                                         id="tanggal_daftar" name="tanggal_daftar">
                                                                 </td>
@@ -207,15 +191,14 @@
                                                     <table class="table table-borderless">
                                                         <tbody>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px" colspan="3">
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px" colspan="3">
                                                                     <div class="small text-muted">
                                                                         Informasi Akun
                                                                     </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Email</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Email</td>
                                                                 <td><input
                                                                         class="form-control @error('email') is-invalid @enderror"
                                                                         type="text" id="email" name="email"
@@ -223,15 +206,13 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Password</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Password</td>
                                                                 <td><input class="form-control" type="password" id="password"
                                                                         name="password">
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 50px">Ulangi Password</td>
-                                                                <td>:</td>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Ulangi Password</td>
                                                                 <td><input class="form-control" type="password" id="password_confirmation"
                                                                         name="password_confirmation">
                                                                 </td>

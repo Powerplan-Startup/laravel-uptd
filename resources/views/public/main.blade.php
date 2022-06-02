@@ -78,7 +78,7 @@
                     <div id="owl-demo" class="owl-carousel header1">
                         <div>
                             <div class="col-xs-12 col-sm-6 col-md-6 header-text d-flex justify-content-center">
-                                <div class="w-100" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .4rem; grid-auto-rows: minmax(calc(200px / 2), 1fr)">
+                                <div class="w-100" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .4rem; grid-auto-rows: minmax(calc(180px / 2), 1fr)">
                                     @for ($i = 1; $i < 12; $i++)
                                         <div style="background-image: url('/assets/img/uptd/{{$i}}.jpg'); background-size: cover; {{ $i == 1 ? 'grid-row-end: span 3' : null }}"></div>
                                     @endfor
