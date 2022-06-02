@@ -233,6 +233,7 @@ export default {
             }).finally(() => {
                 this.loading = false
                 this.loadAlumniCount()
+                this.loadPesertaCount()
             })
             if(res?.data?.data){
                 this.items = res.data.data;
@@ -250,6 +251,19 @@ export default {
             });
             if(res?.data?.meta){
                 this.total_alumni = res?.data?.meta?.total || 0;
+            }
+        },
+        async loadPesertaCount(){
+            this.loading = true
+            let res = await this.getItems({
+                status: ['aktif'],
+            }).catch(e => {
+                console.log("loadPesertaCount@PesertaIndex.vue", e);
+            }).finally(() => {
+                this.loading = false
+            });
+            if(res?.data?.meta){
+                this.total = res?.data?.meta?.total || 0;
             }
         }
     },
