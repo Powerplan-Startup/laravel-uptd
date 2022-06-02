@@ -1,5 +1,5 @@
 @extends('public.main', [
-'full' => true
+    'full' => true
 ])
 
 @push('head')

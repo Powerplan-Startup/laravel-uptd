@@ -71,40 +71,49 @@
         </div>
         <!-- =============== container-fluid =============== -->
     </nav>
-    <header id="home" class="header">
-        <div class="container">
-            <div class="header-content row">
-                <div id="owl-demo" class="owl-carousel header1">
-                    <div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 header-text d-flex justify-content-center">
-                            <div class="w-100" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .4rem; grid-auto-rows: minmax(calc(200px / 2), 1fr)">
-                                @for ($i = 1; $i < 12; $i++)
-                                    <div style="background-image: url('/assets/img/uptd/{{$i}}.jpg'); background-size: cover; {{ $i == 1 ? 'grid-row-end: span 3' : null }}"></div>
-                                @endfor
+    @if($full ?? false)
+        <header id="home" class="header">
+            <div class="container">
+                <div class="header-content row">
+                    <div id="owl-demo" class="owl-carousel header1">
+                        <div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 header-text d-flex justify-content-center">
+                                <div class="w-100" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .4rem; grid-auto-rows: minmax(calc(200px / 2), 1fr)">
+                                    @for ($i = 1; $i < 12; $i++)
+                                        <div style="background-image: url('/assets/img/uptd/{{$i}}.jpg'); background-size: cover; {{ $i == 1 ? 'grid-row-end: span 3' : null }}"></div>
+                                    @endfor
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 header-text">
-                            <h2 class="wow bounceIn animated" data-wow-delay=".40s"><span>Daftar</span> Pelatihan</h2>
-                            <p class="wow bounceIn animated" data-wow-delay=".60s" style="font-size: .75rem;">
-                                Persyaratan
-                                <span>
-                                    Mengisi Form Pendaftaran, 
-                                    Umur 18-38 tahun, KTP, Surat Keterangan Telah Menyelesaikan Studi dan Surat pernyataan bersedia menaati semua ketentuan yang berlaku (Disiapkan oleh penyelenggara)
-                                </span>
-                            </p>
-                            <p>
-                                <a href="/register" class="btn btn-primary btn-lg btn-ornge wow bounceIn animated" data-wow-delay="1s"><i
-                                        class="hbtn"></i> <span>Mendaftar</span></i>
-                                </a>
-                            </p>
+                        <div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 header-text">
+                                <h2 class="wow bounceIn animated" data-wow-delay=".40s"><span>Daftar</span> Pelatihan</h2>
+                                <p class="wow bounceIn animated" data-wow-delay=".60s" style="font-size: .75rem;">
+                                    Persyaratan
+                                    <span>
+                                        Mengisi Form Pendaftaran, 
+                                        Umur 18-38 tahun, KTP, Surat Keterangan Telah Menyelesaikan Studi dan Surat pernyataan bersedia menaati semua ketentuan yang berlaku (Disiapkan oleh penyelenggara)
+                                    </span>
+                                </p>
+                                <p>
+                                    <a href="/register" class="btn btn-primary btn-lg btn-ornge wow bounceIn animated" data-wow-delay="1s"><i
+                                            class="hbtn"></i> <span>Mendaftar</span></i>
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
+    @else
+        <header id="home" class="header" style="max-height: 250px">
+            <div class="container">
+                <div class="header-content row">
+                </div>
+            </div>
+        </header>
+    @endif
 
     <!-- ======= Header ======= -->
     {{-- <header id="header" class="fixed-top d-flex align-items-center" style="background: rgba(17, 16, 22, 0.9); backdrop-filter: blur(1rem)">
