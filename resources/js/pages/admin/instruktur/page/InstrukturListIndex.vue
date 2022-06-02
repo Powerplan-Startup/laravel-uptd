@@ -66,7 +66,7 @@ export default {
                 { text: 'Nama Instruktur', align: 'start', sortable: true, value: 'nama' },
                 { text: 'Telepon', align: 'start d-none d-sm-table-cell', sortable: true, value: 'no_hp' },
                 { text: 'Alamat', align: 'end d-none d-sm-table-cell', sortable: true, value: 'alamat' },
-                { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
+                // { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: true, value: 'action' },
             ],
             options: {

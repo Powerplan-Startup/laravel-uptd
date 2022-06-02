@@ -22,7 +22,7 @@
         <li><a class="nav-link page-scroll scrollto" href="/alumni">Alumni</a></li>
         @if(auth()->check())
             <li class="dropdown">
-            <a class="nav-link page-scroll dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link page-scroll dropdown-toggle" href="{{ route('user.index') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Halo, {{ auth()->user()->nama }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,7 +38,7 @@
             </li>
         @elseif(auth('admin')->check())
             <li class="dropdown">
-                <a class="nav-link page-scroll dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link page-scroll dropdown-toggle" href="/admin" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Halo, {{ auth('admin')->user()->nama }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

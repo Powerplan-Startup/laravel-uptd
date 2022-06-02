@@ -67,7 +67,7 @@ export default {
                 { text: 'Instruktur', align: 'start d-none d-sm-table-cell', sortable: true, value: 'nip' },
                 { text: 'Tanggal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal' },
                 { text: 'jam', align: 'end d-none d-sm-table-cell', sortable: true, value: 'waktu' },
-                { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
+                // { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: false, value: 'action' },
             ],
             options: {

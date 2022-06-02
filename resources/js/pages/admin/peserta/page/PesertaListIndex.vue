@@ -68,7 +68,7 @@ export default {
                 { text: 'Kejuruan', align: 'start d-none d-sm-table-cell', sortable: true, value: 'id_kejuruan' },
                 { text: 'Angkatan', align: 'end d-none d-sm-table-cell', sortable: true, value: 'angkatan' },
                 { text: 'Status', align: 'start d-none d-sm-table-cell', sortable: true, value: 'status_peserta' },
-                { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
+                // { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: true, value: 'action' },
             ],
             options: {
