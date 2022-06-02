@@ -114,18 +114,6 @@
                 </v-list-item-icon>
                 <v-list-item-content>
                     <v-list-item-subtitle>
-                        Pekerjaan
-                    </v-list-item-subtitle>
-                    <v-list-item-title class="">
-                        {{ item.pekerjaan}}
-                    </v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-                <v-list-item-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                    <v-list-item-subtitle>
                         Status Peserta
                     </v-list-item-subtitle>
                     <v-list-item-title class="">

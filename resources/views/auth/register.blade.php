@@ -62,7 +62,7 @@
                                                                 <td scope="row" class="small text-muted" style="max-width: 100px">NIK</td>
                                                                 <td><input
                                                                         class="form-control @error('nik') is-invalid @enderror"
-                                                                        type="number" id="nik" name="nik"
+                                                                        type="text" id="nik" name="nik" maxlength="16" pattern="\d*"
                                                                         value="{{ old('nik') }}" required></td>
                                                             </tr>
                                                             <tr>
@@ -94,14 +94,6 @@
                                                     <table class="table table-borderless">
                                                         <tbody>
                                                             <tr>
-                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Umur</td>
-                                                                <td><input
-                                                                        class="form-control @error('umur') is-invalid @enderror"
-                                                                        type="number" id="umur" name="umur"
-                                                                        value="{{ old('umur') }}" required readonly>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
                                                                 <td scope="row" class="small text-muted" style="max-width: 100px">Alamat</td>
                                                                 <td>
                                                                     <textarea class="form-control @error('alamat') is-invalid @enderror" type="text" id="alamat" name="alamat"></textarea>
@@ -111,7 +103,7 @@
                                                                 <td scope="row" class="small text-muted" style="max-width: 100px">No. Handphone</td>
                                                                 <td><input
                                                                         class="form-control @error('no_hp') is-invalid @enderror"
-                                                                        type="text" id="no_hp" name="no_hp"
+                                                                        type="text" id="no_hp" name="no_hp" maxlength="12" pattern="\d*"
                                                                         value="{{ old('no_hp') }}" required>
                                                                 </td>
                                                             </tr>
