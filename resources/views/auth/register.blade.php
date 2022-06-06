@@ -209,6 +209,45 @@
                                                                         name="password_confirmation">
                                                                 </td>
                                                             </tr>
+                                                            <tr>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px" colspan="3">
+                                                                    <div class="small text-muted">
+                                                                        Berkas Persyaratan
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">KTP</td>
+                                                                <td><input
+                                                                        class="form-control @error('ktp') is-invalid @enderror"
+                                                                        type="file" id="ktp" name="ktp"
+                                                                        value="{{ old('ktp') }}" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Ijazah</td>
+                                                                <td><input
+                                                                        class="form-control @error('ijazah') is-invalid @enderror"
+                                                                        type="file" id="ijazah" name="ijazah"
+                                                                        value="{{ old('ijazah') }}" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Foto</td>
+                                                                <td><input
+                                                                        class="form-control @error('foto') is-invalid @enderror"
+                                                                        type="file" id="foto" name="foto"
+                                                                        value="{{ old('foto') }}" required>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td scope="row" class="small text-muted" style="max-width: 100px">Sertifikat/Kartu Vaksi</td>
+                                                                <td><input
+                                                                        class="form-control @error('kartu_vaksin') is-invalid @enderror"
+                                                                        type="file" id="kartu_vaksin" name="kartu_vaksin"
+                                                                        value="{{ old('ijazah') }}" required>
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
