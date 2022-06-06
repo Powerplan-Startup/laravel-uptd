@@ -183,6 +183,7 @@
                                 <v-toolbar flat rounded="xl">
                                     <v-tabs align-with-title>
                                         <v-tab :to="{name: 'peserta.show'}" exact>Informasi</v-tab>
+                                        <v-tab :to="{name: 'peserta.berkas'}" exact>Berkas</v-tab>
                                     </v-tabs>
                                 </v-toolbar>
                             </div>
@@ -193,6 +194,18 @@
                     </div>
                 </div>
             </v-container>
+            <div style="position: relative">
+                <v-scale-transition>
+                    <v-app-bar bottom fixed dark v-show="true" rounded="xl" dense :max-width="mini ? 300 : 400" :style="bottomNavStyle" class="fab-extension shadow" :extended="false" :extension-height="0" ref="menu">
+                        <v-btn @click="updateStatus('aktif')" text>
+                            Terima Peserta
+                        </v-btn>
+                        <v-btn @click="updateStatus('tidak_aktif')" text>
+                            Tolak
+                        </v-btn>
+                    </v-app-bar>
+                </v-scale-transition>
+            </div>
         </v-main>
     </div>
 </template>
@@ -204,6 +217,7 @@ export default {
             loading: false,
             item: {},
             ori: {},
+            mini: true,
             exists: false,
             breadcrumb: [
                 {
@@ -236,7 +250,14 @@ export default {
         }),
         id(){
             return this.$route.params.nomor_peserta
-        }
+        },
+		bottomNavStyle(){
+			return {
+				'transform': `translateX(${this.$vuetify.application.left}px) translateY(-${this.offsetBottom ? '64px' : '0px'})`,
+				width: `calc(100% - ${this.$vuetify.application.right}px - ${this.$vuetify.application.left}px)`,
+				margin: `1rem`,
+			}
+		},
     },
     watch: {
         session(){
@@ -249,6 +270,8 @@ export default {
             showUbahDialog: 'peserta/setModalUbah',
             showHapusDialog: 'peserta/setModalHapus',
             getItem: 'peserta/show',
+            updatePeserta: 'peserta/update',
+            notif: 'notifikasi/show'
         }),
         openModalTambah(){},
         ubahInfoPeserta(id){
@@ -273,10 +296,51 @@ export default {
                     this.$set(this.ori, key, res.data.data[key])
                 }
             }
-        }
+        },
+        async updateStatus(status){
+            let data = new FormData()
+            data.append('status_peserta', status);
+
+            this.loading = true
+            let res = await this.updatePeserta({ data, id: this.id }).catch(e => {
+                console.log("updatePeserta@PesertaUbah.vue", e)
+                e.response.status == 422 && this.setErrorForm(e)
+                this.notif({
+                    message: e.message
+                })
+            })
+            this.loading = false
+            if(res){
+                this.updateSession()
+                this.dialog = false
+            }
+        },
+        submit(){
+        },
     },
     created(){
         this.loadItem()
     }
 }
 </script>
+
+<style lang="scss">
+	.fab-extension{
+		display: flex;
+		flex-direction: column-reverse;
+		transition: all .25s ease;
+		& > .v-toolbar__content{
+			padding-right: 0px;
+		}
+	}
+	.d-grid-menu{
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+		grid-auto-rows: 100px;
+		width: 100%;
+		gap: .25rem;
+		max-height: 100%;
+		overflow-y: auto;
+		height: 100%;
+	}
+</style>
