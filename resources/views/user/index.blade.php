@@ -161,18 +161,6 @@
 						{{ $user->tanggal_daftar }}
 					</p>
 				</div>
-				<div class="d-flex text-muted pt-3">
-					<svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-						xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-						<rect width="100%" height="100%" fill="#EFEFEF" /><text x="50%" y="50%" fill="#6f42c1"
-							dy=".3em"></text>
-					</svg>
-					<p class="pb-3 mb-0 small lh-sm border-bottom">
-						<strong class="d-block text-gray-dark">Pekerjaan</strong>
-						{{ $user->pekerjaan }}
-					</p>
-				</div>
 				<small class="d-block text-end mt-3">
 					<a href="{{ route('user.setting') }}" class="p-3">Ubah Informasi Akun</a>
 				</small>
