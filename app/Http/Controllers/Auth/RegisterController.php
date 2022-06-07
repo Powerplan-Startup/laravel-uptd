@@ -64,7 +64,16 @@ class RegisterController extends Controller
             'email'         => ['required', 'string', 'email', 'max:30', 'unique:peserta'],
             'password'      => ['required', 'string', 'min:8', 'confirmed'],
             'jenis_kelamin' => ['required', 'string', 'in:l,p'],
-            'nik'           => ['required', 'string', 'max:16', 'unique:peserta'],
+            'nik'           => ['required', 'string', 'max:16', function ($attribute, $value, $fail) {
+                /**
+                 * find if nik is already registered in this year
+                 * 
+                 */
+                $peserta = CalonPesertaPelatihan::where('nik', $value)->whereYear('tanggal_daftar', now()->year())->first();
+                if ($peserta) {
+                    return $fail('NIK sudah terdaftar');
+                }
+            }],
             'tempat_lahir'  => ['required', 'string', 'max:20'],
             'tanggal_lahir' => ['required', 'string', 'date'],
             'umur'          => ['required', 'numeric'],
@@ -74,6 +83,17 @@ class RegisterController extends Controller
             'id_kejuruan'   => ['required', 'exists:kejuruan'],
             'agama'         => ['required', 'in:islam,kristen,katolik,hindu,budha,konghucu'],
             'status'        => ['required', 'in:lajang,menikah,duda,janda'],
+            'foto'          => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            /**
+             * ktp image or pdf
+             * ijazah image or pdf
+             * kartu vaksin image or pdf
+             * 
+             */
+            'ktp'           => ['required', 'image', 'mimes:jpeg,png,jpg,gif,pdf', 'max:2048'],
+            'ijazah'        => ['required', 'image', 'mimes:jpeg,png,jpg,gif,pdf', 'max:2048'],
+            'kartu_vaksin'  => ['required', 'image', 'mimes:jpeg,png,jpg,gif,pdf', 'max:2048'],
+            
             // 'pekerjaan'     => ['required'],
         ]);
     }
@@ -94,7 +114,7 @@ class RegisterController extends Controller
         $nip = optional($kejuruan->jadwal)->nip;
         $tanggal_daftar = now()->format('Y-m-d');
         
-        return CalonPesertaPelatihan::create([
+        $result = CalonPesertaPelatihan::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'nama' => $data['nama'],
@@ -114,6 +134,14 @@ class RegisterController extends Controller
             'angkatan' => now()->format('Y'),
             'tanggal_daftar' => $tanggal_daftar
         ]);
+        if($result){
+            $result->foto = $data['foto']->store('foto', 'public');
+            $result->ktp = $data['ktp']->store('ktp', 'public');
+            $result->ijazah = $data['ijazah']->store('ijazah', 'public');
+            $result->kartu_vaksin = $data['kartu_vaksin']->store('kartu_vaksin', 'public');
+            $result->save();
+        }
+        return $result;
     }
     
     protected function guard(){

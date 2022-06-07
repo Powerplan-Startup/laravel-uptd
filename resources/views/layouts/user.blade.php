@@ -80,6 +80,9 @@
 				<a class="nav-link {{ request()->is('user/setting') ? 'text-muted' : '' }} " href="{{ route('user.setting') }}">
 					Pengaturan
 				</a>
+				<a class="nav-link {{ request()->is('user/berkas') ? 'text-muted' : '' }} " href="{{ route('user.berkas') }}">
+					Berkas
+				</a>
 				<a class="nav-link" href="{{ route('blog') }}">Berita</a>
 			</nav>
 		</div>

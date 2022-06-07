@@ -75,4 +75,6 @@ Route::prefix('user')->middleware('auth:web')->group(function(){
     Route::get('/', [UserDashboardController::class, 'index'])->name('user.index');
     Route::get('/setting', [UserDashboardController::class, 'setting'])->name('user.setting');
     Route::put('/setting', [UserDashboardController::class, 'update'])->name('user.setting.update');
+    Route::get('/berkas', [UserDashboardController::class, 'berkas'])->name('user.berkas');
+    Route::put('/berkas', [UserDashboardController::class, 'updateBerkas'])->name('user.berkas.update');
 });
