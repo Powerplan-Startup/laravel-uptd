@@ -172,9 +172,9 @@ export default {
             total_alumni: 0,
             show: true,
             status: [
-                { text: 'Peserta', value: 'aktif', selected: true },
+                { text: 'Peserta', value: 'aktif', selected: false },
                 { text: 'Alumni', value: 'alumni', selected: false },
-                { text: 'Calon', value: 'calon', selected: true },
+                { text: 'Calon', value: 'calon', selected: false },
                 { text: 'Tidak Aktif', value: 'tidak_aktif', selected: false },
             ],
             id_kejuruan: null,
@@ -276,6 +276,16 @@ export default {
         },
     },
     created(){
+        if(this.$route.query.status == "alumni"){
+            this.status[1].selected = true;
+        } else if(this.$route.query.status == "aktif"){
+            this.status[0].selected = true;
+        } else if(this.$route.query.status == "calon"){
+            this.status[2].selected = true;
+        } else {
+            this.status[0].selected = true;
+            this.status[2].selected = true;
+        }
         this.loadItems()
     }
 }

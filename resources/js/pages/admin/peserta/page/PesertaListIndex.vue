@@ -158,6 +158,7 @@ export default {
             this.update()
         }
     },
-    created(){}
+    created(){
+    }
 }
 </script>

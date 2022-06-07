@@ -1,6 +1,6 @@
 <template>
 	
-	<v-card :color="'grey lighten-4'" rounded="xl" flat link :to="{ name: 'peserta' }" style="min-height: 250px">
+	<v-card :color="'grey lighten-4'" rounded="xl" flat link :to="{ name: 'peserta', query: { status: 'calon' }  }" style="min-height: 250px">
 		<div class="d-flex">
 			<v-card-text>
 				<div class="d-flex w-100">
