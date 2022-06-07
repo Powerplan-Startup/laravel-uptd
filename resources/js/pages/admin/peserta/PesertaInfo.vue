@@ -196,12 +196,20 @@
             </v-container>
             <div style="position: relative">
                 <v-scale-transition>
-                    <v-app-bar bottom fixed dark v-show="true" rounded="xl" dense :max-width="mini ? 300 : 400" :style="bottomNavStyle" class="fab-extension shadow" :extended="false" :extension-height="0" ref="menu">
+                    <v-app-bar bottom fixed dark v-show="true" rounded="xl" v-if="item.status_peserta == 'calon'" dense :max-width="mini ? 300 : 400" :style="bottomNavStyle" class="fab-extension shadow" :extended="false" :extension-height="0" ref="menu">
                         <v-btn @click="updateStatus('aktif')" text>
                             Terima Peserta
                         </v-btn>
                         <v-btn @click="updateStatus('tidak_aktif')" text>
                             Tolak
+                        </v-btn>
+                    </v-app-bar>
+                </v-scale-transition>
+                <v-scale-transition>
+                    <v-app-bar bottom fixed dark v-show="true" rounded="xl" v-if="item.status_peserta == 'aktif'" dense :max-width="mini ? 300 : 400" :style="bottomNavStyle" class="fab-extension shadow" :extended="false" :extension-height="0" ref="menu">
+                        <v-spacer></v-spacer>
+                        <v-btn @click="updateStatus('alumni')" text>
+                            Alumni
                         </v-btn>
                     </v-app-bar>
                 </v-scale-transition>
@@ -313,6 +321,7 @@ export default {
             if(res){
                 this.updateSession()
                 this.dialog = false
+                this.loadItem()
             }
         },
         submit(){
