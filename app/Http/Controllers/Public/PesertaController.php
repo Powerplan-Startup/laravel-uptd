@@ -10,9 +10,12 @@ class PesertaController extends Controller
 {
     public function peserta()
     {
+        
+        $peserta = CalonPesertaPelatihan::whereStatusPeserta('alumni')->paginate(50);
+
         return view('public.peserta',[
             'title' => 'Daftar Peserta',
-            'peserta' => CalonPesertaPelatihan::get()
+            'peserta' => $peserta
         ]);
     }
 

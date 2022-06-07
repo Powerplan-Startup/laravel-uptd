@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->time('waktu_berakhir')->nullable();
             $table->string('judul')->nullable();
+            $table->unsignedInteger('pertemuan')->nullable();
             $table->unsignedBigInteger('nomor_peserta')->nullable();
 
             $table->foreign('nomor_peserta')
@@ -39,6 +40,7 @@ return new class extends Migration
             $table->dropColumn('waktu_berakhir');
             $table->dropColumn('judul');
             $table->dropColumn('nomor_peserta');
+            $table->dropColumn('pertemuan');
         });
     }
 };

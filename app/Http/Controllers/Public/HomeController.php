@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
+use App\Models\CalonPesertaPelatihan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
