@@ -40,57 +40,74 @@
                             <div class="width: 100%">
                                 <table class="table table-bordered" style="width: 100%">
                                     <tbody>
-                                        <tr>
-                                            <th>Nama</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>TTL</th>
-                                            <th>Umur</th>
-                                            <th>Email</th>
-                                            <th>No HP</th>
-                                            <th>Agama</th>
-                                            <th>Status</th>
-                                            <th>Kejuruan</th>
-                                            <th>Angkatan</th>
-                                        </tr>
-                                        @foreach ($peserta as $item)
+                                        @foreach ($kejuruan as $kejuruanitem)
                                             <tr>
-                                                <td>
-                                                    {{ $item->nama }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->jenis_kelamin == "l" ? "Laki-Laki" : "Perempuan" }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->tempat_lahir }},
-                                                    {{ $item->tanggal_lahir }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->umur }} tahun
-                                                </td>
-                                                <td>
-                                                    {{ $item->email }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->no_hp }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->agama }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->status }}
-                                                </td>
-                                                <td>
-                                                    {{ optional($item->kejuruan)->nama_kejuruan }}
-                                                </td>
-                                                <td>
-                                                    {{ $item->angkatan }}
-                                                </td>
+                                                <th colspan="1000" style="background: yellow">
+                                                    <div style="padding: .5rem">
+                                                            Kejuruan {{ $kejuruanitem->nama_kejuruan }}
+                                                    </div>
+                                                </th>
                                             </tr>
+                                            <tr>
+                                                <th>Nama</th>
+                                                <th>Jenis Kelamin</th>
+                                                <th>TTL</th>
+                                                <th>Umur</th>
+                                                <th>Email</th>
+                                                <th>No HP</th>
+                                                <th>Agama</th>
+                                                <th>Status</th>
+                                                <th>Kejuruan</th>
+                                                <th>Angkatan</th>
+                                            </tr>
+                                            @forelse ($kejuruanitem->alumni as $item)
+                                                <tr>
+                                                    <td>
+                                                        {{ $item->nama }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->jenis_kelamin == "l" ? "Laki-Laki" : "Perempuan" }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->tempat_lahir }},
+                                                        {{ $item->tanggal_lahir }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->umur }} tahun
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->email }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->no_hp }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->agama }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->status }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $kejuruanitem->nama_kejuruan }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->angkatan }}
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="1000">
+                                                        <div class="text-muted" style="padding: 1rem">
+                                                            Tidak ada data alumni kejuruan {{ $kejuruanitem->nama_kejuruan }}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
                                         @endforeach
                                     </tbody>
                                 </table>
                                 <div>
-                                    {{ $peserta->links() }}
+                                    {{ $kejuruan->links() }}
                                 </div>
                             </div>
                         </article>

@@ -15,4 +15,7 @@ class Kejuruan extends Model
     public function jadwal(){
         return $this->belongsTo(JadwalPelatihan::class, 'id_jadwal');
     }
+    public function alumni(){
+        return $this->hasMany(CalonPesertaPelatihan::class, 'id_kejuruan', 'id_kejuruan')->whereStatusPeserta('alumni');
+    }
 }
