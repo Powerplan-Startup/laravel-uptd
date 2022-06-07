@@ -17,7 +17,7 @@ class JadwalPelatihanUpdateRequest extends FormRequest
         
         return [
             'tanggal'       => 'required|date',
-            'waktu'         => 'required|date_format:H:i:s',
+            'waktu'         => 'required',
             'hari'          => 'required',
             'nip'           => ['required','exists:instruktur,nip', function($attribute, $value, $fail) use ($id_jadwal){
                 // check if nip doesn't have any jadwal except the one that is being updated
