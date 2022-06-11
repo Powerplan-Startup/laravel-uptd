@@ -125,12 +125,7 @@
                                         </v-card-text>
                                         <v-card-text>
                                             <div class="text-truncate">
-                                                {{ item.nama }}
-                                            </div>
-                                            <div class="text-truncate">
-                                                <small>
-                                                    {{ item.angkatan }}
-                                                </small>
+                                                {{ item.nama }} '{{ item.angkatan }}
                                             </div>
                                         </v-card-text>
                                     </v-card>

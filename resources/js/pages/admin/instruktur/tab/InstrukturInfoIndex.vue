@@ -14,6 +14,24 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
+            <v-list-item>
+                <v-list-item-content>
+                    <v-list-item-title class="">
+                        Foto
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                        Lihat Foto
+                    </v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                    <v-btn link icon :href="`/storage/${item.foto}`" target="_blank">
+                        <v-icon>mdi-chevron-right</v-icon>
+                    </v-btn>
+                </v-list-item-action>
+            </v-list-item>
+            <v-card-text>
+                <v-img :src="`/storage/${item.foto}`" class="elevation-2 rounded"></v-img>
+            </v-card-text>
             <v-list-item link :href="item.materi_url" target="_blank">
                 <v-list-item-icon>
                     <v-icon>mdi-download</v-icon>

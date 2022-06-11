@@ -2,19 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Instruktur extends Model
+class Instruktur extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
     protected $table = 'instruktur';
     protected $primaryKey = 'nip';
     protected $guarded = [];
     protected $keyType = "string";
-    protected $appends = ['materi_url'];
-    public function getMateriUrlAttribute()
-    {
-        return asset('storage/' . $this->materi);
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 }

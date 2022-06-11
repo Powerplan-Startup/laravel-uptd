@@ -45,19 +45,38 @@
                 counter="30"/>
         </div>
         <div>
-            <input-materi-instruktur
-                v-model="item" :errors="errors"></input-materi-instruktur>
+            <input-foto-instruktur
+                v-model="item" :errors="errors"></input-foto-instruktur>
+        </div>
+        <div class="d-grid-form">
+            <v-text-field
+                dense
+                outlined
+                v-model="item.username"
+                name="username"
+                label="Username"
+                :error-messages="errors.username"
+                @keyup="errors.username = null"/>
+            <v-text-field
+                dense
+                outlined
+                v-model="item.password"
+                name="password"
+                label="Password"
+                :error-messages="errors.password"
+                @keyup="errors.password = null"
+                type="password"/>
         </div>
     </div>
 </template>
 <script>
+import InputFotoInstruktur from './InputFotoInstruktur.vue';
 import InputJenisKelamin from './InputJenisKelamin.vue';
-import InputMateriInstruktur from './InputMateriInstruktur.vue';
 export default {
     components: {
-    InputJenisKelamin,
-    InputMateriInstruktur
-},
+        InputJenisKelamin,
+        InputFotoInstruktur
+    },
     props: {
         errors: Object,
         value: {
@@ -69,6 +88,7 @@ export default {
                     alamat: null,
                     no_hp: null,
                     materi: null,
+                    input_foto: null,
                 }
             }
         }

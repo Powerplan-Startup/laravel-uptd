@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\PendaftaranController;
 use App\Http\Controllers\AuthTokenController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\Public\BeritaController;
 use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\InstrukturController;
@@ -66,6 +67,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
     Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');
+});
+
+Route::prefix('print')->group(function(){
+    Route::get('/peserta', [PrintController::class, 'peserta']);
+    Route::get('/calon', [PrintController::class, 'calon']);
+    Route::get('/alumni', [PrintController::class, 'alumni']);
+    Route::get('/instruktur', [PrintController::class, 'instruktur']);
+    Route::get('/jadwal', [PrintController::class, 'jadwal']);
 });
 /**
  * route untuk halaman admin

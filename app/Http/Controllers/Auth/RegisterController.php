@@ -111,7 +111,7 @@ class RegisterController extends Controller
          * nama, jenis kelamin, nik, tempat lahir, tanggal lahir, umur, alamat, email, no hp, pendidikan terakhir, nama kejuruan, agama, status, tanggal daftar, nip, angkatan, pekerjaan
          */
         $kejuruan = Kejuruan::where('id_kejuruan', $data['id_kejuruan'])->with(['jadwal'])->first();
-        $nip = optional($kejuruan->jadwal)->nip;
+        // $nip = optional($kejuruan->jadwal)->nip;
         $tanggal_daftar = now()->format('Y-m-d');
         
         $result = CalonPesertaPelatihan::create([
@@ -130,7 +130,7 @@ class RegisterController extends Controller
             'id_kejuruan' => $data['id_kejuruan'],
             'agama' => $data['agama'],
             'status' => $data['status'],
-            'nip' => $nip, // ??
+            // 'nip' => $nip, // ??
             'angkatan' => now()->format('Y'),
             'tanggal_daftar' => $tanggal_daftar
         ]);

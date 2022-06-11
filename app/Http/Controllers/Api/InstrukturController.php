@@ -9,6 +9,7 @@ use App\Http\Resources\InstrukturResource;
 use App\Models\Instruktur;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class InstrukturController extends Controller{
     public function index(){
@@ -29,13 +30,13 @@ class InstrukturController extends Controller{
     }
 
     public function store(InstrukturStoreRequest $request){
-        $data = collect($request->validated())->except(['materi']);
-        $data->put('materi', '');
+        $data = collect($request->validated())->except(['foto']);
+        $data['password'] = bcrypt($data['password']);
         $instruktur = Instruktur::create($data->all());
         $collection = new InstrukturResource($instruktur);
-        if($request->file('materi')){
-            $materi = $request->file('materi')->store('materi');
-            $instruktur->update(['materi' => $materi]);
+        if($request->file('foto')){
+            $foto = $request->file('foto')->store('foto');
+            $instruktur->update(['foto' => $foto]);
         }
         return new Response($collection, $instruktur ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
@@ -46,11 +47,27 @@ class InstrukturController extends Controller{
 
     public function update(InstrukturUpdateRequest $request, Instruktur $instruktur){
         $data = collect($request->validated())->except([]);
+        /**
+         * check if password no null then hash it
+         * 
+         */
+        if($data->has('password')){
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            $data->forget('password');
+        }
         $result = $instruktur->update($data->all());
         $collection = new InstrukturResource($instruktur);
-        if($request->file('materi')){
-            $materi = $request->file('materi')->store('materi');
-            $instruktur->update(['materi' => $materi]);
+        if($request->file('foto')){
+            /**
+             * delete old foto
+             * 
+             */
+            if($instruktur->foto){
+                Storage::delete($instruktur->foto);
+            }
+            $foto = $request->file('foto')->store('foto');
+            $instruktur->update(['foto' => $foto]);
         }
         return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }

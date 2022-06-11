@@ -34,7 +34,7 @@ return new class extends Migration
                 ->references('nip')
                 ->on('instruktur')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');ph
+                ->onUpdate('cascade');
 
             $table->timestamps();
         });
