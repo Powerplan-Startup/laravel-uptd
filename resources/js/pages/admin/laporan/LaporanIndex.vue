@@ -17,7 +17,7 @@
                 <div v-else style="position: relative">
                     <v-expand-transition>
                         <div class="d-grid-main" v-if="show">
-                            <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah" style="min-height: 250px">
+                            <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link style="min-height: 250px" href="/print/peserta" target="_blank">
                                 <div style="min-height: 125px" class="d-flex">
                                     <div class="w-100">
                                         <div class="content-middle">
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                             </v-card>
-                            <v-card color="orange lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
+                            <v-card color="orange lighten-5 overflow-hidden" rounded="xl" flat link href="/print/calon" target="_blank">
                                 <div style="min-height: 125px" class="d-flex">
                                     <div class="w-100">
                                         <div class="content-middle">
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </v-card>
-                            <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
+                            <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link href="/print/alumni" target="_blank">
                                 <div style="min-height: 125px" class="d-flex">
                                     <div class="w-100">
                                         <div class="content-middle">
@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                             </v-card>
-                            <v-card color="blue lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
+                            <v-card color="blue lighten-5 overflow-hidden" rounded="xl" flat link href="/print/instruktur" target="_blank">
                                 <div style="min-height: 125px" class="d-flex">
                                     <div class="w-100">
                                         <div class="content-middle">
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                             </v-card>
-                            <v-card color="teal lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
+                            <v-card color="teal lighten-5 overflow-hidden" rounded="xl" flat link href="/print/jadwal" target="_blank">
                                 <div style="min-height: 125px" class="d-flex">
                                     <div class="w-100">
                                         <div class="content-middle">
