@@ -28,7 +28,7 @@
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title>
-                                    Pilih Berkas
+                                    Pilih Foto
                                 </v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
