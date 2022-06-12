@@ -80,7 +80,14 @@
                                         </span>
                                     @endif
                                 </td>
-                                <td>{{ $jdw->nip }}</td>
+                                <td>
+                                    <div>
+                                        {{ optional($jdw->instruktur)->nama }}
+                                    </div>
+                                    <div>
+                                        {{ $jdw->nip }}
+                                    </div>
+                                </td>
                                 <td>{{ $jdw->nomor_peserta }}</td>
                             </tr>
                         @endforeach
