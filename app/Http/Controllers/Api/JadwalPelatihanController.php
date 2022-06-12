@@ -40,9 +40,24 @@ class JadwalPelatihanController extends Controller
 
         $peserta = CalonPesertaPelatihan::where('id_kejuruan', $data['id_kejuruan'])
             ->whereDoesntHave('jadwal')
+            ->whereStatusPeserta('aktif')
+            ->whereStatusBerkas('sudah')
             ->get();
 
         $jadwal = null;
+        if($peserta->count() <= 0){
+            /**
+             * return http response with validation failed
+             * 
+             */
+            return response()->json([
+                'errors'    => [
+                    'id_kejuruan' => [
+                        'Kejuruan belum memiliki peserta'
+                    ]
+                ]
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
 
         $peserta->each(function($item, $key) use ($data, $request, &$jadwal){
             foreach ($request->hari as $i => $hari) {
@@ -218,7 +233,12 @@ class JadwalPelatihanController extends Controller
 
     public function destroy($id){
         $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
-        $result = $jadwalPelatihan->delete();
+        $jadwal_sama = JadwalPelatihan::where('id_kejuruan', $jadwalPelatihan->id_kejuruan)
+            ->where('id_kejuruan', $jadwalPelatihan->id_kejuruan)
+            ->where('paket', $jadwalPelatihan->paket)
+            ->where('judul', $jadwalPelatihan->judul);
+
+        $result = $jadwal_sama->delete();
         return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

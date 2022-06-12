@@ -50,6 +50,12 @@ class PesertaController extends Controller
     public function update(PesertaUpdateRequest $request, $id){
         $peserta = CalonPesertaPelatihan::where('nomor_peserta', $id)->firstOrFail();
         $data = collect($request->validated())->except([]);
+        if($data->get('status_peserta') == 'aktif'){
+            $data->put('status_berkas', 'sudah');
+        } else
+        if($data->get('status_peserta') == 'calon'){
+            $data->put('status_berkas', 'belum');
+        }
         $result = $peserta->update($data->all());
         $collection = new PesertaResource($peserta);
         return new Response($collection, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
