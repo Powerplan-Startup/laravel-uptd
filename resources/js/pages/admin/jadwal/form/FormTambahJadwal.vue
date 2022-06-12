@@ -13,21 +13,31 @@
                 label="Judul"
                 :error-messages="errors.judul"
                 @keyup="errors.judul = null"/>
-            <v-text-field
-                dense
-                outlined
-                v-model="item.pertemuan"
-                name="pertemuan"
-                label="Pertemuan"
-                type="number"
-                :error-messages="errors.pertemuan"
-                @keyup="errors.pertemuan = null"/>
+            <div class="d-grid-form">
+                <v-text-field
+                    dense
+                    outlined
+                    v-model="item.paket"
+                    name="paket"
+                    label="Paket"
+                    type="number"
+                    min="1"
+                    :error-messages="errors.paket"
+                    @keyup="errors.paket = null"/>
+                <v-text-field
+                    dense
+                    outlined
+                    v-model="item.pertemuan"
+                    name="pertemuan"
+                    label="Pertemuan"
+                    type="number"
+                    min="1"
+                    :error-messages="errors.pertemuan"
+                    @keyup="errors.pertemuan = null"/>
+            </div>
         </div>
         <div>
-            <!-- <div v-for="i in item.pertemuan" :key="i"> -->
-                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, nam sequi? Doloribus, debitis reprehenderit! Laboriosam incidunt, dignissimos totam nulla voluptates, rem accusamus vel error cupiditate consectetur explicabo dolor. Aliquam, facere. -->
-                <input-jadwal-pertemuan :errors="errors"/>
-            <!-- </div> -->
+            <list-input-jadwal v-model="item" :errors="errors" :id="item.id_jadwal"></list-input-jadwal>
         </div>
         <!-- <div>
             <input-pilih-materi-jadwal
@@ -39,9 +49,9 @@
 import InputPilihInstruktur from './InputPilihInstruktur.vue';
 import InputPilihKejuruan from './InputPilihKejuruan.vue';
 import InputPilihMateriJadwal from './InputPilihMateriJadwal.vue';
-import InputJadwalPertemuan from './InputJadwalPertemuan.vue';
+import ListInputJadwal from './ListInputJadwal.vue';
 export default {
-    components: { InputPilihKejuruan, InputPilihInstruktur, InputPilihMateriJadwal, InputJadwalPertemuan },
+    components: { InputPilihKejuruan, InputPilihInstruktur, InputPilihMateriJadwal, ListInputJadwal },
     props: {
         errors: Object,
         value: {

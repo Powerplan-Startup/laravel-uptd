@@ -14,24 +14,28 @@ class JadwalPelatihanStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'tanggal'       => 'required|date',
-            'waktu'         => 'required|date_format:H:i',
-            'hari'          => 'required',
-            'nip'           => ['required','exists:instruktur,nip', function($attribute, $value, $fail){
+            'tanggal.*'         => 'required|date',
+            'waktu.*'           => 'required|date_format:H:i',
+            'waktu_berakhir.*'  => 'required|date_format:H:i',
+            'hari.*'            => 'required',
+            'pertemuan'         => 'required|numeric',
+            'judul'             => 'required',
+            'paket'             => 'required|numeric',
+            'nip'               => ['required','exists:instruktur,nip', function($attribute, $value, $fail){
                 // check if nip doesn't have any jadwal
-                $jadwal = JadwalPelatihan::where('nip', $value)->first();
-                if($jadwal){
-                    $fail('Instruktur sudah memiliki jadwal');
-                }
+                // $jadwal = JadwalPelatihan::where('nip', $value)->first();
+                // if($jadwal){
+                //     $fail('Instruktur sudah memiliki jadwal');
+                // }
             }],
             'id_kejuruan'   => ['required','exists:kejuruan,id_kejuruan', function($attribute, $value, $fail){
                 /** check if id_kejuruan doesn't have any jadwal */
-                $jadwal = JadwalPelatihan::where('id_kejuruan', $value)->first();
-                if($jadwal){
-                    $fail('Kejuruan sudah memiliki jadwal');
-                }
+                // $jadwal = JadwalPelatihan::where('id_kejuruan', $value)->first();
+                // if($jadwal){
+                //     $fail('Kejuruan sudah memiliki jadwal');
+                // }
             }],
-            'materi'        => 'required',
+            // 'materi'        => 'required',
         ];
     }
     /**

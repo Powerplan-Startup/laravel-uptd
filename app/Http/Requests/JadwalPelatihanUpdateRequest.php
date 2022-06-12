@@ -16,24 +16,15 @@ class JadwalPelatihanUpdateRequest extends FormRequest
         $id_jadwal = $this->route('jadwal');
         
         return [
-            'tanggal'       => 'required|date',
-            'waktu'         => 'required',
-            'hari'          => 'required',
-            'nip'           => ['required','exists:instruktur,nip', function($attribute, $value, $fail) use ($id_jadwal){
-                // check if nip doesn't have any jadwal except the one that is being updated
-                $jadwal = JadwalPelatihan::where('nip', $value)->where('id_jadwal', '!=', $id_jadwal)->first();
-                if($jadwal){
-                    $fail('Instruktur sudah memiliki jadwal');
-                }
-            }],
-            'id_kejuruan'   => ['required','exists:kejuruan,id_kejuruan', function($attribute, $value, $fail) use ($id_jadwal){
-                /** check if id_kejuruan doesn't have any jadwal except the one that is being updated */
-                $jadwal = JadwalPelatihan::where('id_kejuruan', $value)->where('id_jadwal', '!=', $id_jadwal)->first();
-                if($jadwal){
-                    $fail('Kejuruan sudah memiliki jadwal');
-                }
-            }],
-            'materi'        => 'nullable|file|max:2048',
+            'tanggal.*'         => 'required|date',
+            'waktu.*'           => 'required|date_format:H:i',
+            'waktu_berakhir.*'  => 'required|date_format:H:i',
+            'hari.*'            => 'required',
+            'pertemuan'         => 'required|numeric',
+            'judul'             => 'required',
+            'paket'             => 'required|numeric',
+            'id_kejuruan'   => ['required','exists:kejuruan,id_kejuruan', function($attribute, $value, $fail) use ($id_jadwal){}],
+            'nip'               => ['required','exists:instruktur,nip', function($attribute, $value, $fail){}],
         ];
     }
     /**
