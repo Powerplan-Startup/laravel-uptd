@@ -14,7 +14,7 @@ class PesertaController extends Controller
         
         $kejuruan = Kejuruan::with('alumni')->paginate(50);
 
-        return view('public.peserta',[
+        return view('public.alumni',[
             'title' => 'Daftar Peserta',
             'kejuruan' => $kejuruan
         ]);
