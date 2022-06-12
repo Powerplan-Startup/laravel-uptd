@@ -18,8 +18,10 @@ class InstrukturUpdateRequest extends FormRequest{
             'nip'       => 'required|string|max:18|unique:instruktur,nip,'.$nip.',nip',
             'alamat'    => 'required|string|max:20',
             'no_hp'     => 'required|string|max:12',
-            'materi'    => 'nullable|file|max:2048',
+            'foto'      => 'nullable|file|max:2048',
             'jenis_kelamin' => 'required|in:l,p',
+            'username'  => 'required|string|max:20|unique:instruktur,username,'.$nip.',nip',
+            'password'  => 'nullable|string|min:6',
         ];
     }
     /**
