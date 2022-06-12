@@ -19,8 +19,10 @@ class InstrukturStoreRequest extends FormRequest
             'nip'       => 'required|string|max:18|unique:instruktur,nip',
             'alamat'    => 'required|string|max:20',
             'no_hp'     => 'required|string|max:12',
-            'materi'    => 'nullable|file|max:2048',
+            'foto'      => 'nullable|file|max:2048',
             'jenis_kelamin' => 'required|in:l,p',
+            'username' => 'required|string|max:20|unique:instruktur,username',
+            'password' => 'required|string|max:20',
         ];
     }
     /**
@@ -42,8 +44,7 @@ class InstrukturStoreRequest extends FormRequest
             'no_hp.required'    => 'No HP tidak boleh kosong',
             'no_hp.string'      => 'No HP harus berupa string',
             'no_hp.max'         => 'No HP tidak boleh lebih dari :max karakter',
-            'materi.required'   => 'Materi tidak boleh kosong',
-            'materi.string'     => 'Materi harus berupa string',
+            'foto.required'     => 'Materi tidak boleh kosong',
             'jenis_kelamin.required' => 'Jenis Kelamin tidak boleh kosong',
             'jenis_kelamin.in'  => 'Jenis Kelamin harus l atau p',
         ];

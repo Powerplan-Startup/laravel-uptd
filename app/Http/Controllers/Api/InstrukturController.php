@@ -29,13 +29,13 @@ class InstrukturController extends Controller{
     }
 
     public function store(InstrukturStoreRequest $request){
-        $data = collect($request->validated())->except(['materi']);
-        $data->put('materi', '');
+        $data = collect($request->validated())->except(['foto']);
+        $data['password'] = bcrypt($data['password']);
         $instruktur = Instruktur::create($data->all());
         $collection = new InstrukturResource($instruktur);
-        if($request->file('materi')){
-            $materi = $request->file('materi')->store('materi');
-            $instruktur->update(['materi' => $materi]);
+        if($request->file('foto')){
+            $foto = $request->file('foto')->store('foto');
+            $instruktur->update(['foto' => $foto]);
         }
         return new Response($collection, $instruktur ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
     }
