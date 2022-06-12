@@ -51,122 +51,41 @@
                 </div>
             </div>
             <h5 class="border-bottom pb-2 mb-0">Jadwal</h5>
-            <div class="d-flex text-muted pt-3 mb-4">
-                <div class="d-flex justify-content-center align-items-center bg-info me-3 rounded-circle" style="height: 48px; width: 48px; min-width: 48px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="#fff" class="bi bi-calendar-event" viewBox="0 0 16 16">
-                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                    </svg>
-                </div>
-                <div class="pb-3 mb-0 w-100">
-                    <h6 class="border-bottom pb-2 mb-0">Jadwal Pelatihan Kejuruan {{ $kejuruan->nama_kejuruan }}</h6>
-                    <div class="d-flex text-muted pt-3">
-                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff"
-                                dy=".3em"></text>
-                        </svg>
-            
-                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-                                <strong class="text-gray-dark">Tanggal</strong>
-                            </div>
-                            <span class="d-block">
-                                {{ $jadwal->tanggal }} 
-                                {{ $jadwal->waktu }}
-                            </span>
-                        </div>
-                    </div>
-                    <a href="{{ asset('storage/' . $jadwal->materi) }}" class="d-flex text-muted pt-3 text-decoration-none" target="_blank">
-                        <div class="d-flex justify-content-center align-items-center bg-success me-3 rounded" style="height: 32px; width: 32px; min-width: 32px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="#fff" class="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
-                                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
-                            </svg>
-                        </div>
-                        <div class="mb-3 small lh-sm border-bottom w-100 btn btn-success py-3 shadow">
-                            {{-- <div class="d-flex justify-content-between"> --}}
-                                {{-- </div> --}}
-                            <span class="d-block">
-                                <strong class="text-gray-dark">Lihat Silabus</strong>
-                                {{-- Unduh materi --}}
-                            </span>
-                        </div>
-                    </a>
-                    <div class="d-flex text-muted pt-3">
-                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff"
-                                dy=".3em"></text>
-                        </svg>
-            
-                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-                                <strong class="text-gray-dark">Hari</strong>
-                            </div>
-                            <span class="d-block">
-                                {{ $jadwal->hari }}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="d-flex text-muted pt-3">
-                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff"
-                                dy=".3em"></text>
-                        </svg>
-            
-                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-                                <strong class="text-gray-dark">Instruktur</strong>
-                            </div>
-                            <span class="d-block">
-                                {{ $jadwal->instruktur->nama }}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="d-flex text-muted pt-3">
-                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff"
-                                dy=".3em"></text>
-                        </svg>
-            
-                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-                                <strong class="text-gray-dark">NIP Instruktur</strong>
-                            </div>
-                            <span class="d-block">
-                                {{ $jadwal->instruktur->nip }}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="d-flex text-muted pt-3">
-                        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff"
-                                dy=".3em"></text>
-                        </svg>
-            
-                        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                            <div class="d-flex justify-content-between">
-                                <strong class="text-gray-dark">Telepon Instruktur</strong>
-                            </div>
-                            <span class="d-block">
-                                {{ $jadwal->instruktur->no_hp }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Hari/Tanggal</th>
+                            <th>Judul Tema</th>
+                            <th>Materi</th>
+                            <th>NIP</th>
+                            <th>No Peserta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($jadwal as $jdw)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ \Carbon\Carbon::parse($jdw->tanggal_pelatihan)->translatedFormat('l, d F Y') }}</td>
+                                <td>{{ $jdw->judul }}</td>
+                                <td>
+                                    @if($jdw->materi != null)
+                                        <a href="{{ asset('storage/materi/'.$jdw->materi) }}" target="_blank">
+                                            Unduh materi
+                                        </a>
+                                    @else
+                                        <span class="text-muted">
+                                            Materi belum tersedia
+                                        </span>
+                                    @endif
+                                </td>
+                                <td>{{ $jdw->nip }}</td>
+                                <td>{{ $jdw->nomor_peserta }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         @endif
         @if($user->status_peserta == "alumni")

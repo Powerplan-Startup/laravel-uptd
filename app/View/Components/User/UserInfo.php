@@ -2,6 +2,7 @@
 
 namespace App\View\Components\User;
 
+use App\Models\JadwalPelatihan;
 use Illuminate\View\Component;
 
 class UserInfo extends Component
@@ -19,7 +20,7 @@ class UserInfo extends Component
     public function render()
     {
         $kejuruan = $this->user->kejuruan;
-        $jadwal = $kejuruan->jadwal;
+        $jadwal = JadwalPelatihan::where('id_kejuruan', $kejuruan->id_kejuruan)->where('nomor_peserta', $this->user->nomor_peserta)->get();
         return view('components.user.user-info', [
             'user'          => $this->user,
             'jadwal'        => $jadwal,
