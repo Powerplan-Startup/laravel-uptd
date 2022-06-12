@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Instruktur;
+use App\Models\JadwalPelatihan;
 use App\Models\Kejuruan;
 use Illuminate\Http\Request;
 use Monolog\Logger;
@@ -50,6 +51,20 @@ class PrintController extends Controller{
             'instruktur' => $instruktur
         ]);
 
+        $pdf = new Mpdf();
+        $pdf->WriteHTML($view);
+        $pdf->Output();
+    }
+    public function jadwal(){
+
+        $data = JadwalPelatihan::groupBy(['id_kejuruan', 'paket','nip'])
+        ->with(['kejuruan', 'instruktur', 'jadwals'])
+        ->get();
+
+        $view = view('print.jadwal', [
+            'jadwal' => $data
+        ]);
+        
         $pdf = new Mpdf();
         $pdf->WriteHTML($view);
         $pdf->Output();

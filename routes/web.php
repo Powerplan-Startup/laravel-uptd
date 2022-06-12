@@ -74,6 +74,7 @@ Route::prefix('print')->group(function(){
     Route::get('/calon', [PrintController::class, 'calon']);
     Route::get('/alumni', [PrintController::class, 'alumni']);
     Route::get('/instruktur', [PrintController::class, 'instruktur']);
+    Route::get('/jadwal', [PrintController::class, 'jadwal']);
 });
 /**
  * route untuk halaman admin
