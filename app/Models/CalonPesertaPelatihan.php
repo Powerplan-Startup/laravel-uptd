@@ -14,6 +14,7 @@ class CalonPesertaPelatihan extends Authenticatable
     protected $table = 'peserta';
     protected $primaryKey = 'nomor_peserta'; 
     protected $guarded = [];
+    protected $dates = ['tanggal_lahir'];
 
     public function instruktur(){
         return $this->belongsTo(Instruktur::class, 'nip', 'nip');
