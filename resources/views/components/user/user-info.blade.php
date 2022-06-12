@@ -55,11 +55,11 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>Hari/Tanggal</th>
                             <th>Judul Tema</th>
                             <th>Materi</th>
-                            <th>NIP</th>
+                            <th>Instruktur</th>
                             <th>No Peserta</th>
                         </tr>
                     </thead>

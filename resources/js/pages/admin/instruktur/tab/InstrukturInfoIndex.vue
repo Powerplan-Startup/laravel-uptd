@@ -32,19 +32,6 @@
             <v-card-text>
                 <v-img :src="`/storage/${item.foto}`" class="elevation-2 rounded"></v-img>
             </v-card-text>
-            <v-list-item link :href="item.materi_url" target="_blank">
-                <v-list-item-icon>
-                    <v-icon>mdi-download</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                    <v-list-item-subtitle>
-                        Materi
-                    </v-list-item-subtitle>
-                    <v-list-item-title class="">
-                        Unduh materi
-                    </v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
         </v-card-text>
     </v-card>
 </template>
