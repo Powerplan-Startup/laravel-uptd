@@ -1,5 +1,5 @@
 <template>
-	<v-navigation-drawer light width="300" app>
+	<v-navigation-drawer light width="300" app v-model="menu">
 		<div class="pa-3">
 			<v-card dark rounded="lg" class="p5-10 shadow-sm" color="indigo">
 				<v-list-item v-if="user.id_admin != null">
@@ -126,11 +126,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
 	computed: {
+		menu: {
+			set(val){
+				this.setSidebar(val)
+			},
+			get(){ return this.sidebar }
+		},
 		...mapState({
-			user: state => state.auth.user
+			user: state => state.auth.user,
+			sidebar: state => state.app.sidebar
+		})
+	},
+	methods: {
+		...mapMutations({
+			setSidebar: 'app/setSidebar'
 		})
 	}
 }

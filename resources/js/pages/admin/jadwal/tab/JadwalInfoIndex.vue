@@ -1,7 +1,7 @@
 <template>
     <v-card color="grey lighten-5 overflow-hidden mt-3" rounded="xl" flat>
         <v-card-text>
-            <v-list-item v-for="(pert, i) in item.jadwals">
+            <v-list-item v-for="(pert, i) in item.jadwals" :key="pert.id_jadwal">
                 <v-list-item-icon>
                     <v-icon>mdi-calendar</v-icon>
                 </v-list-item-icon>
@@ -10,7 +10,7 @@
                         Pertemuan ke-{{ i+1 }}
                     </v-list-item-subtitle>
                     <v-list-item-title class="">
-                        {{ `${item.tanggal}` | date }} | {{ item.waktu }} - {{ item.waktu_berakhir }}
+                        {{ `${pert.tanggal}` | date }} | {{ pert.waktu }} - {{ pert.waktu_berakhir }}
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>

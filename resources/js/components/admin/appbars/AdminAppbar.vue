@@ -1,6 +1,6 @@
 <template>
 	<v-toolbar flat app>
-		<v-app-bar-nav-icon></v-app-bar-nav-icon>
+		<v-app-bar-nav-icon @click="menu = !menu"></v-app-bar-nav-icon>
 		<v-toolbar-title v-text="title"></v-toolbar-title>
 		<v-spacer></v-spacer>
 		<!-- <v-autocomplete
@@ -19,12 +19,29 @@
 	</v-toolbar>
 </template>
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
 	props: {
 		title: {
 			type: String,
 			default: "Dashboard"
 		}
+	},
+	computed: {
+		menu: {
+			set(val){
+				this.setSidebar(val)
+			},
+			get(){ return this.sidebar }
+		},
+		...mapState({
+			sidebar: state => state.app.sidebar
+		})
+	},
+	methods: {
+		...mapMutations({
+			setSidebar: 'app/setSidebar'
+		})
 	}
 }
 </script>
