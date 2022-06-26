@@ -64,7 +64,7 @@ export default {
     props: {
         errors: Object,
         value: Object,
-        cover: Object
+        cover: String|Object
     },
     data(){
         return {

@@ -46,7 +46,7 @@
                     </v-card>
                 </div>
                 <div v-else>
-                    <div class="d-grid-berita-info">
+                    <div class="d-grid-main-info">
                         <div>
                             <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat class="mb-3">
                                 <v-breadcrumbs :items="breadcrumb"></v-breadcrumbs>
@@ -122,24 +122,6 @@
                                     <v-divider/>
                                     <v-list-item>
                                         <v-list-item-icon>
-                                            <v-icon>mdi-{{ item.kategori.nama_kategori.toLocaleLowerCase() == 'pengumuman' ? 'bell' : 'newspaper' }}</v-icon>
-                                        </v-list-item-icon>
-                                        <v-list-item-content>
-                                            <v-list-item-subtitle>
-                                                Kategori Berita
-                                            </v-list-item-subtitle>
-                                            <v-list-item-title class="">
-                                                <template v-if="item.kategori.nama_kategori.toLocaleLowerCase() == 'berita'">
-                                                    Berita
-                                                </template>
-                                                <template v-else-if="item.kategori.nama_kategori.toLocaleLowerCase() == 'pengumuman'">
-                                                    Pengumuman
-                                                </template>
-                                            </v-list-item-title>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item>
-                                        <v-list-item-icon>
                                             <v-icon>mdi-calendar</v-icon>
                                         </v-list-item-icon>
                                         <v-list-item-content>
@@ -147,20 +129,7 @@
                                                 Tanggal Terbit
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="">
-                                                {{ item.tanggal_terbit | datetime }}
-                                            </v-list-item-title>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item v-if="item.kategori.nama_kategori.toLocaleLowerCase() == 'pengumuman'">
-                                        <v-list-item-icon>
-                                            <v-icon>mdi-calendar</v-icon>
-                                        </v-list-item-icon>
-                                        <v-list-item-content>
-                                            <v-list-item-subtitle>
-                                                Berlaku Hingga
-                                            </v-list-item-subtitle>
-                                            <v-list-item-title class="">
-                                                {{ item.expired_at | date }}
+                                                {{ item.created_at | datetime }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -238,7 +207,7 @@ export default {
             session: 'berita/getSession',
         }),
         id(){
-            return this.$route.params.id_berita
+            return this.$route.params.id
         }
     },
     watch: {

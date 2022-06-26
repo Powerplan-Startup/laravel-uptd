@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BeritaStoreRequest;
+use App\Http\Requests\BeritaUpdateRequest;
 use App\Http\Resources\BeritaResource;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class BeritaController extends Controller
@@ -54,26 +56,41 @@ class BeritaController extends Controller
         return new BeritaResource($berita);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Berita  $berita
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Berita $berita)
+    public function update(BeritaUpdateRequest $request, $id)
     {
-        //
+        $berita = Berita::findOrFail($id);
+        $data = collect($request->validated())->except(['cover']);
+
+        $slug = Str::slug($data->get('judul'));
+        $data->put('slug', $slug);
+
+        if($request->file('cover')){
+            $cover = $request->file('cover')->store('cover');
+            $data->put('cover', $cover);
+            $cover 
+                && $berita->cover_url != null 
+                && Storage::disk('public')->delete($berita->cover);
+        }
+
+        $result = $berita->update($data->all());
+        return new Response(
+            $berita, 
+            $result 
+                ? Response::HTTP_CREATED 
+                : Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Berita  $berita
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Berita $berita)
-    {
-        //
+    public function destroy($id){
+        $berita = Berita::findOrFail($id);
+        $cover = $berita->cover; 
+        $has_cover = $berita->cover_url;
+        $result = $berita->delete();
+
+        $result
+            && $has_cover
+            && Storage::disk('public')->delete($cover);
+
+        return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

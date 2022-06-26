@@ -13,7 +13,7 @@ export const berita = [
         { path: 'tambah', component: BeritaIndex, children: [
             { path: '/', component: BeritaTambah, name: 'berita.insert' },
         ]},
-        { path: ':id_berita', component: BeritaInfo, children: [
+        { path: ':id', component: BeritaInfo, children: [
             { path: '/', component: BeritaInfoIndex, name: 'berita.show' },
         ] },
         { path: '/', component: BeritaIndex, children: [
