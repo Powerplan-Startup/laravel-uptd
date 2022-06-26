@@ -9,13 +9,13 @@
                     </v-btn>
                 </div>
             </div>
-            <div class="d-flex pb-10" v-else-if="data_foto" key="2">
+            <div class="d-flex pb-10" v-else-if="data_cover" key="2">
                 <div class="d-flex justify-center" style="position: relative; width: 100%">
                     <v-scroll-y-transition mode="out-in">
                         <v-img
-                            :lazy-src="data_foto.src_xs" 
-                            :src="data_foto.src_lg"
-                            :alt="data_foto.keterangan" 
+                            :lazy-src="data_cover" 
+                            :src="data_cover"
+                            :alt="data_cover" 
                             class="rounded-lg"
                             :key="small"
                             max-height="400"
@@ -49,14 +49,14 @@
             append-icon="mdi-camera"
             prepend-icon=""
             label="Latar Berita"
-            v-model="item.foto_input"
-            @change="this.$emit('change', 'foto')"
-            :error-messages="errors.foto"
+            v-model="item.cover_input"
+            @change="this.$emit('change', 'cover')"
+            :error-messages="errors.cover"
             v-bind="$attrs"
             outlined
             dense
             show-size
-            name="foto"/>
+            name="cover"/>
     </div>
 </template>
 <script>
@@ -64,7 +64,7 @@ export default {
     props: {
         errors: Object,
         value: Object,
-        foto: Object
+        cover: Object
     },
     data(){
         return {
@@ -87,29 +87,29 @@ export default {
                 }
             ]
         },
-        data_foto(){
-            return this.foto 
-                ? this.foto
-                : this.item.foto 
-                    ? this.item.foto
+        data_cover(){
+            return this.cover 
+                ? this.cover
+                : this.item.cover_url 
+                    ? this.item.cover_url
                     : null
         }
     },
     methods: {
         getImage(){
-            if(this.item.foto_input){
+            if(this.item.cover_input){
                 let reader = new FileReader();
                 reader.onload = e =>{
                     this.imgdata = reader.result;
                 }
-                reader.readAsDataURL(this.item.foto_input);
+                reader.readAsDataURL(this.item.cover_input);
                 return
             }
             this.imgdata = null;
         }
     },
     watch: {
-        'value.foto_input': function(val){
+        'value.cover_input': function(val){
             this.getImage()
         }
     }

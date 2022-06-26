@@ -41,9 +41,8 @@ export default {
                 return [
                     { text: null, align: 'center', sortable: false, value: 'foto' },
                     { text: 'Judul', align: 'start', sortable: true, value: 'judul' },
-                    { text: 'Kategori', align: 'start d-none d-sm-table-cell', sortable: true, value: 'id_kategori' },
-                    { text: 'Publikasi', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal_terbit' },
-                    { text: 'Expired', align: 'end d-none d-sm-table-cell', sortable: true, value: 'expired_at' },
+                    { text: 'Deskripsi', align: 'start d-none d-sm-table-cell', sortable: true, value: 'deskripsi' },
+                    { text: 'Publikasi', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                     { text: null, align: '', sortable: true, value: 'action' },
                 ]
             }
@@ -143,14 +142,14 @@ export default {
         clickEvent(t, d){
             this.$emit(t, d)
         },
-        ubahInfoBerita({id_berita: id}){
+        ubahInfoBerita({id: id}){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoBerita({id_berita: id}){
+        hapusInfoBerita({id: id}){
             this.showHapusDialog({id, value: true})
         },
-        toInfoBerita({id_berita}){
-            this.$router.push({ name: 'berita.show', params: { id_berita } })
+        toInfoBerita({id}){
+            this.$router.push({ name: 'berita.show', params: { id } })
         },
     },
     watch: {

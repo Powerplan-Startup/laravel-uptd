@@ -25,6 +25,7 @@
                 @change="errors.terbit = null"/> -->
     
         </div>
+        <input-cover-berita v-model="item" :errors="errors" :cover="item.cover_url"></input-cover-berita>
         <input-berita
             v-model="item.isi"/>
     </div>
@@ -32,8 +33,9 @@
 <script>
 import InputTerbitBerita from './InputTerbitBerita.vue';
 import InputBerita from './InputBerita.vue';
+import InputCoverBerita from './InputCoverBerita.vue';
 export default {
-    components: { InputTerbitBerita, InputBerita },
+    components: { InputTerbitBerita, InputBerita, InputCoverBerita },
     props: {
         errors: Object,
         value: {

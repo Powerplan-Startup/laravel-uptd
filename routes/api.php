@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\CountController;
 use App\Http\Controllers\Api\JadwalPelatihanController;
 use App\Http\Controllers\Api\KejuruanController;
@@ -32,5 +33,6 @@ Route::middleware('auth:sanctum')->group(function () {
         'instruktur'    => App\Http\Controllers\Api\InstrukturController::class,
         'jadwal'        => JadwalPelatihanController::class,
         'peserta'       => PesertaController::class,
+        'berita'        => BeritaController::class,
     ]);
 });

@@ -25,14 +25,11 @@
                 <div class="mb-1">
                     {{ item.judul }}
                 </div>
-                <div class="text--disabled">
-                    {{ item.deskripsi }}
-                </div>
             </div>
         </template>
-        <template #item.tanggal_terbit="{item}">
-            <div v-if="item.tanggal_terbit">
-                {{ item.tanggal_terbit | datetime }}
+        <template #item.created_at="{item}">
+            <div v-if="item.created_at">
+                {{ item.created_at | datetime }}
             </div>
             <div v-else>
                 -
