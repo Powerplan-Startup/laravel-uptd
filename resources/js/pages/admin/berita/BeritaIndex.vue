@@ -9,7 +9,7 @@
         <v-main>
             <v-container>
                 <div v-if="loading">
-                    <div class="d-grid-sekolah">
+                    <div class="d-grid-main">
                         <v-card v-for="i in 3" :key="i" color="grey lighten-4 overflow-hidden" flat rounded="xl">
                             <div style="min-height: 300px">
                                 <v-card-text>
@@ -21,7 +21,7 @@
                 </div>
                 <div v-else style="position: relative">
                     <v-expand-transition>
-                        <div class="d-grid-sekolah" v-if="show">
+                        <div class="d-grid-main" v-if="show">
                             <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link :to="{ name: 'berita.list' }">
                                 <v-card-text>
                                     <div class="d-flex w-100">
@@ -39,7 +39,7 @@
                                 </v-card-text>
                             </v-card>
                             <div class="d-lg-block d-none">
-                                <div class="d-grid-sekolah mini">
+                                <div class="d-grid-main mini">
                                     <div class="content-middle">
                                         <v-subheader>
                                             Terbaru
@@ -104,13 +104,6 @@
                                         </v-card-text>
                                         <v-card-text>
                                             {{ item.judul | sub(20) }}
-                                        </v-card-text>
-                                    </v-card>
-                                    <v-card link :to="{ name: 'kategori' }" rounded="xl" color="teal lighten-5" flat>
-                                        <v-card-text class="content-middle">
-                                            <v-subheader class="teal--text">
-                                                Kategori
-                                            </v-subheader>
                                         </v-card-text>
                                     </v-card>
                                     
