@@ -121,6 +121,19 @@
 					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
+			<v-list-item :to="{ name: 'pimpinan' }" color="primary">
+				<v-list-item-icon>
+					<v-icon>mdi-account-tie</v-icon>
+				</v-list-item-icon>
+				<v-list-item-content>
+					<v-list-item-title>
+						Pimpinan
+					</v-list-item-title>
+					<v-list-item-subtitle>
+						Kelola Data Pimpinan
+					</v-list-item-subtitle>
+				</v-list-item-content>
+			</v-list-item>
 			<v-list-item :to="{ name: 'laporan' }" color="primary" exact>
 				<v-list-item-icon>
 					<v-icon>mdi-printer</v-icon>
