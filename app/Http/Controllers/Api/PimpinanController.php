@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PimpinanResource;
 use App\Models\Pimpinan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PimpinanController extends Controller
 {
@@ -41,15 +42,8 @@ class PimpinanController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pimpinan  $pimpinan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pimpinan $pimpinan)
-    {
-        //
+    public function show(Pimpinan $pimpinan){
+        return new PimpinanResource($pimpinan);
     }
 
     /**
@@ -75,14 +69,9 @@ class PimpinanController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pimpinan  $pimpinan
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Pimpinan $pimpinan)
     {
-        //
+        $result = $pimpinan->delete();
+        return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

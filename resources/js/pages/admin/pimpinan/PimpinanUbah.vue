@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Form Ubah Data Berita > {{ ori.judul }}
+                            Form Ubah Data Pimpinan > {{ ori.judul }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
@@ -14,10 +14,10 @@
                     </v-toolbar>
                     <v-divider/>
                     <v-card-text v-if="dialog && exists">
-                        <form-tambah-berita v-model="item" :errors="errors" :kategori="item.kategori"/>
+                        <form-tambah-pimpinan v-model="item" :errors="errors" :kategori="item.kategori"/>
                     </v-card-text>
                     <v-card-text v-else-if="dialog && loading">
-                        <form-tambah-berita-placeholder/>
+                        <form-tambah-pimpinan-placeholder/>
                     </v-card-text>
                     <v-divider/>
                     <v-card-actions>
@@ -36,10 +36,10 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FormTambahBerita from './form/FormTambahPimpinan.vue'
-import FormTambahBeritaPlaceholder from './form/FormTambahPimpinanPlaceholder.vue'
+import FormTambahPimpinan from './form/FormTambahPimpinan.vue'
+import FormTambahPimpinanPlaceholder from './form/FormTambahPimpinanPlaceholder.vue'
 export default {
-  components: { FormTambahBerita, FormTambahBeritaPlaceholder },
+  components: { FormTambahPimpinan, FormTambahPimpinanPlaceholder },
     data(){
         return {
             loading: false,
@@ -51,8 +51,8 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.berita.modal.ubah,
-            id: state => state.berita.selected.id
+            value_dialog: state => state.pimpinan.modal.ubah,
+            id: state => state.pimpinan.selected.id
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -61,17 +61,17 @@ export default {
     },
     methods: {
         ...mapActions({
-            setDialog: 'berita/setModalUbah',
-            updateBerita: 'berita/update',
-            findBerita: 'berita/show',
-            updateSession: 'berita/updateSession',
+            setDialog: 'pimpinan/setModalUbah',
+            updatePimpinan: 'pimpinan/update',
+            findPimpinan: 'pimpinan/show',
+            updateSession: 'pimpinan/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
             let data = new FormData(e.target)
             this.loading = true
-            let res = await this.updateBerita({ data, id: this.id }).catch(e => {
-                console.log("updateBerita@BeritaUbah.vue", e)
+            let res = await this.updatePimpinan({ data, id: this.id }).catch(e => {
+                console.log("updatePimpinan@PimpinanUbah.vue", e)
                 e.response.status == 422 && this.setErrorForm(e)
                 this.notif({
                     message: e.message
@@ -86,8 +86,8 @@ export default {
         async loadItem(){
             this.exists = false
             this.loading = true
-            let res = await this.findBerita({ id: this.id }).catch(e => {
-                console.log("loadItem@BeritaUbah.vue", e);
+            let res = await this.findPimpinan({ id: this.id }).catch(e => {
+                console.log("loadItem@PimpinanUbah.vue", e);
                 this.notif({
                     message: e.message
                 })

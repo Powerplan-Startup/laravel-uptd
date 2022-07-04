@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Konfirmasi Hapus data Berita > {{ item.judul }}
+                            Konfirmasi Hapus data Pimpinan > {{ item.nama }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="error lighten-5">
@@ -47,8 +47,8 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.berita.modal.hapus,
-            id: state => state.berita.selected.id
+            value_dialog: state => state.pimpinan.modal.hapus,
+            id: state => state.pimpinan.selected.id
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -57,17 +57,17 @@ export default {
     },
     methods: {
         ...mapActions({
-            setDialog: 'berita/setModalHapus',
-            deleteBerita: 'berita/destroy',
-            findBerita: 'berita/show',
-            updateSession: 'berita/updateSession',
+            setDialog: 'pimpinan/setModalHapus',
+            deletePimpinan: 'pimpinan/destroy',
+            findPimpinan: 'pimpinan/show',
+            updateSession: 'pimpinan/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
             let data = new FormData(e.target)
             this.loading = true
-            let res = await this.deleteBerita({ data, id: this.id }).catch(e => {
-                console.log("deleteBerita@BeritaTambah.vue", e);
+            let res = await this.deletePimpinan({ data, id: this.id }).catch(e => {
+                console.log("deletePimpinan@PimpinanTambah.vue", e);
                 if(e.response.status == 422)
                     this.errors = e.response.data.errors
                 this.notif({
@@ -83,8 +83,8 @@ export default {
         async loadItem(){
             this.exists = false
             this.loading = true
-            let res = await this.findBerita({ id: this.id }).catch(e => {
-                console.log("loadItem@BeritaTambah.vue", e);
+            let res = await this.findPimpinan({ id: this.id }).catch(e => {
+                console.log("loadItem@PimpinanTambah.vue", e);
                 this.notif({
                     message: e.message
                 })
