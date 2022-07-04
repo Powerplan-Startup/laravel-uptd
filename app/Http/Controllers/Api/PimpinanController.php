@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PimpinanStoreRequest;
 use App\Http\Resources\PimpinanResource;
 use App\Models\Pimpinan;
 use Illuminate\Http\Request;
@@ -28,18 +29,17 @@ class PimpinanController extends Controller
         return PimpinanResource::collection($data);
     }
 
-    public function create(){
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(PimpinanStoreRequest $request){
+        $data = collect($request->validated())->except([]);
+        $data['password'] = bcrypt($data['password']);
+        $pimpinan = Pimpinan::create($data->all());
+        $collection = new PimpinanResource($pimpinan);
+        return new Response(
+            $collection, 
+            $pimpinan 
+                ? Response::HTTP_CREATED 
+                : Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 
     public function show(Pimpinan $pimpinan){

@@ -4,38 +4,45 @@
             <v-text-field
                 dense
                 outlined
-                v-model="item.judul"
-                name="judul"
-                label="Judul Pimpinan"
-                :error-messages="errors.judul"
-                @keyup="errors.judul = null"/>
+                v-model="item.nama"
+                name="nama"
+                label="Nama Pimpinan"
+                :error-messages="errors.nama"
+                @keyup="errors.nama = null"
+                counter="50"/>
             <v-text-field
                 dense
                 outlined
-                v-model="item.deskripsi"
-                name="deskripsi"
-                label="Deskripsi Pimpinan"
-                :error-messages="errors.deskripsi"
-                @keyup="errors.deskripsi = null"
-                counter="191"/>
-    
-            <!-- <input-terbit-pimpinan
-                v-model="item.terbit" 
-                :errors="errors" 
-                @change="errors.terbit = null"/> -->
-    
+                v-model="item.username"
+                name="username"
+                label="Username Pimpinan"
+                :error-messages="errors.username"
+                @keyup="errors.username = null"
+                counter="30"/>
+            <v-text-field
+                dense
+                outlined
+                v-model="item.password"
+                name="password"
+                label="Password Pimpinan"
+                :error-messages="errors.password"
+                @keyup="errors.password = null"
+                type="password"/>
+            <v-text-field
+                dense
+                outlined
+                v-model="item.password_confirmation"
+                name="password_confirmation"
+                label="Ulangi Password"
+                :error-messages="errors.password_confirmation"
+                @keyup="errors.password_confirmation = null"
+                type="password"/>
         </div>
-        <input-cover-pimpinan v-model="item" :errors="errors" :cover="item.cover_url"></input-cover-pimpinan>
-        <input-pimpinan
-            v-model="item.isi"/>
     </div>
 </template>
 <script>
-import InputTerbitPimpinan from './InputTerbitPimpinan.vue';
-import InputPimpinan from './InputPimpinan.vue';
-import InputCoverPimpinan from './InputCoverPimpinan.vue';
 export default {
-    components: { InputTerbitPimpinan, InputPimpinan, InputCoverPimpinan },
+    components: { },
     props: {
         errors: Object,
         value: {

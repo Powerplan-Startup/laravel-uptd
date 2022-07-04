@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" max-width="600" content-class="shadow-sm" overlay-opacity=".25" eager scrollable>
+        <v-dialog v-model="dialog" max-width="400" content-class="shadow-sm" overlay-opacity=".25" eager scrollable>
             <v-form @submit.prevent="submit" :disabled="loading">
                 <v-card>
                     <v-toolbar flat>
@@ -9,12 +9,12 @@
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
-                            <v-icon>mdi-newspaper</v-icon>
+                            <v-icon>mdi-account-tie</v-icon>
                         </v-avatar>
                     </v-toolbar>
                     <v-divider/>
                     <v-card-text v-if="dialog || alive">
-                        <form-tambah-berita :errors="errors"/>
+                        <form-tambah-pimpinan :errors="errors"/>
                     </v-card-text>
                     <v-divider/>
                     <v-card-actions>
@@ -30,9 +30,9 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FormTambahBerita from './form/FormTambahPimpinan.vue'
+import FormTambahPimpinan from './form/FormTambahPimpinan.vue'
 export default {
-  components: { FormTambahBerita },
+  components: { FormTambahPimpinan },
     data(){
         return {
             loading: false,
@@ -42,7 +42,7 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.berita.modal.tambah
+            value_dialog: state => state.pimpinan.modal.tambah
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -51,11 +51,11 @@ export default {
     },
     methods: {
         ...mapMutations({
-            setDialog: 'berita/SET_MODAL_TAMBAH'
+            setDialog: 'pimpinan/SET_MODAL_TAMBAH'
         }),
         ...mapActions({
-            storeGuru: 'berita/store',
-            updateSession: 'berita/updateSession',
+            storeGuru: 'pimpinan/store',
+            updateSession: 'pimpinan/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
