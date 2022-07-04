@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PimpinanStoreRequest;
+use App\Http\Requests\PimpinanUpdateRequest;
 use App\Http\Resources\PimpinanResource;
 use App\Models\Pimpinan;
 use Illuminate\Http\Request;
@@ -46,27 +47,26 @@ class PimpinanController extends Controller
         return new PimpinanResource($pimpinan);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pimpinan  $pimpinan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pimpinan $pimpinan)
+    public function update(PimpinanUpdateRequest $request, Pimpinan $pimpinan)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pimpinan  $pimpinan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pimpinan $pimpinan)
-    {
-        //
+        $data = collect($request->validated())->except([]);
+        /**
+         * check if password no null then hash it
+         * 
+         */
+        if($data->has('password')){
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            $data->forget('password');
+        }
+        $result = $pimpinan->update($data->all());
+        $collection = new PimpinanResource($pimpinan);
+        return new Response(
+            $collection, 
+            $result 
+                ? Response::HTTP_CREATED 
+                : Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 
     public function destroy(Pimpinan $pimpinan)

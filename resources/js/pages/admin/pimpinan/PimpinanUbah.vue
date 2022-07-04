@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" max-width="600" content-class="shadow-sm" overlay-opacity=".25" eager scrollable persistent>
+        <v-dialog v-model="dialog" max-width="400" content-class="shadow-sm" overlay-opacity=".25" eager scrollable persistent>
             <v-form @submit.prevent="submit" :disabled="loading">
                 <v-card>
                     <v-toolbar flat>
@@ -14,7 +14,7 @@
                     </v-toolbar>
                     <v-divider/>
                     <v-card-text v-if="dialog && exists">
-                        <form-tambah-pimpinan v-model="item" :errors="errors" :kategori="item.kategori"/>
+                        <form-tambah-pimpinan v-model="item" :errors="errors" :kategori="item.kategori" no-password/>
                     </v-card-text>
                     <v-card-text v-else-if="dialog && loading">
                         <form-tambah-pimpinan-placeholder/>

@@ -19,24 +19,26 @@
                 :error-messages="errors.username"
                 @keyup="errors.username = null"
                 counter="30"/>
-            <v-text-field
-                dense
-                outlined
-                v-model="item.password"
-                name="password"
-                label="Password Pimpinan"
-                :error-messages="errors.password"
-                @keyup="errors.password = null"
-                type="password"/>
-            <v-text-field
-                dense
-                outlined
-                v-model="item.password_confirmation"
-                name="password_confirmation"
-                label="Ulangi Password"
-                :error-messages="errors.password_confirmation"
-                @keyup="errors.password_confirmation = null"
-                type="password"/>
+            <template v-if="!noPassword">
+                <v-text-field
+                    dense
+                    outlined
+                    v-model="item.password"
+                    name="password"
+                    label="Password Pimpinan"
+                    :error-messages="errors.password"
+                    @keyup="errors.password = null"
+                    type="password"/>
+                <v-text-field
+                    dense
+                    outlined
+                    v-model="item.password_confirmation"
+                    name="password_confirmation"
+                    label="Ulangi Password"
+                    :error-messages="errors.password_confirmation"
+                    @keyup="errors.password_confirmation = null"
+                    type="password"/>
+            </template>
         </div>
     </div>
 </template>
@@ -45,6 +47,7 @@ export default {
     components: { },
     props: {
         errors: Object,
+        noPassword: Boolean,
         value: {
             type: Object,
             default: ()=>{
