@@ -14,8 +14,9 @@ class JadwalPelatihan extends Model
     protected $table = 'jadwal_pelatihan';
     protected $primaryKey = 'id_jadwal';
     protected $guarded = [];
-    protected $dates = ['tanggal'];
+    // protected $dates = ['tanggal'];
     protected $casts = [
+        'tanggal' => 'datetime:Y-m-d',
         'waktu' => 'datetime:H:i',
         'waktu_berakhir' => 'datetime:H:i',
     ];
