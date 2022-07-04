@@ -63,7 +63,7 @@
 						{{ $item->paket }}
 					</td>
 				</tr>
-				@forelse ($item->jadwals as $jadwal)
+				@forelse ($item->jadwal as $jadwal)
 					<tr class="small">
 						<td>
 							{{ $loop->iteration }}

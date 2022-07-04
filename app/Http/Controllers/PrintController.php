@@ -58,7 +58,7 @@ class PrintController extends Controller{
     public function jadwal(){
 
         $data = JadwalPelatihan::groupBy(['id_kejuruan', 'paket','nip'])
-        ->with(['kejuruan', 'instruktur', 'jadwals'])
+        ->with(['kejuruan', 'instruktur', 'jadwal'])
         ->get();
 
         $view = view('print.jadwal', [

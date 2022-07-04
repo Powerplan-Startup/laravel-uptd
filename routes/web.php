@@ -55,7 +55,7 @@ Route::get('auth/token', [AuthTokenController::class, 'token']);
  */
 Route::get('login/admin', [\App\Http\Controllers\AuthAdmin\LoginController::class, 'showLoginForm'])->name('login.admin.show');
 Route::post('login/admin', [\App\Http\Controllers\AuthAdmin\LoginController::class, 'login'])->name('login.admin');
-Route::get('admin/logout', [\App\Http\Controllers\AuthAdmin\LoginController::class, 'logout'])->name('logout.admin');
+Route::any('admin/logout', [\App\Http\Controllers\AuthAdmin\LoginController::class, 'logout'])->name('logout.admin');
 
 Auth::routes();
 
@@ -72,10 +72,10 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
 
 Route::prefix('print')->middleware('operator')->group(function(){
     Route::get('/peserta', [PrintController::class, 'peserta'])->name('print.peserta');
-    Route::get('/calon', [PrintController::class, 'calon']);
-    Route::get('/alumni', [PrintController::class, 'alumni']);
-    Route::get('/instruktur', [PrintController::class, 'instruktur']);
-    Route::get('/jadwal', [PrintController::class, 'jadwal']);
+    Route::get('/calon', [PrintController::class, 'calon'])->name('print.calon.peserta');
+    Route::get('/alumni', [PrintController::class, 'alumni'])->name('print.alumni');
+    Route::get('/instruktur', [PrintController::class, 'instruktur'])->name('print.instruktur');
+    Route::get('/jadwal', [PrintController::class, 'jadwal'])->name('print.jadwal');
 });
 /**
  * route untuk halaman admin
