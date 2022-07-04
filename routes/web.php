@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\PendaftaranController;
 use App\Http\Controllers\AuthTokenController;
+use App\Http\Controllers\Pimpinan\PimpinanDashboardController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\Public\BeritaController;
 use App\Http\Controllers\Public\HomeController;
@@ -69,8 +70,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');
 });
 
-Route::prefix('print')->group(function(){
-    Route::get('/peserta', [PrintController::class, 'peserta']);
+Route::prefix('print')->middleware('operator')->group(function(){
+    Route::get('/peserta', [PrintController::class, 'peserta'])->name('print.peserta');
     Route::get('/calon', [PrintController::class, 'calon']);
     Route::get('/alumni', [PrintController::class, 'alumni']);
     Route::get('/instruktur', [PrintController::class, 'instruktur']);
@@ -86,4 +87,13 @@ Route::prefix('user')->middleware('auth:web')->group(function(){
     Route::put('/setting', [UserDashboardController::class, 'update'])->name('user.setting.update');
     Route::get('/berkas', [UserDashboardController::class, 'berkas'])->name('user.berkas');
     Route::put('/berkas', [UserDashboardController::class, 'updateBerkas'])->name('user.berkas.update');
+});
+/**
+ * route untuk halaman admin
+ * 
+ */
+Route::prefix('pimpinan')->middleware('auth:pimpinan')->group(function(){
+    Route::get('/', [PimpinanDashboardController::class, 'index'])->name('pimpinan.index');
+    Route::get('/setting', [PimpinanDashboardController::class, 'setting'])->name('pimpinan.setting');
+    Route::put('/setting', [PimpinanDashboardController::class, 'update'])->name('pimpinan.setting.update');
 });
