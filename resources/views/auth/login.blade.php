@@ -72,7 +72,7 @@
                 <a href="{{ route('login.admin.show') }}" class="card-footer bg-dark text-light text-decoration-none px-5 py-3">
                     <div class="d-flex justify-content-between">
                         <div>
-                            Masuk sebagai Admin
+                            Masuk sebagai Operator
                         </div>
                         <div class="pr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">

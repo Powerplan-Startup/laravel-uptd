@@ -45,24 +45,24 @@
 	</div><!-- =============== container end =============== -->
 </footer>
 <!-- =============== jQuery =============== -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/isotope-docs.min.js"></script>
+<script src="{{ asset("assets/js/jquery.js") }}"></script>
+<script src="{{ asset("assets/js/isotope-docs.min.js") }}"></script>
 <!-- =============== Bootstrap Core JavaScript =============== -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
 <!-- =============== Plugin JavaScript =============== -->
-<script src="assets/js/jquery.easing.min.js"></script>
-<script src="assets/js/jquery.fittext.js"></script>
-<script src="assets/js/wow.min.js"></script>
+<script src="{{ asset("assets/js/jquery.easing.min.js") }}"></script>
+<script src="{{ asset("assets/js/jquery.fittext.js") }}"></script>
+<script src="{{ asset("assets/js/wow.min.js") }}"></script>
 <!-- =============== owl carousel =============== -->
-<script src="assets/owl-carousel/owl.carousel.js"></script>
+<script src="{{ asset("assets/owl-carousel/owl.carousel.js") }}"></script>
 <!-- Isotope does NOT require jQuery. But it does make things easier -->
 
-<script src="assets/js/baguetteBox.js" async></script>
-<script src="assets/js/plugins.js" async></script>
+<script src="{{ asset("assets/js/baguetteBox.js") }}" async></script>
+<script src="{{ asset("assets/js/plugins.js") }}" async></script>
 
 <!-- =============== Custom Theme JavaScript =============== -->
-<script src="assets/js/creative.js"></script>
-<script src="assets/js/jquery.nicescroll.min.js"></script>
+<script src="{{ asset("assets/js/creative.js") }}"></script>
+<script src="{{ asset("assets/js/jquery.nicescroll.min.js") }}"></script>
 
 <script>
 	$(document).ready(function() {

@@ -38,7 +38,7 @@ Route::get('visimisi', [HomeController::class, 'visimisi']);
 // Route::get('jadwal', [JadwalplthnController::class, 'jadwal']);
 
 Route::get('blog', [BeritaController::class, 'index'])->name('blog');
-// Route::get('posts/{slug}', [BeritaController::class, 'blog']);
+Route::get('blog/{berita}', [BeritaController::class, 'show'])->name('berita.show');
 
 Route::get('pendaftaran', [PendaftaranController::class, 'index']);
 

@@ -72,17 +72,19 @@
                             <div style="height: 100%;"></div>
                         </div>
                         <div style="min-height: 11.5rem; min-width: 20rem; background: #e8e9f4; color: #333; border-radius: .15rem; margin-right: .5rem; padding: 2rem; flex: 1">
-                            <div>
-                                <h3 style="margin-bottom: 0%">
-                                    {{ $item->judul }}
-                                </h3>
-                                <div style="margin-bottom: 2rem">
-                                    {{ $item->created_at->format('d M Y') }}
-                                </div>
+                            <a href="{{ route('berita.show', [ 'berita' => $item->slug ]) }}" style="color: #333">
                                 <div>
-                                    {{ $item->deskripsi }}
+                                    <h3 style="margin-bottom: 0%">
+                                        {{ $item->judul }}
+                                    </h3>
+                                    <div style="margin-bottom: 2rem" class="text-muted">
+                                        {{ $item->created_at->format('d M Y') }}
+                                    </div>
+                                    <div>
+                                        {{ $item->deskripsi }}
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div style="padding: 2rem; width: 250px">
                             <h2>

@@ -42,6 +42,23 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label for="type" class="text-md-end">Jenis Login</label>
+
+                            <div class="">
+                                <select id="type" type="type" class="form-control @error('type') is-invalid @enderror" name="type" required autocomplete="current-type">
+                                    <option value="admin">Administrator</option>
+                                    <option value="pimpinan">Pimpinan</option>
+                                    <option value="instruktur">Instruktur</option>
+                                </select>
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="mb-3">
                             <div class="">
@@ -74,18 +91,6 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             Masuk Sebagai Peserta
-                        </div>
-                        <div class="pr-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ route('login') }}" class="card-footer bg-light text-dark text-decoration-none px-5 py-3">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            Masuk Sebagai Pimpinan
                         </div>
                         <div class="pr-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
