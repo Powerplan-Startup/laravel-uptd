@@ -3,7 +3,7 @@
         <v-app-bar app flat absolute class="white">
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
             <v-toolbar-title>
-                Berita
+                Pimpinan
             </v-toolbar-title>
         </v-app-bar>
         <v-main>
@@ -22,7 +22,7 @@
                 <div v-else style="position: relative">
                     <v-expand-transition>
                         <div class="d-grid-main" v-if="show">
-                            <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link :to="{ name: 'berita.list' }">
+                            <v-card color="indigo lighten-5 overflow-hidden" rounded="xl" flat link :to="{ name: 'pimpinan.list' }">
                                 <v-card-text>
                                     <div class="d-flex w-100">
                                         <v-avatar color="indigo lighten-4">
@@ -35,83 +35,9 @@
                                     {{ total }}
                                 </v-card-text>
                                 <v-card-text class="text-right pt-0">
-                                    Total Berita
+                                    Total Pimpinan
                                 </v-card-text>
                             </v-card>
-                            <div class="d-lg-block d-none">
-                                <div class="d-grid-main mini">
-                                    <div class="content-middle">
-                                        <v-subheader>
-                                            Terbaru
-                                        </v-subheader>
-                                    </div>
-                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item) in items" :key="item.id_berita" :to="{ name: 'berita.show', params: { id_berita: item.id_berita } }">
-                                        <v-card-text>
-                                            <div class="d-flex w-100">
-                                                <v-spacer/>
-                                                <v-menu open-on-click content-class="shadow-sm rounded-lg" :close-on-content-click="false">
-                                                    <template #activator="{ attrs, on }">
-                                                        <v-btn icon v-on="on" v-bind="attrs" @click.prevent="">
-                                                            <v-icon>mdi-dots-vertical</v-icon>
-                                                        </v-btn>
-                                                    </template>
-                                                    <v-list nav>
-                                                        <v-subheader v-text="'Aksi'"/>
-                                                        <v-list-item dense link :to="{ name: 'berita.show', params: { id_berita: item.id_berita }}">
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-account-tie</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    Lihat Rincian
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-list-item dense link @click="ubahInfoBerita(item.id_berita)">
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-pencil</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    Ubah
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-list-item dense link @click="hapusInfoBerita(item.id_berita)">
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-delete</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    Hapus
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-subheader v-text="'Rincian'"/>
-                                                        <v-list-item dense>
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-calendar</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    {{ item.created_at | datetime }}
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                    </v-list>
-                                                </v-menu>
-                                            </div>
-                                        </v-card-text>
-                                        <v-card-text>
-                                            {{ item.judul | sub(20) }}
-                                        </v-card-text>
-                                    </v-card>
-                                    
-                                    <div v-if="total < 3">
-                                        <div v-for="i in (3 - total)" :key="`placeholder${i}`"></div>
-                                    </div>
-                                </div>
-                            </div>
                             <v-card color="pink lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
                                 <div style="min-height: 300px" class="d-flex">
                                     <div class="w-100">
@@ -123,7 +49,7 @@
                                                     </v-avatar>
                                                     <div class="grow-1 pl-4">
                                                         <v-subheader>
-                                                            Tambah Berita
+                                                            Tambah Pimpinan
                                                         </v-subheader>
                                                     </div>
                                                 </div>
@@ -163,7 +89,7 @@ export default {
     computed: {
         ...mapState({}),
         ...mapGetters({
-            session: 'berita/getSession',
+            session: 'pimpinan/getSession',
         }),
         exists(){
             return this.total > 0
@@ -171,7 +97,7 @@ export default {
     },
     watch: {
         '$route.name': function(val){
-            if(val == 'berita'){
+            if(val == 'pimpinan'){
                 this.show = true
             }
         },
@@ -181,20 +107,20 @@ export default {
     },
     methods: {
         ...mapMutations({
-            showTambahDialog: 'berita/SET_MODAL_TAMBAH',
+            showTambahDialog: 'pimpinan/SET_MODAL_TAMBAH',
         }),
         ...mapActions({
-            showUbahDialog: 'berita/setModalUbah',
-            showHapusDialog: 'berita/setModalHapus',
-            getItems: 'berita/get',
+            showUbahDialog: 'pimpinan/setModalUbah',
+            showHapusDialog: 'pimpinan/setModalHapus',
+            getItems: 'pimpinan/get',
         }),
         openModalTambah(){
             this.showTambahDialog(true)
         },
-        ubahInfoBerita(id){
+        ubahInfoPimpinan(id){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoBerita(id){
+        hapusInfoPimpinan(id){
             this.showHapusDialog({id, value: true})
         },
         async loadItems(){
@@ -204,7 +130,7 @@ export default {
                 sortBy: ['created_at'],
                 sortDesc: [true],
             }).catch(e => {
-                console.log("loadItem@BeritaIndex.vue", e);
+                console.log("loadItem@PimpinanIndex.vue", e);
             });
             this.loading = false
             if(res?.data?.data){

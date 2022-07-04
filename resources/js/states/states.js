@@ -7,6 +7,7 @@ import notifikasi from "./models/notifikasi"
 import peserta from "./models/peserta"
 import berita from "./models/berita"
 import app from "./models/app"
+import pimpinan from "./models/pimpinan"
 
 export const states = {
 	kejuruan,
@@ -18,5 +19,6 @@ export const states = {
 	auth,
 	app,
 	berita,
+	pimpinan,
 }
 export default states

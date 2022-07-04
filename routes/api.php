@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CountController;
 use App\Http\Controllers\Api\JadwalPelatihanController;
 use App\Http\Controllers\Api\KejuruanController;
 use App\Http\Controllers\Api\PesertaController;
+use App\Http\Controllers\Api\PimpinanController;
 use App\Models\CalonPesertaPelatihan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,5 +35,6 @@ Route::middleware('auth:sanctum')->group(function () {
         'jadwal'        => JadwalPelatihanController::class,
         'peserta'       => PesertaController::class,
         'berita'        => BeritaController::class,
+        'pimpinan'      => PimpinanController::class,
     ]);
 });

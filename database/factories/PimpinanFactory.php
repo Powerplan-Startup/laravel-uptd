@@ -17,7 +17,10 @@ class PimpinanFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nama'      => $this->faker->name(),
+            'username'  => $this->faker->userName(),
+            'password'  => bcrypt('password'),
+            'email'     => $this->faker->unique()->safeEmail()
         ];
     }
 }

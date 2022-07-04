@@ -7,7 +7,7 @@
             <v-card-text class="d-flex">
                 <v-text-field type="search" hide-details rounded dense placeholder="Temukan..." v-model="search"/>
             </v-card-text>
-            <berita-table
+            <pimpinan-table
                 :headers="headers"
                 :items="items"
                 :options="options"
@@ -40,9 +40,9 @@ export default {
             default: () => {
                 return [
                     { text: null, align: 'center', sortable: false, value: 'foto' },
-                    { text: 'Judul', align: 'start', sortable: true, value: 'judul' },
-                    { text: 'Deskripsi', align: 'start d-none d-sm-table-cell', sortable: true, value: 'deskripsi' },
-                    { text: 'Publikasi', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
+                    { text: 'Nama', align: 'start', sortable: true, value: 'nama' },
+                    { text: 'Username', align: 'start d-none d-sm-table-cell', sortable: true, value: 'username' },
+                    { text: 'Email', align: 'end d-none d-sm-table-cell', sortable: true, value: 'email' },
                     { text: null, align: '', sortable: true, value: 'action' },
                 ]
             }
@@ -64,7 +64,7 @@ export default {
                 {
                     text: 'Pimpinan',
                     disabled: false,
-                    to: {name: 'berita'},
+                    to: {name: 'pimpinan'},
                     link: true,
                     exact: true,
                 },
@@ -100,10 +100,10 @@ export default {
     },
     methods: {
         ...mapActions({
-            getItems: 'berita/get',
+            getItems: 'pimpinan/get',
             notif: 'notifikasi/show',
-            showUbahDialog: 'berita/setModalUbah',
-            showHapusDialog: 'berita/setModalHapus',
+            showUbahDialog: 'pimpinan/setModalUbah',
+            showHapusDialog: 'pimpinan/setModalHapus',
         }),
         async loadItems(){
             this.loading = true
@@ -134,7 +134,7 @@ export default {
             }, 800);
         },
         rowClick(e){
-            this.$emit('open:berita:info', e)
+            this.$emit('open:pimpinan:info', e)
         },
         editRow(e){
 
@@ -149,7 +149,7 @@ export default {
             this.showHapusDialog({id, value: true})
         },
         toInfoPimpinan({id}){
-            this.$router.push({ name: 'berita.show', params: { id } })
+            this.$router.push({ name: 'pimpinan.show', params: { id } })
         },
     },
     watch: {

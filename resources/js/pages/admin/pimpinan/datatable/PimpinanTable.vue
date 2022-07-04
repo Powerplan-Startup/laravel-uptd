@@ -65,9 +65,6 @@
 						<v-btn icon @click="editRow(item)">
 							<v-icon small>mdi-pencil</v-icon>
 						</v-btn>
-						<v-btn icon @click="rowClick(item)">
-							<v-icon small>mdi-chevron-right</v-icon>
-						</v-btn>
 					</v-card>
 				</v-slide-x-transition>
 			</div>
