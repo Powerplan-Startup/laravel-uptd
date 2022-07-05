@@ -59,14 +59,9 @@ class PaketController extends Controller
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Paket $paket)
     {
-        //
+        $result = $paket->delete();
+        return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

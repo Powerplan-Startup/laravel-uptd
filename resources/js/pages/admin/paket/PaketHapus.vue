@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Konfirmasi Hapus data Jadwal > #{{ item.id_jadwal }}
+                            Konfirmasi Hapus data Paket > #{{ item.id_paket }}
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="error lighten-5">
@@ -47,8 +47,8 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.jadwal.modal.hapus,
-            id: state => state.jadwal.selected.id
+            value_dialog: state => state.paket.modal.hapus,
+            id: state => state.paket.selected.id
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -57,17 +57,17 @@ export default {
     },
     methods: {
         ...mapActions({
-            setDialog: 'jadwal/setModalHapus',
-            deleteJadwal: 'jadwal/destroy',
-            findJadwal: 'jadwal/show',
-            updateSession: 'jadwal/updateSession',
+            setDialog: 'paket/setModalHapus',
+            deletePaket: 'paket/destroy',
+            findPaket: 'paket/show',
+            updateSession: 'paket/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
             let data = new FormData(e.target)
             this.loading = true
-            let res = await this.deleteJadwal({ data, id: this.id }).catch(e => {
-                console.log("deleteJadwal@JadwalTambah.vue", e);
+            let res = await this.deletePaket({ data, id: this.id }).catch(e => {
+                console.log("deletePaket@PaketTambah.vue", e);
                 if(e.response.status == 422)
                     this.errors = e.response.data.errors
                 this.notif({
@@ -83,8 +83,8 @@ export default {
         async loadItem(){
             this.exists = false
             this.loading = true
-            let res = await this.findJadwal({ id: this.id }).catch(e => {
-                console.log("loadItem@JadwalTambah.vue", e);
+            let res = await this.findPaket({ id: this.id }).catch(e => {
+                console.log("loadItem@PaketTambah.vue", e);
                 this.notif({
                     message: e.message
                 })
