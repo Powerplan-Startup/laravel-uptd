@@ -25,7 +25,7 @@ class JadwalPelatihanController extends Controller
                         : 'ASC' );
             }
         })
-        ->groupBy(['id_kejuruan', 'paket','nip'])
+        ->groupBy(['id_paket'])
         ->with(['kejuruan', 'instruktur'])
         ->when(request('search'), function($query, $search){
             $query->where('nama', 'like', "%{$search}%");
@@ -38,10 +38,13 @@ class JadwalPelatihanController extends Controller
 
         $data = collect($request->validated())->except(['hari', 'tanggal', 'waktu', 'waktu_berakhir']);
 
+        // @todo: remove comment later
+
         $peserta = CalonPesertaPelatihan::where('id_kejuruan', $data['id_kejuruan'])
-            ->whereDoesntHave('jadwal')
+            // ->whereDoesntHave('jadwal')
             ->whereStatusPeserta('aktif')
             ->whereStatusBerkas('sudah')
+            // ->where('id_paket', $data->get('id_paket'))
             ->get();
 
         $jadwal = null;
@@ -59,25 +62,26 @@ class JadwalPelatihanController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        $peserta->each(function($item, $key) use ($data, $request, &$jadwal){
-            foreach ($request->hari as $i => $hari) {
-                $jadwal = JadwalPelatihan::create([
-                    'nip'           => $data['nip'],
-                    'id_kejuruan'   => $data['id_kejuruan'],
-                    'hari'          => $hari,
-                    'tanggal'       => $request->tanggal[$i],
-                    'waktu'         => $request->waktu[$i],
-                    'waktu_berakhir'=> $request->waktu_berakhir[$i],
-                    'paket'         => $data['paket'],
-                    'pertemuan'     => $data['pertemuan'],
-                    'judul'         => $data['judul'],
-                    'nomor_peserta' => $item->nomor_peserta,
-                ]);
-            }
-        });
+        foreach ($request->hari as $i => $hari) {
+            $jadwal = JadwalPelatihan::create([
+                'nip'           => $data['nip'],
+                'id_kejuruan'   => $data['id_kejuruan'],
+                'hari'          => $hari,
+                'tanggal'       => $request->tanggal[$i],
+                'waktu'         => $request->waktu[$i],
+                'waktu_berakhir'=> $request->waktu_berakhir[$i],
+                'id_paket'      => $data['id_paket'],
+                'pertemuan'     => $data['pertemuan']
+            ]);
+        }
 
         $collection = new JadwalPelatihanResource($jadwal);
-        return new Response($collection, true ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
+        return new Response(
+            $collection, 
+            true 
+                ? Response::HTTP_CREATED 
+                : Response::HTTP_INTERNAL_SERVER_ERROR
+        );
 
     }
 
@@ -90,6 +94,7 @@ class JadwalPelatihanController extends Controller
     }
 
     public function update(JadwalPelatihanUpdateRequest $request, $id){
+
         $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
 
         $data = collect($request->validated())->except(['id_jadwal', 'hari', 'tanggal', 'waktu', 'waktu_berakhir']);
@@ -129,47 +134,27 @@ class JadwalPelatihanController extends Controller
              */
             foreach ($request->id_jadwal as $i => $id_jadwal) {
                 if(!$id_jadwal){
-                    $peserta->each(function($item, $key) use ($data, $request, &$jadwalPelatihan, &$result, $i){
-                        $result = $jadwalPelatihan = JadwalPelatihan::create([
-                            'nip'           => $data['nip'],
-                            'id_kejuruan'   => $data['id_kejuruan'],
-                            'hari'          => $request->hari[$i],
-                            'tanggal'       => $request->tanggal[$i],
-                            'waktu'         => $request->waktu[$i],
-                            'waktu_berakhir'=> $request->waktu_berakhir[$i],
-                            'paket'         => $data['paket'],
-                            'pertemuan'     => $data['pertemuan'],
-                            'judul'         => $data['judul'],
-                            'nomor_peserta' => $item->nomor_peserta,
-                        ]);
-                    });
-                }else{
-                    $jadwal = JadwalPelatihan::where('id_jadwal', $id_jadwal)->first();
-                    /**
-                     * jadwal yang sama judul, tanggal, waktu, id_jurusan, dan paket
-                     * 
-                     */
-                    $jadwal_sama = JadwalPelatihan::where('id_kejuruan', $jadwal->id_kejuruan)
-                        ->where('hari', $jadwal->hari)
-                        ->where('tanggal', $jadwal->tanggal)
-                        ->where('waktu', $jadwal->waktu)
-                        ->where('id_kejuruan', $jadwal->id_kejuruan)
-                        ->where('paket', $jadwal->paket)
-                        ->where('judul', $jadwal->judul);
-                    /**
-                     * update perubahan
-                     * 
-                     */
-                    $result = $jadwal_sama->update([
+                    $result = $jadwalPelatihan = JadwalPelatihan::create([
                         'nip'           => $data['nip'],
                         'id_kejuruan'   => $data['id_kejuruan'],
                         'hari'          => $request->hari[$i],
                         'tanggal'       => $request->tanggal[$i],
                         'waktu'         => $request->waktu[$i],
                         'waktu_berakhir'=> $request->waktu_berakhir[$i],
-                        'paket'         => $data['paket'],
+                        'id_paket'      => $data['id_paket'],
                         'pertemuan'     => $data['pertemuan'],
-                        'judul'         => $data['judul']
+                    ]);
+                }else{
+                    $jadwal = JadwalPelatihan::where('id_jadwal', $id_jadwal)->first();
+                    $result = $jadwal->update([
+                        'nip'           => $data['nip'],
+                        'id_kejuruan'   => $data['id_kejuruan'],
+                        'hari'          => $request->hari[$i],
+                        'tanggal'       => $request->tanggal[$i],
+                        'waktu'         => $request->waktu[$i],
+                        'waktu_berakhir'=> $request->waktu_berakhir[$i],
+                        'id_paket'      => $data['id_paket'],
+                        'pertemuan'     => $data['pertemuan']
                     ]);
                 }
             }
@@ -188,18 +173,6 @@ class JadwalPelatihanController extends Controller
             foreach ($jadwalPelatihan->jadwals->pluck('id_jadwal') as $i => $id_jadwal) {
                 $jadwal = JadwalPelatihan::where('id_jadwal', $id_jadwal)->first();
                 /**
-                 * jadwal yang sama judul, tanggal, waktu, id_jurusan, dan paket
-                 * 
-                 */
-                $jadwal_sama = JadwalPelatihan::where('id_kejuruan', $jadwal->id_kejuruan)
-                    ->where('hari', $jadwal->hari)
-                    ->where('tanggal', $jadwal->tanggal)
-                    ->where('waktu', $jadwal->waktu)
-                    ->where('id_kejuruan', $jadwal->id_kejuruan)
-                    ->where('paket', $jadwal->paket)
-                    ->where('judul', $jadwal->judul);
-
-                /**
                  * cek jika $request->id jadwal tidak memiliki id_jadwal
                  * 
                  */
@@ -208,37 +181,37 @@ class JadwalPelatihanController extends Controller
                      * hapus jadwal
                      * 
                      */
-                    $result = $jadwal_sama->delete();
+                    $result = $jadwal->delete();
                 }else{
                     /**
                      * update perubahan
                      * 
                      */
-                    $result = $jadwal_sama->update([
+                    $result = $jadwal->update([
                         'nip'           => $data['nip'],
                         'id_kejuruan'   => $data['id_kejuruan'],
                         'hari'          => $request->hari[$i],
                         'tanggal'       => $request->tanggal[$i],
                         'waktu'         => $request->waktu[$i],
                         'waktu_berakhir'=> $request->waktu_berakhir[$i],
-                        'paket'         => $data['paket'],
+                        'id_paket'      => $data['id_paket'],
                         'pertemuan'     => $data['pertemuan'],
-                        'judul'         => $data['judul']
                     ]);
                 }
             }
         }
-        return new Response($jadwalPelatihan, $result ? Response::HTTP_CREATED : Response::HTTP_INTERNAL_SERVER_ERROR);
+        return new Response(
+            $jadwalPelatihan, 
+            $result 
+                ? Response::HTTP_CREATED 
+                : Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 
     public function destroy($id){
         $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
-        $jadwal_sama = JadwalPelatihan::where('id_kejuruan', $jadwalPelatihan->id_kejuruan)
-            ->where('id_kejuruan', $jadwalPelatihan->id_kejuruan)
-            ->where('paket', $jadwalPelatihan->paket)
-            ->where('judul', $jadwalPelatihan->judul);
 
-        $result = $jadwal_sama->delete();
+        $result = $jadwalPelatihan->delete();
         return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

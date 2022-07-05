@@ -22,7 +22,7 @@ class CalonPesertaPelatihan extends Authenticatable
     public function kejuruan(){
         return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
     }
-    public function jadwal(){
-        return $this->hasMany(JadwalPelatihan::class, 'nomor_peserta', 'nomor_peserta');
-    }
+    // public function jadwal(){
+    //     return $this->hasMany(JadwalPelatihan::class, 'nomor_peserta', 'nomor_peserta');
+    // }
 }

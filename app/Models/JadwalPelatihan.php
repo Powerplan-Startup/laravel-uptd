@@ -33,7 +33,7 @@ class JadwalPelatihan extends Model
         return $this->belongsTo(Instruktur::class, 'nip', 'nip');
     }
     public function jadwals(){
-        return $this->hasMany(JadwalPelatihan::class, ['paket', 'id_kejuruan', 'judul'], ['paket', 'id_kejuruan', 'judul']);
+        return $this->hasMany(JadwalPelatihan::class, ['id_paket', 'id_kejuruan'], ['id_paket', 'id_kejuruan']);
     }
     public function jadwal(){
         return $this->hasMany(JadwalPelatihan::class, ['paket', 'id_kejuruan', 'nomor_peserta', 'judul'], ['paket', 'id_kejuruan', 'nomor_peserta', 'judul']);

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\JadwalPelatihan;
+use App\Models\Paket;
 use Illuminate\Foundation\Http\FormRequest;
 
 class JadwalPelatihanStoreRequest extends FormRequest
@@ -19,14 +20,24 @@ class JadwalPelatihanStoreRequest extends FormRequest
             'waktu_berakhir.*'  => 'required|date_format:H:i',
             'hari.*'            => 'required',
             'pertemuan'         => 'required|numeric',
-            'judul'             => 'required',
-            'paket'             => 'required|numeric',
+            // 'judul'             => 'required',
+            // 'paket'             => 'required|numeric',
             'nip'               => ['required','exists:instruktur,nip', function($attribute, $value, $fail){
                 // check if nip doesn't have any jadwal
                 // $jadwal = JadwalPelatihan::where('nip', $value)->first();
                 // if($jadwal){
                 //     $fail('Instruktur sudah memiliki jadwal');
                 // }
+            }],
+            'id_paket'          => ['required','exists:paket,id_paket', function($attribute, $value, $fail){
+                // check if paket already has any jadwal relationship
+                $jadwal = Paket::whereHas('jadwals', function($query) use ($value){
+                    $query->where('id_paket', $value);
+                })->first();
+
+                if($jadwal){
+                    $fail('Paket sudah memiliki jadwal');
+                }
             }],
             'id_kejuruan'   => ['required','exists:kejuruan,id_kejuruan', function($attribute, $value, $fail){
                 /** check if id_kejuruan doesn't have any jadwal */

@@ -8,16 +8,16 @@
             <input-pilih-paket v-model="item.id_paket" :errors="errors"/>
         </div>
         <div>
-            <v-text-field
+            <!-- <v-text-field
                 dense
                 outlined
                 v-model="item.judul"
                 name="judul"
                 label="Judul"
                 :error-messages="errors.judul"
-                @keyup="errors.judul = null"/>
+                @keyup="errors.judul = null"/> -->
             <div class="d-grid-form">
-                <v-text-field
+                <!-- <v-text-field
                     dense
                     outlined
                     v-model="item.paket"
@@ -26,7 +26,8 @@
                     type="number"
                     min="1"
                     :error-messages="errors.paket"
-                    @keyup="errors.paket = null"/>
+                    @keyup="errors.paket = null"/> -->
+                <v-spacer></v-spacer>
                 <v-text-field
                     dense
                     outlined

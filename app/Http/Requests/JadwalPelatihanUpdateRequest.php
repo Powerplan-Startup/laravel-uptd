@@ -21,10 +21,11 @@ class JadwalPelatihanUpdateRequest extends FormRequest
             'waktu_berakhir.*'  => 'required|date_format:H:i',
             'hari.*'            => 'required',
             'pertemuan'         => 'required|numeric',
-            'judul'             => 'required',
-            'paket'             => 'required|numeric',
+            // 'judul'             => 'required',
+            // 'paket'             => 'required|numeric',
             'id_kejuruan'   => ['required','exists:kejuruan,id_kejuruan', function($attribute, $value, $fail) use ($id_jadwal){}],
             'nip'               => ['required','exists:instruktur,nip', function($attribute, $value, $fail){}],
+            'id_paket'               => ['required','exists:paket,id_paket', function($attribute, $value, $fail){}],
         ];
     }
     /**

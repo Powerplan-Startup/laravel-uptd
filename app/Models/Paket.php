@@ -15,4 +15,7 @@ class Paket extends Model
     public function kejuruan(){
         return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
     }
+    public function jadwals(){
+        return $this->hasMany(JadwalPelatihan::class, 'id_paket', 'id_paket');
+    }
 }
