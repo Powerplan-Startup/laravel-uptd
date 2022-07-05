@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaketStoreRequest;
+use App\Http\Requests\PaketUpdateRequest;
 use App\Http\Resources\PaketResource;
 use App\Models\Paket;
 use Illuminate\Http\Request;
@@ -42,27 +43,20 @@ class PaketController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show(Paket $paket){
+        $paket->load(['kejuruan']);
+        return new PaketResource($paket);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(PaketUpdateRequest $request, Paket $paket){
+        $data = collect($request->validated())->except([]);
+        $result = $paket->update($data->all());
+        $collection = new PaketResource($paket);
+        return new Response(
+            $collection, 
+            $result 
+                ? Response::HTTP_CREATED 
+                : Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 
     /**
