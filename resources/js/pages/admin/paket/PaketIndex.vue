@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-main>
-			<admin-appbar title="Jadwal"></admin-appbar>
+			<admin-appbar title="Paket"></admin-appbar>
             <v-container class="pa-10">
                 <div v-if="loading">
                     <div class="d-grid-main">
@@ -32,95 +32,12 @@
 											{{ total }}
 										</v-card-text>
 										<v-card-text class="text-right pt-0">
-											Total Jadwal
+											Total Paket
 										</v-card-text>
 									</div>
 								</div>
                             </v-card>
-                            <div class="d-lg-block d-none">
-                                <div class="d-grid-main mini fill-height">
-									<v-card class="grey lighten-4 overflow-hidden" flat rounded="xl">
-										<v-card-text class="content-middle">
-											<v-subheader>
-												Terbaru
-											</v-subheader>
-										</v-card-text>
-									</v-card>
-                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.id_paket" :to="{ name: 'paket.show', params: { id_paket: item.id_paket } }">
-                                        <v-card-text>
-                                            <div class="d-flex w-100">
-                                                <v-spacer/>
-                                                <v-menu open-on-click content-class="shadow-sm rounded-lg" :close-on-content-click="false">
-                                                    <template #activator="{ attrs, on }">
-                                                        <v-btn icon v-on="on" v-bind="attrs" @click.prevent="">
-                                                            <v-icon>mdi-dots-vertical</v-icon>
-                                                        </v-btn>
-                                                    </template>
-                                                    <v-list nav>
-                                                        <v-subheader v-text="'Aksi'"/>
-                                                        <v-list-item dense link :to="{ name: 'paket.show', params: { id_paket: item.id_paket }}">
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-account-tie</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    Lihat Rincian
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-list-item dense link @click="ubahInfoJadwal(item.id_paket)">
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-pencil</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    Ubah
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-list-item dense link @click="hapusInfoJadwal(item.id_paket)">
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-delete</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    Hapus
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-subheader v-text="'Rincian'"/>
-                                                        <v-list-item dense>
-                                                            <v-list-item-icon>
-                                                                <v-icon>mdi-calendar</v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>
-                                                                    {{ item.created_at | datetime }}
-                                                                </v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                    </v-list>
-                                                </v-menu>
-                                            </div>
-                                        </v-card-text>
-                                        <v-card-text>
-                                            <div class="text-truncate">
-                                                {{ item.kejuruan.nama_kejuruan }}
-                                            </div>
-                                            <div class="text-truncate">
-                                                <small>
-                                                    {{ item.tanggal | date }}
-                                                    {{ item.waktu | time }}
-                                                </small>
-                                            </div>
-                                        </v-card-text>
-                                    </v-card>
-                                    
-                                    <div v-if="total < 1">
-                                        <div v-for="i in (1 - total)" :key="`placeholder${i}`"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div></div>
                             <v-card color="pink lighten-5 overflow-hidden" rounded="xl" flat link @click="openModalTambah">
                                 <div style="min-height: 125px" class="d-flex">
                                     <div class="w-100">
@@ -132,7 +49,7 @@
                                                     </v-avatar>
                                                     <div class="grow-1 pl-4">
                                                         <v-subheader class="pink-text">
-                                                            Tambah Jadwal
+                                                            Tambah Paket
                                                         </v-subheader>
                                                     </div>
                                                 </div>
@@ -202,10 +119,10 @@ export default {
         openModalTambah(){
             this.showTambahDialog(true)
         },
-        ubahInfoJadwal(id){
+        ubahInfoPaket(id){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoJadwal(id){
+        hapusInfoPaket(id){
             this.showHapusDialog({id, value: true})
         },
         async loadItems(){
@@ -215,7 +132,7 @@ export default {
                 sortBy: ['created_at'],
                 sortDesc: [true],
             }).catch(e => {
-                console.log("loadItem@JadwalIndex.vue", e);
+                console.log("loadItem@PaketIndex.vue", e);
             });
             this.loading = false
             if(res?.data?.data){

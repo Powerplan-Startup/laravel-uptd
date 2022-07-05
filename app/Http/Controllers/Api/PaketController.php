@@ -3,18 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PaketResource;
+use App\Models\Paket;
 use Illuminate\Http\Request;
 
 class PaketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data = Paket::when(request('sortBy'), function($query, $sorts){
+                foreach ($sorts as $i => $sort) {
+                    $query->orderBy($sort, 
+                        request('sortDesc') 
+                        && request('sortDesc')[$i] == 'true' 
+                            ? 'DESC' 
+                            : 'ASC' );
+                }
+            })
+            ->when(request('search'), function($query, $search){
+                $query->where('paket', 'like', "%{$search}%");
+            })
+            ->with(['kejuruan'])
+            ->paginate(request('itemsPerPage') ?? 10);
+        return PaketResource::collection($data);
     }
 
     /**

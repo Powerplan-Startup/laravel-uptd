@@ -7,7 +7,7 @@
             <v-card-text class="d-flex">
                 <v-text-field type="search" hide-details rounded dense placeholder="Temukan..." v-model="search"/>
             </v-card-text>
-            <jadwal-table
+            <paket-table
                 :headers="headers"
                 :items="items"
                 :options="options"
@@ -16,9 +16,9 @@
                 v-model="selected"
                 @update:options="options = $event"
                 @update="update"
-                @rowClick="toInfoJadwal"
-                @editRow="ubahInfoJadwal"
-                @deleteRow="hapusInfoJadwal"
+                @rowClick="toInfoPaket"
+                @editRow="ubahInfoPaket"
+                @deleteRow="hapusInfoPaket"
                 :small="small"
                 :no-select="noSelect"/>
             <slot v-bind:update="update"></slot>
@@ -27,7 +27,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
-import JadwalTable from '../datatable/PaketTable.vue'
+import PaketTable from '../datatable/PaketTable.vue'
 export default {
     props: {
         dataSession: String|Number,
@@ -36,7 +36,7 @@ export default {
         noSelect: Boolean,
     },
     components: {
-        JadwalTable
+        PaketTable
     },
     data(){
         return {
@@ -49,26 +49,25 @@ export default {
                     exact: true,
                 },
                 {
-                    text: 'Jadwal',
+                    text: 'Paket',
                     disabled: false,
-                    to: {name: 'jadwal'},
+                    to: {name: 'paket'},
                     link: true,
                     exact: true,
                 },
                 {
-                    text: 'List Jadwal',
+                    text: 'List Paket',
                     disabled: true,
                 },
             ],
             items: [],
             headers: [
-                { text: null, align: 'start', sortable: false, value: 'id_jadwal' },
+                { text: null, align: 'start', sortable: false, value: 'id_paket' },
                 { text: 'Kejuruan', align: 'start', sortable: true, value: 'id_kejuruan' },
                 { text: 'Instruktur', align: 'start d-none d-sm-table-cell', sortable: true, value: 'nip' },
-                { text: 'Judul', align: 'start d-none d-sm-table-cell', sortable: true, value: 'judul' },
-                { text: 'Tanggal', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal' },
-                { text: 'jam', align: 'end d-none d-sm-table-cell', sortable: true, value: 'waktu' },
-                { text: 'Selesai', align: 'end d-none d-sm-table-cell', sortable: true, value: 'waktu_berakhir' },
+                { text: 'Paket', align: 'start d-none d-sm-table-cell', sortable: true, value: 'paket' },
+                { text: 'Pendaftaran', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal_daftar_mulai' },
+                { text: 'Penutupan', align: 'end d-none d-sm-table-cell', sortable: true, value: 'tanggal_daftar_selesai' },
                 // { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },
                 { text: null, align: '', sortable: false, value: 'action' },
             ],
@@ -98,10 +97,10 @@ export default {
     },
     methods: {
         ...mapActions({
-            getItems: 'jadwal/get',
+            getItems: 'paket/get',
             notif: 'notifikasi/show',
-            showUbahDialog: 'jadwal/setModalUbah',
-            showHapusDialog: 'jadwal/setModalHapus',
+            showUbahDialog: 'paket/setModalUbah',
+            showHapusDialog: 'paket/setModalHapus',
         }),
         async loadItems(){
             this.loading = true
@@ -132,7 +131,7 @@ export default {
             }, 800);
         },
         rowClick(e){
-            this.$emit('open:jadwal:info', e)
+            this.$emit('open:paket:info', e)
         },
         editRow(e){
 
@@ -140,14 +139,14 @@ export default {
         clickEvent(t, d){
             this.$emit(t, d)
         },
-        ubahInfoJadwal({id_jadwal: id}){
+        ubahInfoPaket({id_paket: id}){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoJadwal({id_jadwal: id}){
+        hapusInfoPaket({id_paket: id}){
             this.showHapusDialog({id, value: true})
         },
-        toInfoJadwal({id_jadwal}){
-            this.$router.push({ name: 'jadwal.show', params: { id_jadwal } })
+        toInfoPaket({id_paket}){
+            this.$router.push({ name: 'paket.show', params: { id_paket } })
         },
     },
     watch: {

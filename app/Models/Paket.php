@@ -11,4 +11,8 @@ class Paket extends Model
     protected $table = 'paket';
     protected $primaryKey = 'id_paket';
     protected $guarded = [];
+
+    public function kejuruan(){
+        return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
+    }
 }
