@@ -46,7 +46,7 @@
 											</v-subheader>
 										</v-card-text>
 									</v-card>
-                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.id_jadwal" :to="{ name: 'jadwal.show', params: { id_jadwal: item.id_jadwal } }">
+                                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link v-for="(item, i) in items" :key="item.id_paket" :to="{ name: 'paket.show', params: { id_paket: item.id_paket } }">
                                         <v-card-text>
                                             <div class="d-flex w-100">
                                                 <v-spacer/>
@@ -58,7 +58,7 @@
                                                     </template>
                                                     <v-list nav>
                                                         <v-subheader v-text="'Aksi'"/>
-                                                        <v-list-item dense link :to="{ name: 'jadwal.show', params: { id_jadwal: item.id_jadwal }}">
+                                                        <v-list-item dense link :to="{ name: 'paket.show', params: { id_paket: item.id_paket }}">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-account-tie</v-icon>
                                                             </v-list-item-icon>
@@ -68,7 +68,7 @@
                                                                 </v-list-item-title>
                                                             </v-list-item-content>
                                                         </v-list-item>
-                                                        <v-list-item dense link @click="ubahInfoJadwal(item.id_jadwal)">
+                                                        <v-list-item dense link @click="ubahInfoJadwal(item.id_paket)">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-pencil</v-icon>
                                                             </v-list-item-icon>
@@ -78,7 +78,7 @@
                                                                 </v-list-item-title>
                                                             </v-list-item-content>
                                                         </v-list-item>
-                                                        <v-list-item dense link @click="hapusInfoJadwal(item.id_jadwal)">
+                                                        <v-list-item dense link @click="hapusInfoJadwal(item.id_paket)">
                                                             <v-list-item-icon>
                                                                 <v-icon>mdi-delete</v-icon>
                                                             </v-list-item-icon>
@@ -174,7 +174,7 @@ export default {
     computed: {
         ...mapState({}),
         ...mapGetters({
-            session: 'jadwal/getSession',
+            session: 'paket/getSession',
         }),
         exists(){
             return this.total > 0
@@ -182,7 +182,7 @@ export default {
     },
     watch: {
         '$route.name': function(val){
-            if(val == 'jadwal'){
+            if(val == 'paket'){
                 this.show = true
             }
         },
@@ -192,12 +192,12 @@ export default {
     },
     methods: {
         ...mapMutations({
-            showTambahDialog: 'jadwal/SET_MODAL_TAMBAH',
+            showTambahDialog: 'paket/SET_MODAL_TAMBAH',
         }),
         ...mapActions({
-            showUbahDialog: 'jadwal/setModalUbah',
-            showHapusDialog: 'jadwal/setModalHapus',
-            getItems: 'jadwal/get',
+            showUbahDialog: 'paket/setModalUbah',
+            showHapusDialog: 'paket/setModalHapus',
+            getItems: 'paket/get',
         }),
         openModalTambah(){
             this.showTambahDialog(true)
