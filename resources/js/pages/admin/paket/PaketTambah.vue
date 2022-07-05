@@ -5,7 +5,7 @@
                 <v-card>
                     <v-toolbar flat>
                         <v-subheader>
-                            Tambah Jadwal
+                            Tambah Paket
                         </v-subheader>
                         <v-spacer/>
                         <v-avatar color="grey lighten-3">
@@ -14,7 +14,7 @@
                     </v-toolbar>
                     <v-divider/>
                     <v-card-text v-if="dialog || alive">
-                        <form-tambah-jadwal :errors="errors"/>
+                        <form-tambah-paket :errors="errors"/>
                     </v-card-text>
                     <v-divider/>
                     <v-card-actions>
@@ -30,9 +30,9 @@
 </template>
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import FormTambahJadwal from './form/FormTambahPaket.vue'
+import FormTambahPaket from './form/FormTambahPaket.vue'
 export default {
-    components: { FormTambahJadwal },
+    components: { FormTambahPaket },
     data(){
         return {
             loading: false,
@@ -42,7 +42,7 @@ export default {
     },
     computed: {
         ...mapState({
-            value_dialog: state => state.jadwal.modal.tambah
+            value_dialog: state => state.paket.modal.tambah
         }),
         dialog: {
             get(){ return this.value_dialog },
@@ -51,18 +51,18 @@ export default {
     },
     methods: {
         ...mapMutations({
-            setDialog: 'jadwal/SET_MODAL_TAMBAH'
+            setDialog: 'paket/SET_MODAL_TAMBAH'
         }),
         ...mapActions({
-            storeJadwal: 'jadwal/store',
-            updateSession: 'jadwal/updateSession',
+            storePaket: 'paket/store',
+            updateSession: 'paket/updateSession',
             notif: 'notifikasi/show'
         }),
         async submit(e){
             let data = new FormData(e.target)
             this.loading = true
-            let res = await this.storeJadwal(data).catch(e => {
-                console.log("storeJadwal@JadwalTambah.vue", e);
+            let res = await this.storePaket(data).catch(e => {
+                console.log("storePaket@PaketTambah.vue", e);
 				console.log(e);
                 e.response.status == 422 && this.setErrorForm(e)
                 this.notif({

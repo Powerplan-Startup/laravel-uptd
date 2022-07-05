@@ -5,14 +5,6 @@
             <input-pilih-instruktur v-model="item.nip" :errors="errors"/>
         </div>
         <div>
-            <v-text-field
-                dense
-                outlined
-                v-model="item.judul"
-                name="judul"
-                label="Judul"
-                :error-messages="errors.judul"
-                @keyup="errors.judul = null"/>
             <div class="d-grid-form">
                 <v-text-field
                     dense
@@ -27,17 +19,18 @@
                 <v-text-field
                     dense
                     outlined
-                    v-model="item.pertemuan"
-                    name="pertemuan"
-                    label="Pertemuan"
+                    v-model="item.tahun"
+                    name="tahun"
+                    label="Tahun"
                     type="number"
-                    min="1"
-                    :error-messages="errors.pertemuan"
-                    @keyup="errors.pertemuan = null"/>
+                    min="2020"
+                    :counter="4"
+                    :error-messages="errors.tahun"
+                    @keyup="errors.tahun = null"/>
             </div>
         </div>
         <div>
-            <list-input-paket v-model="item" :errors="errors" :id="item.id_paket"></list-input-paket>
+            <input-paket v-model="item" :errors="errors"></input-paket>
         </div>
         <!-- <div>
             <input-pilih-materi-paket
@@ -50,8 +43,9 @@ import InputPilihInstruktur from './InputPilihInstruktur.vue';
 import InputPilihKejuruan from './InputPilihKejuruan.vue';
 import InputPilihMateriPaket from './InputPilihMateriPaket.vue';
 import ListInputPaket from './ListInputPaket.vue';
+import InputPaket from './InputPaket.vue';
 export default {
-    components: { InputPilihKejuruan, InputPilihInstruktur, InputPilihMateriPaket, ListInputPaket },
+    components: { InputPilihKejuruan, InputPilihInstruktur, InputPilihMateriPaket, ListInputPaket, InputPaket },
     props: {
         errors: Object,
         value: {

@@ -1,116 +1,67 @@
 <template>
 	<div>
-		<input
-			:value="item.id_jadwal"
-			name="id_jadwal[]"
-			label="Id Jadwal"
-			readonly
-			type="hidden"/>
 		<div class="d-grid-form">
-			<v-text-field
-				dense
-				outlined
-				:value="hari"
-				name="hari[]"
-				label="Hari"
-				:error-messages="errors[`hari.${index}`]"
-				@keyup="errors[`hari.${index}`] = null"
-				readonly/>
 			<v-dialog
-				ref="tanggal"
-				v-model="modal_tanggal"
-				:return-value.sync="item.tanggal"
+				ref="tanggal_daftar_mulai"
+				v-model="modal_tanggal_daftar_mulai"
+				:return-value.sync="item.tanggal_daftar_mulai"
 				persistent
 				width="300px"
 				content-class="shadow-sm rounded-xl"
-				overlay-opacity=".25"
-				eager>
+				overlay-opacity=".25">
 				<template v-slot:activator="{ on, attrs }">
 					<v-text-field
 						dense
 						outlined
-						v-model="item.tanggal"
-						name="tanggal[]"
-						label="Tanggal"
+						v-model="item.tanggal_daftar_mulai"
+						name="tanggal_daftar_mulai"
+						label="Tanggal Mulai Pendaftaran"
 						append-icon="mdi-calendar"
 						readonly
 						v-bind="attrs"
 						v-on="on"
-						:error-messages="errors[`tanggal.${index}`]"/>
+						:error-messages="errors[`tanggal_daftar_mulai`]"/>
 				</template>
-				<v-date-picker v-model="item.tanggal" scrollable locale="id-id" first-day-of-week="1">
+				<v-date-picker v-model="item.tanggal_daftar_mulai" scrollable locale="id-id" first-day-of-week="1">
 					<v-spacer></v-spacer>
-					<v-btn text color="primary" @click="modal_tanggal = false">
+					<v-btn text color="primary" @click="modal_tanggal_daftar_mulai = false">
 						Batal
 					</v-btn>
-					<v-btn text color="primary" @click="$refs.tanggal.save(item.tanggal); errors[`tanggal.${index}`] = null">
+					<v-btn text color="primary" @click="$refs.tanggal_daftar_mulai.save(item.tanggal_daftar_mulai); errors[`tanggal_daftar_mulai`] = null">
 						Pilih
 					</v-btn>
 				</v-date-picker>
 			</v-dialog>
 			<v-dialog
-				ref="waktu"
-				v-model="modal_waktu"
-				:return-value.sync="item.waktu"
+				ref="tanggal_daftar_selesai"
+				v-model="modal_tanggal_daftar_selesai"
+				:return-value.sync="item.tanggal_daftar_selesai"
 				persistent
 				width="300px"
 				content-class="shadow-sm rounded-xl"
-				overlay-opacity=".25"
-				eager>
+				overlay-opacity=".25">
 				<template v-slot:activator="{ on, attrs }">
 					<v-text-field
 						dense
 						outlined
-						v-model="item.waktu"
-						name="waktu[]"
-						label="jam"
-						append-icon="mdi-clock"
+						v-model="item.tanggal_daftar_selesai"
+						name="tanggal_daftar_selesai"
+						label="Penutupan Pendaftaran"
+						append-icon="mdi-calendar"
 						readonly
 						v-bind="attrs"
 						v-on="on"
-						:error-messages="errors[`waktu.${index}`]"/>
+						:error-messages="errors[`tanggal_daftar_selesai`]"/>
 				</template>
-				<v-time-picker v-model="item.waktu" scrollable locale="id-id" first-day-of-week="1">
+				<v-date-picker v-model="item.tanggal_daftar_selesai" scrollable locale="id-id" first-day-of-week="1">
 					<v-spacer></v-spacer>
-					<v-btn text color="primary" @click="modal_waktu = false">
+					<v-btn text color="primary" @click="modal_tanggal_daftar_selesai = false">
 						Batal
 					</v-btn>
-					<v-btn text color="primary" @click="$refs.waktu.save(item.waktu); errors[`waktu.${index}`] = null">
+					<v-btn text color="primary" @click="$refs.tanggal_daftar_selesai.save(item.tanggal_daftar_selesai); errors[`tanggal_daftar_selesai`] = null">
 						Pilih
 					</v-btn>
-				</v-time-picker>
-			</v-dialog>
-			<v-dialog
-				ref="waktu_berakhir"
-				v-model="modal_waktu_berakhir"
-				:return-value.sync="item.waktu_berakhir"
-				persistent
-				width="300px"
-				content-class="shadow-sm rounded-xl"
-				overlay-opacity=".25"
-				eager>
-				<template v-slot:activator="{ on, attrs }">
-					<v-text-field
-						dense
-						outlined
-						v-model="item.waktu_berakhir"
-						name="waktu_berakhir[]"
-						label="jam Selesai"
-						append-icon="mdi-clock"
-						readonly
-						v-bind="attrs"
-						v-on="on"
-						:error-messages="errors[`waktu_berakhir.${index}`]"/>
-				</template>
-				<v-time-picker v-model="item.waktu_berakhir" scrollable locale="id-id" first-day-of-week="1">
-					<v-spacer></v-spacer>
-					<v-btn text color="primary" @click="modal_waktu_berakhir = false">
-						Batal
-					</v-btn>
-					<v-btn text color="primary" @click="$refs.waktu_berakhir.save(item.waktu_berakhir); errors[`waktu_berakhir.${index}`] = null">
-						Pilih
-					</v-btn>
-				</v-time-picker>
+				</v-date-picker>
 			</v-dialog>
 		</div>
 	</div>
@@ -124,13 +75,10 @@ export default {
             type: Object,
             default: ()=>{
                 return {
-                    nama_jadwal: null,
+                    paket: null,
                     nip: null,
-                    alamat: null,
-                    tanggal: null,
-                    waktu: null,
-                    waktu_berakhir: null,
-                    input_foto: null,
+                    tanggal_daftar_mulai: null,
+                    tanggal_daftar_selesai: null,
                     id_kejuruan: null,
                     nip: null,
                     materi: null
@@ -149,11 +97,11 @@ export default {
         },
         hari(){
             /**
-             * return format hari dari tanggal menggunakan Intl.DateTimeFormat
+             * return format hari dari tanggal_daftar_mulai menggunakan Intl.DateTimeFormat
              * 
              */
-            if(this.item.tanggal){
-                const date = new Date(this.item.tanggal)
+            if(this.item.tanggal_daftar_mulai){
+                const date = new Date(this.item.tanggal_daftar_mulai)
                 const options = { weekday: 'long' }
                 return new Intl.DateTimeFormat('id-id', options).format(date)
             }
@@ -162,9 +110,8 @@ export default {
     },
     data() {
         return {
-			modal_tanggal: false,
-			modal_waktu: false,
-			modal_waktu_berakhir: false,
+			modal_tanggal_daftar_mulai: false,
+			modal_tanggal_daftar_selesai: false,
         };
     },
 }
