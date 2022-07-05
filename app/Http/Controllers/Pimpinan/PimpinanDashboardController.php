@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Pimpinan;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PimpinanUpdateRequest;
+use App\Http\Requests\PimpinanUpdateSelfRequest;
 use Illuminate\Http\Request;
 
 class PimpinanDashboardController extends Controller
@@ -20,10 +22,9 @@ class PimpinanDashboardController extends Controller
             'user'      => $user,
         ]);
     }
-    public function update(Request $request){
+    public function update(PimpinanUpdateSelfRequest $request){
         $user = auth()->user();
-        $data = $request->validate([
-        ]);
+        $data = $request->validated();
         $result = $user->update($data);
         if($result){
             return redirect()->route('pimpinan.index');

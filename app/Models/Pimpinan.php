@@ -16,6 +16,7 @@ class Pimpinan extends Authenticatable
         'nama',
         'username',
         'password',
+        'email',
     ];
 
     protected $hidden = [

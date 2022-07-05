@@ -76,8 +76,8 @@
 		</nav>
 		<div class="nav-scroller bg-body shadow-sm">
 			<nav class="nav nav-underline py-2 justify-content-center" aria-label="Secondary navigation">
-				<a class="nav-link {{ request()->is('user') ? 'text-muted' : '' }} " aria-current="page" href="{{ route('user.index') }}">Dashboard</a>
-				<a class="nav-link {{ request()->is('user/setting') ? 'text-muted' : '' }} " href="{{ route('user.setting') }}">
+				<a class="nav-link {{ request()->is('pimpinan') ? 'text-muted' : '' }} " aria-current="page" href="{{ route('pimpinan.index') }}">Dashboard</a>
+				<a class="nav-link {{ request()->is('pimpinan/setting') ? 'text-muted' : '' }} " href="{{ route('pimpinan.setting') }}">
 					Pengaturan
 				</a>
 				<a class="nav-link" href="{{ route('blog') }}">Berita</a>
