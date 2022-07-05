@@ -8,6 +8,7 @@ import peserta from "./models/peserta"
 import berita from "./models/berita"
 import app from "./models/app"
 import pimpinan from "./models/pimpinan"
+import paket from "../routes/pages/paket"
 
 export const states = {
 	kejuruan,
@@ -20,5 +21,6 @@ export const states = {
 	app,
 	berita,
 	pimpinan,
+	paket,
 }
 export default states

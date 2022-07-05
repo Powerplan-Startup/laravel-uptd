@@ -82,6 +82,19 @@
 					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
+			<v-list-item :to="{ name: 'paket' }" color="primary">
+				<v-list-item-icon>
+					<v-icon>mdi-bookmark</v-icon>
+				</v-list-item-icon>
+				<v-list-item-content>
+					<v-list-item-title>
+						Paket
+					</v-list-item-title>
+					<v-list-item-subtitle>
+						Kelola Paket Pelatihan Kejuruan
+					</v-list-item-subtitle>
+				</v-list-item-content>
+			</v-list-item>
 			<v-list-item :to="{ name: 'jadwal' }" color="primary">
 				<v-list-item-icon>
 					<v-icon>mdi-calendar</v-icon>
