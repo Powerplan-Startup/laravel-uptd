@@ -38,13 +38,13 @@ class JadwalPelatihanController extends Controller
 
         $data = collect($request->validated())->except(['hari', 'tanggal', 'waktu', 'waktu_berakhir']);
 
-        // @todo: remove comment later
+        // @todo: remove comment later ✅
 
         $peserta = CalonPesertaPelatihan::where('id_kejuruan', $data['id_kejuruan'])
             // ->whereDoesntHave('jadwal')
             ->whereStatusPeserta('aktif')
             ->whereStatusBerkas('sudah')
-            // ->where('id_paket', $data->get('id_paket'))
+            ->where('id_paket', $data->get('id_paket'))
             ->get();
 
         $jadwal = null;
@@ -210,8 +210,10 @@ class JadwalPelatihanController extends Controller
 
     public function destroy($id){
         $jadwalPelatihan = JadwalPelatihan::findOrFail($id);
-
-        $result = $jadwalPelatihan->delete();
+        $jadwalPelatihan->jadwals()->delete();
+        try{
+            $result = $jadwalPelatihan->delete();
+        } catch (\Exception $e) {}
         return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }
