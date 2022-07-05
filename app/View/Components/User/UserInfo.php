@@ -19,8 +19,11 @@ class UserInfo extends Component
      */
     public function render()
     {
-        $kejuruan = $this->user->kejuruan;
-        $jadwal = JadwalPelatihan::where('id_kejuruan', $kejuruan->id_kejuruan)->where('nomor_peserta', $this->user->nomor_peserta)->get();
+        $kejuruan = $this->user->paket->kejuruan;
+        $paket = $this->user->paket;
+        $jadwal = JadwalPelatihan::where('id_paket', $paket->id_paket)
+            ->with(['paket', 'paket.kejuruan', 'instruktur'])
+            ->get();
         return view('components.user.user-info', [
             'user'          => $this->user,
             'jadwal'        => $jadwal,

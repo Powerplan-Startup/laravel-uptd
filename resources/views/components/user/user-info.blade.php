@@ -60,14 +60,14 @@
                             <th>Judul Tema</th>
                             <th>Materi</th>
                             <th>Instruktur</th>
-                            <th>No Peserta</th>
+                            <th>Paket</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($jadwal as $jdw)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ \Carbon\Carbon::parse($jdw->tanggal_pelatihan)->translatedFormat('l, d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($jdw->tanggal)->translatedFormat('l, d F Y') }}</td>
                                 <td>{{ $jdw->judul }}</td>
                                 <td>
                                     @if($jdw->materi != null)
@@ -88,7 +88,7 @@
                                         {{ $jdw->nip }}
                                     </div>
                                 </td>
-                                <td>{{ $jdw->nomor_peserta }}</td>
+                                <td>Kejuruan {{ $jdw->paket->kejuruan->nama_kejuruan }} tahun {{ $jdw->paket->tahun }}  paket {{ $jdw->paket->paket }}</td>
                             </tr>
                         @endforeach
                     </tbody>

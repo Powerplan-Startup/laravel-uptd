@@ -40,9 +40,7 @@ class JadwalPelatihanController extends Controller
 
         // @todo: remove comment later ✅
 
-        $peserta = CalonPesertaPelatihan::where('id_kejuruan', $data['id_kejuruan'])
-            // ->whereDoesntHave('jadwal')
-            ->whereStatusPeserta('aktif')
+        $peserta = CalonPesertaPelatihan::whereStatusPeserta('aktif')
             ->whereStatusBerkas('sudah')
             ->where('id_paket', $data->get('id_paket'))
             ->get();
@@ -120,10 +118,7 @@ class JadwalPelatihanController extends Controller
          */
 
         $jumlahPertemuanAwal = $jadwalPelatihan->pertemuan;
-        $peserta = CalonPesertaPelatihan::where('id_kejuruan', $data['id_kejuruan'])
-            // ->whereHas('jadwal')
-            ->get();
-        $jumlahPeserta = $peserta->count();
+        
         $jumlahPertemuanYangDiperbarui = $data['pertemuan'];
         $result = false;
 

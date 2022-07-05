@@ -15,10 +15,10 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-lg-7">
+		<div class="col-lg-8">
 			<x-user.user-info :user="$user"></x-user.user-info>
 		</div>
-		<div class="col-lg-5">
+		<div class="col-lg-4">
 			<a href="{{ route('blog') }}" class="my-3 px-4 py-4 rounded shadow-sm bg-info d-flex justify-content-between w-100 text-decoration-none text-light">
 				<div class="pe-3">
 					Lihat berita dan pengumuman

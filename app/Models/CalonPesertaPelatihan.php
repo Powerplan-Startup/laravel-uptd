@@ -14,7 +14,10 @@ class CalonPesertaPelatihan extends Authenticatable
     protected $table = 'peserta';
     protected $primaryKey = 'nomor_peserta'; 
     protected $guarded = [];
-    protected $dates = ['tanggal_lahir'];
+    // protected $dates = ['tanggal_lahir'];
+    protected $casts = [
+        'tanggal_lahir' => 'datetime:Y-m-d',
+    ];
 
     public function paket(){
         return $this->belongsTo(Paket::class, 'id_paket', 'id_paket');

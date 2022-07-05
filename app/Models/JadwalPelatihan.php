@@ -26,9 +26,12 @@ class JadwalPelatihan extends Model
         return asset('storage/' . $this->materi);
     }
     
-    public function kejuruan(){
-        return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
+    public function paket(){
+        return $this->belongsTo(Paket::class, 'id_paket', 'id_paket');
     }
+    // public function kejuruan(){
+    //     return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
+    // }
     public function instruktur(){
         return $this->belongsTo(Instruktur::class, 'nip', 'nip');
     }

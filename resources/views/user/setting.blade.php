@@ -89,7 +89,8 @@
 										<td scope="row">Tanggal Lahir</td>
 										<td>:</td>
 										<td><input class="form-control" type="date" id="tanggal_lahir"
-												name="tanggal_lahir" onchange="getAge();" required value="{{ $user->tanggal_lahir }}" >
+												name="tanggal_lahir" onchange="getAge()" required value="{{ \Carbon\Carbon::parse($user->tanggal_lahir)->format('Y-m-d') }}" >
+												
 										</td>
 									</tr>
 									<tr>
