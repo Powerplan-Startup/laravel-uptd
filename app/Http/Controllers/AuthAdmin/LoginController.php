@@ -33,6 +33,8 @@ class LoginController extends Controller
             return Auth::guard('admin');
         } else if(request('type') == 'pimpinan'){
             return Auth::guard('pimpinan');
+        } else if(request('type') == 'instruktur'){
+            return Auth::guard('instruktur');
         } else {
             return Auth::guard();
         }
@@ -77,6 +79,8 @@ class LoginController extends Controller
     {
         if(request('type') == 'admin'){
             return $this->redirectTo;
+        } else if(request('type') == 'instruktur'){
+            return route('instruktur.index');
         } else {
             return route('pimpinan.index');
         }
@@ -85,6 +89,7 @@ class LoginController extends Controller
         
         Auth::guard('admin')->logout();
         Auth::guard('pimpinan')->logout();
+        Auth::guard('instruktur')->logout();
 
         $request->session()->invalidate();
 

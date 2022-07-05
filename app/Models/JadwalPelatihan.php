@@ -38,4 +38,7 @@ class JadwalPelatihan extends Model
     public function jadwal(){
         return $this->hasMany(JadwalPelatihan::class, ['paket', 'id_kejuruan', 'nomor_peserta', 'judul'], ['paket', 'id_kejuruan', 'nomor_peserta', 'judul']);
     }
+    public function samejadwals(){
+        return $this->hasMany(JadwalPelatihan::class, ['paket', 'id_kejuruan', 'tanggal'], ['paket', 'id_kejuruan', 'tanggal']);
+    }
 }

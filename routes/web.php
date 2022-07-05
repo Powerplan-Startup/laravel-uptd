@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\PendaftaranController;
 use App\Http\Controllers\AuthTokenController;
+use App\Http\Controllers\Instruktur\InstrukturDashboardController;
 use App\Http\Controllers\Pimpinan\PimpinanDashboardController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\Public\BeritaController;
@@ -96,4 +97,13 @@ Route::prefix('pimpinan')->middleware('auth:pimpinan')->group(function(){
     Route::get('/', [PimpinanDashboardController::class, 'index'])->name('pimpinan.index');
     Route::get('/setting', [PimpinanDashboardController::class, 'setting'])->name('pimpinan.setting');
     Route::put('/setting', [PimpinanDashboardController::class, 'update'])->name('pimpinan.setting.update');
+});
+Route::prefix('instruktur')->middleware('auth:instruktur')->group(function(){
+    Route::get('/', [InstrukturDashboardController::class, 'index'])->name('instruktur.index');
+    Route::get('/setting', [InstrukturDashboardController::class, 'setting'])->name('instruktur.setting');
+    Route::put('/setting', [InstrukturDashboardController::class, 'update'])->name('instruktur.setting.update');
+    Route::get('/berkas', [InstrukturDashboardController::class, 'berkas'])->name('instruktur.berkas');
+    Route::put('/berkas', [InstrukturDashboardController::class, 'updateBerkas'])->name('instruktur.berkas.update');
+    Route::get('/{jadwal}', [InstrukturDashboardController::class, 'materi'])->name('instruktur.materi');
+    Route::put('/{jadwal}', [InstrukturDashboardController::class, 'materiupdate'])->name('instruktur.materi.update');
 });

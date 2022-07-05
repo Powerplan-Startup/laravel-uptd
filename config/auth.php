@@ -47,6 +47,10 @@ return [
         'pimpinan' => [
             'driver' => 'session',
             'provider' => 'pimpinans',
+        ],
+        'instruktur' => [
+            'driver' => 'session',
+            'provider' => 'instrukturs',
         ]
     ],
 
@@ -79,6 +83,10 @@ return [
         'pimpinans' => [
             'driver' => 'eloquent',
             'model' => App\Models\Pimpinan::class,
+        ],
+        'instrukturs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Instruktur::class,
         ],
 
         // 'users' => [
