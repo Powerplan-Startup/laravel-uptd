@@ -21,10 +21,12 @@
             </a>
         </template>
         <template #item.id_kejuruan="{item}">
-            {{ item.kejuruan.nama_kejuruan }}
+            <div v-if="item.paket">
+                {{ item.paket.kejuruan.nama_kejuruan }}
+            </div>
         </template>
         <template #item.nip="{item}">
-            <v-list-item-content>
+            <v-list-item-content v-if="item.instruktur">
                 <v-list-item-title>
                     {{ item.instruktur.nama }}
                 </v-list-item-title>

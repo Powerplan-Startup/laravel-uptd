@@ -48,19 +48,19 @@
                                     @if(request()->route('jadwal') && request()->route('jadwal') == $jdw->id_jadwal)
     
                                         <div>
-                                            <input type="file" class="form-control">
+                                            <input type="file" class="form-control" name="materi">
                                         </div>
     
                                         @if($jdw->materi != null)
                                             <div>
-                                                <a href="{{ asset('storage/materi/'.$jdw->materi) }}" target="_blank">
+                                                <a href="{{ asset('storage/'.$jdw->materi) }}" target="_blank">
                                                     Unduh materi
                                                 </a>
                                             </div>
                                         @endif
     
                                     @elseif($jdw->materi != null)
-                                        <a href="{{ asset('storage/materi/'.$jdw->materi) }}" target="_blank">
+                                        <a href="{{ asset('storage/'.$jdw->materi) }}" target="_blank">
                                             Unduh materi
                                         </a>
                                     @else

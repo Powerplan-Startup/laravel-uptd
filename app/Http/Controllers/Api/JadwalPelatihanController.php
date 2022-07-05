@@ -26,7 +26,7 @@ class JadwalPelatihanController extends Controller
             }
         })
         ->groupBy(['id_paket'])
-        ->with(['kejuruan', 'instruktur'])
+        ->with(['paket', 'paket.kejuruan', 'instruktur'])
         ->when(request('search'), function($query, $search){
             $query->where('nama', 'like', "%{$search}%");
         })
@@ -84,7 +84,7 @@ class JadwalPelatihanController extends Controller
     }
 
     public function show($id){
-        $jadwalPelatihan = JadwalPelatihan::with(['kejuruan', 'instruktur'])->findOrFail($id);
+        $jadwalPelatihan = JadwalPelatihan::with(['paket', 'paket.kejuruan', 'instruktur'])->findOrFail($id);
         $jadwalPelatihan->load(['jadwals' => function($query){
             $query->groupBy(['tanggal', 'waktu']);
         }]);

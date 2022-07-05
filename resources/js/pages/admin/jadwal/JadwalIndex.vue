@@ -104,8 +104,8 @@
                                             </div>
                                         </v-card-text>
                                         <v-card-text>
-                                            <div class="text-truncate">
-                                                {{ item.kejuruan.nama_kejuruan }}
+                                            <div class="text-truncate" v-if="item.paket">
+                                                {{ item.paket.kejuruan.nama_kejuruan }}
                                             </div>
                                             <div class="text-truncate">
                                                 <small>

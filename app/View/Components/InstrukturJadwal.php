@@ -13,20 +13,12 @@ class InstrukturJadwal extends Component
      * @return void
      */
     public function __construct()
-    {
-        //
-    }
+    {}
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
     public function render()
     {
         $jadwal = JadwalPelatihan::where('nip', auth()->user()->nip)
-            ->groupBy(['tanggal', 'paket', 'nip'])
-            ->with(['kejuruan', 'instruktur'])
+            ->with(['paket', 'paket.kejuruan', 'instruktur'])
             ->orderBy('tanggal', 'desc')
             ->get();
         return view('components.instruktur-jadwal', [

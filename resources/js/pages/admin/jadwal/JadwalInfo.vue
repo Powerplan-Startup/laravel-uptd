@@ -107,8 +107,8 @@
                                             <v-list-item-subtitle class="text--disabled">
                                                 Jadwal Pelatihan Kejuruan
                                             </v-list-item-subtitle>
-                                            <v-list-item-title class="text-h5">
-                                                {{ item.kejuruan.nama_kejuruan }}
+                                            <v-list-item-title class="text-h5" v-if="item.paket">
+                                                {{ item.paket.kejuruan.nama_kejuruan }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
