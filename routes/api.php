@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\CountController;
 use App\Http\Controllers\Api\JadwalPelatihanController;
 use App\Http\Controllers\Api\KejuruanController;
+use App\Http\Controllers\Api\PaketController;
 use App\Http\Controllers\Api\PesertaController;
 use App\Http\Controllers\Api\PimpinanController;
 use App\Models\CalonPesertaPelatihan;
@@ -36,5 +37,6 @@ Route::middleware('auth:sanctum')->group(function () {
         'peserta'       => PesertaController::class,
         'berita'        => BeritaController::class,
         'pimpinan'      => PimpinanController::class,
+        'paket'         => PaketController::class,
     ]);
 });

@@ -13,18 +13,20 @@
         single-select
         v-model="selected"
         :mobile-breakpoint="0">
-        <template #item.id_jadwal="{item}">
+        <template #item.id_paket="{item}">
             <a href="#" class="d-block py-1" @click.prevent="rowClick(item)">
                 <div class="mb-1">
-                    #{{ item.id_jadwal }}
+                    #{{ item.id_paket }}
                 </div>
             </a>
         </template>
         <template #item.id_kejuruan="{item}">
-            {{ item.kejuruan.nama_kejuruan }}
+            <div v-if="item.kejuruan">
+                {{ item.kejuruan.nama_kejuruan }}
+            </div>
         </template>
         <template #item.nip="{item}">
-            <v-list-item-content>
+            <v-list-item-content v-if="item.instruktur">
                 <v-list-item-title>
                     {{ item.instruktur.nama }}
                 </v-list-item-title>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaketStoreRequest;
 use App\Http\Resources\PaketResource;
 use App\Models\Paket;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PaketController extends Controller
 {
@@ -28,15 +30,16 @@ class PaketController extends Controller
         return PaketResource::collection($data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(PaketStoreRequest $request){
+        $data = collect($request->validated())->except([]);
+        $kejuruan = Paket::create($data->all());
+        $collection = new PaketResource($kejuruan);
+        return new Response(
+            $collection, 
+            $kejuruan 
+                ? Response::HTTP_CREATED 
+                : Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 
     /**
