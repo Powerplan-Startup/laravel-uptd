@@ -3,7 +3,7 @@
         <v-app-bar app flat floating absolute>
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
             <v-toolbar-title>
-                Info Jadwal
+                Info Paket
             </v-toolbar-title>
         </v-app-bar>
         <v-main>
@@ -29,17 +29,17 @@
                 <div class="mx-auto" style="max-width: 400px" v-else-if="!exists && !loading">
                     <v-alert prominent text type="warning" rounded="xl">
                         <span>
-                            Info Jadwal Tidak Ditemukan
+                            Info Paket Tidak Ditemukan
                         </span>
                     </v-alert>
-                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link :to="{ name: 'jadwal' }">
+                    <v-card color="grey lighten-4 overflow-hidden" rounded="xl" flat link :to="{ name: 'paket' }">
                         <v-list-item>
                             <v-list-item-avatar color="grey lighten-2">
                                 <v-icon>mdi-calendar</v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content>
                                 <v-list-item-title>
-                                    Kembali ke daftar jadwal
+                                    Kembali ke daftar paket
                                 </v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
@@ -67,7 +67,7 @@
                                                 </template>
                                                 <v-list nav>
                                                     <v-subheader v-text="'Aksi'"/>
-                                                    <v-list-item dense link @click="ubahInfoJadwal(item.id_jadwal)">
+                                                    <v-list-item dense link @click="ubahInfoPaket(item.id_paket)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-pencil</v-icon>
                                                         </v-list-item-icon>
@@ -77,7 +77,7 @@
                                                             </v-list-item-title>
                                                         </v-list-item-content>
                                                     </v-list-item>
-                                                    <v-list-item dense link @click="hapusInfoJadwal(item.id_jadwal)">
+                                                    <v-list-item dense link @click="hapusInfoPaket(item.id_paket)">
                                                         <v-list-item-icon>
                                                             <v-icon>mdi-delete</v-icon>
                                                         </v-list-item-icon>
@@ -105,9 +105,9 @@
                                     <v-list-item>
                                         <v-list-item-content>
                                             <v-list-item-subtitle class="text--disabled">
-                                                Jadwal Pelatihan Kejuruan
+                                                Paket {{ item.paket }} Pelatihan Kejuruan tahun {{ item.tahun }}
                                             </v-list-item-subtitle>
-                                            <v-list-item-title class="text-h5">
+                                            <v-list-item-title class="text-h5" v-if="item.kejuruan">
                                                 {{ item.kejuruan.nama_kejuruan }}
                                             </v-list-item-title>
                                         </v-list-item-content>
@@ -121,7 +121,7 @@
                                             <v-list-item-subtitle>
                                                 Instruktur
                                             </v-list-item-subtitle>
-                                            <v-list-item-title class="">
+                                            <v-list-item-title class="" v-if="item.instruktur">
                                                 {{ item.instruktur.nama }}
                                             </v-list-item-title>
                                         </v-list-item-content>
@@ -133,7 +133,7 @@
                                             <v-list-item-subtitle>
                                                 NIP.
                                             </v-list-item-subtitle>
-                                            <v-list-item-title class="">
+                                            <v-list-item-title class="" v-if="item.instruktur">
                                                 {{ item.instruktur.nip }}
                                             </v-list-item-title>
                                         </v-list-item-content>
@@ -145,10 +145,23 @@
                                         </v-list-item-icon>
                                         <v-list-item-content>
                                             <v-list-item-subtitle>
-                                                Tanggal
+                                                Tanggal Mulai Pendaftaran
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="">
-                                                {{ item.tanggal + ' ' + item.waktu | datetime }}
+                                                {{ item.tanggal_daftar_mulai | date }}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-list-item-icon>
+                                            <v-icon>mdi-calendar-clock</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>
+                                                Tanggal Pendaftaran Berakhir
+                                            </v-list-item-subtitle>
+                                            <v-list-item-title class="">
+                                                {{ item.tanggal_daftar_selesai | date }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -173,7 +186,7 @@
                             <div class="sticky-top" style="z-index: 1;">
                                 <v-toolbar flat rounded="xl">
                                     <v-tabs align-with-title>
-                                        <v-tab :to="{name: 'jadwal.show'}" exact>Informasi</v-tab>
+                                        <v-tab :to="{name: 'paket.show'}" exact>Informasi</v-tab>
                                     </v-tabs>
                                 </v-toolbar>
                             </div>
@@ -205,14 +218,14 @@ export default {
                     exact: true,
                 },
                 {
-                    text: 'Jadwal',
+                    text: 'Paket',
                     disabled: false,
-                    to: {name: 'jadwal'},
+                    to: {name: 'paket'},
                     link: true,
                     exact: true,
                 },
                 {
-                    text: 'Info Jadwal',
+                    text: 'Info Paket',
                     disabled: true,
                 },
             ]
@@ -220,13 +233,13 @@ export default {
     },
     computed: {
         ...mapState({
-            items: state => state.jadwal.items,
+            items: state => state.paket.items,
         }),
         ...mapGetters({
-            session: 'jadwal/getSession',
+            session: 'paket/getSession',
         }),
         id(){
-            return this.$route.params.id_jadwal
+            return this.$route.params.id_paket
         }
     },
     watch: {
@@ -237,15 +250,15 @@ export default {
     methods: {
         ...mapMutations({  }),
         ...mapActions({
-            showUbahDialog: 'jadwal/setModalUbah',
-            showHapusDialog: 'jadwal/setModalHapus',
-            getItem: 'jadwal/show',
+            showUbahDialog: 'paket/setModalUbah',
+            showHapusDialog: 'paket/setModalHapus',
+            getItem: 'paket/show',
         }),
         openModalTambah(){},
-        ubahInfoJadwal(id){
+        ubahInfoPaket(id){
             this.showUbahDialog({id, value: true})
         },
-        hapusInfoJadwal(id){
+        hapusInfoPaket(id){
             this.showHapusDialog({id, value: true})
         },
         async loadItem(){
@@ -253,7 +266,7 @@ export default {
             this.exists = false
 
             let res = await this.getItem({id: this.id}).catch(e => {
-                console.log("loadItem@JadwalIndex.vue", e);
+                console.log("loadItem@PaketIndex.vue", e);
             });
             this.loading = false
 
