@@ -1,6 +1,6 @@
 <template>
     <v-autocomplete
-        v-model="kejuruan"
+        v-model="instruktur"
         :name="name"
         :items="items"
         :loading="loading"
@@ -28,13 +28,13 @@ export default {
         name: { default: 'nip' },
     },
     computed: {
-        kejuruan: {
+        instruktur: {
             get(){ return this.value },
             set(val){ 
                 this.$emit('input', val)
             },
         },
-        data_kejuruan(){
+        data_instruktur(){
             const r = RegExp(this.search)
             return this.items.filter(it => r.test(it.nama) )
         },
@@ -43,7 +43,7 @@ export default {
             set(value, old){
                 this.query = value
                 if(!value) return
-                if(this.data_kejuruan.length > 0) return
+                if(this.data_instruktur.length > 0) return
                 if(this.loading) return
                 this.loadItems()
             }

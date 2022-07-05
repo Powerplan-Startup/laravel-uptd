@@ -5,6 +5,9 @@
             <input-pilih-instruktur v-model="item.nip" :errors="errors"/>
         </div>
         <div>
+            <input-pilih-paket v-model="item.id_paket" :errors="errors"/>
+        </div>
+        <div>
             <v-text-field
                 dense
                 outlined
@@ -50,8 +53,9 @@ import InputPilihInstruktur from './InputPilihInstruktur.vue';
 import InputPilihKejuruan from './InputPilihKejuruan.vue';
 import InputPilihMateriJadwal from './InputPilihMateriJadwal.vue';
 import ListInputJadwal from './ListInputJadwal.vue';
+import InputPilihPaket from './InputPilihPaket.vue';
 export default {
-    components: { InputPilihKejuruan, InputPilihInstruktur, InputPilihMateriJadwal, ListInputJadwal },
+    components: { InputPilihKejuruan, InputPilihInstruktur, InputPilihMateriJadwal, ListInputJadwal, InputPilihPaket },
     props: {
         errors: Object,
         value: {
