@@ -28,9 +28,11 @@ class PesertaController extends Controller
             $query->whereIn('status_peserta', $search);
         })
         ->when(request('id_kejuruan'), function($query, $search){
-            $query->where('id_kejuruan', $search);
+            $query->whereHas('paket', function($query) use ($search){
+                $query->where('id_kejuruan', $search);
+            });
         })
-        ->with(['kejuruan'])
+        ->with(['paket', 'paket.kejuruan'])
         ->paginate(request('itemsPerPage') ?? 10);
         /**
          * TODO tambah status
@@ -43,7 +45,7 @@ class PesertaController extends Controller
 
     public function show($id){
         $calonPesertaPelatihan = CalonPesertaPelatihan::where('nomor_peserta', $id)->firstOrFail();
-        $calonPesertaPelatihan->load(['kejuruan', 'instruktur']);
+        $calonPesertaPelatihan->load(['paket', 'paket.kejuruan', 'paket.instruktur']);
         return new PesertaResource($calonPesertaPelatihan);
     }
 

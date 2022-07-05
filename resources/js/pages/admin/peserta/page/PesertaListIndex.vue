@@ -65,7 +65,9 @@ export default {
             items: [],
             headers: [
                 { text: 'Nama Peserta', align: 'start', sortable: true, value: 'nama' },
-                { text: 'Kejuruan', align: 'start d-none d-sm-table-cell', sortable: true, value: 'id_kejuruan' },
+                { text: 'Jenis Kelamin', align: 'start', sortable: true, value: 'jenis_kelamin' },
+                { text: 'Kejuruan', align: 'start d-none d-sm-table-cell', sortable: false, value: 'id_kejuruan' },
+                { text: 'Paket', align: 'end d-none d-sm-table-cell', sortable: true, value: 'id_paket' },
                 { text: 'Angkatan', align: 'end d-none d-sm-table-cell', sortable: true, value: 'angkatan' },
                 { text: 'Status', align: 'start d-none d-sm-table-cell', sortable: true, value: 'status_peserta' },
                 // { text: 'Dibuat pada', align: 'end d-none d-sm-table-cell', sortable: true, value: 'created_at' },

@@ -23,9 +23,22 @@
         <template #item.created_at="{item}">
 			{{ item.created_at | datetime }}
         </template>
+        <template #item.jenis_kelamin="{item}">
+            <div v-if="item.jenis_kelamin == 'l'">
+                Laki-Laki
+            </div>
+            <div v-else>
+                Perempuan
+            </div>
+        </template>
         <template #item.id_kejuruan="{item}">
-            <div v-if="item.kejuruan">
-    			{{ item.kejuruan.nama_kejuruan }}
+            <div v-if="item.paket">
+    			{{ item.paket.kejuruan.nama_kejuruan }}
+            </div>
+        </template>
+        <template #item.id_paket="{item}">
+            <div v-if="item.paket">
+    			{{ item.paket.paket }} / {{ item.paket.tahun }}
             </div>
         </template>
         <template #item.action="{item}">
@@ -38,7 +51,7 @@
 						class="pa-1 d-flex shadow flex-no-wrap justify-center my-2"
 						dark>
                         <template>
-                            <v-btn icon color="error darken-1" @click="deleteRow(item)">
+                            <v-btn icon color="error darken-1" @click="deleteRow(item)" disabled>
                                 <v-icon small>mdi-delete</v-icon>
                             </v-btn>
                             <v-btn icon @click="editRow(item)">

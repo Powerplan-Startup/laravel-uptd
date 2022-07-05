@@ -12,6 +12,9 @@ class Paket extends Model
     protected $primaryKey = 'id_paket';
     protected $guarded = [];
 
+    public function instruktur(){
+        return $this->belongsTo(Instruktur::class, 'nip', 'nip');
+    }
     public function kejuruan(){
         return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
     }

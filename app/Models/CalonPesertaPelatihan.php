@@ -16,11 +16,8 @@ class CalonPesertaPelatihan extends Authenticatable
     protected $guarded = [];
     protected $dates = ['tanggal_lahir'];
 
-    public function instruktur(){
-        return $this->belongsTo(Instruktur::class, 'nip', 'nip');
-    }
-    public function kejuruan(){
-        return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
+    public function paket(){
+        return $this->belongsTo(Paket::class, 'id_paket', 'id_paket');
     }
     // public function jadwal(){
     //     return $this->hasMany(JadwalPelatihan::class, 'nomor_peserta', 'nomor_peserta');

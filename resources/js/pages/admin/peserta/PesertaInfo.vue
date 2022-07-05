@@ -209,7 +209,7 @@
                     <v-app-bar bottom fixed dark v-show="true" rounded="xl" v-if="item.status_peserta == 'aktif'" dense :max-width="mini ? 300 : 400" :style="bottomNavStyle" class="fab-extension shadow" :extended="false" :extension-height="0" ref="menu">
                         <v-spacer></v-spacer>
                         <v-btn @click="updateStatus('alumni')" text>
-                            Alumni
+                            Jadikan Alumni
                         </v-btn>
                     </v-app-bar>
                 </v-scale-transition>

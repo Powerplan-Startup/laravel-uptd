@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\CalonPesertaPelatihan;
 use App\Models\Kejuruan;
+use App\Models\Paket;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -46,8 +47,12 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
+        $kejuruan = Kejuruan::whereHas('paket', function($query){
+            $query->whereDate('tanggal_daftar_mulai', '<=', date('Y-m-d'))
+                ->whereDate('tanggal_daftar_selesai', '>=', date('Y-m-d'));
+        })->get();
         return view('auth.register', [
-            'kejuruan'   => Kejuruan::all(),
+            'kejuruan'   => $kejuruan,
         ]);
     }
 
@@ -110,7 +115,9 @@ class RegisterController extends Controller
         /**
          * nama, jenis kelamin, nik, tempat lahir, tanggal lahir, umur, alamat, email, no hp, pendidikan terakhir, nama kejuruan, agama, status, tanggal daftar, nip, angkatan, pekerjaan
          */
-        $kejuruan = Kejuruan::where('id_kejuruan', $data['id_kejuruan'])->with(['jadwal'])->first();
+        $kejuruan = Kejuruan::where('id_kejuruan', $data['id_kejuruan'])->first();
+        $id_paket = Paket::where('id_kejuruan', $kejuruan->id_kejuruan)->where('tahun', date('Y'))->first()->id_paket;
+        
         // $nip = optional($kejuruan->jadwal)->nip;
         $tanggal_daftar = now()->format('Y-m-d');
         
@@ -127,7 +134,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'no_hp' => $data['no_hp'],
             'pendidikan_terakhir' => $data['pendidikan_terakhir'],
-            'id_kejuruan' => $data['id_kejuruan'],
+            'id_paket' => $id_paket,
             'agama' => $data['agama'],
             'status' => $data['status'],
             // 'nip' => $nip, // ??
