@@ -12,13 +12,7 @@ class Kejuruan extends Model
     protected $primaryKey = 'id_kejuruan';
     protected $guarded = [];
 
-    // public function alumni(){
-    //     return $this->hasMany(CalonPesertaPelatihan::class, 'id_kejuruan', 'id_kejuruan')->whereStatusPeserta('alumni');
-    // }
-    // public function peserta(){
-    //     return $this->hasMany(CalonPesertaPelatihan::class, 'id_kejuruan', 'id_kejuruan');
-    // }
     public function paket(){
-        return $this->hasMany(Paket::class, 'id_kejuruan', 'id_kejuruan');
+        return $this->hasOne(Paket::class, 'id_kejuruan', 'id_kejuruan');
     }
 }

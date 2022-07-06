@@ -12,7 +12,7 @@ use Mpdf\Mpdf;
 
 class PrintController extends Controller{
     public function peserta(){
-        $kejuruan = Kejuruan::with(['peserta' => function($query){
+        $kejuruan = Kejuruan::with([ 'paket' => function(){}, 'paket.peserta' => function($query){
             $query->whereStatusPeserta('aktif');
         }])->get();
         $view = view('print.peserta', [
@@ -23,7 +23,7 @@ class PrintController extends Controller{
         $pdf->Output();
     }
     public function calon(){
-        $kejuruan = Kejuruan::with(['peserta' => function($query){
+        $kejuruan = Kejuruan::with(['paket', 'paket.peserta' => function($query){
             $query->whereStatusPeserta('calon');
         }])->get();
         $view = view('print.calon', [
@@ -34,7 +34,7 @@ class PrintController extends Controller{
         $pdf->Output();
     }
     public function alumni(){
-        $kejuruan = Kejuruan::with(['peserta' => function($query){
+        $kejuruan = Kejuruan::with(['paket', 'paket.peserta' => function($query){
             $query->whereStatusPeserta('alumni');
         }])->get();
         $view = view('print.alumni', [
@@ -57,8 +57,8 @@ class PrintController extends Controller{
     }
     public function jadwal(){
 
-        $data = JadwalPelatihan::groupBy(['id_kejuruan', 'paket','nip'])
-        ->with(['kejuruan', 'instruktur', 'jadwal'])
+        $data = JadwalPelatihan::groupBy(['id_paket'])
+        ->with(['paket', 'paket.kejuruan', 'instruktur', 'jadwal'])
         ->get();
 
         $view = view('print.jadwal', [

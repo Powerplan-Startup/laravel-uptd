@@ -54,13 +54,14 @@
 			@foreach ($jadwal as $item)
 				<tr>
 					<td colspan="3" style="background-color: yellow">
-						Kejuruan {{ $item->kejuruan->nama_kejuruan }}
+						Kejuruan {{ optional($item->paket->kejuruan)->nama_kejuruan }}
 					</td>
 					<td style="background-color: yellow">
-						Paket:
+						Paket (Tahun):
 					</td>
 					<td style="background-color: yellow">
-						{{ $item->paket }}
+						{{ $item->paket->paket }}
+						({{ $item->paket->tahun }})
 					</td>
 				</tr>
 				@forelse ($item->jadwal as $jadwal)

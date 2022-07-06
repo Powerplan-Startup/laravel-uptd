@@ -14,7 +14,6 @@ class JadwalPelatihan extends Model
     protected $table = 'jadwal_pelatihan';
     protected $primaryKey = 'id_jadwal';
     protected $guarded = [];
-    // protected $dates = ['tanggal'];
     protected $casts = [
         'tanggal' => 'datetime:Y-m-d',
         'waktu' => 'datetime:H:i',
@@ -29,9 +28,6 @@ class JadwalPelatihan extends Model
     public function paket(){
         return $this->belongsTo(Paket::class, 'id_paket', 'id_paket');
     }
-    // public function kejuruan(){
-    //     return $this->belongsTo(Kejuruan::class, 'id_kejuruan', 'id_kejuruan');
-    // }
     public function instruktur(){
         return $this->belongsTo(Instruktur::class, 'nip', 'nip');
     }
@@ -39,7 +35,7 @@ class JadwalPelatihan extends Model
         return $this->hasMany(JadwalPelatihan::class, ['id_paket', 'id_kejuruan'], ['id_paket', 'id_kejuruan']);
     }
     public function jadwal(){
-        return $this->hasMany(JadwalPelatihan::class, ['paket', 'id_kejuruan', 'nomor_peserta', 'judul'], ['paket', 'id_kejuruan', 'nomor_peserta', 'judul']);
+        return $this->hasMany(JadwalPelatihan::class, ['id_paket'], ['id_paket']);
     }
     public function samejadwals(){
         return $this->hasMany(JadwalPelatihan::class, ['paket', 'id_kejuruan', 'tanggal'], ['paket', 'id_kejuruan', 'tanggal']);

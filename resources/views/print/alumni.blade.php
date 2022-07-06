@@ -64,32 +64,43 @@
 						Kejuruan {{ $item->nama_kejuruan }}
 					</td>
 				</tr>
-				@forelse ($item->peserta as $peserta)
-					<tr class="small">
-						<td>
-							{{ $loop->iteration }}
-						</td>
-						<td>
-							{{ $peserta->nama }}
-						</td>
-						<td>
-							{{ $peserta->tempat_lahir }},
-							{{ $peserta->tanggal_lahir->format('d-m-Y') }}
-						</td>
-						<td>
-							{{ $peserta->jenis_kelamin == 'l' ? 'Laki-Laki' : 'Perempuan' }}
-						</td>
-						<td>
-							{{ $peserta->alamat }}
-						</td>
-						<td>
-							{{ $peserta->no_hp }}
-						</td>
-						<td>
-							{{ $peserta->nik }}
-						</td>
-					</tr>
-				@empty
+
+				@if($item->getRelationValue('paket'))
+					@forelse ($item->getRelationValue('paket')->peserta as $peserta)
+						<tr class="small">
+							<td>
+								{{ $loop->iteration }}
+							</td>
+							<td>
+								{{ $peserta->nama }}
+							</td>
+							<td>
+								{{ $peserta->tempat_lahir }},
+								{{ $peserta->tanggal_lahir->format('d-m-Y') }}
+							</td>
+							<td>
+								{{ $peserta->jenis_kelamin == 'l' ? 'Laki-Laki' : 'Perempuan' }}
+							</td>
+							<td>
+								{{ $peserta->alamat }}
+							</td>
+							<td>
+								{{ $peserta->no_hp }}
+							</td>
+							<td>
+								{{ $peserta->nik }}
+							</td>
+						</tr>
+					@empty
+						<tr class="small">
+							<td colspan="7">
+								<i>
+									Tidak ada peserta
+								</i>
+							</td>
+						</tr>
+					@endforelse
+				@else
 					<tr class="small">
 						<td colspan="7">
 							<i>
@@ -97,13 +108,17 @@
 							</i>
 						</td>
 					</tr>
-				@endforelse
+				@endif
 				<tr>
 					<td colspan="6" style="background-color: #cfcfcf">
 						Total
 					</td>
 					<td style="background-color: #cfcfcf">
-						{{ $item->peserta->count() }}
+						@if($item->getRelationValue('paket'))
+							{{ $item->getRelationValue('paket')->peserta->count() }}
+						@else
+							0
+						@endif
 					</td>
 				</tr>
 				<tr>
