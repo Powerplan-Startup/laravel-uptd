@@ -21,6 +21,9 @@ class Paket extends Model
     public function jadwals(){
         return $this->hasMany(JadwalPelatihan::class, 'id_paket', 'id_paket');
     }
+    public function jadwal(){
+        return $this->hasMany(JadwalPelatihan::class, 'id_paket', 'id_paket');
+    }
     public function alumni(){
         return $this->hasMany(CalonPesertaPelatihan::class, 'id_paket', 'id_paket')->whereStatusPeserta('alumni');
     }
