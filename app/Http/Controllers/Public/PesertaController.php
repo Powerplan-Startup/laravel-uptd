@@ -12,7 +12,7 @@ class PesertaController extends Controller
     public function peserta()
     {
         
-        $kejuruan = Kejuruan::with('alumni')->paginate(50);
+        $kejuruan = Kejuruan::with(['paket', 'paket.alumni'])->paginate(50);
 
         return view('public.alumni',[
             'title' => 'Daftar Peserta',
