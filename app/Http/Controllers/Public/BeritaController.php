@@ -14,8 +14,8 @@ class BeritaController extends Controller
          * where upcomming berita
          */
         $jadwal = JadwalPelatihan::orderBy('tanggal', 'asc') 
-            ->groupBy(['id_kejuruan', 'tanggal', 'paket' ,'nip'])
-            ->with(['kejuruan', 'instruktur'])
+            ->groupBy(['id_paket',])
+            ->with(["paket",'paket.kejuruan', 'instruktur'])
             ->whereDate('tanggal', '>=', date('Y-m-d'))
             ->paginate(10);
         return view('public.blog',[
@@ -27,8 +27,8 @@ class BeritaController extends Controller
     public function show($slug){
         $berita = Berita::where('slug', $slug)->firstOrFail();
         $jadwal = JadwalPelatihan::orderBy('tanggal', 'asc') 
-            ->groupBy(['id_kejuruan', 'tanggal', 'paket' ,'nip'])
-            ->with(['kejuruan', 'instruktur'])
+        ->groupBy(['id_paket',])
+        ->with(["paket",'paket.kejuruan', 'instruktur'])
             ->whereDate('tanggal', '>=', date('Y-m-d'))
             ->paginate(10);
         return view('public.blog-info',[

@@ -25,7 +25,7 @@
         <div>
             <div style="padding: 1rem">
                 <h2 style="max-width: 250px">
-                    Kegiatan Yang Akan Datang
+                    Pelatihan akan dilaksanakan
                 </h2>
             </div>
             <div style="padding: .25rem; display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory;" class="min-scrollbar">
@@ -43,7 +43,10 @@
                             {{ $item->judul }}
                         </div>
                         <div>
-                            {{ optional($item->kejuruan)->nama_kejuruan }}
+                            kejuruan
+                            {{ optional($item->paket->kejuruan)->nama_kejuruan }}
+                            paket
+                            {{ optional($item->paket)->paket }}
                         </div>
                     </div>
                 @empty
@@ -68,7 +71,7 @@
             @forelse ($posts as $item)
                 <div style="margin-bottom: .5rem; width: 100%;">
                     <div style="display: flex;">
-                        <div style="background-image: url('{{ asset('assets/img/uptd/1.jpg') }}'); background-size: cover; background-position: center; width: 250px;">
+                        <div style="background-image: url('{{ asset('storage/'.$item->cover) }}'); background-size: cover; background-position: center; width: 250px;">
                             <div style="height: 100%;"></div>
                         </div>
                         <div style="min-height: 11.5rem; min-width: 20rem; background: #e8e9f4; color: #333; border-radius: .15rem; margin-right: .5rem; padding: 2rem; flex: 1">

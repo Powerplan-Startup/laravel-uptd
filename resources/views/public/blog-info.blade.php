@@ -25,7 +25,7 @@
         <div style="max-width: 600px">
             <div style="padding: 1rem; padding-bottom: .5rem">
                 <h4 style="max-width: 250px">
-                    Kegiatan Yang Akan Datang
+                    Pelatihan akan dilaksanakan
                 </h4>
             </div>
             <div style="padding: .25rem; display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory;" class="min-scrollbar">
@@ -58,6 +58,9 @@
             <h2 style="max-width: 250px">
                 {{ $post->judul }}
             </h2>
+            <!-- <div style="background-image: url('{{ asset('storage/'.$post->cover) }}'); background-size: cover; background-position: center; width: 100%;">
+                            <div style="height: 250px; width: 100%"></div>
+                        </div> -->
             <div>
                 <div style="margin-bottom: 2rem">
                     {{ $post->created_at->format('d M Y') }}

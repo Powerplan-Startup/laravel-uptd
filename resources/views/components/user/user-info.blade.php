@@ -71,7 +71,7 @@
                                 <td>{{ $jdw->judul }}</td>
                                 <td>
                                     @if($jdw->materi != null)
-                                        <a href="{{ asset('storage/materi/'.$jdw->materi) }}" target="_blank">
+                                        <a href="{{ asset('storage/'.$jdw->materi) }}" target="_blank">
                                             Unduh materi
                                         </a>
                                     @else
