@@ -64,6 +64,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if($jadwal)
                         @foreach($jadwal as $jdw)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -91,6 +92,8 @@
                                 <td>Kejuruan {{ $jdw->paket->kejuruan->nama_kejuruan }} tahun {{ $jdw->paket->tahun }}  paket {{ $jdw->paket->paket }}</td>
                             </tr>
                         @endforeach
+                        @else
+                        @endif
                     </tbody>
                 </table>
             </div>

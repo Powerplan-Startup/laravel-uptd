@@ -21,9 +21,12 @@ class UserInfo extends Component
     {
         $kejuruan = optional($this->user->paket)->kejuruan;
         $paket = $this->user->paket;
-        $jadwal = JadwalPelatihan::where('id_paket', $paket->id_paket)
-            ->with(['paket', 'paket.kejuruan', 'instruktur'])
-            ->get();
+        $jadwal = null;
+        if(optional($paket)->id_paket){
+            $jadwal = JadwalPelatihan::where('id_paket', optional($paket)->id_paket)
+                ->with(['paket', 'paket.kejuruan', 'instruktur'])
+                ->get();
+        }
         return view('components.user.user-info', [
             'user'          => $this->user,
             'jadwal'        => $jadwal,
