@@ -26,7 +26,7 @@ class PaketController extends Controller
             ->when(request('search'), function($query, $search){
                 $query->where('paket', 'like', "%{$search}%");
             })
-            ->with(['kejuruan'])
+            ->with(['kejuruan', 'instruktur'])
             ->paginate(request('itemsPerPage') ?? 10);
         return PaketResource::collection($data);
     }
