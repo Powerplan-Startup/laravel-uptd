@@ -38,7 +38,7 @@ class KejuruanController extends Controller
     }
 
     public function show(Kejuruan $kejuruan){
-        $kejuruan->load(['jadwal', 'jadwal.instruktur']);
+        $kejuruan->load(['paket', 'paket.jadwal', 'paket.instruktur']);
         return new KejuruanResource($kejuruan);
     }
 
