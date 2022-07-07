@@ -19,7 +19,7 @@ class UserInfo extends Component
      */
     public function render()
     {
-        $kejuruan = $this->user->paket->kejuruan;
+        $kejuruan = optional($this->user->paket)->kejuruan;
         $paket = $this->user->paket;
         $jadwal = JadwalPelatihan::where('id_paket', $paket->id_paket)
             ->with(['paket', 'paket.kejuruan', 'instruktur'])
