@@ -35,7 +35,7 @@
         <template #item.paket="{item}">
             <div v-if="item.paket != null">
                 <div class="mb-1">
-                    {{ Paket `${item.paket.tanggal} ${item.paket.tahun}` }}
+                    Paket {{ `${item.paket.tanggal} ${item.paket.tahun}` }}
                 </div>
             </div>
             <div v-else>
