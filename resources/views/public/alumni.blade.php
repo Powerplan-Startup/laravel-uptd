@@ -44,7 +44,7 @@
                                             <tr>
                                                 <th colspan="1000" style="background: yellow">
                                                     <div style="padding: .5rem">
-                                                            Kejuruan {{ $kejuruanitem->nama_kejuruan }}
+                                                        Kejuruan {{ $kejuruanitem->nama_kejuruan }}
                                                     </div>
                                                 </th>
                                             </tr>
@@ -104,6 +104,7 @@
                                                         </td>
                                                     </tr>
                                                 @endforelse
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>
