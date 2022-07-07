@@ -66,7 +66,7 @@
 				</tr>
 
 				@if($item->getRelationValue('paket'))
-					@forelse ($item->getRelationValue('paket')->peserta as $peserta)
+					@forelse ($item->getRelationValue('paket')->alumni as $peserta)
 						<tr class="small">
 							<td>
 								{{ $loop->iteration }}
@@ -115,7 +115,7 @@
 					</td>
 					<td style="background-color: #cfcfcf">
 						@if($item->getRelationValue('paket'))
-							{{ $item->getRelationValue('paket')->peserta->count() }}
+							{{ $item->getRelationValue('paket')->alumni->count() }}
 						@else
 							0
 						@endif

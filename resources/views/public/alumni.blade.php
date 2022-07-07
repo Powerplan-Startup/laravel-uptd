@@ -60,49 +60,50 @@
                                                 <th>Kejuruan</th>
                                                 <th>Angkatan</th>
                                             </tr>
-                                            @forelse ($kejuruanitem->alumni as $item)
-                                                <tr>
-                                                    <td>
-                                                        {{ $item->nama }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->jenis_kelamin == "l" ? "Laki-Laki" : "Perempuan" }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->tempat_lahir }},
-                                                        {{ $item->tanggal_lahir }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->umur }} tahun
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->email }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->no_hp }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->agama }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->status }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $kejuruanitem->nama_kejuruan }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->angkatan }}
-                                                    </td>
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="1000">
-                                                        <div class="text-muted" style="padding: 1rem">
-                                                            Tidak ada data alumni kejuruan {{ $kejuruanitem->nama_kejuruan }}
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
+                                            @if($kejuruanitem->getRelationValue('paket'))
+                                                @forelse ($kejuruanitem->getRelationValue('paket')->alumni as $item)
+                                                    <tr>
+                                                        <td>
+                                                            {{ $item->nama }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->jenis_kelamin == "l" ? "Laki-Laki" : "Perempuan" }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->tempat_lahir }},
+                                                            {{ $item->tanggal_lahir }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->umur }} tahun
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->email }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->no_hp }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->agama }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->status }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $kejuruanitem->nama_kejuruan }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $item->angkatan }}
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="1000">
+                                                            <div class="text-muted" style="padding: 1rem">
+                                                                Tidak ada data alumni kejuruan {{ $kejuruanitem->nama_kejuruan }}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforelse
                                         @endforeach
                                     </tbody>
                                 </table>
