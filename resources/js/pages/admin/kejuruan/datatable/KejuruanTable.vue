@@ -32,6 +32,18 @@
                 </div>
             </div>
         </template>
+        <template #item.paket="{item}">
+            <div v-if="item.paket != null">
+                <div class="mb-1">
+                    {{ Paket `${item.paket.tanggal} ${item.paket.tahun}` }}
+                </div>
+            </div>
+            <div v-else>
+                <div>
+                    belum punya paket
+                </div>
+            </div>
+        </template>
         <template #item.created_at="{item}">
 			{{ item.created_at | datetime }}
         </template>
