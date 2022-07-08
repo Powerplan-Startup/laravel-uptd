@@ -44,7 +44,7 @@ class PaketController extends Controller
     }
 
     public function show(Paket $paket){
-        $paket->load(['kejuruan']);
+        $paket->load(['kejuruan', 'instruktur']);
         return new PaketResource($paket);
     }
     public function update(PaketUpdateRequest $request, Paket $paket){
