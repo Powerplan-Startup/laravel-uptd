@@ -131,7 +131,7 @@
 					</svg>
 					<p class="pb-3 mb-0 small lh-sm border-bottom">
 						<strong class="d-block text-gray-dark">Penidikan Terakhir</strong>
-						{{ $user->pendidikan_terahir }}
+						{{ $user->pendidikan_terakhir }}
 					</p>
 				</div>
 				<div class="d-flex text-muted pt-3">
