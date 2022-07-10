@@ -130,8 +130,27 @@
 							dy=".3em"></text>
 					</svg>
 					<p class="pb-3 mb-0 small lh-sm border-bottom">
-						<strong class="d-block text-gray-dark">Penidikan Terakhir</strong>
-						{{ $user->pendidikan_terakhir }}
+						@if($user->pendidikan_terakhir == 1)
+							SD
+						@elseif($user->pendidikan_terakhir == 2)
+							SMP
+						@elseif($user->pendidikan_terakhir == 3)
+							SMA-SMP
+						@elseif($user->pendidikan_terakhir == 4)
+							D1
+						@elseif($user->pendidikan_terakhir == 5)
+							D2
+						@elseif($user->pendidikan_terakhir == 6)
+							D3
+						@elseif($user->pendidikan_terakhir == 7)
+							D4-S1
+						@elseif($user->pendidikan_terakhir == 8)
+							S2
+						@elseif($user->pendidikan_terakhir == 9)
+							S3
+						@else
+							-
+						@endif
 					</p>
 				</div>
 				<div class="d-flex text-muted pt-3">
