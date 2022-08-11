@@ -60,7 +60,6 @@ Route::any('admin/logout', [\App\Http\Controllers\AuthAdmin\LoginController::cla
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /**
  * route untuk halaman admin
