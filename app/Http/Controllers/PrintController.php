@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Instruktur;
 use App\Models\JadwalPelatihan;
 use App\Models\Kejuruan;
+use App\Models\Pimpinan;
 use Illuminate\Http\Request;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -15,8 +16,11 @@ class PrintController extends Controller{
         $kejuruan = Kejuruan::with([ 'paket' => function(){}, 'paket.peserta' => function($query){
             $query->whereStatusPeserta('aktif');
         }])->get();
+        $pimpinan = Pimpinan::first();
+
         $view = view('print.peserta', [
-            'kejuruan' => $kejuruan
+            'kejuruan' => $kejuruan,
+            'pimpinan'  => $pimpinan
         ]);
         $pdf = new Mpdf();
         $pdf->WriteHTML($view);
@@ -26,8 +30,10 @@ class PrintController extends Controller{
         $kejuruan = Kejuruan::with(['paket', 'paket.peserta' => function($query){
             $query->whereStatusPeserta('calon');
         }])->get();
+        $pimpinan = Pimpinan::first();
         $view = view('print.calon', [
-            'kejuruan' => $kejuruan
+            'kejuruan' => $kejuruan,
+            'pimpinan'  => $pimpinan
         ]);
         $pdf = new Mpdf();
         $pdf->WriteHTML($view);
@@ -37,8 +43,10 @@ class PrintController extends Controller{
         $kejuruan = Kejuruan::with(['paket', 'paket.peserta' => function($query){
             $query->whereStatusPeserta('alumni');
         }])->get();
+        $pimpinan = Pimpinan::first();
         $view = view('print.alumni', [
-            'kejuruan' => $kejuruan
+            'kejuruan' => $kejuruan,
+            'pimpinan'  => $pimpinan
         ]);
         $pdf = new Mpdf();
         $pdf->WriteHTML($view);
@@ -47,8 +55,10 @@ class PrintController extends Controller{
     public function instruktur(){
         $instruktur = Instruktur::all();
 
+        $pimpinan = Pimpinan::first();
         $view = view('print.instruktur', [
-            'instruktur' => $instruktur
+            'instruktur' => $instruktur,
+            'pimpinan'  => $pimpinan
         ]);
 
         $pdf = new Mpdf();
@@ -61,8 +71,10 @@ class PrintController extends Controller{
         ->with(['paket', 'paket.kejuruan', 'instruktur', 'jadwal'])
         ->get();
 
+        $pimpinan = Pimpinan::first();
         $view = view('print.jadwal', [
-            'jadwal' => $data
+            'jadwal' => $data,
+            'pimpinan'  => $pimpinan
         ]);
         
         $pdf = new Mpdf();

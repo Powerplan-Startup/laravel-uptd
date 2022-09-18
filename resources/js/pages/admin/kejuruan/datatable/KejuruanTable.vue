@@ -21,9 +21,9 @@
             </div>
         </template>
         <template #item.id_jadwal="{item}">
-            <div @click.prevent="rowClick(item)" v-if="item.jadwal != null">
+            <div @click.prevent="rowClick(item)" v-if="item.paket.jadwal != null">
                 <div class="mb-1">
-                    {{ `${item.jadwal.tanggal} ${item.jadwal.waktu}` | datetime }}
+                    {{ `${item.paket.jadwal.tanggal} ${item.paket.jadwal.waktu}` | datetime }}
                 </div>
             </div>
             <div v-else>

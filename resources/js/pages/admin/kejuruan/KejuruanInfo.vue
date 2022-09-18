@@ -121,7 +121,7 @@
                                                 Paket
                                             </v-list-item-subtitle>
                                             <v-list-item-title class="">
-                                                {{ item.paket }}
+                                                {{ item.paket.paket }} | {{ item.paket.tahun }}
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>

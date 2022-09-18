@@ -25,7 +25,7 @@ class KejuruanController extends Controller
         ->when(request('search'), function($query, $search){
             $query->where('nama_kejuruan', 'like', "%{$search}%");
         })
-        ->with(['paket.jadwals', 'paket.instruktur'])
+        ->with(['paket.jadwals', 'paket.instruktur', 'paket.jadwal'])
         ->paginate(request('itemsPerPage') ?? 10);
         return KejuruanResource::collection($data);
     }

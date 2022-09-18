@@ -127,5 +127,36 @@
 			@endforeach
 		</tbody>
 	</table>
+	<table style="width: 100%; margin-top: 4rem">
+		<tfoot>
+			<tr>
+				<td colspan="11" rowspan="5"></td>
+				<td width="250">Mengetahui:</td>
+			</tr>
+			<tr>
+				<td>Pimpinan</td>
+			</tr>
+			<tr>
+				<td style="padding: 2rem"></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<u>
+							{{ $pimpinan->nama }}
+						</u>
+					</div>
+					<div>
+						<span>
+							NIP. {{ $pimpinan->nip }}
+						</span>
+					</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </body>
 </html>
