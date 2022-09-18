@@ -30,4 +30,10 @@ class Paket extends Model
     public function peserta(){
         return $this->hasMany(CalonPesertaPelatihan::class, 'id_paket', 'id_paket');
     }
+    public function peserta_aktif(){
+        return $this->hasMany(CalonPesertaPelatihan::class, 'id_paket', 'id_paket')->whereStatusPeserta('aktif');
+    }
+    public function nilai(){
+        return $this->hasMany(Nilai::class, 'id_paket', 'id_paket');
+    }
 }

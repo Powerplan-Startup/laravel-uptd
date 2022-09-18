@@ -103,6 +103,11 @@ Route::prefix('instruktur')->middleware('auth:instruktur')->group(function(){
     Route::put('/setting', [InstrukturDashboardController::class, 'update'])->name('instruktur.setting.update');
     Route::get('/berkas', [InstrukturDashboardController::class, 'berkas'])->name('instruktur.berkas');
     Route::put('/berkas', [InstrukturDashboardController::class, 'updateBerkas'])->name('instruktur.berkas.update');
+    
     Route::get('/{jadwal}', [InstrukturDashboardController::class, 'materi'])->name('instruktur.materi');
     Route::put('/{jadwal}', [InstrukturDashboardController::class, 'materiupdate'])->name('instruktur.materi.update');
+
+    Route::get('/nilai/{paket}', [InstrukturDashboardController::class, 'nilai'])->name('instruktur.nilai');
+    Route::get('/nilai/{paket}/peserta/{peserta}', [InstrukturDashboardController::class, 'peserta'])->name('instruktur.nilai.peserta');
+    Route::put('/nilai/{paket}/peserta/{peserta}', [InstrukturDashboardController::class, 'nilaiupdate'])->name('instruktur.nilai.update');
 });
