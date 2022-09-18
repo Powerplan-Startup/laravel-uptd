@@ -74,7 +74,9 @@ class RegisterController extends Controller
                  * find if nik is already registered in this year
                  * 
                  */
-                $peserta = CalonPesertaPelatihan::where('nik', $value)->whereYear('tanggal_daftar', now()->year())->first();
+                $peserta = CalonPesertaPelatihan::where('nik', $value)
+                    // ->whereYear('tanggal_daftar', now()->year())
+                    ->first();
                 if ($peserta) {
                     return $fail('NIK sudah terdaftar');
                 }
