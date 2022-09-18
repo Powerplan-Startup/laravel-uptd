@@ -41,6 +41,19 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
+            <v-list-item link :href="`/print/paket/${item.id_paket}/nilai`" target="_blank">
+                <v-list-item-icon>
+                    <v-icon>mdi-download</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-subtitle>
+                        Penilaian
+                    </v-list-item-subtitle>
+                    <v-list-item-title class="">
+                        Unduh Rekapan Penilaian
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
         </v-card-text>
     </v-card>
 </template>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CalonPesertaPelatihan;
 use App\Models\Instruktur;
 use App\Models\JadwalPelatihan;
 use App\Models\Kejuruan;
+use App\Models\Paket;
 use App\Models\Pimpinan;
 use Illuminate\Http\Request;
 use Monolog\Logger;
@@ -77,6 +79,23 @@ class PrintController extends Controller{
             'pimpinan'  => $pimpinan
         ]);
         
+        $pdf = new Mpdf();
+        $pdf->WriteHTML($view);
+        $pdf->Output();
+    }
+    public function nilai($paket){
+
+        $paket = Paket::findOrFail($paket);
+
+        $peserta = CalonPesertaPelatihan::where('id_paket', $paket->id_paket)
+            ->get();
+
+        $pimpinan = Pimpinan::first();
+        $view = view('print.nilai', [
+            'peserta' => $peserta,
+            'pimpinan'  => $pimpinan
+        ]);
+
         $pdf = new Mpdf();
         $pdf->WriteHTML($view);
         $pdf->Output();

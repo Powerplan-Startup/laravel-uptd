@@ -76,6 +76,7 @@ Route::prefix('print')->middleware('operator')->group(function(){
     Route::get('/alumni', [PrintController::class, 'alumni'])->name('print.alumni');
     Route::get('/instruktur', [PrintController::class, 'instruktur'])->name('print.instruktur');
     Route::get('/jadwal', [PrintController::class, 'jadwal'])->name('print.jadwal');
+    Route::get('/paket/{paket}/nilai', [PrintController::class, 'nilai'])->name('print.nilai');
 });
 /**
  * route untuk halaman admin
