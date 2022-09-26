@@ -54,8 +54,8 @@
                                                                     <td><select class="form-select form-control" name="jenis_kelamin"
                                                                             aria-label="Default select example">
                                                                             <option selected>Pilih Jenis Kelamin</option>
-                                                                            <option value="l">Laki - Laki</option>
-                                                                            <option value="p">Perempuan</option>
+                                                                            <option value="l" {{ old('jenis_kelamin') == 'l' ? 'selected' : null }}>Laki - Laki</option>
+                                                                            <option value="p" {{ old('jenis_kelamin') == 'p' ? 'selected' : null }}>Perempuan</option>
                                                                         </select>
                                                                     </td>
                                                                 </tr>
@@ -77,7 +77,7 @@
                                                                 <tr>
                                                                     <td scope="row" class="small text-muted" style="max-width: 100px">Tanggal Lahir</td>
                                                                     <td><input class="form-control" type="date" id="tanggal_lahir"
-                                                                            name="tanggal_lahir" onchange="getAge();" required>
+                                                                            name="tanggal_lahir" onchange="getAge();" value="{{ old('tanggal_lahir') }}"  required>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -97,7 +97,7 @@
                                                                 <tr>
                                                                     <td scope="row" class="small text-muted" style="max-width: 100px">Alamat</td>
                                                                     <td>
-                                                                        <textarea class="form-control @error('alamat') is-invalid @enderror" type="text" id="alamat" name="alamat"></textarea>
+                                                                        <textarea class="form-control @error('alamat') is-invalid @enderror" type="text" id="alamat" name="alamat">{{ old('alamat') }}</textarea>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -113,15 +113,15 @@
                                                                     <td><select class="form-select form-control" name="pendidikan_terakhir"
                                                                             aria-label="Default select example">
                                                                             <option selected>Pilih Pendidikan Terakhir</option>
-                                                                            <option value="1">SD</option>
-                                                                            <option value="2">SMP</option>
-                                                                            <option value="3">SMA-SMK</option>
-                                                                            <option value="4">D1</option>
-                                                                            <option value="5">D2</option>
-                                                                            <option value="6">D3</option>
-                                                                            <option value="7">D4-S1</option>
-                                                                            <option value="8">S2</option>
-                                                                            <option value="9">S3</option>
+                                                                            <option value="1" {{ old('pendidikan_terakhir') == '1' ? 'selected' : null }}>SD</option>
+                                                                            <option value="2" {{ old('pendidikan_terakhir') == '2' ? 'selected' : null }}>SMP</option>
+                                                                            <option value="3" {{ old('pendidikan_terakhir') == '3' ? 'selected' : null }}>SMA-SMK</option>
+                                                                            <option value="4" {{ old('pendidikan_terakhir') == '4' ? 'selected' : null }}>D1</option>
+                                                                            <option value="5" {{ old('pendidikan_terakhir') == '5' ? 'selected' : null }}>D2</option>
+                                                                            <option value="6" {{ old('pendidikan_terakhir') == '6' ? 'selected' : null }}>D3</option>
+                                                                            <option value="7" {{ old('pendidikan_terakhir') == '7' ? 'selected' : null }}>D4-S1</option>
+                                                                            <option value="8" {{ old('pendidikan_terakhir') == '8' ? 'selected' : null }}>S2</option>
+                                                                            <option value="9" {{ old('pendidikan_terakhir') == '9' ? 'selected' : null }}>S3</option>
                                                                         </select>
                                                                     </td>
                                                                 </tr>
@@ -132,7 +132,7 @@
                                                                             aria-label="Default select example">
                                                                             <option selected>Pilih Nama Kejuruan</option>
                                                                             @foreach ($kejuruan as $item)
-                                                                                <option value="{{ $item->id_kejuruan }}">{{ $item->nama_kejuruan }}</option>
+                                                                                <option value="{{ $item->id_kejuruan }}" {{ old('id_kejuruan') == $item->id_kejuruan ? 'selected' : null }}>{{ $item->nama_kejuruan }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </td>
@@ -142,12 +142,12 @@
                                                                     <td><select class="form-select form-control" name="agama"
                                                                             aria-label="Default select example">
                                                                             <option selected>Pilih Agama</option>
-                                                                            <option value="islam">Islam</option>
-                                                                            <option value="kristen">Kristen</option>
-                                                                            <option value="katolik">Katolik</option>
-                                                                            <option value="hindu">Hindu</option>
-                                                                            <option value="budha">Budha</option>
-                                                                            <option value="konghucu">Konghucu</option>
+                                                                            <option value="islam" {{ old('agama') == 'islam' ? 'selected' : null }}>Islam</option>
+                                                                            <option value="kristen" {{ old('agama') == 'kristen' ? 'selected' : null }}>Kristen</option>
+                                                                            <option value="katolik" {{ old('agama') == 'katolik' ? 'selected' : null }}>Katolik</option>
+                                                                            <option value="hindu" {{ old('agama') == 'hindu' ? 'selected' : null }}>Hindu</option>
+                                                                            <option value="budha" {{ old('agama') == 'budha' ? 'selected' : null }}>Budha</option>
+                                                                            <option value="konghucu" {{ old('agama') == 'konghucu' ? 'selected' : null }}>Konghucu</option>
                                                                         </select>
                                                                     </td>
                                                                 </tr>
@@ -156,10 +156,10 @@
                                                                     <td><select class="form-select form-control" name="status"
                                                                             aria-label="Default select example">
                                                                             <option selected>Pilih Status</option>
-                                                                            <option value="lajang">Lajang</option>
-                                                                            <option value="menikah">Menikah</option>
-                                                                            <option value="dua">Duda</option>
-                                                                            <option value="janda">Janda</option>
+                                                                            <option value="lajang" {{ old('status') == 'lajang' ? 'selected' : null }}>Lajang</option>
+                                                                            <option value="menikah" {{ old('status') == 'menikah' ? 'selected' : null }}>Menikah</option>
+                                                                            <option value="dua" {{ old('status') == 'dua' ? 'selected' : null }}>Duda</option>
+                                                                            <option value="janda" {{ old('status') == 'janda' ? 'selected' : null }}>Janda</option>
                                                                         </select>
                                                                     </td>
                                                                 </tr>
